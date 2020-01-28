@@ -3,9 +3,12 @@
 
 #include <QAbstractListModel>
 
+class DiaryList;
+
 class DiaryListModel : public QAbstractListModel
 {
     Q_OBJECT
+    Q_PROPERTY(DiaryList *list READ list WRITE setList)
 
 public:
     explicit DiaryListModel(QObject *parent = nullptr);
@@ -26,8 +29,11 @@ public:
 
     Qt::ItemFlags flags(const QModelIndex& index) const override;
     virtual QHash<int, QByteArray> roleNames()const override;
+    DiaryList *list()const;
+    void setList(DiaryList *list);
 
 private:
+    DiaryList* m_list;
 };
 
 #endif // DIARYLISTMODEL_H
