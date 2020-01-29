@@ -16,10 +16,14 @@ Window {
 
         DiaryList{
             id:scrollarea
-            x: 61
-            y: 120
-            width: window.width/5
-            height: parent.height
+            width: 160
+            anchors.top: parent.top
+            anchors.topMargin: 83
+            anchors.bottom: parent.bottom
+            anchors.bottomMargin: 37
+            anchors.left: parent.left
+            anchors.leftMargin: 30
+
         }
 
 
@@ -32,3 +36,9 @@ Window {
 }
 
 
+
+/*##^##
+Designer {
+    D{i:1;anchors_height:171;anchors_width:148;anchors_x:42;anchors_y:187}
+}
+##^##*/
