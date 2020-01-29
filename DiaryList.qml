@@ -37,8 +37,8 @@ Frame{
 
 
                 Text {
-                    id: userTextField
-                    text: model.Text
+                    id: titleField
+                    text: model.Title
                     wrapMode: Text.WrapAnywhere
                 }
 

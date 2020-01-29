@@ -26,6 +26,7 @@ QVariant DiaryListModel::data(const QModelIndex &index, int role) const
     const ListItem item = m_list->listItems().at(index.row());
     switch (role) {
         case DateRole: return QVariant(item.currDate);
+        case TitleRole: return QVariant(item.title);
         case TextRole: return QVariant(item.userText);
     }
     return QVariant();
@@ -43,6 +44,7 @@ bool DiaryListModel::setData(const QModelIndex &index, const QVariant &value, in
              break;
          case TextRole: item.userText = value.toString();
              break;
+         case TitleRole: item.title = value.toString();
          }
          if(m_list->setItemAt(index.row(),item)) {
              emit dataChanged(index, index, QVector<int>() << role);
@@ -66,6 +68,7 @@ QHash<int, QByteArray> DiaryListModel::roleNames() const
     QHash <int, QByteArray>Roles;
     Roles[DateRole] = "Date";
     Roles[TextRole] = "Text";
+    Roles[TitleRole] = "Title";
     return Roles;
 }
 

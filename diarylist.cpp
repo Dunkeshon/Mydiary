@@ -6,7 +6,7 @@ DiaryList::DiaryList(QObject *parent) : QObject(parent)
     // выгрузка информации из настроек
     // QSettings ...
     for(int i = 0; i< 10; i++){
-        m_listItems.push_back({"12.01.2222","dsijooooooakjklsakjasasjkljlaksjklasjklsajlajlskjlkaskjlasljksajkljklsajkaskjlsajklsajklkjlasjklasjklsajkljksljksjklsajlksajlkjlksakjlsajklasjkljlsakjlkasjlkasjklajklssjalkjklsajlksajklsajklsajklsajkljklsajlas"});
+        m_listItems.push_back({"12.01.2222","# ",""});
     }
 }
 
@@ -34,7 +34,8 @@ void DiaryList::addItem()
 
     ListItem new_item;
     new_item.currDate = QDate::currentDate().toString();
-    new_item.userText = "#dfo\nsjpppppp\nppppppppppppppppp\n\nppppppppppppppppppppppppppppppppppppppppppppdddfsdjoppppjodsfffffffffffffffffffffffffffffff";// УБРАТЬ ПОТОМ(не нада)
+    new_item.title = "# ";
+    new_item.userText = "";// УБРАТЬ ПОТОМ(не нада)
     m_listItems.push_back(new_item);
 
     emit postItemAdded();

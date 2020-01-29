@@ -10,7 +10,7 @@ int main(int argc, char *argv[])
 
     QGuiApplication app(argc, argv);
     qmlRegisterType<DiaryListModel>("Diary",1,0,"DiaryModel");
-    qmlRegisterUncreatableType<DiaryList>("Diary",1,0,"DdiaryList",
+    qmlRegisterUncreatableType<DiaryList>("Diary",1,0,"DiaryList",
          QString("This object should not be created in qml"));
 
     DiaryList diaryList;
