@@ -14,40 +14,20 @@ Window {
     title: qsTr("Hello World")
 
 
-    DiaryList{
-        x: 79
-        y: 165
-        width: parent.width/3
-        height: parent.height/2
-    }
-
-
-    Rectangle {
-        id: rectangle
-        x: 298
-        y: 27
-        border.width: 2
-        border.color:"#917b7b"
-        radius: 10
-        width: 324
-        height: 365
-        clip: true
-        TextEdit {
-            anchors.fill: parent
-            textMargin: 10
-            width: 240
-            text: "text brlow dsklsdosd lsdksdk ldsk ldklsklsdk lsdklklds"
-            wrapMode: TextEdit.WordWrap
-            font.family: "Helvetica"
-            font.pointSize: 20
-            color: "black"
-            focus: true
-            selectByMouse: true
-
-
-
+        DiaryList{
+            id:scrollarea
+            x: 61
+            y: 120
+            width: window.width/5
+            height: parent.height
         }
-    }
+
+
+        TextINputWindow {
+            id: userinput
+            x: 298
+            y: 27
+        }
 
 }
 

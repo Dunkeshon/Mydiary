@@ -8,8 +8,6 @@ Rectangle {
     border.width: 2
     border.color:"#917b7b"
     radius: 10
-    width: 324
-    height: 365
     clip: true
     TextEdit {
         anchors.fill: parent
