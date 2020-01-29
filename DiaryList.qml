@@ -5,11 +5,13 @@ import Diary 1.0
 
 
 Frame{
+
 //    radius: 5
 //    border.color: "black"
 //    border.width: 2
-    ListView{
 
+    ListView{
+        id:listw
         anchors.fill:parent
         clip: true
         model:DiaryModel{
