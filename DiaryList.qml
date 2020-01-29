@@ -9,8 +9,7 @@ Frame{
 //    border.color: "black"
 //    border.width: 2
     ListView{
-        implicitHeight: 250
-        implicitWidth: 100
+
         anchors.fill:parent
         clip: true
         model:DiaryModel{
