@@ -5,7 +5,6 @@ import QtQuick.Layouts 1.12
 
 Window {
     visible: true
-    visibility: Window.FullScreen
     width: 640
     height: 480
     title: qsTr("Hello World")
