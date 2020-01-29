@@ -6,7 +6,7 @@ DiaryList::DiaryList(QObject *parent) : QObject(parent)
     // выгрузка информации из настроек
     // QSettings ...
     for(int i = 0; i< 10; i++){
-        m_listItems.push_back({"12.01.2222","# ",""});
+        m_listItems.push_back({"12.01.2222","#Title "+ QString::number(i + 1) ,""});
     }
 }
 

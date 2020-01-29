@@ -31,6 +31,16 @@ ColumnLayout{
                 list: diaryList
             }
             delegate:
+                Frame{
+
+                width:parent.width
+                background: Rectangle{
+                    border.width: 1
+                    border.color:"#917b7b"
+                    radius: 2
+                    clip: true
+                }
+
 
                 ColumnLayout{
 
@@ -50,26 +60,22 @@ ColumnLayout{
                         color: "black"
                     }
 
-                    //            ToolSeparator{
-                    //                id: toolSeparator
-                    //                orientation: Qt.Horizontal
-                    //                width:parent.fillWidth
-                    //            }
-
 
                     Text {
                         id: titleField
                         text: model.Title
+                        font.pointSize: 16
                         wrapMode: Text.WrapAnywhere
                     }
-                    Rectangle{
-                        id:separator2
-                        height: 1
-                        width: frame1.width
-                        color: "black"
-                    }
+//                    Rectangle{
+//                        id:separator2
+//                        height: 1
+//                        width: frame1.width
+//                        color: "black"
+//                    }
 
                 }
+            }
 
 
 
