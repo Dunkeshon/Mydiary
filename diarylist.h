@@ -8,6 +8,7 @@
 struct ListItem {
     QString currDate;
     QString userText;
+    QString title;
 };
 
 class DiaryList: public QObject
