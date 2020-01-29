@@ -56,7 +56,7 @@ ColumnLayout{
                     Rectangle{
                         id:separator
                         height: 1
-                        width: parent.width/2
+                        width: 100 //frame1.width/2
                         color: "black"
                     }
 
