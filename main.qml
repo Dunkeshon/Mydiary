@@ -14,6 +14,7 @@ Window {
     title: qsTr("Hello World")
 
 
+
     DiaryList{
         id: diaryList
         width: 200
