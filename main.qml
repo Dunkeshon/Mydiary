@@ -6,53 +6,44 @@ import QtQuick.Layouts 1.12
 Window {
     id: window
     visible: true
-    minimumWidth:400
-    minimumHeight: 400
+    minimumWidth: 640
+    minimumHeight: 480
     width: 640
     height: 480
-    color: "#b9b1b1"
+    title: qsTr("My Diary")
 
-
-    title: qsTr("Hello World")
-
+    Rectangle {
+        id: verticalSeparator
+        color:"black"
+        width: 2
+        anchors.top: parent.top
+        anchors.bottom: parent.bottom
+        anchors.left: diaryList.right
+    }
 
 
     DiaryList{
         id: diaryList
         width: 200
         anchors.top: parent.top
-        anchors.topMargin: 65
         anchors.bottom: parent.bottom
-        anchors.bottomMargin: 0
         anchors.left: parent.left
-        anchors.leftMargin: 0
-
     }
 
 
     TextINputWindow {
         visible: true
         id: userinput
-        x: 192
+        x: diaryList.width + verticalSeparator.width
 
-        width: parent.width - rectangle.x
+        width: parent.width - diaryList.width - verticalSeparator.width
         anchors.top: parent.top
-        anchors.topMargin: 27
         anchors.bottom: parent.bottom
-        anchors.bottomMargin: 0
         anchors.right: parent.right
-        anchors.rightMargin: 0
 
     }
 
-    Rectangle {
-        id: rectangle
-        color:"black"
-        width: 3
-        anchors.top: parent.top
-        anchors.bottom: parent.bottom
-        anchors.left: diaryList.right
-    }
+
 
 //    Rectangle {
 //        id: frame
