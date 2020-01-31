@@ -11,6 +11,8 @@ Window {
     width: 640
     height: 480
     color: "#b9b1b1"
+
+
     title: qsTr("Hello World")
 
 
@@ -40,6 +42,7 @@ Window {
         anchors.bottomMargin: 0
         anchors.right: parent.right
         anchors.rightMargin: 0
+
     }
 
     Rectangle {

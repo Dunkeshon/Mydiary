@@ -81,24 +81,42 @@ ColumnLayout {
             }
         }
 
-        Flickable {
-            id:bottomFlickable
-            anchors.fill:parent
 
-            clip: true
-            TextArea.flickable: TextArea  {
-                anchors.fill: parent
-                persistentSelection: true
+        ScrollView {
+            anchors.fill: parent
+
+            TextArea {
+                renderType: Text.QtRendering
                 leftPadding: 10
                 placeholderText: qsTr("Enter Something)")
                 font.pointSize: 18
                 wrapMode: TextArea.WordWrap
 
                 selectByMouse: true
-                //                selectByKeyboard: true
                 focus: true
             }
         }
+
+
+
+
+
+//        Flickable {
+//            id:bottomFlickable
+//            anchors.fill:parent
+//            clip: true
+//            TextArea.flickable: TextArea  {
+//                anchors.fill: parent
+//                //persistentSelection: true
+//                leftPadding: 10
+//                placeholderText: qsTr("Enter Something)")
+//                font.pointSize: 18
+//                wrapMode: TextArea.WordWrap
+
+//                selectByMouse: true
+//                focus: true
+//            }
+//        }
     }
 }
 
