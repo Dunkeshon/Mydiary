@@ -3,93 +3,101 @@ import QtQuick.Window 2.12
 import QtQuick.Controls 2.12
 import QtQuick.Layouts 1.12
 
-Grid{
-    id:grid
-    spacing: 13
-    rows: 4
-    columns: 0
+ColumnLayout {
+    id:mainColumn
+    spacing: 10
 
     Text {
-
-        anchors.margins: 20
         id: datetext
-        x: 30
+        anchors.top: parent.top
+        anchors.left: parent.left
+        anchors.leftMargin: 30
         text: qsTr("Date here")
-        topPadding: 20
-        leftPadding: 20
         font.pointSize: 18
-    }
-    TextField {
-        placeholderText:"Title"
-        anchors.margins: 20
-        id: titleText
-        x:20
-        horizontalAlignment: Text.AlignLeft
-        font.italic: false
-        font.bold: false
-        topPadding: 0
-        leftPadding: 20
-        font.pointSize: 20
-        Text {
-            id: name
+        Rectangle {
+            id: blackCircle
+            anchors.right: parent.left
+            anchors.rightMargin: 5
+            y:parent.height/2 + 2
+            width: 20
+            height: 20
+            radius: 10
             color: "black"
         }
-        //textColor:"black"
-
-
-        background:
-            Rectangle{
-                visible: false
+        Rectangle {
+            id:separator
+            anchors.top: parent.bottom
+            anchors.left: blackCircle.left
+            height: 2
+            radius: 2
+            width: mainColumn.width / 3
+            color: "black"
         }
-    }
 
-    Rectangle {
-        id: rectangle2
-        width: parent.width/2.5
-        height: 4
-        color: "#060505"
-    }
-
-    Flickable {
-        id: flickable
-        flickableDirection: Flickable.VerticalFlick
-        boundsBehavior: Flickable.DragAndOvershootBounds
-        height: grid.parent.height / grid.columns - grid.spacing//parent.height - datetext.height -  rectangle2.height - titleText.height -
-        width:parent.width
-        clip: true
-        ScrollBar.vertical: ScrollBar {
-                id: flickScroll
+        TextField {
+            placeholderText:"Title"
+            anchors.top: separator.bottom
+            anchors.left: blackCircle.right
+            width: parent.width*2
+            height: parent.height
+            anchors.leftMargin: 5
+            bottomPadding: 0
+            leftPadding: 0
+            font.pointSize: 18
+            Text {
+                anchors.fill: parent
+                font.pointSize: 10
+                color: "black"
             }
-        TextArea.flickable:TextArea {
-            id:monitor
-            persistentSelection: true
-            leftPadding: 10
-                    rightPadding: 6
-                    topPadding: 6
-                    bottomPadding: 6
-                    placeholderText: qsTr("Enter Something)")
-                    wrapMode: TextArea.WordWrap
-                    font.pointSize: 20
 
-                    selectByMouse: true
-                    focus: true
-                }
+            background: Rectangle {
+                visible: false
+            }
         }
+    }
 
 
 
-//    ScrollView{
-//        height: grid.parent.height / grid.columns - grid.spacing//parent.height - datetext.height -  rectangle2.height - titleText.height -
-//        width:parent.width
-//        //padding: 10
-//        TextArea {
-//            placeholderText: qsTr("Enter Something)")
-//            wrapMode: TextEdit.WordWrap
-//            font.pointSize: 20
-//            selectByMouse: true
-//            focus: true
+
+
+
+//    Flickable {
+//        id: flickable
+//        width: parent.width
+//        clip: true
+//        ScrollBar.vertical: ScrollBar {
+//                id: flickScroll
+//            }
+//        TextArea.flickable:TextArea {
+//            id:monitor
+//            persistentSelection: true
+//            leftPadding: 10
+//                    rightPadding: 6
+//                    topPadding: 6
+//                    bottomPadding: 6
+//                    placeholderText: qsTr("Enter Something)")
+//                    wrapMode: TextArea.WordWrap
+//                    font.pointSize: 20
+
+//                    selectByMouse: true
+//                    focus: true
+//                }
 //        }
-//    }
+
+
+
+////    ScrollView{
+////        height: grid.parent.height / grid.columns - grid.spacing//parent.height - datetext.height -  rectangle2.height - titleText.height -
+////        width:parent.width
+////        //padding: 10
+////        TextArea {
+////            placeholderText: qsTr("Enter Something)")
+////            wrapMode: TextEdit.WordWrap
+////            font.pointSize: 20
+////            selectByMouse: true
+////            focus: true
+////        }
+////    }
 
 
 
