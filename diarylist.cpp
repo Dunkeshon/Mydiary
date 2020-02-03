@@ -6,7 +6,7 @@ DiaryList::DiaryList(QObject *parent) : QObject(parent)
     // выгрузка информации из настроек
     // QSettings ...
     for(int i = 0; i< 10; i++){
-        m_listItems.push_back({"12.01.2222","#Title "+ QString::number(i + 1) ,""});
+        m_listItems.push_back({"12.01.2222","#Title "+ QString::number(i + 1) ,"kjjkhjhkhjkhjkhkhkj"});
     }
 }
 
@@ -46,6 +46,22 @@ void DiaryList::addItem()
     emit postItemAdded();
 }
 
+QString DiaryList::listItemAt(const int &index, const QString &memberName)
+{
+    if(index < 0 || index > m_listItems.size()) { return ""; }
+
+
+    if(memberName == "currDate") {
+        return m_listItems[index].currDate;
+    }
+    if (memberName == "title") {
+        return m_listItems[index].title;
+    }
+    if (memberName == "userText") {
+        return m_listItems[index].userText;
+    }
+    return "";
+}
 //void DiaryList::deleteItem()
 //{
 //   //нужно передавать индекс выбранного пользователем эллемента

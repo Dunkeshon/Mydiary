@@ -18,6 +18,7 @@ public:
     explicit DiaryList(QObject *parent = nullptr);
     bool setItemAt(int index, const ListItem & item);
 
+    Q_INVOKABLE QString listItemAt(const int &index, const QString &memberName);
     QVector<ListItem> listItems() const;
 private:
     QVector<ListItem> m_listItems;

@@ -23,68 +23,78 @@ Window {
         anchors.left: leftColumn.right
     }
 
-ColumnLayout {
-    id: leftColumn
-    width: 200
-    height: parent.height
-    NotesList {
-        id:notesList
-        Layout.fillWidth: true
+    ColumnLayout {
+        id: leftColumn
+        width: 200
+        height: parent.height
+        NotesList {
+            id:notesList
+            Layout.fillWidth: true
 
+            function sendToPost(ourIndex) {
+                userinput.curDate.text=diaryList.listItemAt(ourIndex,"currDate") // new Date().toLocaleString(Qt.locale(),"ddd d MMMM yyyy")
+                userinput.curTitle.text= diaryList.listItemAt(ourIndex,"title")
+                userinput.curText.text=diaryList.listItemAt(ourIndex,"userText")
+                console.log("Choosen: " + (ourIndex+1) )
+            }
+            Component.onCompleted: {
+                  notesList.choosen.connect(sendToPost)
+              }
+
+            Button {
+                Layout.fillWidth: true
+                height: 40
+                text: "ADD"
+                onClicked: {
+                    diaryList.addItem()
+                    notesList.currentIndex=0
+
+                }
+
+            }
+        }
     }
-    Button {
-        Layout.fillWidth: true
-        height: 40
-        text: "ADD"
-        onClicked: {
-            diaryList.addItem()
-            notesList.currentIndex=0
+
+
+
+        TextINputWindow {
+            visible: true
+            id: userinput
+            x: leftColumn.width + verticalSeparator.width
+            width: parent.width - leftColumn.width - verticalSeparator.width
+            anchors.top: parent.top
+            anchors.bottom: parent.bottom
+            anchors.right: parent.right
 
         }
 
-    }
-}
-
-
-
-    TextINputWindow {
-        visible: true
-        id: userinput
-        x: leftColumn.width + verticalSeparator.width
-        width: parent.width - leftColumn.width - verticalSeparator.width
-        anchors.top: parent.top
-        anchors.bottom: parent.bottom
-        anchors.right: parent.right
-
-    }
 
 
 
 
+    //    Rectangle {
+    //        id: frame
+    //        height: 6
+    //        anchors.left: parent.left
+    //        anchors.leftMargin: 0
+    //        anchors.right: parent.right
+    //        anchors.rightMargin: 0
+    //        border.color: "black"
+    //        border.width: 1
+    //        anchors.top: parent.top
+    //        anchors.topMargin: 27
+    //    }
 
-//    Rectangle {
-//        id: frame
-//        height: 6
-//        anchors.left: parent.left
-//        anchors.leftMargin: 0
-//        anchors.right: parent.right
-//        anchors.rightMargin: 0
-//        border.color: "black"
-//        border.width: 1
-//        anchors.top: parent.top
-//        anchors.topMargin: 27
-//    }
-
-//    Text {
-//        id: element4
-//        x: 35
-//        y: 39
-//        width: 119
-//        height: 20
-//        text: qsTr("January")
-//        horizontalAlignment: Text.AlignHCenter
-//        font.pixelSize: 16
-//    }
+    //    Text {
+    //        id: element4
+    //        x: 35
+    //        y: 39
+    //        width: 119
+    //        height: 20
+    //        text: qsTr("January")
+    //        horizontalAlignment: Text.AlignHCenter
+    //        font.pixelSize: 16
+    //    }
 
     //        Row {
     //            id: row
@@ -105,49 +115,50 @@ ColumnLayout {
     //            }
     //        }
 
-//    ToolBar {
-//        anchors.right: parent.right
-//        anchors.rightMargin: 0
-//        anchors.left: parent.left
-//        anchors.leftMargin: 0
-//        anchors.top: parent.top
-//        anchors.topMargin: 0
-//        RowLayout {
-//            anchors.fill: parent
+    //    ToolBar {
+    //        anchors.right: parent.right
+    //        anchors.rightMargin: 0
+    //        anchors.left: parent.left
+    //        anchors.leftMargin: 0
+    //        anchors.top: parent.top
+    //        anchors.topMargin: 0
+    //        RowLayout {
+    //            anchors.fill: parent
 
-//            ToolButton {
-//                text: qsTr("Action 1")
-//            }
-//            ToolButton {
-//                text: qsTr("Action 2")
-//            }
+    //            ToolButton {
+    //                text: qsTr("Action 1")
+    //            }
+    //            ToolButton {
+    //                text: qsTr("Action 2")
+    //            }
 
-//            ToolSeparator {}
+    //            ToolSeparator {}
 
-//            ToolButton {
-//                text: qsTr("Action 3")
-//            }
-//            ToolButton {
-//                text: qsTr("Action 4")
-//            }
+    //            ToolButton {
+    //                text: qsTr("Action 3")
+    //            }
+    //            ToolButton {
+    //                text: qsTr("Action 4")
+    //            }
 
-//            ToolSeparator {}
+    //            ToolSeparator {}
 
-//            ToolButton {
-//                text: qsTr("Action 5")
-//            }
-//            ToolButton {
-//                text: qsTr("Action 6")
-//            }
-//        }
-//    }
-}
-
+    //            ToolButton {
+    //                text: qsTr("Action 5")
+    //            }
+    //            ToolButton {
+    //                text: qsTr("Action 6")
+    //            }
+    //        }
+    //    }
 
 
-/*##^##
+
+
+    /*##^##
 Designer {
     D{i:1;anchors_height:171;anchors_width:148;anchors_x:42;anchors_y:187}D{i:2;anchors_height:453;anchors_y:27}
 D{i:3;anchors_height:432;anchors_x:209;anchors_y:33}
 }
 ##^##*/
+}

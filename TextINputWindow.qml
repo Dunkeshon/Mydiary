@@ -5,7 +5,9 @@ import QtQuick.Layouts 1.12
 
 Item {
     id:mainColumn
-
+    property alias curDate: datetext
+    property alias  curTitle: title
+    property alias  curText : userText
 
     Rectangle {
         id:topRect
@@ -43,6 +45,7 @@ Item {
             }
 
             TextField {
+                id:title
                 placeholderText:"Title"
                 anchors.top: separator.bottom
                 anchors.left: blackCircle.right
@@ -85,6 +88,7 @@ Item {
         ScrollView {
             anchors.fill: parent
             TextArea {
+                id:userText
                 renderType: Text.QtRendering
                 leftPadding: 10
                 placeholderText: qsTr("Enter Something)")

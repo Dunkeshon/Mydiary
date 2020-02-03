@@ -5,20 +5,31 @@ import Diary 1.0
 
 
 ColumnLayout {
+    id:column
     property alias currentIndex: listw.currentIndex
+    signal choosen(int curIndex)
+
+//    function sendToPost(ourIndex) {
+//           console.log("Choosen: " + (ourIndex+1) )
+//       }
+    // этим сигналом мы высылаем информацию о выбранной заметке
+//    Component.onCompleted: {
+//          column.choosen.connect(sendToPost)
+//      }
     Layout.fillWidth: true
     Layout.fillHeight: true
     Layout.minimumWidth: 50
     Layout.minimumHeight: 150
 
-    ListView {
+
+    ListView {  
         id:listw
         Layout.fillWidth: true
         Layout.fillHeight: true
         clip: true
         focus:true
-        signal choosen(int curIndex)
-        // этим сигналом мы высылаем информацию о выбранной заметке
+
+
         model:DiaryModel{
             list: diaryList
         }
@@ -28,15 +39,15 @@ ColumnLayout {
         }
 
         delegate: Item {
-            property alias dateText: modelDateText
-            id:listdelegate
             width:parent.width
             height: modelDateText.height*2 + delegateSeparator.height +modelTitleText.height*2
             MouseArea {
+                id:mousearea
                 anchors.fill: parent
-                onClicked: {listw.currentIndex = index
-                //    choosen(listw.currentItem)
+                onClicked:{ listw.currentIndex = index
+                   choosen(listw.currentIndex); // emit signal
                 }
+
                 cursorShape: Qt.PointingHandCursor
             }
 
@@ -78,4 +89,5 @@ ColumnLayout {
         }
     }
 }
+
 
