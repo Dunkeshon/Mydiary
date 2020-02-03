@@ -64,7 +64,7 @@ ColumnLayout {
                 Text {
                     id: modelTitleText
                     text: model.Title
-                    font.pointSize: 16
+                    font.pixelSize: 16
                     //wrapMode: Text.WrapAnywhere
                 }
             }
