@@ -25,12 +25,12 @@ private:
 signals:
     void preItemAdded();
     void postItemAdded();
-    void preItemDeleted(int index);
-    void postItemDeleted();
+//    void preItemDeleted(int index);
+//    void postItemDeleted();
 public slots:
 
     void addItem();
-    void deleteItem();
+//    void deleteItem();
 };
 
 #endif // DIARYLIST_H

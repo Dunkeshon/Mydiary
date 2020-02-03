@@ -18,12 +18,12 @@ Window {
         width: 2
         anchors.top: parent.top
         anchors.bottom: parent.bottom
-        anchors.left: diaryList.right
+        anchors.left: noteList.right
     }
 
 
-    DiaryList{
-        id: diaryList
+    NotesList {
+        id:  noteList
         width: 200
         anchors.top: parent.top
         anchors.bottom: parent.bottom
@@ -34,9 +34,9 @@ Window {
     TextINputWindow {
         visible: true
         id: userinput
-        x: diaryList.width + verticalSeparator.width
+        x: noteList.width + verticalSeparator.width
 
-        width: parent.width - diaryList.width - verticalSeparator.width
+        width: parent.width - noteList.width - verticalSeparator.width
         anchors.top: parent.top
         anchors.bottom: parent.bottom
         anchors.right: parent.right

@@ -1,7 +1,7 @@
 <RCC>
     <qresource prefix="/">
         <file>main.qml</file>
-        <file>DiaryList.qml</file>
         <file>TextINputWindow.qml</file>
+        <file>NotesList.qml</file>
     </qresource>
 </RCC>

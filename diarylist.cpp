@@ -41,7 +41,7 @@ void DiaryList::addItem()
     emit postItemAdded();
 }
 
-void DiaryList::deleteItem()
-{
-   //нужно передавать индекс выбранного пользователем эллемента
-}
+//void DiaryList::deleteItem()
+//{
+//   //нужно передавать индекс выбранного пользователем эллемента
+//}

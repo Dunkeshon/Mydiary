@@ -3,18 +3,14 @@ import QtQuick.Controls 2.12
 import QtQuick.Layouts 1.12
 import Diary 1.0
 
-Item {
+Frame {
     Layout.fillWidth: true
     Layout.fillHeight: true
     Layout.minimumWidth: 50
     Layout.minimumHeight: 150
 
     ListView {
-        anchors.rightMargin: 58
-        anchors.bottomMargin: -16
-        anchors.leftMargin: -58
-        anchors.topMargin: 16
-        anchors.fill:parent
+        anchors.fill: parent
         clip: true
 
         model:DiaryModel{
@@ -23,6 +19,7 @@ Item {
 
         delegate: Item {
             width:parent.width
+            height: 64
 
             ColumnLayout {
                 Text {
@@ -39,7 +36,7 @@ Item {
                 Text {
                     text: model.Title
                     font.pointSize: 16
-                    wrapMode: Text.WrapAnywhere
+                    //wrapMode: Text.WrapAnywhere
                 }
             }
 
@@ -52,3 +49,4 @@ Item {
         }
     }
 }
+
