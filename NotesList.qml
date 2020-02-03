@@ -3,23 +3,30 @@ import QtQuick.Controls 2.12
 import QtQuick.Layouts 1.12
 import Diary 1.0
 
-Frame {
+ColumnLayout {
     Layout.fillWidth: true
     Layout.fillHeight: true
     Layout.minimumWidth: 50
     Layout.minimumHeight: 150
 
     ListView {
-        anchors.fill: parent
+        Layout.fillWidth: true
+        Layout.fillHeight: true
         clip: true
 
         model:DiaryModel{
             list: diaryList
         }
 
-        delegate: Item {
+        delegate: Frame {
             width:parent.width
-            height: 64
+            height: 65
+
+            background: Rectangle {
+                color: "#C4C4C4"
+                border.width: 1
+                border.color: "black"
+            }
 
             ColumnLayout {
                 Text {
@@ -29,11 +36,12 @@ Frame {
                 }
                 Rectangle{
                     id: delegateSeparator
-                    height: 2
+                    height: 1
                     width: 120 //frame1.width/2
                     color: "black"
                 }
                 Text {
+                    id: modelTitleText
                     text: model.Title
                     font.pointSize: 16
                     //wrapMode: Text.WrapAnywhere

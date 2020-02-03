@@ -6,6 +6,7 @@ import QtQuick.Layouts 1.12
 Window {
     id: window
     visible: true
+    color: "#C4C4C4"
     minimumWidth: 640
     minimumHeight: 480
     width: 640

@@ -11,26 +11,21 @@ Item {
         id:topRect
         anchors.top: parent.top
         width: parent.width
-        height: 65
-        color: "#afaaaa"
-
+        height: parent.height/8
+        color: "#C4C4C4"
 
         Text {
             id: datetext
-            height: 28
-            width: 100
-            text: qsTr("Date here")
-            leftPadding: 10
-            topPadding: 5
             anchors.top: parent.top
             anchors.left: parent.left
             anchors.leftMargin: 30
-            font.pixelSize: 18
+            text: qsTr("Date here")
+            font.pointSize: 18
             Rectangle {
                 id: blackCircle
                 anchors.right: parent.left
-                anchors.rightMargin: -2
-                y: parent.height - height / 2 + 1
+                anchors.rightMargin: 5
+                y:parent.height/2 + 2
                 width: 20
                 height: 20
                 radius: 10
@@ -39,8 +34,7 @@ Item {
             Rectangle {
                 id:separator
                 anchors.top: parent.bottom
-                anchors.left: blackCircle.right
-                anchors.leftMargin: -5
+                anchors.left: blackCircle.left
                 height: 2
                 radius: 2
                 width: mainColumn.width / 3
@@ -48,20 +42,20 @@ Item {
             }
 
             TextField {
-                property alias separatopHeight: separator.height
-                y: parent.height + separatopHeight
-                width: parent.width * 2
-                height: parent.height
+                placeholderText:"Title"
                 anchors.top: separator.bottom
-                leftPadding: datetext.leftPadding
-                font.pixelSize: 16
-                placeholderText: qsTr("Title")
-
+                anchors.left: blackCircle.right
+                width: parent.width*2
+                height: parent.height
+                anchors.leftMargin: 5
+                bottomPadding: 0
+                leftPadding: 0
+                font.pointSize: 18
                 Text {
+                    anchors.fill: parent
+                    font.pointSize: 10
                     color: "black"
-                    font.pixelSize: 16
                 }
-
 
                 background: Rectangle {
                     visible: false
@@ -78,7 +72,7 @@ Item {
         gradient: Gradient {
             GradientStop {
                 position: 0
-                color: "#afaaaa"
+                color: "#C4C4C4"
             }
 
             GradientStop {
@@ -90,12 +84,11 @@ Item {
 
         ScrollView {
             anchors.fill: parent
-
             TextArea {
                 renderType: Text.QtRendering
                 leftPadding: 10
                 placeholderText: qsTr("Enter Something)")
-                font.pixelSize: 16
+                font.pointSize: 18
                 wrapMode: TextArea.WordWrap
 
                 selectByMouse: true
