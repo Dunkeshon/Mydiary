@@ -17,7 +17,8 @@ ColumnLayout {
         Layout.fillHeight: true
         clip: true
         focus:true
-
+        signal choosen(int curIndex)
+        // этим сигналом мы высылаем информацию о выбранной заметке
         model:DiaryModel{
             list: diaryList
         }
@@ -27,12 +28,15 @@ ColumnLayout {
         }
 
         delegate: Item {
+            property alias dateText: modelDateText
             id:listdelegate
             width:parent.width
             height: modelDateText.height*2 + delegateSeparator.height +modelTitleText.height*2
             MouseArea {
                 anchors.fill: parent
-                onClicked: listw.currentIndex = index
+                onClicked: {listw.currentIndex = index
+                //    choosen(listw.currentItem)
+                }
                 cursorShape: Qt.PointingHandCursor
             }
 
@@ -48,6 +52,7 @@ ColumnLayout {
             }
 
             ColumnLayout {
+
                 anchors.fill: parent
                 anchors.margins: 10
                 Text {

@@ -45,8 +45,8 @@ Item {
                 placeholderText:"Title"
                 anchors.top: separator.bottom
                 anchors.left: blackCircle.right
-                width: parent.width * 4
-                height: parent.height
+                width: mainColumn.width
+                height: parent.height + 3
                 anchors.leftMargin: 5
                 bottomPadding: 0
                 leftPadding: 0
@@ -87,7 +87,7 @@ Item {
                 renderType: Text.QtRendering
                 leftPadding: 10
                 placeholderText: qsTr("Enter Something)")
-                font.pointSize: 18
+                font.pixelSize: 18
                 wrapMode: TextArea.WordWrap
 
                 selectByMouse: true
