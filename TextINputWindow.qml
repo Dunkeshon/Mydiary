@@ -16,11 +16,12 @@ Item {
 
         Text {
             id: datetext
+            width: 46
             anchors.top: parent.top
             anchors.left: parent.left
             anchors.leftMargin: 30
             text: qsTr("Date here")
-            font.pointSize: 18
+            font.pixelSize: 18
             Rectangle {
                 id: blackCircle
                 anchors.right: parent.left
@@ -50,7 +51,7 @@ Item {
                 anchors.leftMargin: 5
                 bottomPadding: 0
                 leftPadding: 0
-                font.pointSize: 18
+                font.pixelSize: 18
                 maximumLength: 24
                 selectionColor: "#3399FF"
                 selectByMouse: true
