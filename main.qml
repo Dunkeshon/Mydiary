@@ -38,6 +38,7 @@ ColumnLayout {
         text: "ADD"
         onClicked: {
             diaryList.addItem()
+            notesList.currentIndex=0
 
         }
 

@@ -5,6 +5,7 @@ import Diary 1.0
 
 
 ColumnLayout {
+    property alias currentIndex: listw.currentIndex
     Layout.fillWidth: true
     Layout.fillHeight: true
     Layout.minimumWidth: 50
@@ -32,6 +33,7 @@ ColumnLayout {
             MouseArea {
                 anchors.fill: parent
                 onClicked: listw.currentIndex = index
+                cursorShape: Qt.PointingHandCursor
             }
 
             Rectangle {
