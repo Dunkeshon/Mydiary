@@ -95,7 +95,7 @@ void DiaryListModel::setList(DiaryList *list)
 
     if(m_list){
         connect(m_list,&DiaryList::preItemAdded,this,[=](){
-            const int index = m_list->listItems().size();
+            const int index = 0;// вставка в начало
             beginInsertRows(QModelIndex(),index,index);
         });
         connect(m_list,&DiaryList::postItemAdded,this,[=](){

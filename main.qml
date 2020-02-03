@@ -2,6 +2,7 @@ import QtQuick 2.12
 import QtQuick.Window 2.12
 import QtQuick.Controls 2.12
 import QtQuick.Layouts 1.12
+import Diary 1.0
 
 Window {
     id: window
@@ -19,30 +20,45 @@ Window {
         width: 2
         anchors.top: parent.top
         anchors.bottom: parent.bottom
-        anchors.left: noteList.right
+        anchors.left: leftColumn.right
     }
 
-
+ColumnLayout {
+    id: leftColumn
+    width: 200
+    height: parent.height
     NotesList {
-        id:  noteList
-        width: 200
-        anchors.top: parent.top
-        anchors.bottom: parent.bottom
-        anchors.left: parent.left
+        id:notesList
+        Layout.fillWidth: true
+
     }
+    Button {
+        Layout.fillWidth: true
+        height: 40
+        text: "ADD"
+        onClicked: {
+            diaryList.addItem()
+
+        }
+
+    }
+}
+
 
 
     TextINputWindow {
         visible: true
         id: userinput
-        x: noteList.width + verticalSeparator.width
+        x: leftColumn.width + verticalSeparator.width
 
-        width: parent.width - noteList.width - verticalSeparator.width
+        width: parent.width - leftColumn.width - verticalSeparator.width
         anchors.top: parent.top
         anchors.bottom: parent.bottom
         anchors.right: parent.right
 
     }
+
+
 
 
 

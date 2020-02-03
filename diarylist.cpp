@@ -30,13 +30,18 @@ QVector<ListItem> DiaryList::listItems() const
 
 void DiaryList::addItem()
 {
+    // if we already have note, added today -> don't add it
+    if(QDate::currentDate().toString() == m_listItems.front().currDate) {
+        return;
+    }
+
     emit preItemAdded();
 
     ListItem new_item;
     new_item.currDate = QDate::currentDate().toString();
     new_item.title = "# ";
     new_item.userText = "";// УБРАТЬ ПОТОМ(не нада)
-    m_listItems.push_back(new_item);
+    m_listItems.push_front(new_item);
 
     emit postItemAdded();
 }
