@@ -45,17 +45,16 @@ Item {
                 placeholderText:"Title"
                 anchors.top: separator.bottom
                 anchors.left: blackCircle.right
-                width: parent.width*2
+                width: parent.width * 4
                 height: parent.height
                 anchors.leftMargin: 5
                 bottomPadding: 0
                 leftPadding: 0
                 font.pointSize: 18
-                Text {
-                    anchors.fill: parent
-                    font.pointSize: 10
-                    color: "black"
-                }
+                maximumLength: 24
+                selectionColor: "#3399FF"
+                selectByMouse: true
+
 
                 background: Rectangle {
                     visible: false
@@ -92,6 +91,7 @@ Item {
                 wrapMode: TextArea.WordWrap
 
                 selectByMouse: true
+                selectionColor: "#3399FF"
                 focus: true
             }
         }

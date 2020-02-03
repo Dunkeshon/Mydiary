@@ -24,8 +24,12 @@ ColumnLayout {
 
             background: Rectangle {
                 color: "#C4C4C4"
-                border.width: 1
-                border.color: "black"
+                Rectangle {
+                    width: parent.width
+                    height: 1
+                    color: "black"
+                    anchors.bottom: parent.bottom
+                }
             }
 
             ColumnLayout {
@@ -48,12 +52,7 @@ ColumnLayout {
                 }
             }
 
-            //                background: Rectangle{
-            //                    border.width: 1
-            //                    border.color: "black"
-            //                    radius: 5
-            //                    clip: true
-            //                }
+
         }
     }
 }
