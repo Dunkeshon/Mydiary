@@ -50,7 +50,6 @@ ColumnLayout {
         visible: true
         id: userinput
         x: leftColumn.width + verticalSeparator.width
-
         width: parent.width - leftColumn.width - verticalSeparator.width
         anchors.top: parent.top
         anchors.bottom: parent.bottom

@@ -11,42 +11,43 @@ ColumnLayout {
     Layout.minimumHeight: 150
 
     ListView {
-        property int curitem: currentIndex
         id:listw
-        focus:true
         Layout.fillWidth: true
         Layout.fillHeight: true
         clip: true
+        focus:true
 
         model:DiaryModel{
             list: diaryList
         }
 
-        delegate: Frame {
+        Component.onCompleted: {
+            listw.currentIndex = -1
+        }
+
+        delegate: Item {
             id:listdelegate
             width:parent.width
-            height: 65
+            height: modelDateText.height*2 + delegateSeparator.height +modelTitleText.height*2
             MouseArea {
                 anchors.fill: parent
-                onClicked: listw.curitem = index
+                onClicked: listw.currentIndex = index
             }
 
-            background: Rectangle {
-                color: (index==listw.curitem) ? "lightsteelblue"  : "#C4C4C4"
-                Text {
-                    id: ind
-                    text:index
-                }
+            Rectangle {
+                anchors.fill: parent
+                color: index==listw.currentIndex ? "#5189be"  : "#C4C4C4"
                 Rectangle {
                     width: parent.width
                     height: 1
                     color: "black"
-
                     anchors.bottom: parent.bottom
                 }
             }
 
             ColumnLayout {
+                anchors.fill: parent
+                anchors.margins: 10
                 Text {
                     id: modelDateText
                     text: model.Date
