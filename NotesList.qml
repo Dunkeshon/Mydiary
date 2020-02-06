@@ -39,7 +39,9 @@ ColumnLayout {
             MouseArea {
                 id:mousearea
                 anchors.fill: parent
-                onClicked:{
+                onClicked: {
+                   if(listw.currentIndex == index) {
+                       console.log("aaaaaaa"); return;}
                    listw.currentIndex = index
                    choosen(); // emit signal
                 }
