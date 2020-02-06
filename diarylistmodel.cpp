@@ -45,6 +45,7 @@ bool DiaryListModel::setData(const QModelIndex &index, const QVariant &value, in
          case TextRole: item.userText = value.toString();
              break;
          case TitleRole: item.title = value.toString();
+             break;
          }
          if(m_list->setItemAt(index.row(),item)) {
              emit dataChanged(index, index, QVector<int>() << role);

@@ -44,7 +44,7 @@ Item {
                 color: "black"
             }
 
-            TextArea {
+            TextField {
                 id:title
                 placeholderText:"Title"
                 anchors.top: separator.bottom
@@ -55,7 +55,7 @@ Item {
                 bottomPadding: 0
                 leftPadding: 0
                 font.pixelSize: 18
- //               maximumLength: 24
+                maximumLength: 24
                 selectionColor: "#3399FF"
                 selectByMouse: true
 

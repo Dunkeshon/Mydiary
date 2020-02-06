@@ -16,7 +16,7 @@ bool DiaryList::setItemAt(int index, const ListItem &item)
         return false;
 
     const ListItem &oldItem = m_listItems.at(index);
-    if(oldItem.currDate == item.currDate && oldItem.userText == item.userText) // не учтен заголовок
+    if(oldItem.currDate == item.currDate && oldItem.title == item.title && oldItem.userText == item.userText) // не учтен заголовок
         return false;
 
     m_listItems[index] = item;
