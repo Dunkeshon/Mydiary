@@ -58,14 +58,10 @@ Window {
 
 
         titletext.onEditingFinished: {
-            if(!notesList.model.setData(notesList.model.index(notesList.currentIndex, 0), qsTr(titletext.text), 258)) {
-                console.log("Invalid")
-            }
+            updateModelInformation()
         }
         usertext.onEditingFinished: {
-            if(!notesList.model.setData(notesList.model.index(notesList.currentIndex, 0), qsTr(usertext.text), 259)) {
-                console.log("Invalid")
-            }
+            updateModelInformation()
         }
     }
 
@@ -73,6 +69,11 @@ Window {
         userinput.datetext.text = notesList.model.data(notesList.model.index(notesList.currentIndex, 0), 257)
         userinput.titletext.text = notesList.model.data(notesList.model.index(notesList.currentIndex, 0), 258)
         userinput.usertext.text = notesList.model.data(notesList.model.index(notesList.currentIndex, 0), 259)
+    }
+
+    function updateModelInformation() {
+        notesList.model.setData(notesList.model.index(notesList.currentIndex, 0), qsTr(userinput.titletext.text), 258)
+        notesList.model.setData(notesList.model.index(notesList.currentIndex, 0), qsTr(userinput.usertext.text), 259)
     }
 
 

@@ -15,8 +15,9 @@ ColumnLayout {
     Layout.minimumHeight: 150
 
     signal choosen()
+    signal changeIndex();
 
-    ListView {  
+    ListView {
         id:listw
         Layout.fillWidth: true
         Layout.fillHeight: true
@@ -31,6 +32,8 @@ ColumnLayout {
             listw.currentIndex = -1
 
             column.choosen.connect(updateWindowInformation)
+
+            column.changeIndex.connect(updateModelInformation);
         }
 
         delegate: Item {
@@ -40,10 +43,15 @@ ColumnLayout {
                 id:mousearea
                 anchors.fill: parent
                 onClicked: {
-                   if(listw.currentIndex == index) {
-                       console.log("aaaaaaa"); return;}
-                   listw.currentIndex = index
-                   choosen(); // emit signal
+                    if(listw.currentIndex == -1) { //COPYPASTEK
+                        listw.currentIndex = index
+                        choosen()
+                        return;
+                    }
+                    if(listw.currentIndex == index) {return;}
+                    changeIndex() // emit signal
+                    listw.currentIndex = index
+                    choosen(); // emit signal
                 }
 
                 cursorShape: Qt.PointingHandCursor
