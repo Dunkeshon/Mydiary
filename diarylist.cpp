@@ -38,7 +38,7 @@ void DiaryList::addItem()
     emit preItemAdded();
 
     ListItem new_item;
-    new_item.currDate = QDate::currentDate().toString();
+    new_item.currDate = QDate::currentDate().toString("dd.MM.yyyy");
     new_item.title = "# ";
     new_item.userText = "";// УБРАТЬ ПОТОМ(не нада)
     m_listItems.push_front(new_item);

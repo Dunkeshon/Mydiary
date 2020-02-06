@@ -32,6 +32,9 @@ QVariant DiaryListModel::data(const QModelIndex &index, int role) const
     return QVariant();
 }
 
+// if we edit a note , that was created today -> add editing date
+// works by checking if we are working with 0 index or not
+// if we will decide to let create multiple notes a day -> change realization
 bool DiaryListModel::setData(const QModelIndex &index, const QVariant &value, int role)
 {
     if(!m_list){
@@ -39,15 +42,24 @@ bool DiaryListModel::setData(const QModelIndex &index, const QVariant &value, in
     }
     if (data(index, role) != value) {
          ListItem item = m_list->listItems().at(index.row());
-         switch(role) {
-         case DateRole: item.currDate = value.toString();
-             break;
-         case TextRole: item.userText = value.toString();
-             break;
-         case TitleRole: item.title = value.toString();
-             break;
-         }
-         if(m_list->setItemAt(index.row(),item)) {
+
+             switch(role) {
+             case DateRole: item.currDate = value.toString();
+                 break;
+             case TextRole:
+
+                 if(index.row()!=0){ // if we edit a note , that was created today -> add editing date
+                     item.userText = value.toString()+ " [ "+ QDate::currentDate().toString( "'Дата изменения :' dddd, d MMMM yyyy") + " ] " ;
+                 }
+                 else{
+                     item.userText = value.toString();
+                 }
+                    break;
+             case TitleRole: item.title = value.toString();
+                 break;
+             }
+
+      if(m_list->setItemAt(index.row(),item)) {
              emit dataChanged(index, index, QVector<int>() << role);
              return true;
          }
