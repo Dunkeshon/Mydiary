@@ -74,10 +74,12 @@ Window {
         userinput.usertext.text = notesList.model.data(notesList.model.index(notesList.currentIndex, 0), 259)
     }
 
+    // don't change data if we don't change anything
     function updateModelInformation() {
-        notesList.model.setData(notesList.model.index(notesList.currentIndex, 0), qsTr(userinput.titletext.text), 258)
+        if(notesList.model.setData(notesList.model.index(notesList.currentIndex, 0), qsTr(userinput.titletext.text), 258)){
+            return
+        }
         notesList.model.setData(notesList.model.index(notesList.currentIndex, 0), qsTr(userinput.usertext.text), 259)
-
     }
     Component.onCompleted: {
         userinput.visible=false
