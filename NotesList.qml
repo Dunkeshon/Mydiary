@@ -7,20 +7,14 @@ import Diary 1.0
 ColumnLayout {
     id:column
     property alias currentIndex: listw.currentIndex
-    signal choosen(int curIndex)
+    property alias model: listw.model
 
-//    function sendToPost(ourIndex) {
-//           console.log("Choosen: " + (ourIndex+1) )
-//       }
-    // этим сигналом мы высылаем информацию о выбранной заметке
-//    Component.onCompleted: {
-//          column.choosen.connect(sendToPost)
-//      }
     Layout.fillWidth: true
     Layout.fillHeight: true
     Layout.minimumWidth: 50
     Layout.minimumHeight: 150
 
+    signal choosen()
 
     ListView {  
         id:listw
@@ -29,13 +23,14 @@ ColumnLayout {
         clip: true
         focus:true
 
-
         model:DiaryModel{
             list: diaryList
         }
 
         Component.onCompleted: {
             listw.currentIndex = -1
+
+            column.choosen.connect(updateWindowInformation)
         }
 
         delegate: Item {
@@ -44,8 +39,9 @@ ColumnLayout {
             MouseArea {
                 id:mousearea
                 anchors.fill: parent
-                onClicked:{ listw.currentIndex = index
-                   choosen(listw.currentIndex); // emit signal
+                onClicked:{
+                   listw.currentIndex = index
+                   choosen(); // emit signal
                 }
 
                 cursorShape: Qt.PointingHandCursor

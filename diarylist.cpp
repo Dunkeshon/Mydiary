@@ -46,22 +46,7 @@ void DiaryList::addItem()
     emit postItemAdded();
 }
 
-QString DiaryList::listItemAt(const int &index, const QString &memberName)
-{
-    if(index < 0 || index > m_listItems.size()) { return ""; }
 
-
-    if(memberName == "currDate") {
-        return m_listItems[index].currDate;
-    }
-    if (memberName == "title") {
-        return m_listItems[index].title;
-    }
-    if (memberName == "userText") {
-        return m_listItems[index].userText;
-    }
-    return "";
-}
 //void DiaryList::deleteItem()
 //{
 //   //нужно передавать индекс выбранного пользователем эллемента

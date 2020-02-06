@@ -5,9 +5,9 @@ import QtQuick.Layouts 1.12
 
 Item {
     id:mainColumn
-    property alias curDate: datetext
-    property alias  curTitle: title
-    property alias  curText : userText
+    property alias datetext: datetext.text
+    property alias  titletext: title.text
+    property alias usertext : userText.text
 
     Rectangle {
         id:topRect
@@ -100,82 +100,8 @@ Item {
                 focus: true
             }
         }
-
-
-
-
-
-//        Flickable {
-//            id:bottomFlickable
-//            anchors.fill:parent
-//            clip: true
-//            TextArea.flickable: TextArea  {
-//                anchors.fill: parent
-//                //persistentSelection: true
-//                leftPadding: 10
-//                placeholderText: qsTr("Enter Something)")
-//                font.pointSize: 18
-//                wrapMode: TextArea.WordWrap
-
-//                selectByMouse: true
-//                focus: true
-//            }
-//        }
     }
 }
-
-
-
-//    Flickable {
-//        id: flickableText
-//        width: parent.width
-//        clip: true
-//        ScrollBar.vertical: ScrollBar {
-//                id: flickScroll
-//            }
-//        TextArea.flickable:TextArea {
-//            id:monitor
-//            persistentSelection: true
-//            leftPadding: 10
-//                    rightPadding: 6
-//                    topPadding: 6
-//                    bottomPadding: 6
-//                    placeholderText: qsTr("Enter Something)")
-//                    wrapMode: TextArea.WordWrap
-//                    font.pointSize: 20
-
-//                    selectByMouse: true
-//                    focus: true
-//                }
-//        }
-
-//    ScrollView{
-//        height: grid.parent.height / grid.columns - grid.spacing//parent.height - datetext.height -  rectangle2.height - titleText.height -
-//        width:parent.width
-//        //padding: 10
-//        TextArea {
-//            placeholderText: qsTr("Enter Something)")
-//            wrapMode: TextEdit.WordWrap
-//            font.pointSize: 20
-//            selectByMouse: true
-//            focus: true
-//        }
-//    }
-
-
-
-
-//TextEdit {
-//    anchors.fill: parent
-//    textMargin: 10
-//    width: 240
-//    text: "text brlow dsklsdosd lsdksdk ldsk ldklsklsdk lsdklklds"
-//    font.family: "Helvetica"
-//    font.pointSize: 20
-//    color: "black"
-//    focus: true
-//    selectByMouse: true
-//}
 
 /*##^##
 Designer {
