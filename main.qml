@@ -74,14 +74,13 @@ Window {
         userinput.usertext.text = notesList.model.data(notesList.model.index(notesList.currentIndex, 0), 259)
     }
 
-<<<<<<< HEAD
     function updateModelInformation() {
         notesList.model.setData(notesList.model.index(notesList.currentIndex, 0), qsTr(userinput.titletext.text), 258)
         notesList.model.setData(notesList.model.index(notesList.currentIndex, 0), qsTr(userinput.usertext.text), 259)
-=======
+
+    }
     Component.onCompleted: {
         userinput.visible=false
->>>>>>> editing-old-notes-
     }
 
 
