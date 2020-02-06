@@ -38,6 +38,7 @@ Window {
                 onClicked: {
                     diaryList.addItem()
                     notesList.currentIndex=0
+                    updateWindowInformation()
                 }
 
             }
@@ -55,12 +56,23 @@ Window {
         anchors.bottom: parent.bottom
         anchors.right: parent.right
 
+
+        titletext.onEditingFinished: {
+            if(!notesList.model.setData(notesList.model.index(notesList.currentIndex, 0), qsTr(titletext.text), 258)) {
+                console.log("Invalid")
+            }
+        }
+        usertext.onEditingFinished: {
+            if(!notesList.model.setData(notesList.model.index(notesList.currentIndex, 0), qsTr(usertext.text), 259)) {
+                console.log("Invalid")
+            }
+        }
     }
 
     function updateWindowInformation() {
-        userinput.datetext = notesList.model.data(notesList.model.index(notesList.currentIndex, 0), 257)
-        userinput.titletext = notesList.model.data(notesList.model.index(notesList.currentIndex, 0), 258)
-        userinput.usertext = notesList.model.data(notesList.model.index(notesList.currentIndex, 0), 259)
+        userinput.datetext.text = notesList.model.data(notesList.model.index(notesList.currentIndex, 0), 257)
+        userinput.titletext.text = notesList.model.data(notesList.model.index(notesList.currentIndex, 0), 258)
+        userinput.usertext.text = notesList.model.data(notesList.model.index(notesList.currentIndex, 0), 259)
     }
 
 
