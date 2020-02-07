@@ -47,6 +47,7 @@ Window {
                     notesList.currentIndex = temp
                     updateWindowInformation()
 
+
                 }
             }
         }
@@ -101,6 +102,7 @@ Window {
         if(notesList.currentIndex == -1){
             userinput.visible=false;
         }
+        if(notesList.currentIndex == -1) { return }
         userinput.datetext.text = notesList.model.data(notesList.model.index(notesList.currentIndex, 0), 257)
         userinput.titletext.text = notesList.model.data(notesList.model.index(notesList.currentIndex, 0), 258)
         userinput.usertext.text = notesList.model.data(notesList.model.index(notesList.currentIndex, 0), 259)
@@ -108,6 +110,10 @@ Window {
 
     // don't change data if we don't change anything
     function updateModelInformation() {
+        if(notesList.currentIndex==-1){
+            return
+        }
+
         if(notesList.model.setData(notesList.model.index(notesList.currentIndex, 0), qsTr(userinput.titletext.text), 258)){
             return
         }
