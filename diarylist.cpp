@@ -1,13 +1,35 @@
 #include "diarylist.h"
 #include <QDate>
+#include <QSettings>
 
 DiaryList::DiaryList(QObject *parent) : QObject(parent)
 {
     // выгрузка информации из настроек
-    // QSettings ...
-    for(int i = 0; i< 10; i++){
-        m_listItems.push_back({"12.01.2222","#Title "+ QString::number(i + 1) ,"kjjkhjhkhjkhjkhkhkj"});
+    QSettings settings;
+        const int size = settings.beginReadArray("ListItems");
+        for(int i = 0; i < size; ++i) {
+            settings.setArrayIndex(i);
+            ListItem item;
+            item.currDate = settings.value("currDate").toString();
+            item.title = settings.value("title").toString();
+            item.userText = settings.value("userText").toString();
+            m_listItems.push_back(item);
+        }
+        settings.endArray();
+}
+
+DiaryList::~DiaryList()
+{
+    QSettings settings;
+    settings.beginWriteArray("ListItems");
+    for(int i = 0; i < m_listItems.size(); ++i) {
+        settings.setArrayIndex(i);
+        settings.setValue("currDate", m_listItems[i].currDate);
+        settings.setValue("title", m_listItems[i].title);
+        settings.setValue("userText", m_listItems[i].userText);
     }
+    settings.endArray();
+
 }
 
 bool DiaryList::setItemAt(int index, const ListItem &item)
@@ -31,9 +53,9 @@ QVector<ListItem> DiaryList::listItems() const
 void DiaryList::addItem()
 {
     // if we already have note, added today -> don't add it
-    if(QDate::currentDate().toString() == m_listItems.front().currDate) {
-        return;
-    }
+    //    if(QDate::currentDate().toString() == m_listItems.front().currDate) {
+    //        return;
+    //    }
 
     emit preItemAdded();
 

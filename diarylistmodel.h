@@ -12,7 +12,6 @@ class DiaryListModel : public QAbstractListModel
 
 public:
     explicit DiaryListModel(QObject *parent = nullptr);
-
     enum{
         DateRole = Qt::UserRole + 1,
         TitleRole,

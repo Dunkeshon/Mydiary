@@ -1,14 +1,19 @@
 #include <QGuiApplication>
 #include <QQmlApplicationEngine>
 #include <QQmlContext>
+#include <QSettings>
 #include "diarylist.h"
 #include "diarylistmodel.h"
+
 
 int main(int argc, char *argv[])
 {
     QCoreApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
 
     QGuiApplication app(argc, argv);
+    QCoreApplication::setOrganizationName("Opposite Direction");
+    QCoreApplication::setApplicationName("MyDiary");
+
     qmlRegisterType<DiaryListModel>("Diary",1,0,"DiaryModel");
     qmlRegisterUncreatableType<DiaryList>("Diary",1,0,"DiaryList",
          QStringLiteral("This object should not be created in qml"));

@@ -4,9 +4,7 @@
 DiaryListModel::DiaryListModel(QObject *parent)
     : QAbstractListModel(parent),
       m_list(nullptr)
-{
-
-}
+{}
 
 int DiaryListModel::rowCount(const QModelIndex &parent) const
 {
@@ -25,9 +23,9 @@ QVariant DiaryListModel::data(const QModelIndex &index, int role) const
 
     const ListItem item = m_list->listItems().at(index.row());
     switch (role) {
-        case DateRole: return QVariant(item.currDate);
-        case TitleRole: return QVariant(item.title);
-        case TextRole: return QVariant(item.userText);
+    case DateRole: return QVariant(item.currDate);
+    case TitleRole: return QVariant(item.title);
+    case TextRole: return QVariant(item.userText);
     }
     return QVariant();
 }
@@ -41,30 +39,30 @@ bool DiaryListModel::setData(const QModelIndex &index, const QVariant &value, in
         return false;
     }
     if (data(index, role) != value) {
-         ListItem item = m_list->listItems().at(index.row());
+        ListItem item = m_list->listItems().at(index.row());
 
-             switch(role) {
-             case DateRole: item.currDate = value.toString();
-                 break;
-             case TextRole:
-
-                 if(index.row()!=0){ // if we edit a note , that was created today -> add editing date
-                     item.userText = value.toString()+ " [ "+ QDate::currentDate().toString( "'Дата изменения :' dddd, d MMMM yyyy") + " ] " ;
-                 }
-                 else{
-                     item.userText = value.toString();
-                 }
-                    break;
-             case TitleRole: item.title = value.toString();
-                 break;
-             }
-
-      if(m_list->setItemAt(index.row(),item)) {
-             emit dataChanged(index, index, QVector<int>() << role);
-             return true;
-         }
+        switch(role) {
+        case DateRole: item.currDate = value.toString();
+            break;
+        case TextRole:
+            /*                if(index.row()!=0){  if we edit a note , that was created today -> add editing date
+                                 item.userText = value.toString(); + " [ "+ QDate::currentDate().toString( "'Дата изменения :' dddd, d MMMM yyyy") + " ] " ;
+                                }
+                                else{
+                                 item.userText = value.toString();
+                             }*/
+        item.userText = value.toString();
+        break;
+        case TitleRole: item.title = value.toString();
+            break;
     }
-    return false;
+
+    if(m_list->setItemAt(index.row(),item)) {
+        emit dataChanged(index, index, QVector<int>() << role);
+        return true;
+    }
+}
+return false;
 }
 
 Qt::ItemFlags DiaryListModel::flags(const QModelIndex &index) const

@@ -4,18 +4,21 @@
 #include <QObject>
 #include <QVector>
 #include <QDate>
+#include <QMetaType>
 
 struct ListItem {
     QString currDate;
     QString title;
     QString userText;
+
 };
 
 class DiaryList: public QObject
 {
     Q_OBJECT
 public:
-    explicit DiaryList(QObject *parent = nullptr);
+    DiaryList(QObject *parent = nullptr);
+    ~DiaryList();
     bool setItemAt(int index, const ListItem & item);
 
     QVector<ListItem> listItems() const;
@@ -32,5 +35,7 @@ public slots:
     void addItem();
 //    void deleteItem();
 };
+
+
 
 #endif // DIARYLIST_H
