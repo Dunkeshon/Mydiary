@@ -39,6 +39,7 @@ ColumnLayout {
         delegate: Item {
             width:parent.width
             height: modelDateText.height*2 + delegateSeparator.height +modelTitleText.height*2
+
             MouseArea {
                 id:mousearea
                 anchors.fill: parent
