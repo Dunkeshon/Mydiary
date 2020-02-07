@@ -51,18 +51,18 @@ bool DiaryListModel::setData(const QModelIndex &index, const QVariant &value, in
                                 else{
                                  item.userText = value.toString();
                              }*/
-        item.userText = value.toString();
-        break;
+            item.userText = value.toString();
+            break;
         case TitleRole: item.title = value.toString();
             break;
-    }
+        }
 
-    if(m_list->setItemAt(index.row(),item)) {
-        emit dataChanged(index, index, QVector<int>() << role);
-        return true;
+        if(m_list->setItemAt(index.row(),item)) {
+            emit dataChanged(index, index, QVector<int>() << role);
+            return true;
+        }
     }
-}
-return false;
+    return false;
 }
 
 Qt::ItemFlags DiaryListModel::flags(const QModelIndex &index) const
@@ -111,6 +111,12 @@ void DiaryListModel::setList(DiaryList *list)
         });
         connect(m_list,&DiaryList::postItemAdded,this,[=](){
             endInsertRows();
+        });
+        connect(m_list,&DiaryList::preItemDeleted,this,[=](int index){
+            beginRemoveRows(QModelIndex(),index,index);
+        });
+        connect(m_list,&DiaryList::postItemDeleted,this,[=](){
+            endRemoveRows();
         });
     }
 

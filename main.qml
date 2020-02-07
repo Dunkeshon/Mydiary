@@ -14,15 +14,6 @@ Window {
     height: 480
     title: qsTr("My Diary")
 
-    Rectangle {
-        id: verticalSeparator
-        color:"black"
-        width: 2
-        anchors.top: parent.top
-        anchors.bottom: parent.bottom
-        anchors.left: leftColumn.right
-    }
-
     ColumnLayout {
         id: leftColumn
         width: 200
@@ -30,10 +21,13 @@ Window {
         NotesList {
             id:notesList
             Layout.fillWidth: true
+        }
 
+        RowLayout {
+            width: parent.width
+            height: 40
             Button {
                 Layout.fillWidth: true
-                height: 40
                 text: "ADD"
                 onClicked: {
                     diaryList.addItem()
@@ -42,8 +36,23 @@ Window {
                 }
 
             }
+            Button {
+                Layout.fillWidth: true
+                text: "Del"
+                onClicked: {
+                    if(notesList.currentIndex == -1) { return; }
+                    var temp = notesList.currentIndex
+                    diaryList.deleteItem(notesList.currentIndex)
+                    if(diaryList.endItem(temp)) { temp--; }
+                    notesList.currentIndex = temp
+                    updateWindowInformation()
+
+                }
+            }
         }
     }
+
+
 
 
 
@@ -65,9 +74,32 @@ Window {
         }
     }
 
+    Rectangle {
+        id: verticalSeparator
+        color:"black"
+
+        width: 2
+        anchors.top: parent.top
+        anchors.bottom: parent.bottom
+        anchors.left: leftColumn.right
+    }
+
+    Component.onCompleted: {
+        userinput.visible=false
+    }
+
+    Component.onDestruction: {
+        updateModelInformation()
+    }
+
     function updateWindowInformation() {
+
+
         if(userinput.visible==false){
             userinput.visible=true;
+        }
+        if(notesList.currentIndex == -1){
+            userinput.visible=false;
         }
         userinput.datetext.text = notesList.model.data(notesList.model.index(notesList.currentIndex, 0), 257)
         userinput.titletext.text = notesList.model.data(notesList.model.index(notesList.currentIndex, 0), 258)
@@ -81,17 +113,14 @@ Window {
         }
         notesList.model.setData(notesList.model.index(notesList.currentIndex, 0), qsTr(userinput.usertext.text), 259)
     }
-    Component.onCompleted: {
-        userinput.visible=false
-    }
 
 
 
 
     /*##^##
 Designer {
-    D{i:1;anchors_height:171;anchors_width:148;anchors_x:42;anchors_y:187}D{i:2;anchors_height:453;anchors_y:27}
-D{i:3;anchors_height:432;anchors_x:209;anchors_y:33}
+    D{i:2;anchors_height:432;anchors_x:209;anchors_y:33}D{i:1;anchors_height:453;anchors_y:27}
+D{i:7;anchors_height:171;anchors_width:148;anchors_x:42;anchors_y:187}
 }
 ##^##*/
 }

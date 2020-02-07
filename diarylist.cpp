@@ -50,6 +50,14 @@ QVector<ListItem> DiaryList::listItems() const
     return m_listItems;
 }
 
+bool DiaryList::endItem(int index)
+{
+    if(index == m_listItems.size()) {
+        return true;
+    }
+    return false;
+}
+
 void DiaryList::addItem()
 {
     // if we already have note, added today -> don't add it
@@ -66,6 +74,15 @@ void DiaryList::addItem()
     m_listItems.push_front(new_item);
 
     emit postItemAdded();
+}
+
+void DiaryList::deleteItem(int index)
+{
+    preItemDeleted(index);
+
+    m_listItems.remove(index);
+
+    postItemDeleted();
 }
 
 

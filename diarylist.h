@@ -22,17 +22,19 @@ public:
     bool setItemAt(int index, const ListItem & item);
 
     QVector<ListItem> listItems() const;
+    Q_INVOKABLE bool endItem(int index);
 private:
     QVector<ListItem> m_listItems;
 
 signals:
     void preItemAdded();
     void postItemAdded();
-//    void preItemDeleted(int index);
-//    void postItemDeleted();
+    void preItemDeleted(int index);
+    void postItemDeleted();
 public slots:
 
     void addItem();
+    void deleteItem(int index);
 //    void deleteItem();
 };
 

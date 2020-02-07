@@ -83,8 +83,6 @@ Item {
                 color: "#ffffff"
             }
         }
-
-
         ScrollView {
             anchors.fill: parent
             TextArea {

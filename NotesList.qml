@@ -90,8 +90,6 @@ ColumnLayout {
                     //wrapMode: Text.WrapAnywhere
                 }
             }
-
-
         }
     }
 }
