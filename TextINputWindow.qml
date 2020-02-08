@@ -13,16 +13,18 @@ Item {
         id:topRect
         anchors.top: parent.top
         width: parent.width
-        height: parent.height/8
-        color: "#C4C4C4"
+        height: parent.height/7
+        color: "#033749"
 
         Text {
             id: datetext
             width: 46
             anchors.top: parent.top
             anchors.left: parent.left
+            anchors.topMargin: 10
             anchors.leftMargin: 30
             text: qsTr("Date here")
+            color: "white"
             font.pixelSize: 18
             Rectangle {
                 id: blackCircle
@@ -32,21 +34,23 @@ Item {
                 width: 20
                 height: 20
                 radius: 10
-                color: "black"
+                color: "#64acc6"
             }
             Rectangle {
                 id:separator
                 anchors.top: parent.bottom
                 anchors.left: blackCircle.left
-                height: 2
+                height: 1
                 radius: 2
                 width: mainColumn.width / 3
-                color: "black"
+                color: "#64acc6"
             }
 
             TextField {
                 id:title
                 placeholderText:"Title"
+                placeholderTextColor: "#aaaaaa"
+                color: "white"
                 anchors.top: separator.bottom
                 anchors.left: blackCircle.right
                 width: mainColumn.width
@@ -71,18 +75,7 @@ Item {
         anchors.top: topRect.bottom
         width: parent.width
         height: parent.height - topRect.height
-
-        gradient: Gradient {
-            GradientStop {
-                position: 0
-                color: "#C4C4C4"
-            }
-
-            GradientStop {
-                position: 1
-                color: "#ffffff"
-            }
-        }
+        color: "#033749"
         ScrollView {
             anchors.fill: parent
             TextArea {
@@ -90,6 +83,8 @@ Item {
                 renderType: Text.QtRendering
                 leftPadding: 10
                 placeholderText: qsTr("Enter Something)")
+                placeholderTextColor: "#aaaaaa"
+                color: "white"
                 font.pixelSize: 18
                 wrapMode: TextArea.WordWrap
 

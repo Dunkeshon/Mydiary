@@ -7,7 +7,7 @@ import Diary 1.0
 Window {
     id: window
     visible: true
-    color: "#C4C4C4"
+    color: "#1f586d"
     minimumWidth: 640
     minimumHeight: 480
     width: 640
@@ -16,7 +16,7 @@ Window {
 
     TopPannel {
         id: topPannel
-        height: 30
+        height: 35
         width: parent.width
         anchors.top: parent.top
         anchors.left: parent.left
@@ -63,17 +63,34 @@ Window {
         }
     }
 
+    Rectangle {
+        id: startRect
+        visible: true
+        color: "#033749"
+        x: leftColumn.width + verticalSeparator.width
+        width: parent.width - leftColumn.width - verticalSeparator.width
+        anchors.top: topPannel.bottom
+        anchors.bottom: parent.bottom
+        anchors.right: parent.right
+
+        Text {
+            anchors.centerIn: parent
+            font.pixelSize: 17
+            color: "#aaaaaa"
+            text: "Enter or Create a Page"
+        }
+    }
+
 
 
 
 
     TextINputWindow {
-        visible: true
+        visible: false
         id: userinput
         x: leftColumn.width + verticalSeparator.width
         width: parent.width - leftColumn.width - verticalSeparator.width
         anchors.top: topPannel.bottom
-        anchors.topMargin: 5
         anchors.bottom: parent.bottom
         anchors.right: parent.right
 
@@ -90,14 +107,10 @@ Window {
         id: verticalSeparator
         color:"black"
 
-        width: 2
+        width: 1
         anchors.top: topPannel.bottom
         anchors.bottom: parent.bottom
         anchors.left: leftColumn.right
-    }
-
-    Component.onCompleted: {
-        userinput.visible=false
     }
 
     Component.onDestruction: {

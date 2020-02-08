@@ -5,8 +5,6 @@ import QtQuick.Layouts 1.12
 
 Item {
     id: mainItem
-    width: 640
-    height: 30
 
     signal addButtonChecked();
 
@@ -21,26 +19,28 @@ Item {
         anchors.left: parent.left
         anchors.right: parent.right
         anchors.bottom: bottomSeparator.top
-        color: "#C4C4C4"
+        color: "#1f586d"
         visible: true
 
         Rectangle {
             id: addButton
             height: parent.height
             width: height
+            radius: height
             color: pannel.color
             anchors.left: parent.left
 
             Image {
                 id: plusIcon
                 anchors.fill: parent
-                anchors.margins: 1
+                anchors.margins: 2
                 source: "resources/images/plusImage.png"
                 visible: true
             }
 
             MouseArea {
                 anchors.fill: parent
+                hoverEnabled: true
                 onClicked: {
                     addButtonChecked()
                 }
@@ -79,6 +79,7 @@ Item {
             Image {
                 id: searchIcon
                 anchors.fill: parent
+                anchors.margins: 2
                 source: "resources/images/searchImage.png"
                 visible: true
             }
@@ -95,7 +96,6 @@ Item {
             Image {
                 id: settingsIcon
                 anchors.fill: parent
-                anchors.margins: 1
                 source: "resources/images/settingsImage.png"
                 visible: true
             }
@@ -110,7 +110,13 @@ Item {
         anchors.right: parent.right
         anchors.bottom: parent.bottom
         color: "black"
-        height: 2
+        height: 1
         visible: true
     }
 }
+
+/*##^##
+Designer {
+    D{i:0;autoSize:true;height:35;width:640}
+}
+##^##*/

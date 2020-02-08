@@ -60,7 +60,7 @@ ColumnLayout {
 
             Rectangle {
                 anchors.fill: parent
-                color: index==listw.currentIndex ? "#5189be"  : "#C4C4C4"
+                color: index==listw.currentIndex ? "#5189be"  : "#1f586d"
                 Rectangle {
                     width: parent.width
                     height: 1
@@ -76,17 +76,19 @@ ColumnLayout {
                 Text {
                     id: modelDateText
                     text: model.Date
+                    color: index==listw.currentIndex ? "white"  : "#aaaaaa"
                     font.pixelSize: 16
                 }
                 Rectangle{
                     id: delegateSeparator
                     height: 1
                     width: 120 //frame1.width/2
-                    color: "black"
+                    color: index==listw.currentIndex ? "white"  : "#aaaaaa"
                 }
                 Text {
                     id: modelTitleText
                     text: model.Title
+                    color: index==listw.currentIndex ? "white"  : "#aaaaaa"
                     font.pixelSize: 16
                     //wrapMode: Text.WrapAnywhere
                 }
