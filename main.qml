@@ -96,12 +96,12 @@ Window {
     Rectangle {
         id: startRect
         visible: true
-<<<<<<< HEAD
+
         color:"#D4D7DF"
-        x: leftColumn.width + verticalSeparator.width
-=======
-        color: "#033749"
->>>>>>> cd9a6f69edd403232a47bec1a762ce29646660ca
+       // x: leftColumn.width + verticalSeparator.width
+
+       // color: "#033749"
+
         width: parent.width - leftColumn.width - verticalSeparator.width
         anchors.top: topPannel.bottom
         anchors.bottom: parent.bottom
