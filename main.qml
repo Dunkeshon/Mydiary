@@ -16,7 +16,7 @@ Window {
 
     TopPannel {
         id: topPannel
-        height: 35
+        height: 31
         width: parent.width
         anchors.top: parent.top
         anchors.left: parent.left
@@ -33,45 +33,80 @@ Window {
             Layout.fillWidth: true
         }
 
-        RowLayout {
-            width: parent.width
-            height: 40
-            Button {
-                Layout.fillWidth: true
-                text: "ADD"
-                onClicked: {
-                    diaryList.addItem()
-                    notesList.currentIndex=0
-                    updateWindowInformation()
+//        RowLayout {
+//            width: parent.width
+//            height: 40
+//            Button {
+//                Layout.fillWidth: true
+//                text: "ADD"
+//                onClicked: {
+//                    diaryList.addItem()
+//                    notesList.currentIndex=0
+//                    updateWindowInformation()
+//                }
+
+//            }
+//            Button {
+//                Layout.fillWidth: true
+//                text: "Del"
+//                onClicked: {
+//                    if(notesList.currentIndex == -1) { return; }
+//                    var temp = notesList.currentIndex
+//                    diaryList.deleteItem(notesList.currentIndex)
+//                    if(diaryList.endItem(temp)) { temp--; }
+//                    notesList.currentIndex = temp
+//                    updateWindowInformation()
+
+
+//                }
+//            }
+//        }
+
+        states: [
+            State {
+                name: "Hidden"
+                PropertyChanges {
+                    target: leftColumn
+                    x: -width - 1
+                }
+            }]
+
+        transitions: [
+            Transition {
+                from: ""
+                to: "Hidden"
+                PropertyAnimation {
+                    easing.type: Easing.InOutQuad
+                    properties: "x"
+                    duration: 450
                 }
 
-            }
-            Button {
-                Layout.fillWidth: true
-                text: "Del"
-                onClicked: {
-                    if(notesList.currentIndex == -1) { return; }
-                    var temp = notesList.currentIndex
-                    diaryList.deleteItem(notesList.currentIndex)
-                    if(diaryList.endItem(temp)) { temp--; }
-                    notesList.currentIndex = temp
-                    updateWindowInformation()
-
-
+            },
+            Transition {
+                from: "Hidden"
+                to: ""
+                PropertyAnimation {
+                    easing.type: Easing.InOutQuad
+                    properties: "x"
+                    duration: 450
                 }
-            }
-        }
+            }]
     }
 
     Rectangle {
         id: startRect
         visible: true
+<<<<<<< HEAD
         color:"#D4D7DF"
         x: leftColumn.width + verticalSeparator.width
+=======
+        color: "#033749"
+>>>>>>> cd9a6f69edd403232a47bec1a762ce29646660ca
         width: parent.width - leftColumn.width - verticalSeparator.width
         anchors.top: topPannel.bottom
         anchors.bottom: parent.bottom
         anchors.right: parent.right
+        anchors.left: verticalSeparator.right
 
         Text {
             anchors.centerIn: parent
@@ -88,11 +123,11 @@ Window {
     TextINputWindow {
         visible: false
         id: userinput
-        x: leftColumn.width + verticalSeparator.width
         width: parent.width - leftColumn.width - verticalSeparator.width
         anchors.top: topPannel.bottom
         anchors.bottom: parent.bottom
         anchors.right: parent.right
+        anchors.left: verticalSeparator.right
 
 
 
@@ -151,6 +186,14 @@ Window {
         diaryList.addItem()
         notesList.currentIndex = 0
         updateWindowInformation()
+    }
+
+    function arrowButtonRealization() {
+        if(leftColumn.state == "") {
+            leftColumn.state = "Hidden"
+            return
+        }
+        leftColumn.state = ""
     }
 
 
