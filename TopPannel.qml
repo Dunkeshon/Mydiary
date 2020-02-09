@@ -8,9 +8,11 @@ Item {
     id: mainItem
 
     signal addButtonChecked();
+    signal arrowButtonChecked();
 
     Component.onCompleted: {
         mainItem.addButtonChecked.connect(addButtonRealization)
+        mainItem.arrowButtonChecked.connect(arrowButtonRealization)
     }
 
 
@@ -60,7 +62,19 @@ Item {
                 anchors.fill: parent
                 hoverEnabled: true
                 onClicked: {
+                    arrowButtonChecked();
+                    if(leftArrowIcon.visible) {
+                        leftArrowIcon.visible = false
+                        leftArrowColorOverlay.visible = false
+                        rightArrowIcon.visible = true
+                        rightArrowColorOverlay.visible = true
 
+                        return
+                    }
+                    leftArrowIcon.visible = true
+                    leftArrowColorOverlay.visible = true
+                    rightArrowIcon.visible = false
+                    rightArrowColorOverlay.visible = false
                 }
                 onEntered: arrowButton.state = "arrowButtonEntered"
                 onExited: arrowButton.state = ""

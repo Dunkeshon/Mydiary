@@ -11,7 +11,7 @@ ColumnLayout {
 
     Layout.fillWidth: true
     Layout.fillHeight: true
-    Layout.minimumWidth: 50
+    Layout.minimumWidth: 200
     Layout.minimumHeight: 150
 
     signal choosen()

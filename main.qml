@@ -111,6 +111,36 @@ Window {
         anchors.top: topPannel.bottom
         anchors.bottom: parent.bottom
         anchors.left: leftColumn.right
+
+        states: [
+            State {
+                name: "Hidden"
+                PropertyChanges {
+                    target: verticalSeparator
+                    x: -notesList.width - verticalSeparator.width
+                }
+            }]
+
+        transitions: [
+            Transition {
+                from: ""
+                to: "Hidden"
+                PropertyAnimation {
+                    easing.type: Easing.InOutQuad
+                    properties: "x"
+                    duration: 450
+                }
+
+            },
+            Transition {
+                from: "Hidden"
+                to: ""
+                PropertyAnimation {
+                    easing.type: Easing.InOutQuad
+                    properties: "x"
+                    duration: 450
+                }
+            }]
     }
 
     Component.onDestruction: {
@@ -148,6 +178,14 @@ Window {
         diaryList.addItem()
         notesList.currentIndex = 0
         updateWindowInformation()
+    }
+
+    function arrowButtonRealization() {
+        if(verticalSeparator.state == "") {
+            verticalSeparator.state = "Hidden"
+            return
+        }
+        verticalSeparator.state = ""
     }
 
 
