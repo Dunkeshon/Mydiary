@@ -22,14 +22,6 @@ Rectangle {
             color: Qt.rgba(0, 0, 0, 0.56)
             font.pixelSize: 12
         }
-//        Rectangle{
-//            id:titleholder
-//            anchors.top: parent.top
-//            anchors.left: parent.left
-//            width: mainColumn.width
-//            height: 30
-//            anchors.topMargin: 18
-//            anchors.leftMargin: 20
 
             TextField {
                  anchors.top: parent.top
