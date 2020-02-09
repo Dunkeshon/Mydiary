@@ -7,7 +7,7 @@ import Diary 1.0
 Window {
     id: window
     visible: true
-    color: "#1f586d"
+    color: "#E5E5E5"
     minimumWidth: 640
     minimumHeight: 480
     width: 640

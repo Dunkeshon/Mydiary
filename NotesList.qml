@@ -38,7 +38,7 @@ ColumnLayout {
 
         delegate: Item {
             width:parent.width
-            height: modelDateText.height*2 + delegateSeparator.height +modelTitleText.height*2
+            height: 50
 
             MouseArea {
                 id:mousearea
@@ -60,8 +60,9 @@ ColumnLayout {
 
             Rectangle {
                 anchors.fill: parent
-                color: index==listw.currentIndex ? "#5189be"  : "#1f586d"
-                Rectangle {
+                color: index==listw.currentIndex ? "#5189be"  : "#E5E5E5"
+                Rectangle //
+                {
                     width: parent.width
                     height: 1
                     color: "black"
@@ -69,28 +70,31 @@ ColumnLayout {
                 }
             }
 
-            ColumnLayout {
 
+            Item{
+                id: element
                 anchors.fill: parent
-                anchors.margins: 10
                 Text {
-                    id: modelDateText
+                    id: modelDateText                   
                     text: model.Date
-                    color: index==listw.currentIndex ? "white"  : "#aaaaaa"
-                    font.pixelSize: 16
+                    color: index==listw.currentIndex ? "white"  : "#8f000000"
+                    font.pixelSize: 12
+                    anchors.right: parent.right
+                    anchors.rightMargin: 4
                 }
-                Rectangle{
-                    id: delegateSeparator
-                    height: 1
-                    width: 120 //frame1.width/2
-                    color: index==listw.currentIndex ? "white"  : "#aaaaaa"
-                }
+
                 Text {
                     id: modelTitleText
+                    anchors.left: parent.left
+                    anchors.leftMargin: 10
                     text: model.Title
-                    color: index==listw.currentIndex ? "white"  : "#aaaaaa"
-                    font.pixelSize: 16
-                    //wrapMode: Text.WrapAnywhere
+                    anchors.bottom: parent.bottom
+                    anchors.bottomMargin: 5
+                    verticalAlignment: Text.AlignVCenter
+                    font.family: "Tahoma"
+                    font.bold: true
+                    opacity: 0.65
+                    font.pixelSize: 17
                 }
             }
         }
@@ -98,3 +102,9 @@ ColumnLayout {
 }
 
 
+
+/*##^##
+Designer {
+    D{i:0;autoSize:true;height:480;width:640}
+}
+##^##*/

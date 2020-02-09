@@ -19,7 +19,7 @@ Rectangle {
             anchors.topMargin: 5
             anchors.rightMargin: 5
             text: qsTr("Date here")
-            color: Qt.rgba(0, 0, 0, 0.56)
+            color: "#8f000000"
             font.pixelSize: 12
         }
 
@@ -27,7 +27,6 @@ Rectangle {
                  anchors.top: parent.top
                    anchors.left: parent.left
                    width: mainColumn.width
-                 //  height: 30
                    anchors.topMargin: 18
                    anchors.leftMargin: 20
                 id:title
@@ -53,7 +52,7 @@ Rectangle {
         anchors.topMargin: 7
         width: parent.width
         height: parent.height-60
-        color:"#D4D7DF" //"#033749"
+        color:"#D4D7DF"
         ScrollView {
             anchors.fill: parent
             anchors.margins: 10
