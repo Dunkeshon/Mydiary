@@ -66,7 +66,7 @@ Window {
     Rectangle {
         id: startRect
         visible: true
-        color: "#033749"
+        color:"#D4D7DF"
         x: leftColumn.width + verticalSeparator.width
         width: parent.width - leftColumn.width - verticalSeparator.width
         anchors.top: topPannel.bottom
@@ -77,7 +77,7 @@ Window {
             anchors.centerIn: parent
             font.pixelSize: 17
             color: "#aaaaaa"
-            text: "Enter or Create a Page"
+            text: "Choose or Create a Page"
         }
     }
 
@@ -123,9 +123,11 @@ Window {
 
         if(userinput.visible==false){
             userinput.visible=true;
+            startRect.visible=false;
         }
         if(notesList.currentIndex == -1){
             userinput.visible=false;
+            startRect.visible=true;
             return
         }
         userinput.datetext.text = notesList.model.data(notesList.model.index(notesList.currentIndex, 0), 257)
