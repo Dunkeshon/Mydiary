@@ -9,73 +9,47 @@ Item {
     property alias  titletext: title
     property alias usertext: userText
 
-    Rectangle {
-        id:topRect
-        anchors.top: parent.top
-        width: parent.width
-        height: parent.height/7
-        color: "#033749"
+
 
         Text {
             id: datetext
-            width: 46
             anchors.top: parent.top
-            anchors.left: parent.left
-            anchors.topMargin: 10
-            anchors.leftMargin: 30
+            anchors.right: parent.right
+            anchors.topMargin: 5
+            anchors.rightMargin: 5
             text: qsTr("Date here")
-            color: "white"
-            font.pixelSize: 18
-            Rectangle {
-                id: blackCircle
-                anchors.right: parent.left
-                anchors.rightMargin: 5
-                y:parent.height/2 + 2
-                width: 20
-                height: 20
-                radius: 10
-                color: "#64acc6"
-            }
-            Rectangle {
-                id:separator
-                anchors.top: parent.bottom
-                anchors.left: blackCircle.left
-                height: 1
-                radius: 2
-                width: mainColumn.width / 3
-                color: "#64acc6"
+            color: Qt.rgba(0, 0, 0, 0.56)
+            font.pixelSize: 9
             }
 
             TextField {
                 id:title
                 placeholderText:"Title"
+                font.family: "Al Bayan"
                 placeholderTextColor: "#aaaaaa"
                 color: "white"
-                anchors.top: separator.bottom
-                anchors.left: blackCircle.right
+                anchors.top: parent.top
+                anchors.left: parent.left
                 width: mainColumn.width
-                height: parent.height + 3
-                anchors.leftMargin: 5
-                bottomPadding: 0
-                leftPadding: 0
-                font.pixelSize: 18
+                anchors.topMargin: 18
+                anchors.leftMargin: 20
+                font.pixelSize: 24
                 maximumLength: 24
                 selectionColor: "#3399FF"
                 selectByMouse: true
-
-
                 background: Rectangle {
                     visible: false
                 }
             }
-        }
-    }
+
+
 
     Rectangle {
-        anchors.top: topRect.bottom
+        anchors.top: title.bottom
+        anchors.topMargin: 7
         width: parent.width
-        height: parent.height - topRect.height
-        color: "#033749"
+        height: parent.height - title.height
+        color:Qt.rgba(212, 215, 228, 0.26);  //"#033749"
         ScrollView {
             anchors.fill: parent
             TextArea {

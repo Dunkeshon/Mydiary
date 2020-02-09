@@ -95,6 +95,7 @@ Window {
         anchors.right: parent.right
 
 
+
         titletext.onEditingFinished: {
             updateModelInformation()
         }
