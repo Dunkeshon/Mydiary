@@ -18,25 +18,143 @@ Item {
         id: pannel
         anchors.fill: parent
         color: "#6d84de"
-        visible: true
+
+        Rectangle {
+            id: arrowButton
+            height: parent.height
+            width: height
+            color: pannel.color
+            anchors.left: parent.left
+
+            Image {
+                id: leftArrowIcon
+                anchors.fill: parent
+                anchors.margins: 7
+                source: "resources/images/leftArrowIcon.svg"
+            }
+
+            ColorOverlay {
+                id: leftArrowColorOverlay
+                anchors.fill: leftArrowIcon
+                source: leftArrowIcon
+                color: "#ffffff"
+            }
+
+            Image {
+                id: rightArrowIcon
+                anchors.fill: parent
+                anchors.margins: 7
+                source: "resources/images/rightArrowIcon.svg"
+                visible: false
+            }
+
+            ColorOverlay {
+                id: rightArrowColorOverlay
+                anchors.fill: rightArrowIcon
+                source: rightArrowIcon
+                color: "#ffffff"
+                visible: false
+            }
+
+            MouseArea {
+                anchors.fill: parent
+                hoverEnabled: true
+                onClicked: {
+
+                }
+                onEntered: arrowButton.state = "arrowButtonEntered"
+                onExited: arrowButton.state = ""
+                onPressed: arrowButton.state = "arrowButtonPressed"
+                onReleased: {
+                    if(!containsMouse) {return}
+                    arrowButton.state = "arrowButtonEntered"
+                }
+                cursorShape: Qt.PointingHandCursor
+            }
+
+            states: [
+                State {
+                    name: "arrowButtonEntered"
+                    PropertyChanges {
+                        target: leftArrowIcon.visible ? leftArrowColorOverlay : rightArrowColorOverlay
+                        color: "#70E883"
+                    }
+                },
+                State {
+                    name: "arrowButtonPressed"
+                    PropertyChanges {
+                        target: arrowButton
+                        color: "#4c69d7"
+                    }
+                }]
+            transitions: [
+                Transition {
+                    from: ""
+                    to: "arrowButtonEntered"
+                    PropertyAnimation {
+                        properties: "color"
+                        duration: 250
+                        easing.type: Easing.OutQuad
+                    }
+
+                },
+                Transition {
+                    from: "arrowButtonEntered"
+                    to: ""
+                    PropertyAnimation {
+                        properties: "color"
+                        duration: 250
+                        easing.type: Easing.InQuad
+                    }
+                },
+                Transition {
+                    from: "arrowButtonEntered"
+                    to: "arrowButtonPressed"
+                    PropertyAnimation {
+                        properties: "color"
+                        duration: 70
+                        easing.type: Easing.OutQuad
+                    }
+                },
+                Transition {
+                    from: "arrowButtonPressed"
+                    to: "arrowButtonEntered"
+                    PropertyAnimation {
+                        properties: "color"
+                        duration: 150
+                        easing.type: Easing.InQuad
+                    }
+                },
+                Transition {
+                    from: "arrowButtonPressed"
+                    to: ""
+                    PropertyAnimation {
+                        properties: "color"
+                        duration: 250
+                        easing.type: Easing.InQuad
+                    }
+                }]
+
+        }
 
         Rectangle {
             id: addButton
+            property alias iconColor: plusColorOverlay
+            property alias iconY: plusIcon.y
             height: parent.height
             width: height
-            radius: height
             color: pannel.color
-            anchors.left: parent.left
+            anchors.left: arrowButton.right
 
             Image {
                 id: plusIcon
                 anchors.fill: parent
                 anchors.margins: 7
                 source: "resources/images/plusIcon.svg"
-                visible: true
             }
 
             ColorOverlay {
+                id: plusColorOverlay
                 anchors.fill: plusIcon
                 source: plusIcon
                 color: "#ffffff"
@@ -48,27 +166,76 @@ Item {
                 onClicked: {
                     addButtonChecked()
                 }
-                onEntered: addButton.state = "enter"
+                onEntered: addButton.state = "addButtonEntered"
                 onExited: addButton.state = ""
+                onPressed: addButton.state = "addButtonPressed"
+                onReleased: {
+                    if(!containsMouse) {return}
+                    addButton.state = "addButtonEntered"
+                }
                 cursorShape: Qt.PointingHandCursor
             }
 
             states: [
                 State {
-                    name: "enter"
+                    name: "addButtonEntered"
+                    PropertyChanges {
+                        target: plusColorOverlay
+                        color: "#70E883"
+                    }
+                },
+                State {
+                    name: "addButtonPressed"
                     PropertyChanges {
                         target: addButton
-                        color: "white"
+                        color: "#4c69d7"
                     }
                 }]
             transitions: [
                 Transition {
                     from: ""
-                    to: "enter"
+                    to: "addButtonEntered"
                     PropertyAnimation {
                         properties: "color"
-                        duration: 1000
+                        duration: 250
                         easing.type: Easing.OutQuad
+                    }
+
+                },
+                Transition {
+                    from: "addButtonEntered"
+                    to: ""
+                    PropertyAnimation {
+                        properties: "color"
+                        duration: 250
+                        easing.type: Easing.InQuad
+                    }
+                },
+                Transition {
+                    from: "addButtonEntered"
+                    to: "addButtonPressed"
+                    PropertyAnimation {
+                        properties: "color"
+                        duration: 70
+                        easing.type: Easing.OutQuad
+                    }
+                },
+                Transition {
+                    from: "addButtonPressed"
+                    to: "addButtonEntered"
+                    PropertyAnimation {
+                        properties: "color"
+                        duration: 150
+                        easing.type: Easing.InQuad
+                    }
+                },
+                Transition {
+                    from: "addButtonPressed"
+                    to: ""
+                    PropertyAnimation {
+                        properties: "color"
+                        duration: 250
+                        easing.type: Easing.InQuad
                     }
                 }]
 
@@ -85,7 +252,6 @@ Item {
                 anchors.fill: parent
                 anchors.margins: 7
                 source: "resources/images/searchIcon.svg"
-                visible: true
             }
 
             ColorOverlay {
@@ -108,7 +274,6 @@ Item {
                 anchors.fill: parent
                 anchors.margins: 6
                 source: "resources/images/settingsIcon.svg"
-                visible: true
             }
 
             ColorOverlay {
