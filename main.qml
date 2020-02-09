@@ -33,91 +33,41 @@ Window {
             Layout.fillWidth: true
         }
 
-        RowLayout {
-            width: parent.width
-            height: 40
-            Button {
-                Layout.fillWidth: true
-                text: "ADD"
-                onClicked: {
-                    diaryList.addItem()
-                    notesList.currentIndex=0
-                    updateWindowInformation()
-                }
+//        RowLayout {
+//            width: parent.width
+//            height: 40
+//            Button {
+//                Layout.fillWidth: true
+//                text: "ADD"
+//                onClicked: {
+//                    diaryList.addItem()
+//                    notesList.currentIndex=0
+//                    updateWindowInformation()
+//                }
 
-            }
-            Button {
-                Layout.fillWidth: true
-                text: "Del"
-                onClicked: {
-                    if(notesList.currentIndex == -1) { return; }
-                    var temp = notesList.currentIndex
-                    diaryList.deleteItem(notesList.currentIndex)
-                    if(diaryList.endItem(temp)) { temp--; }
-                    notesList.currentIndex = temp
-                    updateWindowInformation()
-
-
-                }
-            }
-        }
-    }
-
-    Rectangle {
-        id: startRect
-        visible: true
-        color: "#033749"
-        x: leftColumn.width + verticalSeparator.width
-        width: parent.width - leftColumn.width - verticalSeparator.width
-        anchors.top: topPannel.bottom
-        anchors.bottom: parent.bottom
-        anchors.right: parent.right
-
-        Text {
-            anchors.centerIn: parent
-            font.pixelSize: 17
-            color: "#aaaaaa"
-            text: "Enter or Create a Page"
-        }
-    }
+//            }
+//            Button {
+//                Layout.fillWidth: true
+//                text: "Del"
+//                onClicked: {
+//                    if(notesList.currentIndex == -1) { return; }
+//                    var temp = notesList.currentIndex
+//                    diaryList.deleteItem(notesList.currentIndex)
+//                    if(diaryList.endItem(temp)) { temp--; }
+//                    notesList.currentIndex = temp
+//                    updateWindowInformation()
 
 
-
-
-
-    TextINputWindow {
-        visible: false
-        id: userinput
-        x: leftColumn.width + verticalSeparator.width
-        width: parent.width - leftColumn.width - verticalSeparator.width
-        anchors.top: topPannel.bottom
-        anchors.bottom: parent.bottom
-        anchors.right: parent.right
-
-
-        titletext.onEditingFinished: {
-            updateModelInformation()
-        }
-        usertext.onEditingFinished: {
-            updateModelInformation()
-        }
-    }
-
-    Rectangle {
-        id: verticalSeparator
-        color:"black"
-
-        width: 1
-        anchors.top: topPannel.bottom
-        anchors.bottom: parent.bottom
-        anchors.left: leftColumn.right
+//                }
+//            }
+//        }
 
         states: [
             State {
                 name: "Hidden"
                 PropertyChanges {
-                    target: verticalSeparator
-                    x: -notesList.width - verticalSeparator.width
+                    target: leftColumn
+                    x: -width - 1
                 }
             }]
 
@@ -141,6 +91,56 @@ Window {
                     duration: 450
                 }
             }]
+    }
+
+    Rectangle {
+        id: startRect
+        visible: true
+        color: "#033749"
+        width: parent.width - leftColumn.width - verticalSeparator.width
+        anchors.top: topPannel.bottom
+        anchors.bottom: parent.bottom
+        anchors.right: parent.right
+        anchors.left: verticalSeparator.right
+
+        Text {
+            anchors.centerIn: parent
+            font.pixelSize: 17
+            color: "#aaaaaa"
+            text: "Enter or Create a Page"
+        }
+    }
+
+
+
+
+
+    TextINputWindow {
+        visible: false
+        id: userinput
+        width: parent.width - leftColumn.width - verticalSeparator.width
+        anchors.top: topPannel.bottom
+        anchors.bottom: parent.bottom
+        anchors.right: parent.right
+        anchors.left: verticalSeparator.right
+
+
+        titletext.onEditingFinished: {
+            updateModelInformation()
+        }
+        usertext.onEditingFinished: {
+            updateModelInformation()
+        }
+    }
+
+    Rectangle {
+        id: verticalSeparator
+        color:"black"
+
+        width: 1
+        anchors.top: topPannel.bottom
+        anchors.bottom: parent.bottom
+        anchors.left: leftColumn.right
     }
 
     Component.onDestruction: {
@@ -181,11 +181,11 @@ Window {
     }
 
     function arrowButtonRealization() {
-        if(verticalSeparator.state == "") {
-            verticalSeparator.state = "Hidden"
+        if(leftColumn.state == "") {
+            leftColumn.state = "Hidden"
             return
         }
-        verticalSeparator.state = ""
+        leftColumn.state = ""
     }
 
 
