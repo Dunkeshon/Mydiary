@@ -16,7 +16,7 @@ Window {
 
     TopPannel {
         id: topPannel
-        height: 35
+        height: 31
         width: parent.width
         anchors.top: parent.top
         anchors.left: parent.left

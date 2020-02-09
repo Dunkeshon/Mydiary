@@ -6,9 +6,10 @@
         <file>TopPannel.qml</file>
     </qresource>
     <qresource prefix="/resources">
-        <file>images/plusImage.png</file>
-        <file>images/searchImage.png</file>
-        <file>images/settingsImage.png</file>
-        <file>images/passwordImage.png</file>
+        <file>images/plusIcon.svg</file>
+        <file>images/leftArrowIcon.svg</file>
+        <file>images/rightArrowIcon.svg</file>
+        <file>images/searchIcon.svg</file>
+        <file>images/settingsIcon.svg</file>
     </qresource>
 </RCC>

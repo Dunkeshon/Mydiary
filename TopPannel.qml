@@ -2,6 +2,7 @@ import QtQuick 2.0
 import QtQuick.Window 2.12
 import QtQuick.Controls 2.12
 import QtQuick.Layouts 1.12
+import QtGraphicalEffects 1.0
 
 Item {
     id: mainItem
@@ -15,11 +16,8 @@ Item {
 
     Rectangle {
         id: pannel
-        anchors.top: parent.top
-        anchors.left: parent.left
-        anchors.right: parent.right
-        anchors.bottom: bottomSeparator.top
-        color: "#1f586d"
+        anchors.fill: parent
+        color: "#6d84de"
         visible: true
 
         Rectangle {
@@ -33,9 +31,15 @@ Item {
             Image {
                 id: plusIcon
                 anchors.fill: parent
-                anchors.margins: 2
-                source: "resources/images/plusImage.png"
+                anchors.margins: 7
+                source: "resources/images/plusIcon.svg"
                 visible: true
+            }
+
+            ColorOverlay {
+                anchors.fill: plusIcon
+                source: plusIcon
+                color: "#ffffff"
             }
 
             MouseArea {
@@ -79,9 +83,15 @@ Item {
             Image {
                 id: searchIcon
                 anchors.fill: parent
-                anchors.margins: 2
-                source: "resources/images/searchImage.png"
+                anchors.margins: 7
+                source: "resources/images/searchIcon.svg"
                 visible: true
+            }
+
+            ColorOverlay {
+                anchors.fill: searchIcon
+                source: searchIcon
+                color: "#ffffff"
             }
         }
 
@@ -96,22 +106,19 @@ Item {
             Image {
                 id: settingsIcon
                 anchors.fill: parent
-                source: "resources/images/settingsImage.png"
+                anchors.margins: 6
+                source: "resources/images/settingsIcon.svg"
                 visible: true
+            }
+
+            ColorOverlay {
+                anchors.fill: settingsIcon
+                source: settingsIcon
+                color: "#ffffff"
             }
         }
 
 
-    }
-
-    Rectangle {
-        id: bottomSeparator
-        anchors.left: parent.left
-        anchors.right: parent.right
-        anchors.bottom: parent.bottom
-        color: "black"
-        height: 1
-        visible: true
     }
 }
 
