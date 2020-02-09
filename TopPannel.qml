@@ -68,21 +68,17 @@ Item {
                         leftArrowColorOverlay.visible = false
                         rightArrowIcon.visible = true
                         rightArrowColorOverlay.visible = true
-
-                        return
+                    } else {
+                        leftArrowIcon.visible = true
+                        leftArrowColorOverlay.visible = true
+                        rightArrowIcon.visible = false
+                        rightArrowColorOverlay.visible = false
                     }
-                    leftArrowIcon.visible = true
-                    leftArrowColorOverlay.visible = true
-                    rightArrowIcon.visible = false
-                    rightArrowColorOverlay.visible = false
+                    arrowButton.state = "arrowButtonEntered"
                 }
                 onEntered: arrowButton.state = "arrowButtonEntered"
                 onExited: arrowButton.state = ""
                 onPressed: arrowButton.state = "arrowButtonPressed"
-                onReleased: {
-                    if(!containsMouse) {return}
-                    arrowButton.state = "arrowButtonEntered"
-                }
                 cursorShape: Qt.PointingHandCursor
             }
 
@@ -179,14 +175,11 @@ Item {
                 hoverEnabled: true
                 onClicked: {
                     addButtonChecked()
+                    addButton.state = "addButtonEntered"
                 }
                 onEntered: addButton.state = "addButtonEntered"
                 onExited: addButton.state = ""
                 onPressed: addButton.state = "addButtonPressed"
-                onReleased: {
-                    if(!containsMouse) {return}
-                    addButton.state = "addButtonEntered"
-                }
                 cursorShape: Qt.PointingHandCursor
             }
 
