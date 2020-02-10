@@ -33,34 +33,34 @@ Window {
             Layout.fillWidth: true
         }
 
-//        RowLayout {
-//            width: parent.width
-//            height: 40
-//            Button {
-//                Layout.fillWidth: true
-//                text: "ADD"
-//                onClicked: {
-//                    diaryList.addItem()
-//                    notesList.currentIndex=0
-//                    updateWindowInformation()
-//                }
+        //        RowLayout {
+        //            width: parent.width
+        //            height: 40
+        //            Button {
+        //                Layout.fillWidth: true
+        //                text: "ADD"
+        //                onClicked: {
+        //                    diaryList.addItem()
+        //                    notesList.currentIndex=0
+        //                    updateWindowInformation()
+        //                }
 
-//            }
-//            Button {
-//                Layout.fillWidth: true
-//                text: "Del"
-//                onClicked: {
-//                    if(notesList.currentIndex == -1) { return; }
-//                    var temp = notesList.currentIndex
-//                    diaryList.deleteItem(notesList.currentIndex)
-//                    if(diaryList.endItem(temp)) { temp--; }
-//                    notesList.currentIndex = temp
-//                    updateWindowInformation()
+        //            }
+        //            Button {
+        //                Layout.fillWidth: true
+        //                text: "Del"
+        //                onClicked: {
+        //                    if(notesList.currentIndex == -1) { return; }
+        //                    var temp = notesList.currentIndex
+        //                    diaryList.deleteItem(notesList.currentIndex)
+        //                    if(diaryList.endItem(temp)) { temp--; }
+        //                    notesList.currentIndex = temp
+        //                    updateWindowInformation()
 
 
-//                }
-//            }
-//        }
+        //                }
+        //            }
+        //        }
 
         states: [
             State {
@@ -98,9 +98,9 @@ Window {
         visible: true
 
         color:"#D4D7DF"
-       // x: leftColumn.width + verticalSeparator.width
+        // x: leftColumn.width + verticalSeparator.width
 
-       // color: "#033749"
+        // color: "#033749"
 
         width: parent.width - leftColumn.width - verticalSeparator.width
         anchors.top: topPannel.bottom
@@ -194,6 +194,14 @@ Window {
             return
         }
         leftColumn.state = ""
+    }
+
+    function deleteButtonRealization() {
+        var temp = notesList.currentIndex
+        diaryList.deleteItem(notesList.currentIndex)
+        if(diaryList.endItem(temp)) { temp--; }
+        notesList.currentIndex = temp
+        updateWindowInformation()
     }
 
 
