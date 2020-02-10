@@ -37,8 +37,6 @@ ColumnLayout {
 
             column.changeIndex.connect(updateModelInformation);
 
-
-
         }
 
         delegate: Item {
@@ -52,7 +50,6 @@ ColumnLayout {
                 onClicked: {
                     if(listw.currentIndex == -1) { //COPYPASTEK
                         listw.currentIndex = index
-                        trashButton.state = "current"
                         choosen()
                         return;
                     }
@@ -66,15 +63,6 @@ ColumnLayout {
                     // при клике на обьект списка мы сразу переключаем index,
                     // но currentIndex нужно переключать в ручную
 
-                }
-                onEntered: {
-                    trashButton.state = "current"
-                    if(listw.currentIndex == index){
-
-                    }
-                }
-                onExited: {
-                    trashButton.state = ""
                 }
 
 
@@ -130,43 +118,36 @@ ColumnLayout {
                     font.pixelSize: 17
                 }
             }
+        }
 
-            Rectangle {
-                id:trashButton
-                anchors.bottom: parent.bottom
-                anchors.bottomMargin: 5
-                anchors.right: parent.right
-                color: fillRect.color
-                width: 16.5
-                height: 18.2
-                visible: false
+        Rectangle {
+            id:trashButton
+            anchors.bottom: parent.bottom
+            anchors.bottomMargin: 1
+            x: parent.width
+            color: "#6d84de"
+            opacity: 0.5
+            width: 21
+            height: 21
+            visible: true
 
-                Image {
-                    id: trashIcon
-                    source: "resources/images/trash.svg"
-                    anchors.fill: parent
-                }
+            Image {
+                id: trashIcon
+                source: "resources/images/trash.svg"
+                anchors.fill: parent
+            }
 
-                ColorOverlay {
-                    id:trashOverlay
-                    anchors.fill: trashIcon
-                    source: trashIcon
-                    color: "black"
-                }
-                MouseArea{
-                    anchors.fill: parent
+            ColorOverlay {
+                id:trashOverlay
+                anchors.fill: trashIcon
+                source: trashIcon
+                color: "black"
+            }
+            MouseArea{
+                id: trashButtonMouseArea
+                anchors.fill: parent
+                enabled: false
 
-                }
-
-                states: [
-                    State {
-                        name: "current"
-                        PropertyChanges {
-                            target: trashButton
-                            visible: true
-                        }
-                    }
-                ]
             }
         }
     }

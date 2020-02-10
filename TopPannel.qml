@@ -262,11 +262,35 @@ Item {
             }
 
             ColorOverlay {
+                id: toolColorOverlay
                 anchors.fill: searchIcon
                 source: searchIcon
                 color: "#ffffff"
             }
         }
+
+        Rectangle {
+            id: toolButton
+            height: parent.height
+            width: height
+            color: pannel.color
+            anchors.right: settingsButton.left
+
+            Image {
+                id: toolIcon
+                anchors.fill: parent
+                anchors.margins: 6
+                source: "resources/images/toolIcon.svg"
+            }
+
+            ColorOverlay {
+                anchors.fill: toolIcon
+                source: toolIcon
+                color: "#ffffff"
+            }
+        }
+
+
 
 
         Rectangle {
