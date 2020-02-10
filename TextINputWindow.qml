@@ -44,6 +44,7 @@ Rectangle {
               height:60
                 color:"#33d4d7de"
 
+
             TextField {
                 id:title
 

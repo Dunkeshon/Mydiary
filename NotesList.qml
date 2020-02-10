@@ -43,6 +43,8 @@ ColumnLayout {
             width:parent.width
             height: 50
 
+
+
             MouseArea {
                 id:mousearea
                 hoverEnabled: true
@@ -62,10 +64,7 @@ ColumnLayout {
                     choosen(); // emit signal
                     // при клике на обьект списка мы сразу переключаем index,
                     // но currentIndex нужно переключать в ручную
-
                 }
-
-
                 cursorShape: Qt.PointingHandCursor
             }
 
@@ -90,7 +89,7 @@ ColumnLayout {
                 Text {
                     id: modelDateText
                     text: model.Date
-                    color: index==listw.currentIndex ? "white"  : "#8f000000"
+                    color: index==listw.currentIndex ? "black"  : "#8f000000"
                     font.family: "poppins_black"
                     font.pixelSize:12
                     anchors.right: parent.right
@@ -109,13 +108,15 @@ ColumnLayout {
                         return model.Title
                     }
                     anchors.bottom: parent.bottom
-                    color: index==listw.currentIndex ? "white"  : "black"
+                    color: index==listw.currentIndex ? "#404040"  : "#404040"
                     anchors.bottomMargin: 5
                     verticalAlignment: Text.AlignVCenter
                     font.family: "merriweather"
-                    font.bold: true
-                    opacity: 0.65
-                    font.pixelSize: 17
+
+
+
+
+                font.pixelSize: 17
                 }
             }
         }
