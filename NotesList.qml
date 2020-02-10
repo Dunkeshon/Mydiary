@@ -40,6 +40,7 @@ ColumnLayout {
         }
 
         delegate: Item {
+            id: delegate
             width:parent.width
             height: 50
 
@@ -64,6 +65,7 @@ ColumnLayout {
                     // но currentIndex нужно переключать в ручную
 
                 }
+                onEntered: delegate.state = "delegateEntered"
 
 
                 cursorShape: Qt.PointingHandCursor
@@ -81,6 +83,19 @@ ColumnLayout {
                     color: "black"
                     anchors.bottom: parent.bottom
                 }
+            }
+
+            InnerShadow {
+                id: innerRect
+                source: fillRect
+                anchors.fill: fillRect
+                samples: 16
+                radius: 8.0
+                horizontalOffset: -3
+                verticalOffset: 3
+                color: "black"
+                opacity: 0.25
+                visible: false
             }
 
 
@@ -118,6 +133,83 @@ ColumnLayout {
                     font.pixelSize: 17
                 }
             }
+
+            states: [
+                State {
+                    name: "delegateEntered"
+                    PropertyChanges {
+                        target: fillRect
+                        color: "#5976E5"
+                        opacity: 0.21
+                    }
+                },
+                State {
+                    name: "delegatePressed"
+                    PropertyChanges {
+                        target: fillRect
+                        color: "#5976E5"
+                        opacity: 0.35
+                    }
+                },
+                State {
+                    name: "delegateChecked"
+                    PropertyChanges {
+                        target: fillRect
+                        color: "#5976E5"
+                        opacity: 0.35
+                    }
+                    PropertyChanges {
+                        target: innerRect
+                        visible: true
+                    }
+                }]
+            transitions: [
+                Transition {
+                    from: ""
+                    to: "delegateEntered"
+                    PropertyAnimation {
+                        properties: "color"
+                        duration: 250
+                        easing.type: Easing.OutQuad
+                    }
+
+                },
+                Transition {
+                    from: "delegateEntered"
+                    to: ""
+                    PropertyAnimation {
+                        properties: "color"
+                        duration: 250
+                        easing.type: Easing.InQuad
+                    }
+                },
+                Transition {
+                    from: "delegateEntered"
+                    to: "delegatePressed"
+                    PropertyAnimation {
+                        properties: "color"
+                        duration: 70
+                        easing.type: Easing.OutQuad
+                    }
+                },
+                Transition {
+                    from: "delegatePressed"
+                    to: "delegateEntered"
+                    PropertyAnimation {
+                        properties: "color"
+                        duration: 150
+                        easing.type: Easing.InQuad
+                    }
+                },
+                Transition {
+                    from: "delegatePressed"
+                    to: ""
+                    PropertyAnimation {
+                        properties: "color"
+                        duration: 250
+                        easing.type: Easing.InQuad
+                    }
+                }]
         }
 
         Rectangle {
