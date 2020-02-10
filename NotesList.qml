@@ -77,7 +77,7 @@ ColumnLayout {
                     id: bottomSeparator
                     width: parent.width
                     height: 1
-                    color: "black"
+                    color: "#6d84de"
                     anchors.bottom: parent.bottom
                 }
             }
@@ -89,7 +89,7 @@ ColumnLayout {
                 Text {
                     id: modelDateText
                     text: model.Date
-                    color: index==listw.currentIndex ? "black"  : "#8f000000"
+                    color: index==listw.currentIndex ? "#707070"  : "#8f000000"
                     font.family: "poppins_black"
                     font.pixelSize:12
                     anchors.right: parent.right
@@ -100,7 +100,6 @@ ColumnLayout {
                     id: modelTitleText
                     anchors.left: parent.left
                     anchors.leftMargin: 10
-
                     text: {
                         if(model.Title.length>=16){
                             return model.Title.substring(0,13)+'...'

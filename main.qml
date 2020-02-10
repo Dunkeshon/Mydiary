@@ -144,7 +144,7 @@ Window {
 
     Rectangle {
         id: verticalSeparator
-        color:"black"
+        color:"#6d84de"
 
         width: 1
         anchors.top: topPannel.bottom
