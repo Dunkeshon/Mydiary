@@ -19,19 +19,20 @@ Rectangle {
             anchors.topMargin: 5
             anchors.rightMargin: 5
             text: qsTr("Date here")
+            font.family: "poppins_black"
             color: "#8f000000"
             font.pixelSize: 12
         }
 
             TextField {
+                id:title
                  anchors.top: parent.top
                    anchors.left: parent.left
                    width: mainColumn.width
                    anchors.topMargin: 18
                    anchors.leftMargin: 20
-                id:title
                 placeholderText:"Title"
-                font.family: "Al Bayan"
+                font.family: "merriweather"
                // placeholderTextColor: "#aaaaaa"
                 //color: "white"
 
@@ -60,9 +61,8 @@ Rectangle {
                 id:userText
                 renderType: Text.QtRendering
                 placeholderText: qsTr("Enter Something)")
-              //  placeholderTextColor: "#aaaaaa"
-                //color:"white"
                 font.pixelSize: 18
+                font.family: "merriweather"
                 wrapMode: TextArea.WordWrap
 
                 selectByMouse: true

@@ -12,5 +12,8 @@
         <file>images/searchIcon.svg</file>
         <file>images/settingsIcon.svg</file>
         <file>images/trash.svg</file>
+        <file>fonts/poppins_/OFL.txt</file>
+        <file>fonts/poppins_/Poppins-Black.ttf</file>
+        <file>fonts/poppins_/Merriweather-Regular.ttf</file>
     </qresource>
 </RCC>

@@ -13,7 +13,8 @@ Window {
     width: 640
     height: 480
     title: qsTr("My Diary")
-
+    FontLoader { id: poppins_black; source:"qrc:/resources/fonts/poppins_/Poppins-Black.ttf"}
+    FontLoader { id: merriweather; source:"qrc:/resources/fonts/poppins_/Merriweather-Regular.ttf"}
     TopPannel {
         id: topPannel
         height: 31

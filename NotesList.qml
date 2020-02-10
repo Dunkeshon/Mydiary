@@ -103,7 +103,8 @@ ColumnLayout {
                     id: modelDateText
                     text: model.Date
                     color: index==listw.currentIndex ? "white"  : "#8f000000"
-                    font.pixelSize: 12
+                    font.family: "poppins_black"
+                    font.pixelSize:12
                     anchors.right: parent.right
                     anchors.rightMargin: 4
                 }
@@ -123,7 +124,7 @@ ColumnLayout {
                     color: index==listw.currentIndex ? "white"  : "black"
                     anchors.bottomMargin: 5
                     verticalAlignment: Text.AlignVCenter
-                    font.family: "Tahoma"
+                    font.family: "merriweather"
                     font.bold: true
                     opacity: 0.65
                     font.pixelSize: 17
