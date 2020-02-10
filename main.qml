@@ -7,7 +7,7 @@ import Diary 1.0
 Window {
     id: window
     visible: true
-    color: "#E5E5E5"
+    color: "white"
     minimumWidth: 640
     minimumHeight: 480
     width: 640
@@ -98,8 +98,13 @@ Window {
         id: startRect
         visible: true
 
+<<<<<<< HEAD
         color:"#D4D7DF"
         // x: leftColumn.width + verticalSeparator.width
+=======
+        color:userinput.color //"#33d4d7de"
+       // x: leftColumn.width + verticalSeparator.width
+>>>>>>> color-fix-and-fonts
 
         // color: "#033749"
 
@@ -122,6 +127,7 @@ Window {
 
 
     TextINputWindow {
+
         visible: false
         id: userinput
         width: parent.width - leftColumn.width - verticalSeparator.width

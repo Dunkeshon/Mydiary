@@ -11,9 +11,13 @@ Rectangle {
     property alias  titletext: title
     property alias usertext: userText
 
+<<<<<<< HEAD
     signal trashButtonChecked()
 
     color:"#D4D7DF"
+=======
+    color:"#33d4d7de"
+>>>>>>> color-fix-and-fonts
 
         Component.onCompleted: {
             mainColumn.trashButtonChecked.connect(deleteButtonRealization)
@@ -31,13 +35,34 @@ Rectangle {
             font.pixelSize: 12
         }
 
+        Rectangle{
+            id:titleholder
+            anchors.top: parent.top
+              anchors.left: parent.left
+              width: mainColumn.width
+
+              height:60
+                color:"#33d4d7de"
+
             TextField {
                 id:title
+<<<<<<< HEAD
                  anchors.top: parent.top
                    anchors.left: parent.left
                    width: mainColumn.width - 50
                    anchors.topMargin: 18
                    anchors.leftMargin: 20
+=======
+                anchors.top: parent.top
+                  anchors.left: parent.left
+                anchors.topMargin: 18
+                anchors.leftMargin: 20
+//                 anchors.top: parent.top
+//                   anchors.left: parent.left
+//                   width: mainColumn.width
+//                   anchors.topMargin: 18
+//                   anchors.leftMargin: 20
+>>>>>>> color-fix-and-fonts
                 placeholderText:"Title"
                 font.family: "merriweather"
                // placeholderTextColor: "#aaaaaa"
@@ -51,16 +76,17 @@ Rectangle {
                     visible: false
                 }
             }
+        }
 //        }
 
 
 
     Rectangle {
-        anchors.top: title.bottom
-        anchors.topMargin: 7
+        anchors.top: titleholder.bottom//title.bottom
+
         width: parent.width
         height: parent.height-60
-        color:"#D4D7DF"
+        color:mainColumn.color
         ScrollView {
             anchors.fill: parent
             anchors.margins: 10
