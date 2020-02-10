@@ -11,5 +11,6 @@
         <file>images/rightArrowIcon.svg</file>
         <file>images/searchIcon.svg</file>
         <file>images/settingsIcon.svg</file>
+        <file>images/trash.svg</file>
     </qresource>
 </RCC>

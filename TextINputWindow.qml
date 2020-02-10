@@ -36,7 +36,7 @@ Rectangle {
                 //color: "white"
 
                 font.pixelSize: 24
-                maximumLength: 24
+                maximumLength: 26
                 selectionColor: "#3399FF"
                 selectByMouse: true
                 background: Rectangle {
