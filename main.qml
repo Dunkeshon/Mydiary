@@ -98,13 +98,9 @@ Window {
         id: startRect
         visible: true
 
-<<<<<<< HEAD
-        color:"#D4D7DF"
-        // x: leftColumn.width + verticalSeparator.width
-=======
+
         color:userinput.color //"#33d4d7de"
        // x: leftColumn.width + verticalSeparator.width
->>>>>>> color-fix-and-fonts
 
         // color: "#033749"
 

@@ -11,13 +11,13 @@ Rectangle {
     property alias  titletext: title
     property alias usertext: userText
 
-<<<<<<< HEAD
+
     signal trashButtonChecked()
 
-    color:"#D4D7DF"
-=======
+
+
     color:"#33d4d7de"
->>>>>>> color-fix-and-fonts
+
 
         Component.onCompleted: {
             mainColumn.trashButtonChecked.connect(deleteButtonRealization)
@@ -46,23 +46,13 @@ Rectangle {
 
             TextField {
                 id:title
-<<<<<<< HEAD
-                 anchors.top: parent.top
-                   anchors.left: parent.left
-                   width: mainColumn.width - 50
-                   anchors.topMargin: 18
-                   anchors.leftMargin: 20
-=======
+
                 anchors.top: parent.top
                   anchors.left: parent.left
                 anchors.topMargin: 18
                 anchors.leftMargin: 20
-//                 anchors.top: parent.top
-//                   anchors.left: parent.left
-//                   width: mainColumn.width
-//                   anchors.topMargin: 18
-//                   anchors.leftMargin: 20
->>>>>>> color-fix-and-fonts
+
+
                 placeholderText:"Title"
                 font.family: "merriweather"
                // placeholderTextColor: "#aaaaaa"
