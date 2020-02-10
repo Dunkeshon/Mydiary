@@ -84,7 +84,7 @@ ColumnLayout {
             Rectangle {
                 id: fillRect
                 anchors.fill: parent
-                color: index==listw.currentIndex ? "#5189be"  : "#E5E5E5"
+                color: index==listw.currentIndex ? "#dee4fa"  : "white"
                 Rectangle //
                 {
                     id: bottomSeparator
