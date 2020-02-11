@@ -76,7 +76,7 @@ ColumnLayout {
                     id: bottomSeparator
                     width: parent.width
                     height: 1
-                    color: "black"
+                    color: "#6d84de"
                     anchors.bottom: parent.bottom
                 }
             }
@@ -112,7 +112,6 @@ ColumnLayout {
                     id: modelTitleText
                     anchors.left: parent.left
                     anchors.leftMargin: 10
-
                     text: {
                         if(model.Title.length>=16){
                             return model.Title.substring(0,13)+'...'
