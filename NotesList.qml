@@ -40,6 +40,7 @@ ColumnLayout {
         }
 
         delegate: Item {
+            id: delegate
             width:parent.width
             height: 50
 
@@ -50,28 +51,26 @@ ColumnLayout {
                 hoverEnabled: true
                 anchors.fill: parent
                 onClicked: {
-                    if(listw.currentIndex == -1) { //COPYPASTEK
-                        listw.currentIndex = index
-                        choosen()
-                        return;
+                    if(index == listw.currentIndex) {return}
+                    if(listw.currentIndex != -1) {
+                        changeIndex() // emit signal
                     }
-
-                    if(listw.currentIndex == index) {return;}
-                    //trashButton.state = "current"
-                    changeIndex() // emit signal
                     listw.currentIndex = index
-
                     choosen(); // emit signal
                     // при клике на обьект списка мы сразу переключаем index,
                     // но currentIndex нужно переключать в ручную
                 }
-                cursorShape: Qt.PointingHandCursor
+                onEntered: delegate.state = listw.currentIndex == index ? "delegatePressed" : "delegateEntered"
+                onExited: delegate.state = ""
+                onPressed: delegate.state = "delegatePressed"
+
+                cursorShape: listw.currentIndex == index ? Qt.ArrowCursor : Qt.PointingHandCursor
             }
 
             Rectangle {
                 id: fillRect
                 anchors.fill: parent
-                color: index==listw.currentIndex ? "#dee4fa"  : "white"
+                color: index==listw.currentIndex ? "#93a6ee"  : "white"
                 Rectangle //
                 {
                     id: bottomSeparator
@@ -82,6 +81,18 @@ ColumnLayout {
                 }
             }
 
+            InnerShadow {
+                id: innerRect
+                source: fillRect
+                anchors.fill: fillRect
+                samples: 16
+                radius: 8.0
+                verticalOffset: 3
+                color: "black"
+                opacity: 0.25
+                visible: index == currentIndex ? true : false
+            }
+
 
             Item {
                 id: element
@@ -89,7 +100,8 @@ ColumnLayout {
                 Text {
                     id: modelDateText
                     text: model.Date
-                    color: index==listw.currentIndex ? "black"  : "#8f000000"
+                    color: "black"
+                    opacity: index == currentIndex ? 0.76 : 0.56
                     font.family: "poppins_black"
                     font.pixelSize:12
                     anchors.right: parent.right
@@ -108,17 +120,76 @@ ColumnLayout {
                         return model.Title
                     }
                     anchors.bottom: parent.bottom
-                    color: index==listw.currentIndex ? "#404040"  : "#404040"
+                    color: index==listw.currentIndex ? "#00135F"  : "#404040"
                     anchors.bottomMargin: 5
                     verticalAlignment: Text.AlignVCenter
                     font.family: "merriweather"
-
-
-
-
-                font.pixelSize: 17
+                    font.pixelSize: 17
                 }
             }
+
+            states: [
+                State {
+                    name: "delegateEntered"
+                    PropertyChanges {
+                        target: fillRect
+                        color: "#bbc7f4"
+                    }
+                },
+                State {
+                    name: "delegatePressed"
+                    PropertyChanges {
+                        target: fillRect
+                        color: "#93a6ee"
+                    }
+                }]
+            transitions: [
+                Transition {
+                    from: ""
+                    to: "delegateEntered"
+                    PropertyAnimation {
+                        properties: "color"
+                        duration: 70
+                        easing.type: Easing.OutQuad
+                    }
+
+                },
+                Transition {
+                    from: "delegateEntered"
+                    to: ""
+                    PropertyAnimation {
+                        properties: "color"
+                        duration: 70
+                        easing.type: Easing.InQuad
+                    }
+                },
+                Transition {
+                    from: "delegateEntered"
+                    to: "delegatePressed"
+                    PropertyAnimation {
+                        properties: "color"
+                        duration: 70
+                        easing.type: Easing.OutQuad
+                    }
+                },
+                Transition {
+                    from: "delegatePressed"
+                    to: "delegateEntered"
+                    PropertyAnimation {
+                        properties: "color"
+                        duration: 150
+                        easing.type: Easing.InQuad
+                    }
+                },
+                Transition {
+                    from: "delegatePressed"
+                    to: ""
+                    PropertyAnimation {
+                        properties: "color"
+                        duration: 250
+                        easing.type: Easing.InQuad
+                    }
+                }]
         }
 
         Rectangle {
