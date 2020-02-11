@@ -15,6 +15,7 @@ Window {
     title: qsTr("My Diary")
     FontLoader { id: poppins_black; source:"qrc:/resources/fonts/poppins_/Poppins-Black.ttf"}
     FontLoader { id: merriweather; source:"qrc:/resources/fonts/poppins_/Merriweather-Regular.ttf"}
+
     TopPannel {
         id: topPannel
         height: 31
@@ -33,35 +34,6 @@ Window {
             id:notesList
             Layout.fillWidth: true
         }
-
-        //        RowLayout {
-        //            width: parent.width
-        //            height: 40
-        //            Button {
-        //                Layout.fillWidth: true
-        //                text: "ADD"
-        //                onClicked: {
-        //                    diaryList.addItem()
-        //                    notesList.currentIndex=0
-        //                    updateWindowInformation()
-        //                }
-
-        //            }
-        //            Button {
-        //                Layout.fillWidth: true
-        //                text: "Del"
-        //                onClicked: {
-        //                    if(notesList.currentIndex == -1) { return; }
-        //                    var temp = notesList.currentIndex
-        //                    diaryList.deleteItem(notesList.currentIndex)
-        //                    if(diaryList.endItem(temp)) { temp--; }
-        //                    notesList.currentIndex = temp
-        //                    updateWindowInformation()
-
-
-        //                }
-        //            }
-        //        }
 
         states: [
             State {
@@ -97,13 +69,7 @@ Window {
     Rectangle {
         id: startRect
         visible: true
-
-
-        color:userinput.color //"#33d4d7de"
-       // x: leftColumn.width + verticalSeparator.width
-
-        // color: "#033749"
-
+        color:userinput.color
         width: parent.width - leftColumn.width - verticalSeparator.width
         anchors.top: topPannel.bottom
         anchors.bottom: parent.bottom
@@ -113,6 +79,7 @@ Window {
         Text {
             anchors.centerIn: parent
             font.pixelSize: 17
+            font.family: "merriweather"
             color: "#aaaaaa"
             text: "Choose or Create a Page"
         }
@@ -123,7 +90,6 @@ Window {
 
 
     TextINputWindow {
-
         visible: false
         id: userinput
         width: parent.width - leftColumn.width - verticalSeparator.width

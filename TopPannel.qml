@@ -40,6 +40,7 @@ Item {
                 anchors.fill: leftArrowIcon
                 source: leftArrowIcon
                 color: "#ffffff"
+                visible: leftArrowIcon.visible ? true : false
             }
 
             Image {
@@ -47,7 +48,7 @@ Item {
                 anchors.fill: parent
                 anchors.margins: 7
                 source: "resources/images/rightArrowIcon.svg"
-                visible: false
+                visible: leftArrowIcon.visible ? false : true
             }
 
             ColorOverlay {
@@ -55,7 +56,7 @@ Item {
                 anchors.fill: rightArrowIcon
                 source: rightArrowIcon
                 color: "#ffffff"
-                visible: false
+                visible: rightArrowIcon.visible ? true : false
             }
 
             MouseArea {
@@ -65,14 +66,8 @@ Item {
                     arrowButtonChecked();
                     if(leftArrowIcon.visible) {
                         leftArrowIcon.visible = false
-                        leftArrowColorOverlay.visible = false
-                        rightArrowIcon.visible = true
-                        rightArrowColorOverlay.visible = true
                     } else {
                         leftArrowIcon.visible = true
-                        leftArrowColorOverlay.visible = true
-                        rightArrowIcon.visible = false
-                        rightArrowColorOverlay.visible = false
                     }
                     arrowButton.state = "arrowButtonEntered"
                 }
@@ -149,8 +144,6 @@ Item {
 
         Rectangle {
             id: addButton
-            property alias iconColor: plusColorOverlay
-            property alias iconY: plusIcon.y
             height: parent.height
             width: height
             color: pannel.color

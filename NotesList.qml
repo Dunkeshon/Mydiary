@@ -12,8 +12,8 @@ ColumnLayout {
 
     Layout.fillWidth: true
     Layout.fillHeight: true
-    Layout.minimumWidth: 200
-    Layout.minimumHeight: 150
+//    Layout.minimumWidth: 200
+//    Layout.minimumHeight: 150
 
     signal choosen()
     signal changeIndex();
@@ -71,7 +71,7 @@ ColumnLayout {
                 id: fillRect
                 anchors.fill: parent
                 color: index==listw.currentIndex ? "#93a6ee"  : "white"
-                Rectangle //
+                Rectangle
                 {
                     id: bottomSeparator
                     width: parent.width
@@ -112,15 +112,16 @@ ColumnLayout {
                     id: modelTitleText
                     anchors.left: parent.left
                     anchors.leftMargin: 10
+                    anchors.bottom: parent.bottom
+                    anchors.bottomMargin: 5
                     text: {
                         if(model.Title.length>=16){
                             return model.Title.substring(0,13)+'...'
                         }
                         return model.Title
                     }
-                    anchors.bottom: parent.bottom
+
                     color: index==listw.currentIndex ? "#00135F"  : "#404040"
-                    anchors.bottomMargin: 5
                     verticalAlignment: Text.AlignVCenter
                     font.family: "merriweather"
                     font.pixelSize: 17
@@ -189,37 +190,6 @@ ColumnLayout {
                         easing.type: Easing.InQuad
                     }
                 }]
-        }
-
-        Rectangle {
-            id:trashButton
-            anchors.bottom: parent.bottom
-            anchors.bottomMargin: 1
-            x: parent.width
-            color: "#6d84de"
-            opacity: 0.5
-            width: 21
-            height: 21
-            visible: true
-
-            Image {
-                id: trashIcon
-                source: "resources/images/trash.svg"
-                anchors.fill: parent
-            }
-
-            ColorOverlay {
-                id:trashOverlay
-                anchors.fill: trashIcon
-                source: trashIcon
-                color: "black"
-            }
-            MouseArea{
-                id: trashButtonMouseArea
-                anchors.fill: parent
-                enabled: false
-
-            }
         }
     }
 }

@@ -10,74 +10,64 @@ Rectangle {
     property alias datetext: datetext
     property alias  titletext: title
     property alias usertext: userText
+    color: "#33d4d7de"
 
 
     signal trashButtonChecked()
 
 
+    Component.onCompleted: {
+        mainColumn.trashButtonChecked.connect(deleteButtonRealization)
+    }
 
-    color:"#33d4d7de"
+    Text {
+        id: datetext
+        anchors.top: parent.top
+        anchors.right: parent.right
+        anchors.topMargin: 5
+        anchors.rightMargin: 5
+        font.family: "poppins_black"
+        color: "#8f000000"
+        font.pixelSize: 12
+    }
+
+    Item {
+        id:topItem
+        anchors.top: parent.top
+        anchors.left: parent.left
+        anchors.right: parent.right
+        height:60
 
 
-        Component.onCompleted: {
-            mainColumn.trashButtonChecked.connect(deleteButtonRealization)
-        }
-
-        Text {
-            id: datetext
+        TextField {
+            id:title
+            anchors.topMargin: 18
+            anchors.leftMargin: 20
+            anchors.left: parent.left
             anchors.top: parent.top
-            anchors.right: parent.right
-            anchors.topMargin: 5
-            anchors.rightMargin: 5
-            text: qsTr("Date here")
-            font.family: "poppins_black"
-            color: "#8f000000"
-            font.pixelSize: 12
-        }
+            anchors.right: trashButton.left
+            width: parent.width - 20 - trashButton.width
 
-        Rectangle{
-            id:titleholder
-            anchors.top: parent.top
-              anchors.left: parent.left
-              width: mainColumn.width
+            placeholderText:"Title"
+            font.family: "merriweather"
 
-              height:60
-                color:"#33d4d7de"
-
-
-            TextField {
-                id:title
-
-                anchors.top: parent.top
-                  anchors.left: parent.left
-                anchors.topMargin: 18
-                anchors.leftMargin: 20
-
-
-                placeholderText:"Title"
-                font.family: "merriweather"
-               // placeholderTextColor: "#aaaaaa"
-                //color: "white"
-
-                font.pixelSize: 24
-                maximumLength: 25
-                selectionColor: "#3399FF"
-                selectByMouse: true
-                background: Rectangle {
-                    visible: false
-                }
+            font.pixelSize: 24
+            maximumLength: 40
+            selectionColor: "#3399FF"
+            selectByMouse: true
+            background: Rectangle {
+                visible: false
             }
         }
-//        }
+    }
 
 
 
-    Rectangle {
-        anchors.top: titleholder.bottom//title.bottom
+    Item {
+        anchors.top: topItem.bottom
 
         width: parent.width
         height: parent.height-60
-        color:mainColumn.color
         ScrollView {
             anchors.fill: parent
             anchors.margins: 10
