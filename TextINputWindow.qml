@@ -10,7 +10,7 @@ Rectangle {
     property alias datetext: datetext
     property alias  titletext: title
     property alias usertext: userText
-    color: "#33d4d7de"
+    color: "#f4f5f8"
 
 
     signal trashButtonChecked()
@@ -134,8 +134,8 @@ Rectangle {
             State {
                 name: "trashButtonPressed"
                 PropertyChanges {
-                    target: trashButton
-                    color: "white"
+                    target: trashColorOverlay
+                    color: "black"
                 }
             }]
         transitions: [
