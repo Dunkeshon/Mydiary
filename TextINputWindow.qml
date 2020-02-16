@@ -45,7 +45,6 @@ Rectangle {
             anchors.leftMargin: 20
             anchors.left: parent.left
             anchors.top: parent.top
-            anchors.right: trashButton.left
             width: parent.width - 20 - trashButton.width
 
             placeholderText:"Title"
