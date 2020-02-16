@@ -244,7 +244,7 @@ Item {
             id: searchButton
             height: parent.height
             width: height
-            color: pannel.color
+            color: searchField.state == "" ? pannel.color : searchField.color
             anchors.left: addButton.right
 
             Image {
@@ -255,11 +255,138 @@ Item {
             }
 
             ColorOverlay {
-                id: toolColorOverlay
+                id: searchColorOverlay
                 anchors.fill: searchIcon
                 source: searchIcon
                 color: "#ffffff"
             }
+
+
+            MouseArea {
+                anchors.fill: parent
+                hoverEnabled: true
+                onClicked: {
+
+
+                    searchField.state = searchField.state == "" ? "Active" : ""
+                    searchButton.state = "searchButtonEntered"
+                }
+                onEntered: searchButton.state = "searchButtonEntered"
+                onExited: searchButton.state = ""
+                onPressed: searchButton.state = "searchButtonPressed"
+                cursorShape: Qt.PointingHandCursor
+            }
+
+            SearchField {
+                id: searchField
+                anchors.left: parent.right
+                width: 0
+                height: parent.height
+                visible: false
+
+                states: [
+                    State {
+                        name: "Active"
+                        PropertyChanges {
+                            target: searchField
+                            read: false
+                            visible: true
+                            width: 220
+                        }
+                    }]
+
+                transitions: [
+                    Transition {
+                        from: ""
+                        to: "Active"
+                        PropertyAnimation {
+                            properties: "width"
+                            duration: 300
+                            easing.type: Easing.OutQuad
+                        }
+
+                    },
+                    Transition {
+                        from: "Active"
+                        to: ""
+                        PropertyAnimation {
+                            properties: "width, visible"
+                            duration: 300
+                            easing.type: Easing.InQuad
+                        }
+                    }]
+            }
+
+            states: [
+                State {
+                    name: "searchButtonEntered"
+                    PropertyChanges {
+                        target: searchColorOverlay
+                        color: "#70E883"
+                    }
+                },
+                State {
+                    name: "searchButtonPressed"
+                    PropertyChanges {
+                        target: searchButton
+                        color: "#4c69d7"
+                    }
+                },
+                State {
+                    name: "searchButtonActive"
+                    PropertyChanges {
+                        target: searchButton
+                        color: "#4c69d7"
+                    }
+                }]
+
+            transitions: [
+                Transition {
+                    from: ""
+                    to: "searchButtonEntered"
+                    PropertyAnimation {
+                        properties: "color"
+                        duration: 250
+                        easing.type: Easing.OutQuad
+                    }
+
+                },
+                Transition {
+                    from: "searchButtonEntered"
+                    to: ""
+                    PropertyAnimation {
+                        properties: "color"
+                        duration: 250
+                        easing.type: Easing.InQuad
+                    }
+                },
+                Transition {
+                    from: "searchButtonEntered"
+                    to: "searchButtonPressed"
+                    PropertyAnimation {
+                        properties: "color"
+                        duration: 70
+                        easing.type: Easing.OutQuad
+                    }
+                },
+                Transition {
+                    from: "searchButtonPressed"
+                    to: "searchButtonEntered"
+                    PropertyAnimation {
+                        properties: "color"
+                        duration: 150
+                        easing.type: Easing.InQuad
+                    }
+                },
+                Transition {
+                    from: "searchButtonPressed"
+                    to: ""
+                    PropertyAnimation {
+                        properties: "color"
+                        duration: 250
+                        easing.type: Easing.InQuad
+                    }
+                }]
         }
 
         Rectangle {
