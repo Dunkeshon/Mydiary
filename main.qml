@@ -153,6 +153,7 @@ Window {
 
     function addButtonRealization() {
         diaryList.addItem()
+        updateModelInformation()
         notesList.currentIndex = 0
         updateWindowInformation()
     }
