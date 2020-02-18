@@ -3,10 +3,12 @@ import QtQuick.Window 2.12
 import QtQuick.Controls 2.12
 
 Rectangle {
-    property alias color: mainRect.color
+//    property alias color: mainRect.color
     property alias read: textField.readOnly
+    property alias state: mainRect.state
     id: mainRect
     color: "#617adb"
+    visible: false
 
     TextField {
         id: textField
@@ -30,6 +32,38 @@ Rectangle {
             visible: false
         }
     }
+
+    states: [
+        State {
+            name: "Active"
+            PropertyChanges {
+                target: mainRect
+                read: false
+                visible: true
+                width: 220
+            }
+        }]
+
+    transitions: [
+        Transition {
+            from: ""
+            to: "Active"
+            PropertyAnimation {
+                properties: "width"
+                duration: 250
+                easing.type: Easing.OutQuad
+            }
+
+        },
+        Transition {
+            from: "Active"
+            to: ""
+            PropertyAnimation {
+                properties: "width, visible"
+                duration: 250
+                easing.type: Easing.InQuad
+            }
+        }]
 }
 
 /*##^##
