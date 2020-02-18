@@ -161,7 +161,7 @@ Window {
             return
         }
         if(notesList.model.setData(notesList.model.index(notesList.currentIndex, 0), qsTr(userinput.usertext.text), 259)) {
-            notesList.model.setData(notesList.model.index(notesList.currentIndex, 0), qsTr(""), 260)
+            notesList.model.setData(notesList.model.index(notesList.currentIndex, 0), qsTr("n"), 260)
         }
     }
 

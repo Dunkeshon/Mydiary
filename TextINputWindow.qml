@@ -107,6 +107,24 @@ Rectangle {
         anchors.rightMargin: 3
         anchors.top: edittext.bottom
 
+
+        ToolTip {
+            id:trashButtonToolTip
+            text: qsTr("Delete note")
+            delay: 1000
+            timeout: 5000
+            visible: trashButtonMouseArea.containsMouse ? true : false
+            contentItem: Text {
+                text: trashButtonToolTip.text
+                styleColor: "#ffffff"
+                font.family: "poppins_black"
+                color: "#8f000000"
+            }
+
+            background: Rectangle {
+                border.color: "black"
+            }
+        }
         Image {
             id: trashIcon
             anchors.fill: parent
@@ -122,6 +140,7 @@ Rectangle {
         }
 
         MouseArea {
+            id:trashButtonMouseArea
             anchors.fill: parent
             hoverEnabled: true
             onClicked: {
@@ -188,7 +207,107 @@ Rectangle {
                 }
             },
             Transition {
-                from: "addButtonPressed"
+                from: "trashButtonPressed"
+                to: ""
+                PropertyAnimation {
+                    properties: "color"
+                    duration: 250
+                    easing.type: Easing.InQuad
+                }
+            }]
+    }
+    Rectangle {
+        id: toolButton
+        height: 25
+        width: height
+        color: trashButton.color
+        radius: height
+        anchors.right: trashButton.left
+        anchors.rightMargin: 5
+        anchors.top: edittext.bottom
+
+        Image {
+            id: toolIcon
+            anchors.fill: parent
+            anchors.margins: 3
+            source: "resources/images/toolIcon.svg"
+        }
+
+        ColorOverlay {
+            id: toolButtonColorOverlay
+            anchors.fill: toolIcon
+            source: toolIcon
+            color: "#aaaaaa"
+        }
+
+        MouseArea {
+            anchors.fill: parent
+            hoverEnabled: true
+            onClicked: {
+                toolButtonChecked()
+                toolButton.state = "toolButtonEntered"
+            }
+            onEntered: toolButton.state = "toolButtonEntered"
+            onExited: toolButton.state = ""
+            onPressed: toolButton.state = "toolButtonPressed"
+            cursorShape: Qt.PointingHandCursor
+        }
+
+        states: [
+            State {
+                name: "toolButtonEntered"
+                PropertyChanges {
+                    target: toolButtonColorOverlay
+                    color: "#777777"
+                }
+            },
+            State {
+                name: "toolButtonPressed"
+                PropertyChanges {
+                    target: toolButtonColorOverlay
+                    color: "black"
+                }
+            }]
+        transitions: [
+            Transition {
+                from: ""
+                to: "toolButtonEntered"
+                PropertyAnimation {
+                    properties: "color"
+                    duration: 250
+                    easing.type: Easing.OutQuad
+                }
+
+            },
+            Transition {
+                from: "toolButtonEntered"
+                to: ""
+                PropertyAnimation {
+                    properties: "color"
+                    duration: 250
+                    easing.type: Easing.InQuad
+                }
+            },
+            Transition {
+                from: "toolButtonEntered"
+                to: "toolButtonPressed"
+                PropertyAnimation {
+                    properties: "color"
+                    duration: 70
+                    easing.type: Easing.OutQuad
+                }
+            },
+            Transition {
+                from: "toolButtonPressed"
+                to: "toolButtonEntered"
+                PropertyAnimation {
+                    properties: "color"
+                    duration: 150
+                    easing.type: Easing.InQuad
+                }
+            },
+            Transition {
+                from: "toolButtonPressed"
                 to: ""
                 PropertyAnimation {
                     properties: "color"
