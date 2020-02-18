@@ -15,7 +15,8 @@ public:
     enum{
         DateRole = Qt::UserRole + 1,
         TitleRole,
-        TextRole
+        TextRole,
+        LastEditRole
 
     };
     // Basic functionality:

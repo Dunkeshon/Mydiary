@@ -8,8 +8,9 @@ import QtGraphicalEffects 1.0
 Rectangle {
     id:mainColumn
     property alias datetext: datetext
-    property alias  titletext: title
+    property alias titletext: title
     property alias usertext: userText
+    property alias editText: edittext
     color: "#f4f5f8"
 
 
@@ -23,6 +24,16 @@ Rectangle {
     Text {
         id: datetext
         anchors.top: parent.top
+        anchors.right: parent.right
+        anchors.topMargin: 5
+        anchors.rightMargin: 5
+        font.family: "poppins_black"
+        color: "#8f000000"
+        font.pixelSize: 12
+    }
+    Text {
+        id: edittext
+        anchors.top: datetext.bottom
         anchors.right: parent.right
         anchors.topMargin: 5
         anchors.rightMargin: 5
@@ -94,7 +105,7 @@ Rectangle {
         radius: height
         anchors.right: parent.right
         anchors.rightMargin: 3
-        anchors.top: datetext.bottom
+        anchors.top: edittext.bottom
 
         Image {
             id: trashIcon

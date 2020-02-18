@@ -26,6 +26,7 @@ QVariant DiaryListModel::data(const QModelIndex &index, int role) const
     case DateRole: return QVariant(item.currDate);
     case TitleRole: return QVariant(item.title);
     case TextRole: return QVariant(item.userText);
+    case LastEditRole:return QVariant(item.editDate);
     }
     return QVariant();
 }
@@ -33,6 +34,7 @@ QVariant DiaryListModel::data(const QModelIndex &index, int role) const
 // if we edit a note , that was created today -> add editing date
 // works by checking if we are working with 0 index or not
 // if we will decide to let create multiple notes a day -> change realization
+// if we commit changes and today's date differs from date of first creation -> change edit date
 bool DiaryListModel::setData(const QModelIndex &index, const QVariant &value, int role)
 {
     if(!m_list){
@@ -45,15 +47,17 @@ bool DiaryListModel::setData(const QModelIndex &index, const QVariant &value, in
         case DateRole: item.currDate = value.toString();
             break;
         case TextRole:
-            /*                if(index.row()!=0){  if we edit a note , that was created today -> add editing date
-                                 item.userText = value.toString(); + " [ "+ QDate::currentDate().toString( "'Дата изменения :' dddd, d MMMM yyyy") + " ] " ;
-                                }
-                                else{
-                                 item.userText = value.toString();
-                             }*/
             item.userText = value.toString();
+//            if(item.currDate!=QDate::currentDate().toString("dd.MM.yyyy")){
+//                setData(index,QDate::currentDate().toString("dd.MM.yyyy"),LastEditRole);
+//            }
             break;
         case TitleRole: item.title = value.toString();
+//            if(item.currDate!=QDate::currentDate().toString("dd.MM.yyyy")){
+//                setData(index,QDate::currentDate().toString("dd.MM.yyyy"),LastEditRole);
+//            }
+            break;
+        case LastEditRole:item.editDate=QDate::currentDate().toString("dd.MM.yyyy");
             break;
         }
 
@@ -80,6 +84,7 @@ QHash<int, QByteArray> DiaryListModel::roleNames() const
     Roles[DateRole] = "Date";
     Roles[TextRole] = "Text";
     Roles[TitleRole] = "Title";
+    Roles[LastEditRole]="LastEdit";
     return Roles;
 }
 
