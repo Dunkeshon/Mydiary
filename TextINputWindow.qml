@@ -15,10 +15,12 @@ Rectangle {
 
 
     signal trashButtonChecked()
+    signal toolButtonChecked()
 
 
     Component.onCompleted: {
         mainColumn.trashButtonChecked.connect(deleteButtonRealization)
+        mainColumn.toolButtonChecked.connect(toolButtonRealization)
     }
 
     Text {
@@ -97,224 +99,152 @@ Rectangle {
         }
     }
 
-    Rectangle {
-        id: trashButton
-        height: 25
-        width: height
-        color: parent.color
-        radius: height
-        anchors.right: parent.right
-        anchors.rightMargin: 3
-        anchors.top: edittext.bottom
+//    Rectangle {
+//        id: trashButton
+//        height: 25
+//        width: height
+//        color: parent.color
+//        radius: height
+//        anchors.right: parent.right
+//        anchors.rightMargin: 3
+//        anchors.top: edittext.bottom
 
 
-        ToolTip {
-            id:trashButtonToolTip
-            text: qsTr("Delete note")
-            delay: 1000
-            timeout: 5000
-            visible: trashButtonMouseArea.containsMouse ? true : false
-            contentItem: Text {
-                text: trashButtonToolTip.text
-                styleColor: "#ffffff"
-                font.family: "poppins_black"
-                color: "#8f000000"
-            }
+//        ToolTip {
+//            id:trashButtonToolTip
+//            text: qsTr("Delete note")
+//            delay: 1000
+//            timeout: 5000
+//            visible: trashButtonMouseArea.containsMouse ? true : false
+//            contentItem: Text {
+//                text: trashButtonToolTip.text
+//                styleColor: "#ffffff"
+//                font.family: "poppins_black"
+//                color: "#8f000000"
+//            }
 
-            background: Rectangle {
-                border.color: "black"
-            }
-        }
-        Image {
-            id: trashIcon
-            anchors.fill: parent
-            anchors.margins: 2
-            source: "resources/images/trash.svg"
-        }
+//            background: Rectangle {
+//                border.color: "black"
+//            }
+//        }
+//        Image {
+//            id: trashIcon
+//            anchors.fill: parent
+//            anchors.margins: 2
+//            source: "resources/images/trash.svg"
+//        }
 
-        ColorOverlay {
-            id: trashColorOverlay
-            anchors.fill: trashIcon
-            source: trashIcon
-            color: "#aaaaaa"
-        }
+//        ColorOverlay {
+//            id: trashColorOverlay
+//            anchors.fill: trashIcon
+//            source: trashIcon
+//            color: "#aaaaaa"
+//        }
 
-        MouseArea {
-            id:trashButtonMouseArea
-            anchors.fill: parent
-            hoverEnabled: true
-            onClicked: {
-                trashButtonChecked()
-                trashButton.state = "trashButtonEntered"
-            }
-            onEntered: trashButton.state = "trashButtonEntered"
-            onExited: trashButton.state = ""
-            onPressed: trashButton.state = "trashButtonPressed"
-            cursorShape: Qt.PointingHandCursor
-        }
+//        MouseArea {
+//            id:trashButtonMouseArea
+//            anchors.fill: parent
+//            hoverEnabled: true
+//            onClicked: {
+//                trashButtonChecked()
+//                trashButton.state = "trashButtonEntered"
+//            }
+//            onEntered: trashButton.state = "trashButtonEntered"
+//            onExited: trashButton.state = ""
+//            onPressed: trashButton.state = "trashButtonPressed"
+//            cursorShape: Qt.PointingHandCursor
+//        }
 
-        states: [
-            State {
-                name: "trashButtonEntered"
-                PropertyChanges {
-                    target: trashColorOverlay
-                    color: "#777777"
-                }
-            },
-            State {
-                name: "trashButtonPressed"
-                PropertyChanges {
-                    target: trashColorOverlay
-                    color: "black"
-                }
-            }]
-        transitions: [
-            Transition {
-                from: ""
-                to: "trashButtonEntered"
-                PropertyAnimation {
-                    properties: "color"
-                    duration: 250
-                    easing.type: Easing.OutQuad
-                }
+//        states: [
+//            State {
+//                name: "trashButtonEntered"
+//                PropertyChanges {
+//                    target: trashColorOverlay
+//                    color: "#777777"
+//                }
+//            },
+//            State {
+//                name: "trashButtonPressed"
+//                PropertyChanges {
+//                    target: trashColorOverlay
+//                    color: "black"
+//                }
+//            }]
+//        transitions: [
+//            Transition {
+//                from: ""
+//                to: "trashButtonEntered"
+//                PropertyAnimation {
+//                    properties: "color"
+//                    duration: 250
+//                    easing.type: Easing.OutQuad
+//                }
 
-            },
-            Transition {
-                from: "trashButtonEntered"
-                to: ""
-                PropertyAnimation {
-                    properties: "color"
-                    duration: 250
-                    easing.type: Easing.InQuad
-                }
-            },
-            Transition {
-                from: "trashButtonEntered"
-                to: "trashButtonPressed"
-                PropertyAnimation {
-                    properties: "color"
-                    duration: 70
-                    easing.type: Easing.OutQuad
-                }
-            },
-            Transition {
-                from: "trashButtonPressed"
-                to: "trashButtonEntered"
-                PropertyAnimation {
-                    properties: "color"
-                    duration: 150
-                    easing.type: Easing.InQuad
-                }
-            },
-            Transition {
-                from: "trashButtonPressed"
-                to: ""
-                PropertyAnimation {
-                    properties: "color"
-                    duration: 250
-                    easing.type: Easing.InQuad
-                }
-            }]
+//            },
+//            Transition {
+//                from: "trashButtonEntered"
+//                to: ""
+//                PropertyAnimation {
+//                    properties: "color"
+//                    duration: 250
+//                    easing.type: Easing.InQuad
+//                }
+//            },
+//            Transition {
+//                from: "trashButtonEntered"
+//                to: "trashButtonPressed"
+//                PropertyAnimation {
+//                    properties: "color"
+//                    duration: 70
+//                    easing.type: Easing.OutQuad
+//                }
+//            },
+//            Transition {
+//                from: "trashButtonPressed"
+//                to: "trashButtonEntered"
+//                PropertyAnimation {
+//                    properties: "color"
+//                    duration: 150
+//                    easing.type: Easing.InQuad
+//                }
+//            },
+//            Transition {
+//                from: "trashButtonPressed"
+//                to: ""
+//                PropertyAnimation {
+//                    properties: "color"
+//                    duration: 250
+//                    easing.type: Easing.InQuad
+//                }
+//            }]
+//    }
+
+    OurButton{
+        id:trashButton
+        sourceImage: "resources/images/trash.svg"
+                anchors.right: parent.right
+                anchors.rightMargin: 3
+                anchors.top: edittext.bottom
+            clickable.onClicked:trashButtonChecked()
+            imageMargin: 2
+            toolTipText: qsTr("Delete note")
     }
+
+    OurButton{
+        id:toolButton
+        sourceImage: "resources/images/toolIcon.svg"
+                anchors.right: trashButton.left
+                anchors.rightMargin: 5
+                anchors.top: edittext.bottom
+                clickable.onClicked: toolButtonChecked()
+        toolTipText: qsTr("Edit mode")
+    }
+
+
     Rectangle {
-        id: toolButton
-        height: 25
-        width: height
-        color: trashButton.color
-        radius: height
-        anchors.right: trashButton.left
-        anchors.rightMargin: 5
-        anchors.top: edittext.bottom
+        id: infoButton
 
-        Image {
-            id: toolIcon
-            anchors.fill: parent
-            anchors.margins: 3
-            source: "resources/images/toolIcon.svg"
-        }
 
-        ColorOverlay {
-            id: toolButtonColorOverlay
-            anchors.fill: toolIcon
-            source: toolIcon
-            color: "#aaaaaa"
-        }
-
-        MouseArea {
-            anchors.fill: parent
-            hoverEnabled: true
-            onClicked: {
-                toolButtonChecked()
-                toolButton.state = "toolButtonEntered"
-            }
-            onEntered: toolButton.state = "toolButtonEntered"
-            onExited: toolButton.state = ""
-            onPressed: toolButton.state = "toolButtonPressed"
-            cursorShape: Qt.PointingHandCursor
-        }
-
-        states: [
-            State {
-                name: "toolButtonEntered"
-                PropertyChanges {
-                    target: toolButtonColorOverlay
-                    color: "#777777"
-                }
-            },
-            State {
-                name: "toolButtonPressed"
-                PropertyChanges {
-                    target: toolButtonColorOverlay
-                    color: "black"
-                }
-            }]
-        transitions: [
-            Transition {
-                from: ""
-                to: "toolButtonEntered"
-                PropertyAnimation {
-                    properties: "color"
-                    duration: 250
-                    easing.type: Easing.OutQuad
-                }
-
-            },
-            Transition {
-                from: "toolButtonEntered"
-                to: ""
-                PropertyAnimation {
-                    properties: "color"
-                    duration: 250
-                    easing.type: Easing.InQuad
-                }
-            },
-            Transition {
-                from: "toolButtonEntered"
-                to: "toolButtonPressed"
-                PropertyAnimation {
-                    properties: "color"
-                    duration: 70
-                    easing.type: Easing.OutQuad
-                }
-            },
-            Transition {
-                from: "toolButtonPressed"
-                to: "toolButtonEntered"
-                PropertyAnimation {
-                    properties: "color"
-                    duration: 150
-                    easing.type: Easing.InQuad
-                }
-            },
-            Transition {
-                from: "toolButtonPressed"
-                to: ""
-                PropertyAnimation {
-                    properties: "color"
-                    duration: 250
-                    easing.type: Easing.InQuad
-                }
-            }]
     }
 }
 

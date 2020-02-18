@@ -138,18 +138,20 @@ Window {
         userinput.usertext.text = notesList.model.data(notesList.model.index(notesList.currentIndex, 0), 259)
         userinput.editText.text = notesList.model.data(notesList.model.index(notesList.currentIndex, 0), 260)
         if(userinput.editText.text == userinput.datetext.text){
-            userinput.editText.visible=false // read only or not?
-             console.log("aaa")
+            userinput.editText.visible=false
+             console.log("current date ")
         }
         else{
-            userinput.editText.visible=true // read only or not?
-            console.log(userinput.editText.text = notesList.model.data(notesList.model.index(notesList.currentIndex, 0), 260))
-            console.log(userinput.usertext.text = notesList.model.data(notesList.model.index(notesList.currentIndex, 0), 259))
+            userinput.editText.visible=true
+            console.log("old date :")
+            console.log(  userinput.editText.text = notesList.model.data(notesList.model.index(notesList.currentIndex, 0), 260))
+            console.log("old note text :")
+            console.log(  userinput.usertext.text = notesList.model.data(notesList.model.index(notesList.currentIndex, 0), 259))
         }
     }
 
     // don't change data if we don't change anything
-    // after committing changes
+    // after committing changes sets the date of editing
     function updateModelInformation() {
         if(notesList.currentIndex==-1){
             return
@@ -186,6 +188,9 @@ Window {
         if(diaryList.endItem(temp)) { temp--; }
         notesList.currentIndex = temp
         updateWindowInformation()
+    }
+    function toolButtonRealization(){
+        console.log("tool button pressed")
     }
 
 

@@ -4,6 +4,7 @@
         <file>TextINputWindow.qml</file>
         <file>NotesList.qml</file>
         <file>TopPannel.qml</file>
+        <file>OurButton.qml</file>
     </qresource>
     <qresource prefix="/resources">
         <file>images/plusIcon.svg</file>
