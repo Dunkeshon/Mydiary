@@ -12,8 +12,6 @@ ColumnLayout {
 
     Layout.fillWidth: true
     Layout.fillHeight: true
-//    Layout.minimumWidth: 200
-//    Layout.minimumHeight: 150
 
     signal choosen()
     signal changeIndex();
@@ -26,7 +24,7 @@ ColumnLayout {
         clip: true
         focus:true
 
-        model:DiaryModel{
+        model: DiaryModel{
             list: diaryList
         }
 
@@ -191,6 +189,9 @@ ColumnLayout {
                     }
                 }]
         }
+    }
+    function model() {
+        return listw.model;
     }
 }
 

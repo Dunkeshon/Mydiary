@@ -2,6 +2,7 @@
 #define DIARYLISTMODEL_H
 
 #include <QAbstractListModel>
+#include <QSortFilterProxyModel>
 
 class DiaryList;
 
@@ -12,7 +13,7 @@ class DiaryListModel : public QAbstractListModel
 
 public:
     explicit DiaryListModel(QObject *parent = nullptr);
-    enum{
+    enum {
         DateRole = Qt::UserRole + 1,
         TitleRole,
         TextRole
@@ -33,6 +34,7 @@ public:
     DiaryList *list()const;
     void setList(DiaryList *list);
 
+    QSortFilterProxyModel proxy;
 private:
     DiaryList* m_list;
 };
