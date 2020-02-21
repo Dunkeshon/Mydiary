@@ -16,6 +16,7 @@ Window {
     FontLoader { id: poppins_black; source:"qrc:/resources/fonts/poppins_/Poppins-Black.ttf"}
     FontLoader { id: merriweather; source:"qrc:/resources/fonts/poppins_/Merriweather-Regular.ttf"}
 
+
     TopPannel {
         id: topPannel
         height: 31
@@ -139,7 +140,7 @@ Window {
         userinput.editText.text = notesList.model.data(notesList.model.index(notesList.currentIndex, 0), 260)
         if(userinput.editText.text == userinput.datetext.text){
             userinput.editText.visible=false
-             console.log("current date ")
+            console.log("current date ")
         }
         else{
             userinput.editText.visible=true
