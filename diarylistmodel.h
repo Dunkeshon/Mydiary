@@ -34,6 +34,7 @@ public:
     DiaryList *list()const;
     void setList(DiaryList *list);
 
+    Q_INVOKABLE QString returnCurrentDate();
 private:
     DiaryList* m_list;
 };

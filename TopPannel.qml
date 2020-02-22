@@ -20,32 +20,45 @@ Item {
 
         BUTTON {
             id: arrowButton
-            height: parent.height
-            width: height
-            color: pannel.color
+            size: parent.height
+            bColor: pannel.color
             anchors.left: parent.left
             iconSource: "resources/images/leftArrowIcon.svg"
+            iconMargins: 6
+
+            enteredColor: "#dddddd"
+            pressedColor: "#4c69d7"
+            toolTipText: "Hide"
             mousearea.onClicked: {
+                toolTipText = toolTipText == "Hide" ? "Show" : "Hide"
                 iconRotation = iconRotation == 0 ? 180 : 0
             }
         }
 
         BUTTON  {
             id: addButton
-            height: parent.height
-            width: height
-            color: pannel.color
+            size: parent.height
+            bColor: pannel.color
             anchors.left: arrowButton.right
             iconSource: "resources/images/plusIcon.svg"
+            iconMargins: 6
+
+            enteredColor: "#dddddd"
+            pressedColor: "#4c69d7"
+            toolTipText: "Add Page"
         }
 
         BUTTON {
             id: searchButton
-            height: parent.height
-            width: height
-            color: searchField.state == "" ? pannel.color : searchField.color
+            size: parent.height
+            bColor: searchField.state == "" ? pannel.color : searchField.color
             anchors.left: addButton.right
             iconSource: "resources/images/searchIcon.svg"
+            iconMargins: 6
+
+            enteredColor: "#dddddd"
+            pressedColor: "#4c69d7"
+            toolTipText: "Search"
             mousearea.onClicked: {
                 searchField.state = searchField.state == "" ? "Active" : ""
             }
@@ -56,6 +69,19 @@ Item {
                 width: 0
                 height: parent.height
             }
+        }
+
+        BUTTON  {
+            id: settingsButton
+            size: parent.height
+            bColor: pannel.color
+            anchors.right: parent.right
+            iconSource: "resources/images/settingsIcon.svg"
+            iconMargins: 6
+
+            enteredColor: "#dddddd"
+            pressedColor: "#4c69d7"
+            toolTipText: "Settings"
         }
     }
 }

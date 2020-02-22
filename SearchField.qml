@@ -4,7 +4,7 @@ import QtQuick.Controls 2.12
 
 Rectangle {
 //    property alias color: mainRect.color
-    property alias read: textField.readOnly
+    property alias readonly: textField.readOnly
     property alias state: mainRect.state
     id: mainRect
     color: "#617adb"
@@ -38,7 +38,7 @@ Rectangle {
             name: "Active"
             PropertyChanges {
                 target: mainRect
-                read: false
+                readonly: false
                 visible: true
                 width: 220
             }

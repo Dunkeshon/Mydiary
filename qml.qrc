@@ -6,12 +6,10 @@
         <file>TopPannel.qml</file>
         <file>SearchField.qml</file>
         <file>BUTTON.qml</file>
-        <file>OurButton.qml</file>
     </qresource>
     <qresource prefix="/resources">
         <file>images/plusIcon.svg</file>
         <file>images/leftArrowIcon.svg</file>
-        <file>images/rightArrowIcon.svg</file>
         <file>images/settingsIcon.svg</file>
         <file>images/trash.svg</file>
         <file>images/toolIcon.svg</file>
@@ -19,5 +17,7 @@
         <file>fonts/poppins_/Poppins-Black.ttf</file>
         <file>fonts/poppins_/Merriweather-Regular.ttf</file>
         <file>images/searchIcon.svg</file>
+        <file>images/themeIcon.svg</file>
+        <file>images/infoIcon.svg</file>
     </qresource>
 </RCC>

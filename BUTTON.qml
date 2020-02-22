@@ -5,19 +5,33 @@ import QtQuick.Layouts 1.12
 import QtGraphicalEffects 1.0
 
 Rectangle {
-    property alias color: button.color
+    //override
     property alias iconSource: buttonIcon.source
-    property alias iconColor: buttonColorOverlay.color
-    property alias iconRotation: buttonColorOverlay.rotation
-    property alias mousearea: buttonArea
-    id: button
+    property var size: 0
+    property var iconMargins: 0
+    property color iconColor: "white"
+    property color bColor: "white"
+    property color enteredColor: "white"
+    property color pressedColor: "white"
+    property var toolTipText: "nothing"
 
-    signal buttonChecked()
+
+
+    property alias mousearea: buttonArea
+    property alias iconRotation: buttonColorOverlay.rotation
+    property bool changePressedTargetOnColorOverlay: false
+
+    id: button
+    color: bColor
+    width: size
+    height: size
+
+    signal buttonChecked() //connect
 
     Image {
         id: buttonIcon
         anchors.fill: parent
-        anchors.margins: 6
+        anchors.margins: iconMargins
         visible: false
     }
 
@@ -26,7 +40,7 @@ Rectangle {
         anchors.fill: buttonIcon
         source: buttonIcon
         transformOrigin: Item.Center
-        color: "#ffffff"
+        color: iconColor
     }
 
     MouseArea {
@@ -43,19 +57,32 @@ Rectangle {
         cursorShape: Qt.PointingHandCursor
     }
 
+    ToolTip {
+        id:buttonToolTip
+        delay: 1000
+        timeout: 5000
+        visible: mousearea.containsMouse ? true : false
+        contentItem: Text {
+            text: toolTipText
+            styleColor: "#ffffff"
+            font.family: "poppins_black"
+            color: "#8f000000"
+        }
+    }
+
     states: [
         State {
             name: "buttonEntered"
             PropertyChanges {
                 target: buttonColorOverlay
-                color: "#dddddd"
+                color: enteredColor
             }
         },
         State {
             name: "buttonPressed"
             PropertyChanges {
-                target: button
-                color: "#4c69d7"
+                target: changePressedTargetOnColorOverlay ? buttonColorOverlay : button
+                color: pressedColor
             }
         }]
     transitions: [
