@@ -48,7 +48,7 @@ Rectangle {
             name: "buttonEntered"
             PropertyChanges {
                 target: buttonColorOverlay
-                color: "#70E883"
+                color: "#dddddd"
             }
         },
         State {

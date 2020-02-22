@@ -2,7 +2,6 @@
 #define DIARYLISTMODEL_H
 
 #include <QAbstractListModel>
-#include <QSortFilterProxyModel>
 
 class DiaryList;
 
@@ -34,7 +33,6 @@ public:
     DiaryList *list()const;
     void setList(DiaryList *list);
 
-    QSortFilterProxyModel proxy;
 private:
     DiaryList* m_list;
 };

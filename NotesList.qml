@@ -190,9 +190,6 @@ ColumnLayout {
                 }]
         }
     }
-    function model() {
-        return listw.model;
-    }
 }
 
 
