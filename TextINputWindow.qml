@@ -92,11 +92,9 @@ Rectangle {
                 font.pixelSize: 18
                 font.family: "merriweather"
                 wrapMode: TextArea.WordWrap
-
                 selectByMouse: true
                 selectionColor: "#3399FF"
                 focus: true
-
             }
             Text {
                 id: editDateDescription
@@ -194,7 +192,6 @@ Rectangle {
                     font.pixelSize: 12
                 }
             }
-
         }
 
 

@@ -101,7 +101,7 @@ Window {
 
 
 
-        titletext.onEditingFinished: {
+        titletext.onTextChanged: {
             updateModelInformation()
         }
         usertext.onEditingFinished: {
