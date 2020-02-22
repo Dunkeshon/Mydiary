@@ -5,11 +5,13 @@ import QtQuick.Layouts 1.12
 import QtGraphicalEffects 1.0
 
 Item {
+    property alias searchfield: searchField
     id: mainItem
 
     Component.onCompleted: {
         addButton.buttonChecked.connect(addButtonRealization)
         arrowButton.buttonChecked.connect(arrowButtonRealization)
+        searchField.searchFinished.connect(updateProxyModel)
     }
 
 

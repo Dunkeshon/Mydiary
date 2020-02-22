@@ -16,7 +16,8 @@ DEFINES += QT_DEPRECATED_WARNINGS
 SOURCES += \
         diarylist.cpp \
         diarylistmodel.cpp \
-        main.cpp
+        main.cpp \
+        sortfilterproxymodel.cpp
 
 RESOURCES += qml.qrc
 
@@ -33,6 +34,7 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 
 HEADERS += \
     diarylist.h \
-    diarylistmodel.h
+    diarylistmodel.h \
+    sortfilterproxymodel.h
 
 DISTFILES +=

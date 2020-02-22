@@ -193,6 +193,13 @@ Window {
     function toolButtonRealization(){
         console.log("tool button pressed")
     }
+   function updateProxyModel(searchText){
+       console.log("start search")
+
+       notesList.sortModel.setFilterRegularExpression(searchText)  //setFilterFixedString(searchText)  //  setFilterRegularExpression(searchText)
+       console.log("finish search")
+
+   }
 
 
 

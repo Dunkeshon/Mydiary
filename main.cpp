@@ -4,6 +4,7 @@
 #include <QSettings>
 #include "diarylist.h"
 #include "diarylistmodel.h"
+#include "sortfilterproxymodel.h"
 
 
 int main(int argc, char *argv[])
@@ -16,6 +17,8 @@ int main(int argc, char *argv[])
     QCoreApplication::setApplicationName("MyDiary");
 
     qmlRegisterType<DiaryListModel>("Diary",1,0,"DiaryModel");
+    qmlRegisterType<SortFilterProxyModel>("Diary",1,0,"SortFilterProxyModel");
+
     qmlRegisterUncreatableType<DiaryList>("Diary",1,0,"DiaryList",
          QStringLiteral("This object should not be created in qml"));
 

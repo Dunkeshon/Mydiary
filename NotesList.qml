@@ -9,6 +9,7 @@ ColumnLayout {
     id:column
     property alias currentIndex: listw.currentIndex
     property alias model: listw.model
+    property alias sortModel: sortModel
 
     Layout.fillWidth: true
     Layout.fillHeight: true
@@ -24,9 +25,34 @@ ColumnLayout {
         clip: true
         focus:true
 
-        model: DiaryModel{
+
+        DiaryModel
+        {
+            id:myModel
             list: diaryList
         }
+        model: SortFilterProxyModel
+        {
+            id:sortModel
+            sourceModel:myModel
+          //  filterCaseSensitivity:Qt.CaseSensitive
+            filterRole:258
+
+
+
+            //filterRegExp: (topPannel.searchfield.text)
+           // filterRegularExpression:topPannel.searchfield.text
+            ///*filterRegularExpression:*/ setFilterRegularExpression(topPannel.searchfield.text)
+//             filters: [
+//                 RegExpFilter {
+//                                     roleName: "lastName"
+//                                     pattern: textField.text
+//                                     caseSensitivity: Qt.CaseInsensitive
+//                                 }
+//             ]
+
+
+       }
 
         Component.onCompleted: {
             listw.currentIndex = -1
@@ -34,6 +60,8 @@ ColumnLayout {
             column.choosen.connect(updateWindowInformation)
 
             column.changeIndex.connect(updateModelInformation);
+
+           // /*filterRegularExpression:*/sortModel.setFilterRegularExpression(topPannel.searchfield.text)
 
         }
 

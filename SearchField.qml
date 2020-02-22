@@ -6,11 +6,18 @@ Rectangle {
 //    property alias color: mainRect.color
     property alias read: textField.readOnly
     property alias state: mainRect.state
+    property alias text: textField.text
     id: mainRect
     color: "#617adb"
     visible: false
+    signal searchFinished(var searchText)
+
 
     TextField {
+        onTextChanged: {
+            searchFinished(text)
+        }
+
         id: textField
         anchors.fill: parent
         font.pixelSize: 15
@@ -64,6 +71,7 @@ Rectangle {
                 easing.type: Easing.InQuad
             }
         }]
+
 }
 
 /*##^##
