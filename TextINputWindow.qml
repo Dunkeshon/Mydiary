@@ -121,10 +121,12 @@ Rectangle {
         bColor: parent.color
         iconColor: "#aaaaaa"
         toolTipText: {
+            toolDelay=0
+            toolTimeout=0
             if(editInfo === "" || editInfo === dateInfo) {
                 return "Created: " + dateInfo
             }
-            return "Created: " + dateInfo + "\nEdited: " + editInfo
+            return "Created: " + dateInfo + "\nEdited:   " + editInfo
         }
 
         changePressedTargetOnColorOverlay: true

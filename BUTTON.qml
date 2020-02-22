@@ -14,6 +14,9 @@ Rectangle {
     property color enteredColor: "white"
     property color pressedColor: "white"
     property var toolTipText: "nothing"
+    property int toolDelay: 1000
+    property int toolTimeout: 5000
+
 
 
 
@@ -59,8 +62,8 @@ Rectangle {
 
     ToolTip {
         id:buttonToolTip
-        delay: 1000
-        timeout: 5000
+        delay: toolDelay
+        timeout: toolTimeout
         visible: mousearea.containsMouse ? true : false
         contentItem: Text {
             text: toolTipText
