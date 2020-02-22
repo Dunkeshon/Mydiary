@@ -134,11 +134,11 @@ Window {
             startRect.visible=true;
             return
         }
-        userinput.datetext.text = notesList.model.data(notesList.model.index(notesList.currentIndex, 0), 257)
+        userinput.dateInfo = notesList.model.data(notesList.model.index(notesList.currentIndex, 0), 257)
         userinput.titletext.text = notesList.model.data(notesList.model.index(notesList.currentIndex, 0), 258)
         userinput.usertext.text = notesList.model.data(notesList.model.index(notesList.currentIndex, 0), 259)
-        userinput.editText.text = notesList.model.data(notesList.model.index(notesList.currentIndex, 0), 260)
-        if(userinput.editText.text == userinput.datetext.text){
+        userinput.editInfo = notesList.model.data(notesList.model.index(notesList.currentIndex, 0), 260)
+        /*if(userinput.editInfo == userinput.dateInfo){
             userinput.editText.visible=false
             console.log("current date ")
         }
@@ -148,12 +148,13 @@ Window {
             console.log(  userinput.editText.text = notesList.model.data(notesList.model.index(notesList.currentIndex, 0), 260))
             console.log("old note text :")
             console.log(  userinput.usertext.text = notesList.model.data(notesList.model.index(notesList.currentIndex, 0), 259))
-        }
+        }*/
     }
 
     // don't change data if we don't change anything
     // after committing changes sets the date of editing
     function updateModelInformation() {
+
         if(notesList.currentIndex==-1){
             return
         }
@@ -170,6 +171,7 @@ Window {
 
     function addButtonRealization() {
         diaryList.addItem()
+        notesList.currentIndex+=1
         updateModelInformation()
         notesList.currentIndex = 0
         updateWindowInformation()
@@ -193,6 +195,7 @@ Window {
     function toolButtonRealization(){
         console.log("tool button pressed")
     }
+<<<<<<< HEAD
    function updateProxyModel(searchText){
        console.log("start search")
 
@@ -200,6 +203,13 @@ Window {
        console.log("finish search")
 
    }
+=======
+    function checkDate() {
+        if(userinput.dateInfo === notesList.model.returnCurrentDate())
+            return true
+        return false
+    }
+>>>>>>> 21e314c18b5021fa0716c44c613803b4405d9b84
 
 
 

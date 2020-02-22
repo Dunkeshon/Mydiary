@@ -7,44 +7,17 @@ import QtGraphicalEffects 1.0
 
 Rectangle {
     id:mainColumn
-    property alias datetext: datetext
+    property var dateInfo
+    property var editInfo
     property alias titletext: title
     property alias usertext: userText
-    property alias editText: edittext
     color: "#f4f5f8"
    // onFocusChanged:console.log("focus changed ")
 
-
-    signal trashButtonChecked()
-    signal toolButtonChecked()
-
-
     Component.onCompleted: {
-        mainColumn.trashButtonChecked.connect(deleteButtonRealization)
-        mainColumn.toolButtonChecked.connect(toolButtonRealization)
+        trashButton.buttonChecked.connect(deleteButtonRealization)
+        toolButton.buttonChecked.connect(toolButtonRealization)
     }
-
-//    Text {
-//        id: datetext
-//        anchors.top: parent.top
-//        anchors.right: parent.right
-//        anchors.topMargin: 5
-//        anchors.rightMargin: 5
-//        font.family: "poppins_black"
-//        color: "#8f000000"
-//        font.pixelSize: 12
-//    }
-
-//    Text {
-//        id: edittext
-//        anchors.top: datetext.bottom
-//        anchors.right: parent.right
-//        anchors.topMargin: 5
-//        anchors.rightMargin: 5
-//        font.family: "poppins_black"
-//        color: "#8f000000"
-//        font.pixelSize: 12
-//    }
 
     Item {
         id:topItem
@@ -81,7 +54,7 @@ Rectangle {
         anchors.top: topItem.bottom
 
         width: parent.width
-        height: parent.height- 60
+        height: parent.height - topItem.height
         ScrollView {
             anchors.fill: parent
             anchors.margins: 10
@@ -96,46 +69,53 @@ Rectangle {
                 selectionColor: "#3399FF"
                 focus: true
             }
-            Text {
-                id: editDateDescription
-                anchors.left: userText.right
-                text: qsTr("Edited: ")
-                font.family: "Al Bayan"
-            }
-
         }
     }
 
 
-
-    OurButton{
+    BUTTON {
         id:trashButton
-        sourceImage: "resources/images/trash.svg"
+        size: 25
         anchors.right: parent.right
         anchors.margins: 3
         anchors.top: parent.top
-        clickable.onClicked:trashButtonChecked()
-        imageMargin: 2
-        toolTipText: qsTr("Delete note")
+        iconSource: "resources/images/trash.svg"
+        iconMargins: 2
+        bColor: parent.color
+        iconColor: "#aaaaaa"
+        toolTipText: "Delete page"
+
+        changePressedTargetOnColorOverlay: true
+        enteredColor: "#777777"
+        pressedColor: "black"
     }
 
-    OurButton{
+    BUTTON {
         id:toolButton
-        sourceImage: "resources/images/toolIcon.svg"
+        size: 25
         anchors.right: trashButton.left
-        anchors.rightMargin: 5
+        anchors.margins: 3
         anchors.top: parent.top
-        anchors.topMargin: 3
+        iconSource: "resources/images/toolIcon.svg"
+        iconMargins: 2
+        bColor: parent.color
+        iconColor: "#aaaaaa"
+        toolTipText: "Edit page"
 
-        clickable.onClicked: toolButtonChecked()
-        toolTipText: qsTr("Edit mode")
+        changePressedTargetOnColorOverlay: true
+        enteredColor: "#777777"
+        pressedColor: "black"
+
+        visible: checkDate() ? false : true
     }
 
-
-    Rectangle {
-        anchors.right: toolButton.left
-        anchors.margins: 5
+    BUTTON {
+        id:infoButton
+        size: 25
+        anchors.right: toolButton.visible ? toolButton.left : trashButton.left
+        anchors.margins: 3
         anchors.top: parent.top
+<<<<<<< HEAD
         anchors.topMargin: 3
       //  anchors.top: parent.top
         id: infoButton
@@ -203,54 +183,25 @@ Rectangle {
 
                 infoRect.visible=true
 
+=======
+        iconSource: "resources/images/infoIcon.svg"
+        iconMargins: 2
+        bColor: parent.color
+        iconColor: "#aaaaaa"
+        toolTipText: {
+            if(editInfo === "" || editInfo === dateInfo) {
+                return "Created: " + dateInfo
+>>>>>>> 21e314c18b5021fa0716c44c613803b4405d9b84
             }
+            return "Created: " + dateInfo + "\nEdited: " + editInfo
         }
 
+        changePressedTargetOnColorOverlay: true
+        enteredColor: "#777777"
+        pressedColor: "#777777"
     }
 
-//    Rectangle{
-//        id: infoRect
-//        anchors.top: infoButton.bottom
-//        //anchors.horizontalCenter:infoButton.horizontalCenter
-//     visible: false
-//        Text{
-//            id:datetextinfo
-//            anchors.left: parent.left
-//            anchors.top: parent.top
-//            anchors.margins: 5
-//            text: "Date of creation : "
-//        }
 
-//        Text {
-//            id: datetext
-//            anchors.top: parent.top
-//            anchors.right: parent.right
-//            anchors.left:datetextinfo.right
-//            anchors.margins: 5
-//            font.family: "poppins_black"
-//            color: "#8f000000"
-//            font.pixelSize: 12
-//        }
-
-//        Text{
-//            id:editTextInfo
-//            anchors.left: parent.left
-//            anchors.bottom: parent.bottom
-//            anchors.margins: 5
-//            text: "Last editing : "
-//        }
-//        Text {
-//            id: edittext
-//            anchors.top: datetext.bottom
-//            anchors.right: parent.right
-//            anchors.left: editTextInfo.right
-//            anchors.margins: 5
-//            font.family: "poppins_black"
-//            color: "#8f000000"
-//            font.pixelSize: 12
-//        }
-
-//    }
 }
 
 /*##^##
