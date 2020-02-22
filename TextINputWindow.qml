@@ -115,75 +115,7 @@ Rectangle {
         anchors.right: toolButton.visible ? toolButton.left : trashButton.left
         anchors.margins: 3
         anchors.top: parent.top
-<<<<<<< HEAD
-        anchors.topMargin: 3
-      //  anchors.top: parent.top
-        id: infoButton
-        width: 25
-        height: width
-        radius: height
-        color: "black"//parent.color
-        ToolTip {
-            id:infoField
 
-            visible: infoArea.containsMouse ? true : false
-            contentItem:
-//                text: toolTipText
-//                styleColor: "#ffffff"
-//                font.family: "poppins_black"
-//                color: "#8f000000"
-//            }
-                Item {
-                id: infoContent
-                Text{
-                    id:datetextinfo
-                    anchors.left: parent.left
-                    anchors.top: parent.top
-                    anchors.margins: 5
-                    text: "Date of creation : "
-                }
-
-                Text {
-                    id: datetext
-                    anchors.top: parent.top
-                    anchors.right: parent.right
-                    anchors.left:datetextinfo.right
-                    anchors.margins: 5
-                    font.family: "poppins_black"
-                    color: "#8f000000"
-                    font.pixelSize: 12
-                }
-
-                Text{
-                    id:editTextInfo
-                    anchors.left: parent.left
-                    anchors.bottom: parent.bottom
-                    anchors.margins: 5
-                    text: "Last editing : "
-                }
-                Text {
-                    id: edittext
-                    anchors.top: datetext.bottom
-                    anchors.right: parent.right
-                    anchors.left: editTextInfo.right
-                    anchors.margins: 5
-                    font.family: "poppins_black"
-                    color: "#8f000000"
-                    font.pixelSize: 12
-                }
-            }
-        }
-
-
-        MouseArea{
-            id:infoArea
-            anchors.fill: parent
-
-            onClicked: {
-
-                infoRect.visible=true
-
-=======
         iconSource: "resources/images/infoIcon.svg"
         iconMargins: 2
         bColor: parent.color
@@ -191,7 +123,6 @@ Rectangle {
         toolTipText: {
             if(editInfo === "" || editInfo === dateInfo) {
                 return "Created: " + dateInfo
->>>>>>> 21e314c18b5021fa0716c44c613803b4405d9b84
             }
             return "Created: " + dateInfo + "\nEdited: " + editInfo
         }

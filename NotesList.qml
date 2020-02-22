@@ -8,7 +8,7 @@ import QtGraphicalEffects 1.0
 ColumnLayout {
     id:column
     property alias currentIndex: listw.currentIndex
-    property alias model: listw.model
+    property alias model: myModel
     property alias sortModel: sortModel
 
     Layout.fillWidth: true

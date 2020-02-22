@@ -195,7 +195,7 @@ Window {
     function toolButtonRealization(){
         console.log("tool button pressed")
     }
-<<<<<<< HEAD
+
    function updateProxyModel(searchText){
        console.log("start search")
 
@@ -203,13 +203,13 @@ Window {
        console.log("finish search")
 
    }
-=======
+
     function checkDate() {
         if(userinput.dateInfo === notesList.model.returnCurrentDate())
             return true
         return false
     }
->>>>>>> 21e314c18b5021fa0716c44c613803b4405d9b84
+
 
 
 
