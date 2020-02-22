@@ -196,7 +196,7 @@ Window {
    function updateProxyModel(searchText){
        console.log("start search")
 
-       notesList.sortModel.setFilterRegularExpression(searchText)  //setFilterFixedString(searchText)  //  setFilterRegularExpression(searchText)
+       notesList.sortModel.setFilterFixedString(searchText)  //setFilterFixedString(searchText)  //  setFilterRegularExpression(searchText)
        console.log("finish search")
 
    }
