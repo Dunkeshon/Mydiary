@@ -57,15 +57,6 @@ Item {
                 height: parent.height
             }
         }
-
-        BUTTON {
-            id: settingsButton
-            height: parent.height
-            width: height
-            color: pannel.color
-            anchors.right: parent.right
-            iconSource: "resources/images/settingsIcon.svg"
-        }
     }
 }
 

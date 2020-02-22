@@ -16,6 +16,7 @@ Window {
     FontLoader { id: poppins_black; source:"qrc:/resources/fonts/poppins_/Poppins-Black.ttf"}
     FontLoader { id: merriweather; source:"qrc:/resources/fonts/poppins_/Merriweather-Regular.ttf"}
 
+
     TopPannel {
         id: topPannel
         height: 31
@@ -124,7 +125,6 @@ Window {
 
     function updateWindowInformation() {
 
-
         if(userinput.visible==false){
             userinput.visible=true;
             startRect.visible=false;
@@ -137,22 +137,40 @@ Window {
         userinput.datetext.text = notesList.model.data(notesList.model.index(notesList.currentIndex, 0), 257)
         userinput.titletext.text = notesList.model.data(notesList.model.index(notesList.currentIndex, 0), 258)
         userinput.usertext.text = notesList.model.data(notesList.model.index(notesList.currentIndex, 0), 259)
+        userinput.editText.text = notesList.model.data(notesList.model.index(notesList.currentIndex, 0), 260)
+        if(userinput.editText.text == userinput.datetext.text){
+            userinput.editText.visible=false
+            console.log("current date ")
+        }
+        else{
+            userinput.editText.visible=true
+            console.log("old date :")
+            console.log(  userinput.editText.text = notesList.model.data(notesList.model.index(notesList.currentIndex, 0), 260))
+            console.log("old note text :")
+            console.log(  userinput.usertext.text = notesList.model.data(notesList.model.index(notesList.currentIndex, 0), 259))
+        }
     }
 
     // don't change data if we don't change anything
+    // after committing changes sets the date of editing
     function updateModelInformation() {
         if(notesList.currentIndex==-1){
             return
         }
 
+
         if(notesList.model.setData(notesList.model.index(notesList.currentIndex, 0), qsTr(userinput.titletext.text), 258)){
+            notesList.model.setData(notesList.model.index(notesList.currentIndex, 0), qsTr("n"), 260)
             return
         }
-        notesList.model.setData(notesList.model.index(notesList.currentIndex, 0), qsTr(userinput.usertext.text), 259)
+        if(notesList.model.setData(notesList.model.index(notesList.currentIndex, 0), qsTr(userinput.usertext.text), 259)) {
+            notesList.model.setData(notesList.model.index(notesList.currentIndex, 0), qsTr("n"), 260)
+        }
     }
 
     function addButtonRealization() {
         diaryList.addItem()
+        updateModelInformation()
         notesList.currentIndex = 0
         updateWindowInformation()
     }
@@ -171,6 +189,9 @@ Window {
         if(diaryList.endItem(temp)) { temp--; }
         notesList.currentIndex = temp
         updateWindowInformation()
+    }
+    function toolButtonRealization(){
+        console.log("tool button pressed")
     }
 
 

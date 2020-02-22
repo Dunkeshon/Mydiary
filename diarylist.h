@@ -10,7 +10,7 @@ struct ListItem {
     QString currDate;
     QString title;
     QString userText;
-
+    QString editDate;
 };
 
 class DiaryList: public QObject
