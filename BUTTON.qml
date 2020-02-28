@@ -52,11 +52,7 @@ Rectangle {
         hoverEnabled: true
         onClicked: {
             buttonChecked()
-            button.state = "buttonEntered"
         }
-        onEntered: button.state = "buttonEntered"
-        onExited: button.state = ""
-        onPressed: button.state = "buttonPressed"
         cursorShape: Qt.PointingHandCursor
     }
 
@@ -76,6 +72,7 @@ Rectangle {
     states: [
         State {
             name: "buttonEntered"
+            when: buttonArea.containsMouse && !buttonArea.pressed
             PropertyChanges {
                 target: buttonColorOverlay
                 color: enteredColor
@@ -83,6 +80,7 @@ Rectangle {
         },
         State {
             name: "buttonPressed"
+            when: buttonArea.containsPress
             PropertyChanges {
                 target: changePressedTargetOnColorOverlay ? buttonColorOverlay : button
                 color: pressedColor

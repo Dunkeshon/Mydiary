@@ -6,6 +6,7 @@
         <file>TopPannel.qml</file>
         <file>SearchField.qml</file>
         <file>BUTTON.qml</file>
+        <file>DELEGATE.qml</file>
     </qresource>
     <qresource prefix="/resources">
         <file>images/plusIcon.svg</file>

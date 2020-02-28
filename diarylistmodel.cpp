@@ -57,7 +57,7 @@ bool DiaryListModel::setData(const QModelIndex &index, const QVariant &value, in
 //                setData(index,QDate::currentDate().toString("dd.MM.yyyy"),LastEditRole);
 //            }
             break;
-        case LastEditRole:item.editDate = returnCurrentDate();
+        case LastEditRole:item.editDate = QDate::currentDate().toString("dd.MM.yyyy");
             break;
         }
 
@@ -127,9 +127,4 @@ void DiaryListModel::setList(DiaryList *list)
 
     endResetModel();
 
-}
-
-QString DiaryListModel::returnCurrentDate()
-{
-    return QDate::currentDate().toString("dd.MM.yyyy");
 }

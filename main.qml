@@ -69,7 +69,7 @@ Window {
 
     Rectangle {
         id: startRect
-        visible: true
+        visible: userinput.visible ? false : true
         color:userinput.color
         width: parent.width - leftColumn.width - verticalSeparator.width
         anchors.top: topPannel.bottom
@@ -123,17 +123,19 @@ Window {
         updateModelInformation()
     }
 
+
+
+
     function updateWindowInformation() {
 
-        if(userinput.visible==false) {
+        if(!userinput.visible)
             userinput.visible=true;
-            startRect.visible=false;
-        }
+
         if(notesList.currentIndex == -1){
             userinput.visible=false;
-            startRect.visible=true;
             return
         }
+
         userinput.dateInfo = notesList.model.data(notesList.sortModel.mapToSource(notesList.sortModel.index(notesList.currentIndex, 0)), 257)
         userinput.titletext.text = notesList.model.data(notesList.sortModel.mapToSource(notesList.sortModel.index(notesList.currentIndex, 0)), 258)
         userinput.usertext.text = notesList.model.data(notesList.sortModel.mapToSource(notesList.sortModel.index(notesList.currentIndex, 0)), 259)
@@ -181,23 +183,21 @@ Window {
         notesList.currentIndex = temp
         updateWindowInformation()
     }
+
     function toolButtonRealization(){
-        console.log("tool button pressed")
+
     }
 
    function updateProxyModel(searchText){
        console.log("start search")
        notesList.currentIndex = -1
        updateWindowInformation()
-       notesList.sortModel.setFilterFixedString(searchText)  //setFilterFixedString(searchText)  //  setFilterRegularExpression(searchText)
+       notesList.sortModel.setFilterFixedString(searchText)
        console.log("finish search")
-
    }
 
     function checkDate() {
-        if(userinput.dateInfo === notesList.model.returnCurrentDate())
-            return true
-        return false
+        return true;
     }
 
 

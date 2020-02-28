@@ -2,6 +2,7 @@
 #define DIARYLISTMODEL_H
 
 #include <QAbstractListModel>
+#include <QSortFilterProxyModel>
 
 class DiaryList;
 
@@ -34,9 +35,17 @@ public:
     DiaryList *list()const;
     void setList(DiaryList *list);
 
-    Q_INVOKABLE QString returnCurrentDate();
 private:
     DiaryList* m_list;
+};
+
+
+
+class ProxyModel : public  QSortFilterProxyModel
+{
+    Q_OBJECT
+public:
+    ProxyModel(){}
 };
 
 #endif // DIARYLISTMODEL_H

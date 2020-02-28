@@ -12,7 +12,6 @@ Rectangle {
     property alias titletext: title
     property alias usertext: userText
     color: "#f4f5f8"
-   // onFocusChanged:console.log("focus changed ")
 
     Component.onCompleted: {
         trashButton.buttonChecked.connect(deleteButtonRealization)

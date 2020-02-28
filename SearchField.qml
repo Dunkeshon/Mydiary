@@ -3,7 +3,6 @@ import QtQuick.Window 2.12
 import QtQuick.Controls 2.12
 
 Rectangle {
-//    property alias color: mainRect.color
     property alias readonly: textField.readOnly
     property alias state: mainRect.state
     property alias text: textField.text
