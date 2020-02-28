@@ -101,7 +101,7 @@ Window {
 
 
 
-        titletext.onTextChanged: {
+        titletext.onEditingFinished: {
             updateModelInformation()
         }
         usertext.onEditingFinished: {
@@ -125,7 +125,7 @@ Window {
 
     function updateWindowInformation() {
 
-        if(userinput.visible==false){
+        if(userinput.visible==false) {
             userinput.visible=true;
             startRect.visible=false;
         }
@@ -134,21 +134,10 @@ Window {
             startRect.visible=true;
             return
         }
-        userinput.dateInfo = notesList.model.data(notesList.model.index(notesList.currentIndex, 0), 257)
-        userinput.titletext.text = notesList.model.data(notesList.model.index(notesList.currentIndex, 0), 258)
-        userinput.usertext.text = notesList.model.data(notesList.model.index(notesList.currentIndex, 0), 259)
-        userinput.editInfo = notesList.model.data(notesList.model.index(notesList.currentIndex, 0), 260)
-        /*if(userinput.editInfo == userinput.dateInfo){
-            userinput.editText.visible=false
-            console.log("current date ")
-        }
-        else{
-            userinput.editText.visible=true
-            console.log("old date :")
-            console.log(  userinput.editText.text = notesList.model.data(notesList.model.index(notesList.currentIndex, 0), 260))
-            console.log("old note text :")
-            console.log(  userinput.usertext.text = notesList.model.data(notesList.model.index(notesList.currentIndex, 0), 259))
-        }*/
+        userinput.dateInfo = notesList.model.data(notesList.sortModel.mapToSource(notesList.sortModel.index(notesList.currentIndex, 0)), 257)
+        userinput.titletext.text = notesList.model.data(notesList.sortModel.mapToSource(notesList.sortModel.index(notesList.currentIndex, 0)), 258)
+        userinput.usertext.text = notesList.model.data(notesList.sortModel.mapToSource(notesList.sortModel.index(notesList.currentIndex, 0)), 259)
+        userinput.editInfo = notesList.model.data(notesList.sortModel.mapToSource(notesList.sortModel.index(notesList.currentIndex, 0)), 260)
     }
 
     // don't change data if we don't change anything
@@ -160,12 +149,12 @@ Window {
         }
 
 
-        if(notesList.model.setData(notesList.model.index(notesList.currentIndex, 0), qsTr(userinput.titletext.text), 258)){
-            notesList.model.setData(notesList.model.index(notesList.currentIndex, 0), qsTr("n"), 260)
+        if(notesList.model.setData(notesList.sortModel.mapToSource(notesList.sortModel.index(notesList.currentIndex, 0)), qsTr(userinput.titletext.text), 258)){
+            notesList.model.setData(notesList.sortModel.mapToSource(notesList.sortModel.index(notesList.currentIndex, 0)), qsTr("n"), 260)
             return
         }
-        if(notesList.model.setData(notesList.model.index(notesList.currentIndex, 0), qsTr(userinput.usertext.text), 259)) {
-            notesList.model.setData(notesList.model.index(notesList.currentIndex, 0), qsTr("n"), 260)
+        if(notesList.model.setData(notesList.sortModel.mapToSource(notesList.sortModel.index(notesList.currentIndex, 0)), qsTr(userinput.usertext.text), 259)) {
+            notesList.model.setData(notesList.sortModel.mapToSource(notesList.sortModel.index(notesList.currentIndex, 0)), qsTr("n"), 260)
         }
     }
 
@@ -198,7 +187,8 @@ Window {
 
    function updateProxyModel(searchText){
        console.log("start search")
-
+       notesList.currentIndex = -1
+       updateWindowInformation()
        notesList.sortModel.setFilterFixedString(searchText)  //setFilterFixedString(searchText)  //  setFilterRegularExpression(searchText)
        console.log("finish search")
 

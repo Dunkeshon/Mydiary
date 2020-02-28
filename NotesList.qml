@@ -35,23 +35,7 @@ ColumnLayout {
         {
             id:sortModel
             sourceModel:myModel
-          //  filterCaseSensitivity:Qt.CaseSensitive
             filterRole:258
-
-
-
-            //filterRegExp: (topPannel.searchfield.text)
-           // filterRegularExpression:topPannel.searchfield.text
-            ///*filterRegularExpression:*/ setFilterRegularExpression(topPannel.searchfield.text)
-//             filters: [
-//                 RegExpFilter {
-//                                     roleName: "lastName"
-//                                     pattern: textField.text
-//                                     caseSensitivity: Qt.CaseInsensitive
-//                                 }
-//             ]
-
-
        }
 
         Component.onCompleted: {

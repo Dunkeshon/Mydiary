@@ -10,6 +10,7 @@ Rectangle {
     id: mainRect
     color: "#617adb"
     visible: false
+
     signal searchFinished(var searchText)
 
 
