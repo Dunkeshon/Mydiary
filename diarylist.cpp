@@ -1,6 +1,7 @@
 #include "diarylist.h"
 #include <QDate>
 #include <QSettings>
+#include <QModelIndex>
 
 DiaryList::DiaryList(QObject *parent) : QObject(parent)
 {
@@ -79,11 +80,11 @@ void DiaryList::addItem()
     emit postItemAdded();
 }
 
-void DiaryList::deleteItem(int index)
+void DiaryList::deleteItem(const QModelIndex &sourceIndex)
 {
-    preItemDeleted(index);
+    preItemDeleted(sourceIndex.row());
 
-    m_listItems.remove(index);
+    m_listItems.remove(sourceIndex.row());
 
     postItemDeleted();
 }

@@ -34,7 +34,7 @@ signals:
 public slots:
 
     void addItem();
-    void deleteItem(int index);
+    void deleteItem(const QModelIndex &sourceIndex);
 //    void deleteItem();
 };
 

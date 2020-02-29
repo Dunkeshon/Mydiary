@@ -179,7 +179,7 @@ Window {
 
     function deleteButtonRealization() {
         var temp = notesList.currentIndex
-        diaryList.deleteItem(notesList.currentIndex)
+        diaryList.deleteItem(notesList.sortModel.mapToSource(notesList.sortModel.index(notesList.currentIndex, 0)))
         if(diaryList.endItem(temp)) { temp--; }
         notesList.currentIndex = temp
         updateWindowInformation()
