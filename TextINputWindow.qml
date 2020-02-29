@@ -105,7 +105,7 @@ Rectangle {
         enteredColor: "#777777"
         pressedColor: "black"
 
-        visible: checkDate() ? false : true
+        visible: editInfo === dateInfo ? false : true
     }
 
     BUTTON {

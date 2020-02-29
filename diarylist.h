@@ -22,7 +22,6 @@ public:
     bool setItemAt(int index, const ListItem & item);
 
     QVector<ListItem> listItems() const;
-    Q_INVOKABLE bool endItem(int index);
 private:
     QVector<ListItem> m_listItems;
 
