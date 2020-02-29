@@ -161,9 +161,10 @@ Window {
     }
 
     function addButtonRealization() {
-        diaryList.addItem()
-        notesList.currentIndex+=1
         updateModelInformation()
+        topPannel.searchfield.text = ""
+        topPannel.searchfield.state = ""
+        diaryList.addItem()
         notesList.currentIndex = 0
         updateWindowInformation()
     }
