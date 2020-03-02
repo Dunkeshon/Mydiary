@@ -32,6 +32,7 @@ Item {
             pressedColor: "#4c69d7"
             toolTipText: "Hide"
             mousearea.onClicked: {
+
                 toolTipText = toolTipText == "Hide" ? "Show" : "Hide"
                 iconRotation = iconRotation == 0 ? 180 : 0
             }

@@ -42,6 +42,7 @@ Window {
                 PropertyChanges {
                     target: leftColumn
                     x: -width - 1
+                    visible:false
                 }
             }]
 
@@ -51,7 +52,7 @@ Window {
                 to: "Hidden"
                 PropertyAnimation {
                     easing.type: Easing.InOutQuad
-                    properties: "x"
+                    properties: "x, visible"
                     duration: 450
                 }
 
@@ -172,6 +173,7 @@ Window {
     function arrowButtonRealization() {
         if(leftColumn.state == "") {
             leftColumn.state = "Hidden"
+
             return
         }
         leftColumn.state = ""
