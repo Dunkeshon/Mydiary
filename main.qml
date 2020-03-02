@@ -130,10 +130,10 @@ Window {
     function updateWindowInformation() {
 
         if(!userinput.visible)
-            userinput.visible=true;
+            userinput.visible = true;
 
         if(notesList.currentIndex == -1){
-            userinput.visible=false;
+            userinput.visible = false;
             return
         }
 
@@ -147,18 +147,15 @@ Window {
     // after committing changes sets the date of editing
     function updateModelInformation() {
 
-        if(notesList.currentIndex==-1){
+        if(notesList.currentIndex==-1)
             return
-        }
-
 
         if(notesList.model.setData(notesList.sortModel.mapToSource(notesList.sortModel.index(notesList.currentIndex, 0)), qsTr(userinput.titletext.text), DiaryModel.TitleRole)){
             notesList.model.setData(notesList.sortModel.mapToSource(notesList.sortModel.index(notesList.currentIndex, 0)), qsTr("n"),DiaryModel.LastEditRole)
             return
         }
-        if(notesList.model.setData(notesList.sortModel.mapToSource(notesList.sortModel.index(notesList.currentIndex, 0)), qsTr(userinput.usertext.text), DiaryModel.TextRole)) {
+        if(notesList.model.setData(notesList.sortModel.mapToSource(notesList.sortModel.index(notesList.currentIndex, 0)), qsTr(userinput.usertext.text), DiaryModel.TextRole))
             notesList.model.setData(notesList.sortModel.mapToSource(notesList.sortModel.index(notesList.currentIndex, 0)), qsTr("n"),DiaryModel.LastEditRole)
-        }
     }
 
     function addButtonRealization() {
@@ -173,7 +170,6 @@ Window {
     function arrowButtonRealization() {
         if(leftColumn.state == "") {
             leftColumn.state = "Hidden"
-
             return
         }
         leftColumn.state = ""
@@ -187,20 +183,10 @@ Window {
         updateWindowInformation()
     }
 
-    function toolButtonRealization(){
-
-    }
-
-   function updateProxyModel(searchText){
-       console.log("start search")
-       notesList.currentIndex = -1
-       updateWindowInformation()
-       notesList.sortModel.setFilterFixedString(searchText)
-       console.log("finish search")
-   }
-
-    function checkDate() {
-        return true;
+    function updateProxyModel(searchText){
+        notesList.currentIndex = -1
+        updateWindowInformation()
+        notesList.sortModel.setFilterFixedString(searchText)
     }
 
 

@@ -15,7 +15,6 @@ Rectangle {
 
     Component.onCompleted: {
         trashButton.buttonChecked.connect(deleteButtonRealization)
-        toolButton.buttonChecked.connect(toolButtonRealization)
     }
 
     Item {
@@ -90,28 +89,9 @@ Rectangle {
     }
 
     BUTTON {
-        id:toolButton
-        size: 25
-        anchors.right: trashButton.left
-        anchors.margins: 3
-        anchors.top: parent.top
-        iconSource: "resources/images/toolIcon.svg"
-        iconMargins: 2
-        bColor: parent.color
-        iconColor: "#aaaaaa"
-        toolTipText: "Edit page"
-
-        changePressedTargetOnColorOverlay: true
-        enteredColor: "#777777"
-        pressedColor: "black"
-
-        visible: editInfo === dateInfo ? false : true
-    }
-
-    BUTTON {
         id:infoButton
         size: 25
-        anchors.right: toolButton.visible ? toolButton.left : trashButton.left
+        anchors.right: trashButton.left
         anchors.margins: 3
         anchors.top: parent.top
 
