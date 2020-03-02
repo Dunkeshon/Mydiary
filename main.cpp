@@ -21,6 +21,8 @@ int main(int argc, char *argv[])
     qmlRegisterUncreatableType<DiaryList>("Diary",1,0,"DiaryList",
          QStringLiteral("This object should not be created in qml"));
 
+
+
     DiaryList diaryList;
 
     QQmlApplicationEngine engine;

@@ -136,10 +136,10 @@ Window {
             return
         }
 
-        userinput.dateInfo = notesList.model.data(notesList.sortModel.mapToSource(notesList.sortModel.index(notesList.currentIndex, 0)), 257)
-        userinput.titletext.text = notesList.model.data(notesList.sortModel.mapToSource(notesList.sortModel.index(notesList.currentIndex, 0)), 258)
-        userinput.usertext.text = notesList.model.data(notesList.sortModel.mapToSource(notesList.sortModel.index(notesList.currentIndex, 0)), 259)
-        userinput.editInfo = notesList.model.data(notesList.sortModel.mapToSource(notesList.sortModel.index(notesList.currentIndex, 0)), 260)
+        userinput.dateInfo = notesList.model.data(notesList.sortModel.mapToSource(notesList.sortModel.index(notesList.currentIndex, 0)), DiaryModel.DateRole)
+        userinput.titletext.text = notesList.model.data(notesList.sortModel.mapToSource(notesList.sortModel.index(notesList.currentIndex, 0)),DiaryModel.TitleRole )
+        userinput.usertext.text = notesList.model.data(notesList.sortModel.mapToSource(notesList.sortModel.index(notesList.currentIndex, 0)), DiaryModel.TextRole)
+        userinput.editInfo = notesList.model.data(notesList.sortModel.mapToSource(notesList.sortModel.index(notesList.currentIndex, 0)), DiaryModel.LastEditRole)
     }
 
     // don't change data if we don't change anything
@@ -151,12 +151,12 @@ Window {
         }
 
 
-        if(notesList.model.setData(notesList.sortModel.mapToSource(notesList.sortModel.index(notesList.currentIndex, 0)), qsTr(userinput.titletext.text), 258)){
-            notesList.model.setData(notesList.sortModel.mapToSource(notesList.sortModel.index(notesList.currentIndex, 0)), qsTr("n"), 260)
+        if(notesList.model.setData(notesList.sortModel.mapToSource(notesList.sortModel.index(notesList.currentIndex, 0)), qsTr(userinput.titletext.text), DiaryModel.TitleRole)){
+            notesList.model.setData(notesList.sortModel.mapToSource(notesList.sortModel.index(notesList.currentIndex, 0)), qsTr("n"),DiaryModel.LastEditRole)
             return
         }
-        if(notesList.model.setData(notesList.sortModel.mapToSource(notesList.sortModel.index(notesList.currentIndex, 0)), qsTr(userinput.usertext.text), 259)) {
-            notesList.model.setData(notesList.sortModel.mapToSource(notesList.sortModel.index(notesList.currentIndex, 0)), qsTr("n"), 260)
+        if(notesList.model.setData(notesList.sortModel.mapToSource(notesList.sortModel.index(notesList.currentIndex, 0)), qsTr(userinput.usertext.text), DiaryModel.TextRole)) {
+            notesList.model.setData(notesList.sortModel.mapToSource(notesList.sortModel.index(notesList.currentIndex, 0)), qsTr("n"),DiaryModel.LastEditRole)
         }
     }
 

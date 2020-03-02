@@ -35,7 +35,7 @@ ColumnLayout {
         {
             id:sortModel
             sourceModel:myModel
-            filterRole:258
+            filterRole:DiaryModel.TitleRole
         }
 
         Component.onCompleted: {

@@ -13,13 +13,14 @@ class DiaryListModel : public QAbstractListModel
 
 public:
     explicit DiaryListModel(QObject *parent = nullptr);
-    enum {
+    enum RoleEnums {
         DateRole = Qt::UserRole + 1,
         TitleRole,
         TextRole,
         LastEditRole
 
     };
+    Q_ENUM(RoleEnums)
     // Basic functionality:
     int rowCount(const QModelIndex &parent = QModelIndex()) const override;
 
