@@ -34,6 +34,10 @@ Rectangle {
 
     signal buttonChecked() //connect
 
+    Component.onCompleted: {
+        button.buttonChecked.connect(focusOff)
+    }
+
     Image {
         id: buttonIcon
         anchors.fill: parent

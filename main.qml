@@ -168,11 +168,10 @@ Window {
     }
 
     function arrowButtonRealization() {
-        if(leftColumn.state == "") {
+        if(leftColumn.state == "")
             leftColumn.state = "Hidden"
-            return
-        }
-        leftColumn.state = ""
+        else
+            leftColumn.state = ""
     }
 
     function deleteButtonRealization() {

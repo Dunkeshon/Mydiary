@@ -29,7 +29,6 @@ Rectangle {
         placeholderText: "Search"
         placeholderTextColor: "#f5f5f5"
 
-        readOnly: true
         maximumLength: 20
         selectionColor: "#3399FF"
         selectByMouse: true
@@ -47,7 +46,6 @@ Rectangle {
             name: "Active"
             PropertyChanges {
                 target: mainRect
-                readonly: false
                 visible: true
                 width: 220
             }

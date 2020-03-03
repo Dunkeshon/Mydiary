@@ -103,9 +103,8 @@ Rectangle {
         toolTipText: {
             toolDelay=0
             toolTimeout=0
-            if(editInfo === "" || editInfo === dateInfo) {
+            if(editInfo === "" || editInfo === dateInfo)
                 return "Created: " + dateInfo
-            }
             return "Created: " + dateInfo + "\nEdited:   " + editInfo
         }
 

@@ -1,6 +1,5 @@
 #ifndef DIARYLIST_H
 #define DIARYLIST_H
-
 #include <QObject>
 #include <QVector>
 #include <QMetaType>
