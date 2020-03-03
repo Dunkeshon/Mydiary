@@ -44,6 +44,8 @@ ColumnLayout {
             column.choosen.connect(updateWindowInformation)
 
             column.changeIndex.connect(updateModelInformation);
+
+            column.changeIndex.connect(focusOff)
         }
 
         delegate: DELEGATE {
@@ -52,9 +54,7 @@ ColumnLayout {
 
             mouseArea.onClicked: {
                 if(index == currentIndex) {return}
-                if(currentIndex != -1) {
-                    changeIndex() // emit signal
-                }
+                changeIndex() // emit signal
                 currentIndex = index
                 choosen(); // emit signal
                 // при клике на обьект списка мы сразу переключаем index,

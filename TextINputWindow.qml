@@ -40,6 +40,7 @@ Rectangle {
             maximumLength: 40
             selectionColor: "#3399FF"
             selectByMouse: true
+            focus: true
             background: Rectangle {
                 visible: false
             }

@@ -3,7 +3,6 @@
 
 #include <QObject>
 #include <QVector>
-#include <QDate>
 #include <QMetaType>
 
 struct ListItem {

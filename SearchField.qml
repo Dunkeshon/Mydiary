@@ -6,6 +6,7 @@ Rectangle {
     property alias readonly: textField.readOnly
     property alias state: mainRect.state
     property alias text: textField.text
+    property alias textfocus: textField.focus
     id: mainRect
     color: "#617adb"
     visible: false
@@ -32,6 +33,7 @@ Rectangle {
         maximumLength: 20
         selectionColor: "#3399FF"
         selectByMouse: true
+        focus: true
         color: "white"
 
 

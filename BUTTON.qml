@@ -13,16 +13,19 @@ Rectangle {
     property color bColor: "white"
     property color enteredColor: "white"
     property color pressedColor: "white"
-    property var toolTipText: "nothing"
-    property int toolDelay: 1000
-    property int toolTimeout: 5000
-
 
 
 
     property alias mousearea: buttonArea
     property alias iconRotation: buttonColorOverlay.rotation
     property bool changePressedTargetOnColorOverlay: false
+
+
+
+    //toolTip
+    property var toolTipText: "nothing"
+    property int toolDelay: 1000
+    property int toolTimeout: 5000
 
     id: button
     color: bColor

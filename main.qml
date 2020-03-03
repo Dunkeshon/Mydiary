@@ -190,6 +190,12 @@ Window {
         notesList.sortModel.setFilterFixedString(searchText)
     }
 
+    function focusOff() {
+        userinput.titletext.focus = false
+        userinput.usertext.focus = false
+        topPannel.searchfield.textfocus = false
+    }
+
 
 
 
