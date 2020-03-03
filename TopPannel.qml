@@ -11,6 +11,7 @@ Item {
     Component.onCompleted: {
         addButton.buttonChecked.connect(addButtonRealization)
         arrowButton.buttonChecked.connect(arrowButtonRealization)
+        settingsButton.buttonChecked.connect(settingsButtonRealization)
         searchField.searchFinished.connect(updateProxyModel)
     }
 

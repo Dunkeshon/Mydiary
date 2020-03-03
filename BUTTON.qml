@@ -38,11 +38,12 @@ Rectangle {
         button.buttonChecked.connect(focusOff)
     }
 
+
     Image {
         id: buttonIcon
         anchors.fill: parent
         anchors.margins: iconMargins
-        visible: false
+        visible: false // we transform overlay, not an image
     }
 
     ColorOverlay {

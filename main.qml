@@ -68,6 +68,47 @@ Window {
             }]
     }
 
+    SettingsWindow{
+        id:settingsSection
+        visible: false
+        width:parent.width
+        height: parent.height - topPannel.height
+        anchors.top: topPannel.bottom
+        x:200
+        z:1
+
+        states: [
+            State {
+                name: "Active"
+                PropertyChanges {
+                    target: settingsSection
+                    x: 0
+                    visible:true
+                }
+            }]
+
+        transitions: [
+            Transition {
+                from: "Active"
+                to: ""
+                PropertyAnimation {
+                    easing.type: Easing.InOutQuad
+                    properties: "x, visible"
+                    duration: 450
+                }
+
+            },
+            Transition {
+                from: ""
+                to: "Active"
+                PropertyAnimation {
+                    easing.type: Easing.InOutQuad
+                    properties: "x"
+                    duration: 450
+                }
+            }]
+    }
+
     Rectangle {
         id: startRect
         visible: userinput.visible ? false : true
@@ -165,6 +206,12 @@ Window {
         diaryList.addItem()
         notesList.currentIndex = 0
         updateWindowInformation()
+    }
+    function settingsButtonRealization(){
+        if(settingsSection.state == "Active")
+            settingsSection.state = ""
+        else
+            settingsSection.state = "Active"
     }
 
     function arrowButtonRealization() {
