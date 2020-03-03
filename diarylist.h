@@ -22,6 +22,7 @@ public:
     bool setItemAt(int index, const ListItem & item);
 
     QVector<ListItem> listItems() const;
+    Q_INVOKABLE QString currDate() const;
 private:
     QVector<ListItem> m_listItems;
 

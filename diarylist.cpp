@@ -41,7 +41,7 @@ bool DiaryList::setItemAt(int index, const ListItem &item)
         return false;
 
     const ListItem &oldItem = m_listItems.at(index);
-    if(oldItem.currDate == item.currDate && oldItem.title == item.title && oldItem.userText == item.userText && oldItem.editDate==item.editDate) // не учтен заголовок
+    if(oldItem.title == item.title && oldItem.userText == item.userText && oldItem.editDate==item.editDate) // не учтен заголовок
         return false;
 
     m_listItems[index] = item;
@@ -51,6 +51,11 @@ bool DiaryList::setItemAt(int index, const ListItem &item)
 QVector<ListItem> DiaryList::listItems() const
 {
     return m_listItems;
+}
+
+QString DiaryList::currDate() const
+{
+    return QDate::currentDate().toString("dd.MM.yyyy");
 }
 
 void DiaryList::addItem()
@@ -63,7 +68,7 @@ void DiaryList::addItem()
     emit preItemAdded();
 
     ListItem new_item;
-    new_item.currDate = QDate::currentDate().toString("dd.MM.yyyy");
+    new_item.currDate = currDate();
     new_item.title = "";
     new_item.userText = "";// УБРАТЬ ПОТОМ(не нада)
     new_item.editDate=new_item.currDate;
