@@ -4,6 +4,7 @@
 #include <QSettings>
 #include "diarylist.h"
 #include "diarylistmodel.h"
+#include "ColorThemes.h"
 
 
 int main(int argc, char *argv[])
@@ -20,7 +21,8 @@ int main(int argc, char *argv[])
 
     qmlRegisterUncreatableType<DiaryList>("Diary",1,0,"DiaryList",
          QStringLiteral("This object should not be created in qml"));
-
+    qmlRegisterUncreatableType<ColorThemes>("Diary",1,0,"Themes",
+         QStringLiteral("This object should not be created in qml"));
 
 
     DiaryList diaryList;

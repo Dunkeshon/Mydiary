@@ -6,6 +6,10 @@ import QtGraphicalEffects 1.0
 
 Item {
     property alias searchfield: searchField
+    property color panelColor: "#6d84de"
+    property color pressedColor: "#4c69d7"
+    property color enteredColor: "#dddddd"
+
     id: mainItem
 
     Component.onCompleted: {
@@ -19,7 +23,7 @@ Item {
     Rectangle {
         id: pannel
         anchors.fill: parent
-        color: "#6d84de"
+        color: panelColor
 
         BUTTON {
             id: arrowButton
@@ -29,8 +33,8 @@ Item {
             iconSource: "resources/images/leftArrowIcon.svg"
             iconMargins: 6
 
-            enteredColor: "#dddddd"
-            pressedColor: "#4c69d7"
+            enteredColor: enteredColor
+            pressedColor: pressedColor
             toolTipText: "Hide"
             mousearea.onClicked: {
 
@@ -47,8 +51,8 @@ Item {
             iconSource: "resources/images/plusIcon.svg"
             iconMargins: 6
 
-            enteredColor: "#dddddd"
-            pressedColor: "#4c69d7"
+            enteredColor: enteredColor
+            pressedColor: pressedColor
             toolTipText: "Add Page"
         }
 
@@ -60,8 +64,8 @@ Item {
             iconSource: "resources/images/searchIcon.svg"
             iconMargins: 6
 
-            enteredColor: "#dddddd"
-            pressedColor: "#4c69d7"
+            enteredColor: enteredColor
+            pressedColor: pressedColor
             toolTipText: "Search"
             mousearea.onClicked: {
                 searchField.state = searchField.state == "" ? "Active" : ""
@@ -83,8 +87,8 @@ Item {
             iconSource: "resources/images/settingsIcon.svg"
             iconMargins: 6
 
-            enteredColor: "#dddddd"
-            pressedColor: "#4c69d7"
+            enteredColor: enteredColor
+            pressedColor: pressedColor
             toolTipText: "Settings"
         }
     }

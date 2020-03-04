@@ -14,6 +14,9 @@ Rectangle {
     property color enteredColor: "white"
     property color pressedColor: "white"
 
+    property color toolTipStyleColor: "#ffffff"
+    property color toolTipTextColor: "#8f000000"
+
 
 
     property alias mousearea: buttonArea
@@ -71,9 +74,9 @@ Rectangle {
         visible: mousearea.containsMouse ? true : false
         contentItem: Text {
             text: toolTipText
-            styleColor: "#ffffff"
+            styleColor: toolTipStyleColor
             font.family: "poppins_black"
-            color: "#8f000000"
+            color: toolTipTextColor
         }
     }
 

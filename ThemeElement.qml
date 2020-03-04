@@ -9,8 +9,8 @@ MouseArea{
     property int icon_size: 18
     property color iconColor: "white"
     property color bColor: "#6d84de"
-    property color enteredColor: "grey"
-    property color pressedColor: "grey"
+    property color enteredColor: "grey"// not owerload in themes changes
+    property color pressedColor: "grey" // remove later
     property var themeName: "Theme"
 
 

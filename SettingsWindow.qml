@@ -4,6 +4,12 @@ import QtQuick.Layouts 1.12
 import QtGraphicalEffects 1.0
 
 Item {
+    property color themeColor: "#6d84de"
+    property color defaultSelect: "white"
+    property color roseSelect: "#FFB6B6"
+    property color yellowSelect: "#FFD749"
+    property color darkSelect: "#000000"
+
 
 
     MouseArea{
@@ -16,7 +22,7 @@ Item {
     Rectangle{
         id:settingsArea
         width: 200
-        color: "#6d84de"
+        color: themeColor
         anchors.left: emptyFocus.right
         anchors.top: parent.top
         anchors.bottom: parent.bottom
@@ -75,6 +81,8 @@ Item {
                 anchors.top: parent.top
                 anchors.margins: 5
                 themeName: "Default"
+                fontColor: defaultSelect
+                iconColor: defaultSelect
             }
             ThemeElement{
                 id:roseTheme
@@ -82,8 +90,8 @@ Item {
                 anchors.top: parent.top
                 anchors.margins: 5
                 themeName: "Rose"
-                fontColor: "#FFB6B6"
-                iconColor: "#FFB6B6"
+                fontColor: roseSelect
+                iconColor: roseSelect
 
             }
             ThemeElement{
@@ -92,8 +100,8 @@ Item {
                 anchors.top: defaultTheme.bottom
                 anchors.margins: 5
                 themeName: "Yellow"
-                fontColor: "#FFD749"
-                iconColor: "#FFD749"
+                fontColor: yellowSelect
+                iconColor: yellowSelect
 
 
             }
@@ -103,8 +111,8 @@ Item {
                 anchors.top: roseTheme.bottom
                 anchors.margins: 5
                 themeName: "Dark"
-                fontColor: "#000000"
-                iconColor: "#000000"
+                fontColor: darkSelect
+                iconColor: darkSelect
 
             }
         }

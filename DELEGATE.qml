@@ -1,6 +1,6 @@
 import QtQuick 2.0
 import QtGraphicalEffects 1.0
-
+import Diary 1.0
 Item {
     id: delegate
 
@@ -9,6 +9,43 @@ Item {
     property alias title: modelTitleText.text
     property bool current: false
 
+    property color bottomSeparatorColor: "#6d84de"
+    property color fillDelegateColor: "white"
+    property color innerChadowColor: "black"
+    property color titleTextColor: "#404040"
+    property color dateTextColor: "black"
+    property color enteredColor //: "#bbc7f4"
+    property color pressedColor: "#93a6ee"
+    property color  modelDateTextRelised: "#00135F"
+
+
+    Component.onCompleted: {
+        switch(qSettings.colorTheme){
+
+        case Themes.DEFAULT_THEME :
+
+               bottomSeparatorColor= "#6d84de"
+               fillDelegateColor= "white"
+               innerChadowColor= "black"
+               titleTextColor= "#404040"
+               dateTextColor= "black"
+               enteredColor="#bbc7f4"
+               pressedColor= "#93a6ee"
+               break;
+           case Themes.ROSE_THEME:
+               //DELEGATE
+               DELEGATE.enteredColor="#FFE0E0"
+
+               break;
+           case Themes.YELLOW_THEME:
+               break;
+           case Themes.DARK_THEME:
+               break;
+           default:
+               console.log(qSettings.colorTheme)
+               throw "Theme id out of range"
+        }
+    }
 
     MouseArea {
         id: mousearea
@@ -20,13 +57,13 @@ Item {
     Rectangle {
         id: fillRect
         anchors.fill: parent
-        color: "white"
+        color: fillDelegateColor
         Rectangle
         {
             id: bottomSeparator
             width: parent.width
             height: 1
-            color: "#6d84de"
+            color: bottomSeparatorColor
             anchors.bottom: parent.bottom
         }
     }
@@ -38,7 +75,7 @@ Item {
         samples: 16
         radius: 8.0
         verticalOffset: 3
-        color: "black"
+        color: innerChadowColor
         opacity: 0.25
         visible: false
     }
@@ -49,7 +86,7 @@ Item {
         anchors.fill: parent
         Text {
             id: modelDateText
-            color: "black"
+            color: dateTextColor
             opacity: 0.56
             font.family: "poppins_black"
             font.pixelSize:12
@@ -63,7 +100,7 @@ Item {
             anchors.leftMargin: 10
             anchors.bottom: parent.bottom
             anchors.bottomMargin: 5
-            color:"#404040"
+            color:titleTextColor
             verticalAlignment: Text.AlignVCenter
             font.family: "merriweather"
             font.pixelSize: 17
@@ -76,7 +113,7 @@ Item {
             when: mousearea.containsMouse && !mousearea.pressed && !current
             PropertyChanges {
                 target: fillRect
-                color: "#bbc7f4"
+                color: enteredColor
             }
         },
         State {
@@ -84,15 +121,16 @@ Item {
             when: mousearea.containsPress && !current
             PropertyChanges {
                 target: fillRect
-                color: "#93a6ee"
+                color: pressedColor
             }
         },
         State {
+            //не нажат ?
             name: "delegateRealized"
             when: current
             PropertyChanges {
                 target: fillRect
-                color: "#93a6ee"
+                color: pressedColor
             }
             PropertyChanges {
                 target: mousearea
@@ -104,7 +142,7 @@ Item {
             }
             PropertyChanges {
                 target: modelTitleText
-                color: "#00135F"
+                color: modelDateTextRelised
             }
             PropertyChanges {
                 target: modelDateText

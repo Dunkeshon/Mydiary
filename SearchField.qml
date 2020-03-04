@@ -7,19 +7,25 @@ Rectangle {
     property alias state: mainRect.state
     property alias text: textField.text
     property alias textfocus: textField.focus
+    property color themeColor: "#617adb"
+    property color textFieldColor: "white"
+    property color placeholderTextColor: "#f5f5f5"
+    property color textSelectionColor: "#3399FF"
+
     id: mainRect
-    color: "#617adb"
+    color: themeColor
     visible: false
 
     signal searchFinished(var searchText)
 
 
     TextField {
+        id: textField
         onTextChanged: {
             searchFinished(text)
         }
 
-        id: textField
+
         anchors.fill: parent
         font.pixelSize: 15
         font.family: "merriweather"
@@ -27,13 +33,13 @@ Rectangle {
         bottomPadding: 8
         topPadding: 8
         placeholderText: "Search"
-        placeholderTextColor: "#f5f5f5"
+        placeholderTextColor: placeholderTextColor
 
         maximumLength: 20
-        selectionColor: "#3399FF"
+        selectionColor: textSelectionColor
         selectByMouse: true
         focus: true
-        color: "white"
+        color: textFieldColor
 
 
         background: Rectangle {

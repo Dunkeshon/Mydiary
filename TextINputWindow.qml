@@ -11,7 +11,13 @@ Rectangle {
     property var editInfo
     property alias titletext: title
     property alias usertext: userText
-    color: "#f4f5f8"
+    property color themeColor: "#f4f5f8"
+    property color textSelectionColor: "#3399FF"
+    property color iconColor: "#aaaaaa"
+    property color enteredButtonColor: "#777777"
+    property color pressedButtonColor:  "black"
+
+    color: themeColor
 
     Component.onCompleted: {
         trashButton.buttonChecked.connect(deleteButtonRealization)
@@ -38,7 +44,7 @@ Rectangle {
 
             font.pixelSize: 24
             maximumLength: 40
-            selectionColor: "#3399FF"
+            selectionColor: textSelectionColor
             selectByMouse: true
             focus: true
             background: Rectangle {
@@ -65,7 +71,7 @@ Rectangle {
                 font.family: "merriweather"
                 wrapMode: TextArea.WordWrap
                 selectByMouse: true
-                selectionColor: "#3399FF"
+                selectionColor: textSelectionColor
                 focus: true
             }
         }
@@ -81,12 +87,12 @@ Rectangle {
         iconSource: "resources/images/trash.svg"
         iconMargins: 2
         bColor: parent.color
-        iconColor: "#aaaaaa"
+        iconColor: iconColor
         toolTipText: "Delete page"
 
         changePressedTargetOnColorOverlay: true
-        enteredColor: "#777777"
-        pressedColor: "black"
+        enteredColor: enteredButtonColor
+        pressedColor: pressedButtonColor
     }
 
     BUTTON {
@@ -99,7 +105,7 @@ Rectangle {
         iconSource: "resources/images/infoIcon.svg"
         iconMargins: 2
         bColor: parent.color
-        iconColor: "#aaaaaa"
+        iconColor: iconColor
         toolTipText: {
             toolDelay=0
             toolTimeout=0
@@ -109,8 +115,8 @@ Rectangle {
         }
 
         changePressedTargetOnColorOverlay: true
-        enteredColor: "#777777"
-        pressedColor: "#777777"
+        enteredColor: enteredButtonColor
+        pressedColor: enteredButtonColor
     }
 
 
