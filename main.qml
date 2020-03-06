@@ -180,6 +180,11 @@ Window {
         if(notesList.sortModel.rowCount() === notesList.currentIndex) {temp--}
         notesList.currentIndex = temp
         updateWindowInformation()
+
+        if(notesList.currentIndex == -1) {
+            topPannel.searchfield.text = ""
+            topPannel.searchfield.state = ""
+        }
     }
 
     function updateProxyModel(searchText) {
