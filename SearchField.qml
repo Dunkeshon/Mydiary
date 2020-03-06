@@ -2,6 +2,7 @@ import QtQuick 2.0
 import QtQuick.Window 2.12
 import QtQuick.Controls 2.12
 
+
 Rectangle {
     property alias readonly: textField.readOnly
     property alias state: mainRect.state
@@ -11,12 +12,12 @@ Rectangle {
     color: "#617adb"
     visible: false
 
-    signal searchFinished(var searchText)
+    signal changeFilterText(var searchText)
 
 
     TextField {
         onTextChanged: {
-            searchFinished(text)
+            changeFilterText(text)
         }
 
         id: textField
