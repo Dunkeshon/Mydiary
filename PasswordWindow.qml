@@ -1,5 +1,4 @@
-import QtQuick 2.0
-
+import QtQuick 2.12
 import QtQuick.Controls 2.12
 import Diary 1.0
 
@@ -14,33 +13,35 @@ Rectangle {
         anchors.fill: parent
     }
 
-        Image {
-            id: lock
-            anchors.centerIn: parent
+    Image {
+        id: lock
+        anchors.centerIn: parent
 
-            width: 150
-            height: 150
+        width: 150
+        height: 150
 
 
 
-            source: {
-                if(locked==true){
-                    return "qrc:/resources/images/lock.svg"
-                }
-                else{
-                    return "qrc:/resources/images/unlock2.svg"
-                }
+        source: {
+            if(locked==true){
+                return "qrc:/resources/images/lock.svg"
             }
-            PropertyAnimation { id: unlockedAnim;
-                                   target: lock;
-                                   property: "y";
-                                   easing.type: Easing.OutBounce
-                                   to: 100;
-                                   duration: 500
+            else{
+                return "qrc:/resources/images/unlock2.svg"
             }
-
+        }
+        PropertyAnimation { id: unlockedAnim
+            target: lock
+            property: "y"
+            easing.type: Easing.OutBounce
+            from:0
+            to: -100
+            duration: 1200
 
         }
+
+
+    }
 
 
     TextField{
@@ -59,8 +60,8 @@ Rectangle {
         placeholderText: "Password"
         background:
             Rectangle {
-                color: "#CC9966"
-            }
+            color: "#CC9966"
+        }
     }
     Button{
         id:confirmButton
@@ -68,9 +69,9 @@ Rectangle {
         onClicked: {
             if(myPassword==="12345"){
                 locked=false
-                unlockedAnim.running=true
+                unlockedAnim.start()
                 acceptedTimer.running=true;
-               // подпрыгивание
+                // подпрыгивание
             }
             else{
                 //дерганье
@@ -102,10 +103,10 @@ Rectangle {
 
     Timer {
         id:acceptedTimer
-            interval: 2000;
-            onTriggered:pWindow.visible=false
+        interval: 2000;
+        onTriggered:pWindow.visible=false
 
-        }
+    }
 
 
 
