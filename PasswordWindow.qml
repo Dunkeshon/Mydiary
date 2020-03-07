@@ -1,4 +1,5 @@
 import QtQuick 2.0
+
 import QtQuick.Controls 2.12
 import Diary 1.0
 
@@ -6,24 +7,21 @@ Rectangle {
     property alias myPassword:password.text
     property bool locked: true
     id:pWindow
+    Image {
+        id: background
+        source: "qrc:/resources/images/concrete-wall-3847504.svg"
+        z:0
+        anchors.fill: parent
+    }
 
-    MouseArea{
-        id:lockArea
-        anchors.centerIn: parent
-
-        width: 150
-        height: 150
-        onClicked: {
-            console.log(myPassword)
-            if(myPassword==="12345"){
-                locked = locked ? false:true
-            }
-
-        }
         Image {
             id: lock
+            anchors.centerIn: parent
 
-            anchors.fill:parent
+            width: 150
+            height: 150
+
+
 
             source: {
                 if(locked==true){
@@ -33,15 +31,25 @@ Rectangle {
                     return "qrc:/resources/images/unlock2.svg"
                 }
             }
+            PropertyAnimation { id: unlockedAnim;
+                                   target: lock;
+                                   property: "y";
+                                   easing.type: Easing.OutBounce
+                                   to: 100;
+                                   duration: 500
+            }
+
+
         }
 
-    }
+
     TextField{
         id:password
+        z:2
         width: 200
         height: 30
-        anchors.top: lockArea.bottom
-        anchors.horizontalCenter: lockArea.horizontalCenter
+        anchors.top: lock.bottom
+        anchors.horizontalCenter: lock.horizontalCenter
         anchors.topMargin: 20
 
         echoMode: "Password"
@@ -53,25 +61,34 @@ Rectangle {
             Rectangle {
                 color: "#CC9966"
             }
-
-
-
-
     }
     Button{
         id:confirmButton
         text: "Confirm"
+        onClicked: {
+            if(myPassword==="12345"){
+                locked=false
+                unlockedAnim.running=true
+                acceptedTimer.running=true;
+               // подпрыгивание
+            }
+            else{
+                //дерганье
+            }
+        }
         width: 100
         height: 30
         anchors.top: password.bottom
         anchors.horizontalCenter: password.horizontalCenter
         anchors.topMargin: 10
+        z:2
     }
 
     Image {
         id: animeImage
         x: 383
         y: 89
+        z:1
 
 
         width:282
@@ -82,6 +99,15 @@ Rectangle {
         anchors.bottom: parent.bottom
         source: { return backEnd.generateAnimeGirl()}
     }
+
+    Timer {
+        id:acceptedTimer
+            interval: 2000;
+            onTriggered:pWindow.visible=false
+
+        }
+
+
 
 }
 
