@@ -37,10 +37,7 @@ Rectangle {
             from:0
             to: -100
             duration: 1200
-
         }
-
-
     }
 
 

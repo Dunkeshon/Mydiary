@@ -14,11 +14,13 @@ class BackEnd: public QObject
 private:
     QMap <int,QString> m_imagesMap{
                                    {0,"qrc:/resources/images/catGirl.svg"},
-                                   {1,"qrc:/resources/images/anime.svg"},
+                                   {1,"qrc:/resources/images/cuteGirl.svg"},
                                    {2,"qrc:/resources/images/santaGirl.svg"},
                                    {3,"qrc:/resources/images/shyCatGirl.svg"},
                                    {4,"qrc:/resources/images/hmmGirl.svg"},
-                                   {5,"qrc:/resources/images/iceCreamGirl.svg"}
+                         //          {5,"qrc:/resources/images/iceCreamGirl.svg"},//replace
+                                   {6,"qrc:/resources/images/niceGirl.svg"},
+                                   {7,"qrc:/resources/images/nerdGirl2.svg"}
     };
 
 // shuffle given array
