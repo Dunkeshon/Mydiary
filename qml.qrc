@@ -8,6 +8,8 @@
         <file>BUTTON.qml</file>
         <file>DELEGATE.qml</file>
         <file>funclist.js</file>
+        <file>PasswordWindow.qml</file>
+        <file>images/catGirl.svg</file>
     </qresource>
     <qresource prefix="/resources">
         <file>images/plusIcon.svg</file>
@@ -21,5 +23,13 @@
         <file>images/searchIcon.svg</file>
         <file>images/themeIcon.svg</file>
         <file>images/infoIcon.svg</file>
+        <file>images/anime.svg</file>
+        <file>images/lock.svg</file>
+        <file>images/unlock2.svg</file>
+        <file>images/catGirl.svg</file>
+        <file>images/santaGirl.svg</file>
+        <file>images/shyCatGirl.svg</file>
+        <file>images/hmmGirl.svg</file>
+        <file>images/iceCreamGirl.svg</file>
     </qresource>
 </RCC>

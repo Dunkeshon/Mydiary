@@ -18,6 +18,12 @@ Window {
     FontLoader { id: poppins_black; source:"qrc:/resources/fonts/poppins_/Poppins-Black.ttf"}
     FontLoader { id: merriweather; source:"qrc:/resources/fonts/poppins_/Merriweather-Regular.ttf"}
 
+    PasswordWindow{
+        id:passwordWindow
+        anchors.fill:parent
+        visible:true
+        z:1
+    }
 
     TopPannel {
         id: topPannel
