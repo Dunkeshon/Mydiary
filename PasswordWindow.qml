@@ -1,7 +1,7 @@
 import QtQuick 2.12
 import QtQuick.Controls 2.12
 import Diary 1.0
-
+import "funclist.js" as F
 Rectangle {
     property alias myPassword:password.text
     property bool locked: true
@@ -21,22 +21,90 @@ Rectangle {
         height: 150
 
 
+        source:locked==true? "qrc:/resources/images/lock.svg":"qrc:/resources/images/unlock2.svg"
 
-        source: {
-            if(locked==true){
-                return "qrc:/resources/images/lock.svg"
+        sourceSize.width: width*window.devicePixelRatio
+        sourceSize.height: height*window.devicePixelRatio
+        states: [
+            State {
+                name: "reancored"
+                AnchorChanges {
+                    target: lock
+                    anchors.horizontalCenter: undefined
+                    anchors.verticalCenter: undefined
+                }
             }
-            else{
-                return "qrc:/resources/images/unlock2.svg"
+
+        ]
+
+        SequentialAnimation{
+             id: unlockedAnim
+
+             PropertyAnimation {
+                 target: lock
+                 property: "anchors.verticalCenterOffset"
+
+                 easing.type: Easing.Linear
+
+                 to: -30
+                 duration: 100
+             }
+
+            PropertyAnimation {
+                target: lock
+                property: "anchors.verticalCenterOffset"
+
+                easing.type: Easing.OutBounce
+
+                to: 0
+                duration: 800
             }
         }
-        PropertyAnimation { id: unlockedAnim
-            target: lock
-            property: "y"
-            easing.type: Easing.OutBounce
-            from:0
-            to: -100
-            duration: 1200
+
+        SequentialAnimation{
+            id: lockedAnim
+
+            PropertyAnimation {
+                target: lock
+                property: "anchors.horizontalCenterOffset"
+
+                easing.type: Easing.Linear
+                to: -20
+                duration: 200
+            }
+            PropertyAnimation {
+                target: lock
+                property: "anchors.horizontalCenterOffset"
+
+                easing.type: Easing.Linear
+                to: 20
+                duration: 200
+            }
+            PropertyAnimation {
+                target: lock
+                property: "anchors.horizontalCenterOffset"
+
+                easing.type: Easing.Linear
+                to: -10
+                duration: 100
+            }
+            PropertyAnimation {
+                target: lock
+                property: "anchors.horizontalCenterOffset"
+
+                easing.type: Easing.Linear
+                to: 10
+                duration: 100
+            }
+            PropertyAnimation {
+                target: lock
+                property: "anchors.horizontalCenterOffset"
+
+                easing.type: Easing.Linear
+                to: 0
+                duration:100
+            }
+
         }
     }
 
@@ -49,7 +117,6 @@ Rectangle {
         anchors.top: lock.bottom
         anchors.horizontalCenter: lock.horizontalCenter
         anchors.topMargin: 20
-
         echoMode: "Password"
         font.pixelSize: 18
         color: "black"
@@ -59,21 +126,23 @@ Rectangle {
             Rectangle {
             color: "#CC9966"
         }
+        states: [
+            State {
+                name: "reanchored"
+
+                AnchorChanges {
+                    target: password
+                    anchors.top: undefined
+                }
+
+            }
+        ]
+        onEditingFinished: F.acceptPassword()
     }
     Button{
         id:confirmButton
         text: "Confirm"
-        onClicked: {
-            if(myPassword==="12345"){
-                locked=false
-                unlockedAnim.start()
-                acceptedTimer.running=true;
-                // подпрыгивание
-            }
-            else{
-                //дерганье
-            }
-        }
+        onClicked:F.acceptPassword()
         width: 100
         height: 30
         anchors.top: password.bottom
@@ -96,6 +165,8 @@ Rectangle {
         anchors.right: parent.right
         anchors.bottom: parent.bottom
         source: { return backEnd.generateAnimeGirl()}
+        sourceSize.width: width*window.devicePixelRatio
+        sourceSize.height: height*window.devicePixelRatio
     }
 
     Timer {

@@ -80,3 +80,18 @@ function focusOff() {
     userinput.usertext.focus = false
     topPannel.searchfield.textfocus = false
 }
+
+function acceptPassword(){
+    if(myPassword==="12345"){
+        locked=false
+        password.state="reanchored"
+        unlockedAnim.start()
+      //  unlockedAnim.start()
+        acceptedTimer.running=true
+        // подпрыгивание
+    }
+    else{
+        lockedAnim.start()
+        //дерганье
+    }
+}
