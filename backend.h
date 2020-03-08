@@ -34,6 +34,7 @@ void shuffle_array(T * myarray,int size);
 int generate_random_int(int from,int to);
 
 public:
+
     BackEnd(QObject *parent = nullptr);
     Q_INVOKABLE QUrl generateAnimeGirl();
 

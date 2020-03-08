@@ -29,7 +29,7 @@ Window {
 
     Settings{
         id:qSettings
-        property int colorTheme:Themes.ROSE_THEME
+        property int colorTheme:Themes.DARK_THEME
     }
 
 
@@ -164,7 +164,6 @@ Window {
         property color separatorColor: "#6d84de" //
         id: verticalSeparator
         color:separatorColor
-
         width: 1
         anchors.top: topPannel.bottom
         anchors.bottom: parent.bottom
@@ -173,6 +172,7 @@ Window {
 
     Component.onCompleted: {
         console.log(qSettings.colorTheme)
+        qSettings.colorTheme=Themes.DARK_THEME
         changeTheme(qSettings.colorTheme)
     }
 
