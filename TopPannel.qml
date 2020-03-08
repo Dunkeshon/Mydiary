@@ -3,6 +3,10 @@ import QtQuick.Window 2.12
 import QtQuick.Controls 2.12
 import QtQuick.Layouts 1.12
 import QtGraphicalEffects 1.0
+import Diary 1.0
+
+import "funclist.js" as F
+
 
 Item {
     property alias searchfield: searchField
@@ -13,10 +17,16 @@ Item {
     id: mainItem
 
     Component.onCompleted: {
+<<<<<<< HEAD
         addButton.buttonChecked.connect(addButtonRealization)
         arrowButton.buttonChecked.connect(arrowButtonRealization)
         settingsButton.buttonChecked.connect(settingsButtonRealization)
         searchField.searchFinished.connect(updateProxyModel)
+=======
+        addButton.buttonChecked.connect(F.addButtonRealization)
+        arrowButton.buttonChecked.connect(F.arrowButtonRealization)
+        searchField.changeFilterText.connect(F.changeFilter)
+>>>>>>> password
     }
 
 

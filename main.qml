@@ -5,6 +5,8 @@ import QtQuick.Layouts 1.12
 import Diary 1.0
 import Qt.labs.settings 1.0
 
+import "funclist.js" as F
+
 Window {
     id: window
     property color mainColorBackground:"white" //
@@ -18,6 +20,12 @@ Window {
     FontLoader { id: poppins_black; source:"qrc:/resources/fonts/poppins_/Poppins-Black.ttf"}
     FontLoader { id: merriweather; source:"qrc:/resources/fonts/poppins_/Merriweather-Regular.ttf"}
 
+    PasswordWindow{
+        id:passwordWindow
+        anchors.fill:parent
+        visible:true
+        z:1
+    }
 
     Settings{
         id:qSettings
@@ -169,6 +177,7 @@ Window {
     }
 
     Component.onDestruction: {
+<<<<<<< HEAD
         updateModelInformation()
        //qSettings.colorTheme /*= Themes.DEFAULT_THEME*/;
         console.log(qSettings.colorTheme)
@@ -258,6 +267,9 @@ Window {
         userinput.titletext.focus = false
         userinput.usertext.focus = false
         topPannel.searchfield.textfocus = false
+=======
+        F.updateModelInformation()
+>>>>>>> password
     }
 
     function changeTheme(colorTheme){

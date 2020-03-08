@@ -4,12 +4,16 @@
 #include <QSettings>
 #include "diarylist.h"
 #include "diarylistmodel.h"
+<<<<<<< HEAD
 #include "ColorThemes.h"
+=======
+#include "backend.h"
+>>>>>>> password
 
 
 int main(int argc, char *argv[])
 {
-    //qputenv("QSG_VISUALIZE","overdraw");
+   // qputenv("QSG_VISUALIZE","overdraw");
     QCoreApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
 
     QGuiApplication app(argc, argv);
@@ -25,11 +29,17 @@ int main(int argc, char *argv[])
          QStringLiteral("This object should not be created in qml"));
 
 
+
     DiaryList diaryList;
+    BackEnd backEnd;
 
     QQmlApplicationEngine engine;
 
+
     engine.rootContext()->setContextProperty(QStringLiteral("diaryList"), &diaryList);
+    engine.rootContext()->setContextProperty(QStringLiteral("backEnd"), &backEnd);
+
+
     const QUrl url(QStringLiteral("qrc:/main.qml"));
     QObject::connect(&engine, &QQmlApplicationEngine::objectCreated,
                      &app, [url](QObject *obj, const QUrl &objUrl) {

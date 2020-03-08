@@ -2,6 +2,7 @@ import QtQuick 2.0
 import QtQuick.Controls 2.12
 import QtQuick.Layouts 1.12
 import Diary 1.0
+import "funclist.js" as F
 
 
 ColumnLayout {
@@ -41,11 +42,11 @@ ColumnLayout {
         Component.onCompleted: {
             currentIndex = -1
 
-            column.choosen.connect(updateWindowInformation)
+            column.choosen.connect(F.updateWindowInformation)
 
-            column.changeIndex.connect(updateModelInformation);
+            column.changeIndex.connect(F.updateModelInformation);
 
-            column.changeIndex.connect(focusOff)
+            column.changeIndex.connect(F.focusOff)
         }
 
         delegate: DELEGATE {

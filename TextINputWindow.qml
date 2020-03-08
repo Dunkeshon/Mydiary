@@ -3,6 +3,9 @@ import QtQuick.Window 2.12
 import QtQuick.Controls 2.12
 import QtQuick.Layouts 1.12
 import QtGraphicalEffects 1.0
+import Diary 1.0
+
+import "funclist.js" as F
 
 
 Rectangle {
@@ -20,7 +23,7 @@ Rectangle {
     color: themeColor
 
     Component.onCompleted: {
-        trashButton.buttonChecked.connect(deleteButtonRealization)
+        trashButton.buttonChecked.connect(F.deleteButtonRealization)
     }
 
     Item {
