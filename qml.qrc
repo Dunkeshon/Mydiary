@@ -7,14 +7,12 @@
         <file>SearchField.qml</file>
         <file>BUTTON.qml</file>
         <file>DELEGATE.qml</file>
-<<<<<<< HEAD
+
         <file>SettingsWindow.qml</file>
         <file>ThemeElement.qml</file>
-=======
         <file>funclist.js</file>
         <file>PasswordWindow.qml</file>
         <file>images/catGirl.svg</file>
->>>>>>> password
     </qresource>
     <qresource prefix="/resources">
         <file>images/plusIcon.svg</file>

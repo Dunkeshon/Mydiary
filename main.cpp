@@ -4,11 +4,8 @@
 #include <QSettings>
 #include "diarylist.h"
 #include "diarylistmodel.h"
-<<<<<<< HEAD
 #include "ColorThemes.h"
-=======
 #include "backend.h"
->>>>>>> password
 
 
 int main(int argc, char *argv[])

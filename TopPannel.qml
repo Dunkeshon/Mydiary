@@ -17,16 +17,14 @@ Item {
     id: mainItem
 
     Component.onCompleted: {
-<<<<<<< HEAD
-        addButton.buttonChecked.connect(addButtonRealization)
-        arrowButton.buttonChecked.connect(arrowButtonRealization)
-        settingsButton.buttonChecked.connect(settingsButtonRealization)
-        searchField.searchFinished.connect(updateProxyModel)
-=======
+
+        settingsButton.buttonChecked.connect(F.settingsButtonRealization)
+        //
+
         addButton.buttonChecked.connect(F.addButtonRealization)
         arrowButton.buttonChecked.connect(F.arrowButtonRealization)
         searchField.changeFilterText.connect(F.changeFilter)
->>>>>>> password
+
     }
 
 

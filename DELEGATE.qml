@@ -1,78 +1,8 @@
 import QtQuick 2.0
 import QtGraphicalEffects 1.0
-<<<<<<< HEAD
 import Diary 1.0
-=======
 import QtQuick.Controls 2.12
 
-//ItemDelegate{
-
-//    property alias mouseArea: mousearea
-//    property alias date: modelDateText.text
-//    property alias title: modelTitleText.text
-//    property bool current: false
-
-//    id:control
-//    contentItem:
-//        MouseArea {
-//        id: mousearea
-//        hoverEnabled: true
-//        //   anchors.fill: parent
-//        cursorShape: Qt.PointingHandCursor
-//        Item {
-//            id: element
-//            anchors.fill: parent
-//            Text {
-//                id: modelDateText
-//                color: "black"
-//                opacity: 0.56
-//                font.family: "poppins_black"
-//                font.pixelSize:12
-//                anchors.right: parent.right
-//                anchors.rightMargin: 4
-//            }
-
-//            Text {
-//                id: modelTitleText
-//                anchors.left: parent.left
-//                anchors.leftMargin: 10
-//                anchors.bottom: parent.bottom
-//                anchors.bottomMargin: 5
-//                color:"#404040"
-//                verticalAlignment: Text.AlignVCenter
-//                font.family: "merriweather"
-//                font.pixelSize: 17
-//            }
-//        }
-//    }
-//    background:
-//        Rectangle {
-//        id: fillRect
-//        anchors.fill: parent
-//        color: {
-//            if(control.pressed){
-//                return "#93a6ee"
-//            }
-//            else if(mousearea.containsMouse){
-//                return "#bbc7f4"
-//            }
-//            else{
-//                return "white"
-//            }
-
-//        }
-//        Rectangle
-//        {
-//            id: bottomSeparator
-//            width: parent.width
-//            height: 1
-//            color: "#6d84de"
-//            anchors.bottom: parent.bottom
-//        }
-//    }
-//}
-
->>>>>>> password
 Item {
     id: delegate
 
@@ -185,11 +115,9 @@ Item {
             when: mousearea.containsMouse && !mousearea.pressed && !current
             PropertyChanges {
                 target: fillRect
-<<<<<<< HEAD
+
                 color: enteredColor
-=======
-                color: "#bbc7f4"// наведен
->>>>>>> password
+
             }
         },
         State {

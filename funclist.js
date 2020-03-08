@@ -95,3 +95,9 @@ function acceptPassword(){
         //дерганье
     }
 }
+function settingsButtonRealization(){
+    if(settingsSection.state == "Active")
+        settingsSection.state = ""
+    else
+        settingsSection.state = "Active"
+}
