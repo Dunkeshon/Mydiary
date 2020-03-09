@@ -4,7 +4,7 @@ function updateWindowInformation() {
     if(!userinput.visible)
         userinput.visible = true;
 
-    if(notesList.currentIndex == -1){
+    if(notesList.currentIndex === -1){
         userinput.visible = false;
         return
     }
@@ -21,7 +21,7 @@ function updateWindowInformation() {
 // after committing changes sets the date of editing
 function updateModelInformation() {
 
-    if(notesList.currentIndex==-1)
+    if(notesList.currentIndex === -1)
         return
 
     //тут эта переменная нужна потому что иначе setFilterFixedString уберет или переставит индекс
@@ -62,7 +62,7 @@ function deleteButtonRealization() {
     notesList.currentIndex = temp
     updateWindowInformation()
 
-    if(notesList.currentIndex == -1) {
+    if(notesList.currentIndex === -1) {
         topPannel.searchfield.text = ""
         topPannel.searchfield.state = ""
     }
