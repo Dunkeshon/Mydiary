@@ -11,6 +11,18 @@ ColumnLayout {
     property alias model: myModel
     property alias sortModel: sortModel
 
+    //for delegate
+
+    property color m_bottomSeparatorColor //: "#6d84de"
+    property color m_fillDelegateColor //: "white"
+    property color m_innerChadowColor //: "black"
+    property color m_titleTextColor // : "#404040"
+    property color m_dateTextColor //: "black"
+    property color m_enteredColor //: "#bbc7f4"
+    property color m_pressedColor //: "#93a6ee"
+    property color m_modelDateTextRealized //: "#00135F"
+    property color m_modelTitleTextRealized
+
     Layout.fillWidth: true
     Layout.fillHeight: true
 
@@ -50,6 +62,17 @@ ColumnLayout {
         }
 
         delegate: DELEGATE {
+
+            bottomSeparatorColor : m_bottomSeparatorColor //: "#6d84de"
+            fillDelegateColor : m_fillDelegateColor //: "white"
+            innerChadowColor : m_innerChadowColor//: "black"
+            titleTextColor :m_titleTextColor// : "#404040"
+            dateTextColor : m_dateTextColor //: "black"
+            enteredColor : m_enteredColor //: "#bbc7f4"
+            pressedColor : m_pressedColor//: "#93a6ee"
+            modelDateTextRealized : m_modelDateTextRealized//: "#00135F"
+            modelTitleTextRealized :m_modelTitleTextRealized
+
             width: parent.width
             height: 50
 

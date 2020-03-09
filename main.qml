@@ -172,14 +172,14 @@ Window {
 
     Component.onCompleted: {
         console.log(qSettings.colorTheme)
-        qSettings.colorTheme=Themes.DARK_THEME
+        qSettings.colorTheme=Themes.ROSE_THEME
         changeTheme(qSettings.colorTheme)
     }
 
     Component.onDestruction: {
 
         F.updateModelInformation()
-       //qSettings.colorTheme /*= Themes.DEFAULT_THEME*/;
+        //qSettings.colorTheme /*= Themes.DEFAULT_THEME*/;
         console.log(qSettings.colorTheme)
 
     }
@@ -201,17 +201,26 @@ Window {
             BUTTON.toolTipStyleColor= "#ffffff"
             BUTTON.toolTipTextColor= "#8f000000"
             //DELEGATE
-//            DELEGATE.bottomSeparatorColor= "#6d84de"
-//            DELEGATE.fillDelegateColor= "white"
-//            DELEGATE.innerChadowColor= "black"
-//            DELEGATE.titleTextColor= "#404040"
-//            DELEGATE.dateTextColor= "black"
-//            // undefined befor
-//            DELEGATE.enteredColor="#bbc7f4"
-//            // undefined befor
+            notesList.m_fillDelegateColor="white"
+            notesList.m_bottomSeparatorColor="#6d84de"
+            notesList.m_innerChadowColor=Qt.rgba(0, 0, 0, 0.44)
+            notesList.m_dateTextColor=Qt.rgba(0, 0, 0, 0.56)
+            notesList.m_titleTextColor=Qt.rgba(0, 0, 0, 0.65)
+            notesList.m_enteredColor="#bbc7f4"
+            notesList.m_pressedColor="#93a6ee"
+            notesList.m_modelTitleTextRealized="#00135F"
+            notesList.m_modelDateTextRealized=QT.rgba(0, 0, 0, 0.76)
+            //            DELEGATE.bottomSeparatorColor= "#6d84de"
+            //            DELEGATE.fillDelegateColor= "white"
+            //            DELEGATE.innerChadowColor= "black"
+            //            DELEGATE.titleTextColor= "#404040"
+            //            DELEGATE.dateTextColor= "black"
+            //            // undefined befor
+            //            DELEGATE.enteredColor="#bbc7f4"
+            //            // undefined befor
 
-//            DELEGATE.pressedColor= "#93a6ee"
-//            DELEGATE.modelDateTextRelised= "#00135F"
+            //            DELEGATE.pressedColor= "#93a6ee"
+            //            DELEGATE.modelDateTextRelised= "#00135F"
             //SearchField
             SearchField.themeColor= "#617adb"
             SearchField.textFieldColor= "white"
@@ -242,12 +251,39 @@ Window {
             break;
         case Themes.ROSE_THEME:
             //DELEGATE
-            DELEGATE.enteredColor="#FFE0E0"
+            notesList.m_fillDelegateColor="white"
+            notesList.m_bottomSeparatorColor= Qt.rgba(255, 168, 168, 0.72)
+            notesList.m_innerChadowColor= Qt.rgba(123, 54, 54, 0.6)
+            notesList.m_dateTextColor=Qt.rgba(123, 54, 54, 0.73)
+            notesList.m_titleTextColor=Qt.rgba(123, 54, 54, 0.73)
+            notesList.m_enteredColor="#FFE0E0"
+            notesList.m_pressedColor="#FFC0C0"
+            notesList.m_modelTitleTextRealized=Qt.rgba(123, 54, 54, 0.73)
+            notesList.m_modelDateTextRealized=Qt.rgba(123, 54, 54, 0.73)
+
 
             break;
         case Themes.YELLOW_THEME:
+//            notesList.m_fillDelegateColor=
+//            notesList.m_bottomSeparatorColor=
+//            notesList.m_innerChadowColor=
+//            notesList.m_dateTextColor=
+//            notesList.m_titleTextColor=
+//            notesList.m_enteredColor=
+//            notesList.m_pressedColor=
+//            notesList.m_modelTitleTextRealized=
+//            notesList.m_modelDateTextRealized=
             break;
         case Themes.DARK_THEME:
+            notesList.m_fillDelegateColor="#505050"
+            notesList.m_bottomSeparatorColor="white"
+            notesList.m_innerChadowColor=Qt.rgba(0, 0, 0, 0.72)
+            notesList.m_dateTextColor=Qt.rgba(255, 255, 255, 0.93)
+            notesList.m_titleTextColor="#FFFFFF"
+            notesList.m_enteredColor="#828282"
+            notesList.m_pressedColor="#D8D8D8"
+            notesList.m_modelTitleTextRealized="black"
+            notesList.m_modelDateTextRealized=Qt.rgba(0, 0, 0, 0.93)
             break;
         default: throw "Theme id out of range"
 
