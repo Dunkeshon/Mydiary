@@ -14,6 +14,8 @@ Item {
     property color pressedColor: "#4c69d7"
     property color enteredColor: "#dddddd"
 
+    // place somewhere tooltip text color and font
+
     id: mainItem
 
     Component.onCompleted: {

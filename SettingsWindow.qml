@@ -4,11 +4,11 @@ import QtQuick.Layouts 1.12
 import QtGraphicalEffects 1.0
 
 Item {
-    property color themeColor: "#6d84de"
-    property color defaultSelect: "white"
-    property color roseSelect: "#FFB6B6"
-    property color yellowSelect: "#FFD749"
-    property color darkSelect: "#000000"
+    property color themeColor//: "#6d84de"
+    property color defaultSelect//: "white"
+    property color roseSelect//: "#FFB6B6"
+    property color yellowSelect//: "#FFD749"
+    property color darkSelect //: "#000000"
 
 
 
@@ -99,7 +99,7 @@ Item {
                 anchors.left: parent.left
                 anchors.top: defaultTheme.bottom
                 anchors.margins: 5
-                themeName: "Yellow"
+                themeName: "Beige"
                 fontColor: yellowSelect
                 iconColor: yellowSelect
 

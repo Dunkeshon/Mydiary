@@ -14,11 +14,11 @@ Rectangle {
     property var editInfo
     property alias titletext: title
     property alias usertext: userText
-    property color themeColor: "#f4f5f8"
-    property color textSelectionColor: "#3399FF"
-    property color iconColor: "#aaaaaa"
-    property color enteredButtonColor: "#777777"
-    property color pressedButtonColor:  "black"
+    property color themeColor//: "#f4f5f8"
+    property color textSelectionColor//: "#3399FF"
+    property color iconColor//: "#aaaaaa"
+    property color enteredButtonColor//: "#777777"
+    property color pressedButtonColor//:  "black"
 
     color: themeColor
 

@@ -15,14 +15,14 @@ ColumnLayout {
 
     property color m_bottomSeparatorColor //: "#6d84de"
     property color m_fillDelegateColor //: "white"
-    property color m_innerChadowColor //: "black"
+ //   property color m_innerChadowColor //: "black"
     property color m_titleTextColor // : "#404040"
     property color m_dateTextColor //: "black"
     property color m_enteredColor //: "#bbc7f4"
     property color m_pressedColor //: "#93a6ee"
     property color m_modelDateTextRealized //: "#00135F"
     property color m_modelTitleTextRealized
-    property color m_delegateRealized
+ //   property color m_delegateRealized
 
 
     Layout.fillWidth: true
@@ -66,9 +66,8 @@ ColumnLayout {
         delegate: DELEGATE {
             Component.onCompleted: {
                 console.log("delegate completed")
-
-                //                console.log("fillDelegateColor expected: "+"white")
-                //                console.log("fillDelegateColor received: "+fillDelegateColor.toString()+"\n")
+                //console.log("fillDelegateColor expected: "+"white")
+                //console.log("fillDelegateColor received: "+fillDelegateColor.toString()+"\n")
                 console.log("pressedColor expected: "+"#FFC0C0")
                 console.log("fillDelegateColor received: "+pressedColor.toString()+"\n")
                 console.log("bottomSeparatorColor expected: "+"#ffa8a8".toString())
@@ -78,14 +77,14 @@ ColumnLayout {
 
             bottomSeparatorColor : m_bottomSeparatorColor //: "#6d84de"
             fillDelegateColor : m_fillDelegateColor //: "white"
-            innerChadowColor : m_innerChadowColor//: "black"
+         //   innerChadowColor : m_innerChadowColor//: "black"
             titleTextColor :m_titleTextColor// : "#404040"
             dateTextColor : m_dateTextColor //: "black"
             enteredColor : m_enteredColor //: "#bbc7f4"
             pressedColor : m_pressedColor//: "#93a6ee"
             modelDateTextRealized : m_modelDateTextRealized//: "#00135F"
             modelTitleTextRealized :m_modelTitleTextRealized
-            delegateRealized :  m_delegateRealized
+            //delegateRealized :  m_delegateRealized
             width: parent.width
             height: 50
 

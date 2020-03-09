@@ -112,7 +112,6 @@ Window {
                     properties: "x, visible"
                     duration: 450
                 }
-
             },
             Transition {
                 from: ""
@@ -151,8 +150,8 @@ Window {
 
 
     TextINputWindow {
-        visible: false
         id: userinput
+        visible: false
         width: parent.width - leftColumn.width - verticalSeparator.width
         anchors.top: topPannel.bottom
         anchors.bottom: parent.bottom
@@ -172,7 +171,7 @@ Window {
 
     Component.onCompleted: {
         console.log("mainwindow completed, theme is " + qSettings.colorTheme)
-        qSettings.colorTheme=Themes.ROSE_THEME
+        qSettings.colorTheme=Themes.YELLOW_THEME
         changeTheme(qSettings.colorTheme)
     }
 
@@ -194,22 +193,22 @@ Window {
             startRect.children.enterTextTipColor= "#aaaaaa"
             verticalSeparator.separatorColor= "#6d84de"
             //BUTTON
-            BUTTON.iconColor ="white"
-            BUTTON.bColor = "white"
-            BUTTON.enteredColor= "white"
-            BUTTON.pressedColor= "white"
-            BUTTON.toolTipStyleColor= "#ffffff"
-            BUTTON.toolTipTextColor= "#8f000000"
+//            BUTTON.iconColor ="white"
+//            BUTTON.bColor = "white"
+//            BUTTON.enteredColor= "white"
+//            BUTTON.pressedColor= "white"
+//            BUTTON.toolTipStyleColor= "#ffffff"
+//            BUTTON.toolTipTextColor = "#8f000000"
             //DELEGATE
             notesList.m_fillDelegateColor="white"
             notesList.m_bottomSeparatorColor="#6d84de"
-            notesList.m_innerChadowColor=Qt.rgba(0, 0, 0, 0.44)
-            notesList.m_dateTextColor=Qt.rgba(0, 0, 0, 0.56)
-            notesList.m_titleTextColor=Qt.rgba(0, 0, 0, 0.65)
+        //    notesList.m_innerChadowColor=Qt.rgba(0, 0, 0, 0.44)
+            notesList.m_dateTextColor="#666666"
+            notesList.m_titleTextColor="#666666"
             notesList.m_enteredColor="#bbc7f4"
             notesList.m_pressedColor="#93a6ee"
             notesList.m_modelTitleTextRealized="#00135F"
-            notesList.m_modelDateTextRealized=QT.rgba(0, 0, 0, 0.76)
+            notesList.m_modelDateTextRealized="#00135F"
             //            DELEGATE.bottomSeparatorColor= "#6d84de"
             //            DELEGATE.fillDelegateColor= "white"
             //            DELEGATE.innerChadowColor= "black"
@@ -227,24 +226,24 @@ Window {
             SearchField.placeholderTextColor= "#f5f5f5"
             SearchField.textSelectionColor= "#3399FF"
             //SettingsWindow
-            SettingsWindow.themeColor="#6d84de"
-            SettingsWindow.defaultSelect="white"
-            SettingsWindow.roseSelect= "#FFB6B6"
-            SettingsWindow.yellowSelect= "#FFD749"
-            SettingsWindow.darkSelect= "#000000"
+            settingsSection.themeColor = "#6d84de"
+            settingsSection.defaultSelect = "white"
+            settingsSection.roseSelect = "#FFB6B6"
+            settingsSection.yellowSelect = "#FFD749"
+            settingsSection.darkSelect = "#000000"
             //TextINputWindow
-            TextINputWindow.themeColor= "#f4f5f8"
-            TextINputWindow.textSelectionColor= "#3399FF"
-            TextINputWindow.iconColor= "#aaaaaa"
-            TextINputWindow.enteredButtonColor= "#777777"
-            TextINputWindow.pressedButtonColor= "black"
+            userinput.themeColor = "#f4f5f8"
+            userinput.textSelectionColor = "#3399FF"
+            userinput.iconColor = "#A5A4A5"
+            userinput.enteredButtonColor = "#777777"
+            userinput.pressedButtonColor = "black"
             //ThemeElement
-            ThemeElement.iconColor= "white"
-            ThemeElement.bColor= "#6d84de"
+            ThemeElement.iconColor = "white"
+            ThemeElement.bColor = "#6d84de"
             //TopPannel
-            TopPannel.panelColor= "#6d84de"
-            TopPannel.pressedColor= "#4c69d7"
-            TopPannel.enteredColor= "#dddddd"
+            TopPannel.panelColor = "#6d84de"
+            TopPannel.pressedColor = "#4c69d7"
+            TopPannel.enteredColor = "#dddddd"
 
 
 
@@ -253,38 +252,73 @@ Window {
             //DELEGATE
             notesList.m_fillDelegateColor="white"
             notesList.m_bottomSeparatorColor= "#ffa8a8"
-            notesList.m_innerChadowColor= "#b08686"
+         //   notesList.m_innerChadowColor= "#b08686"
             notesList.m_dateTextColor="#a37272"
             notesList.m_titleTextColor="#a37272"
             notesList.m_enteredColor="#FFE0E0"
             notesList.m_pressedColor="#FFC0C0"
             notesList.m_modelTitleTextRealized="#a37272"
             notesList.m_modelDateTextRealized="#a37272"
-            notesList.m_delegateRealized="#FFC0C0"
-
+            //SettingsWindow
+            settingsSection.themeColor="#F3CB9B"
+            settingsSection.defaultSelect="white"
+            settingsSection.roseSelect= "#FFFFFF"
+            settingsSection.yellowSelect= "#FFDFB9"
+            settingsSection.darkSelect= "#000000"
+            //TextINputWindow
+            userinput.themeColor = "#fff7f7"
+            userinput.textSelectionColor = "#3399FF"
+            userinput.iconColor = "#b08686"
+            userinput.enteredButtonColor = "#955e5e"
+            userinput.pressedButtonColor = "#7b3636"
 
             break;
         case Themes.YELLOW_THEME:
-//            notesList.m_fillDelegateColor=
-//            notesList.m_bottomSeparatorColor=
-//            notesList.m_innerChadowColor=
-//            notesList.m_dateTextColor=
-//            notesList.m_titleTextColor=
-//            notesList.m_enteredColor=
-//            notesList.m_pressedColor=
-//            notesList.m_modelTitleTextRealized=
-//            notesList.m_modelDateTextRealized=
+            notesList.m_fillDelegateColor="white"
+            notesList.m_bottomSeparatorColor="#F3CB9B"
+          //  notesList.m_innerChadowColor=
+            notesList.m_dateTextColor="#b69d80"
+            notesList.m_titleTextColor="#714A1C"
+            notesList.m_enteredColor="#f9e5cd"
+            notesList.m_pressedColor="#f5d5af"
+            notesList.m_modelTitleTextRealized= "#5F401C"
+            notesList.m_modelDateTextRealized= "#62421E"
+            //SettingsWindow
+            settingsSection.themeColor="#F3CB9B"
+            settingsSection.defaultSelect="#7187df"
+            settingsSection.roseSelect= "#FD7676"
+            settingsSection.yellowSelect= "#FFFFFF"
+            settingsSection.darkSelect= "#000000"
+            //TextINputWindow
+            userinput.themeColor = "#fdf5eb"
+            userinput.textSelectionColor = "#3399FF"
+            userinput.iconColor = "#b8a58e"
+            userinput.enteredButtonColor = "#aa9277"
+            userinput.pressedButtonColor = "#8d6e49"
             break;
+
         case Themes.DARK_THEME:
             notesList.m_fillDelegateColor="#505050"
             notesList.m_bottomSeparatorColor="white"
-            notesList.m_innerChadowColor=Qt.rgba(0, 0, 0, 0.72)
-            notesList.m_dateTextColor=Qt.rgba(255, 255, 255, 0.93)
+           // notesList.m_innerChadowColor=Qt.rgba(0, 0, 0, 0.72)
+            notesList.m_dateTextColor="white"
             notesList.m_titleTextColor="#FFFFFF"
             notesList.m_enteredColor="#828282"
             notesList.m_pressedColor="#D8D8D8"
             notesList.m_modelTitleTextRealized="black"
-            notesList.m_modelDateTextRealized=Qt.rgba(0, 0, 0, 0.93)
+            notesList.m_modelDateTextRealized="black"
+            //SettingsWindow
+            settingsSection.themeColor="#2B2B2B"
+            settingsSection.defaultSelect="#7187df"
+            settingsSection.roseSelect= "#FFB0B0"
+            settingsSection.yellowSelect= "#F3CB9B"
+            settingsSection.darkSelect= "#FFFFFF"
+            //TextINputWindow
+            userinput.themeColor = "#404040"
+            userinput.textSelectionColor = "#3399FF"
+            userinput.iconColor = "#white"
+            userinput.enteredButtonColor = "#D6D6D6"
+            userinput.pressedButtonColor = "#BABABA"
             break;
         default: throw "Theme id out of range"
 

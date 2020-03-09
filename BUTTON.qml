@@ -10,10 +10,10 @@ Rectangle {
     property alias iconSource: buttonIcon.source
     property var size: 0
     property var iconMargins: 0
-    property color iconColor: "white"
-    property color bColor: "white"
-    property color enteredColor: "white"
-    property color pressedColor: "white"
+    property color iconColor//: "white"
+    property color bColor //: "white"
+    property color enteredColor//: "white"
+    property color pressedColor//: "white"
 
     property color toolTipStyleColor: "#ffffff"
     property color toolTipTextColor: "#8f000000"
