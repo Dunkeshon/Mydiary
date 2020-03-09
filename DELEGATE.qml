@@ -20,6 +20,8 @@ Item {
     property color pressedColor //: "#93a6ee"
     property color modelDateTextRealized //: "#00135F"
     property color modelTitleTextRealized
+    property color delegateRealized
+
 
 
     Component.onCompleted: {
@@ -53,11 +55,11 @@ Item {
             id: innerRect
             source: fillRect
             anchors.fill: fillRect
-            samples: 16
-            radius: 8.0
-            verticalOffset: 3
-            color:innerChadowColor
-            // opacity: 0.25
+//            samples: 16
+//            radius: 8.0
+//            verticalOffset: 3
+//            color:innerChadowColor
+//            // opacity: 0.25
             visible: false
         }
 

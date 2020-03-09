@@ -22,6 +22,8 @@ ColumnLayout {
     property color m_pressedColor //: "#93a6ee"
     property color m_modelDateTextRealized //: "#00135F"
     property color m_modelTitleTextRealized
+    property color m_delegateRealized
+
 
     Layout.fillWidth: true
     Layout.fillHeight: true
@@ -62,6 +64,17 @@ ColumnLayout {
         }
 
         delegate: DELEGATE {
+            Component.onCompleted: {
+                console.log("delegate completed")
+
+                //                console.log("fillDelegateColor expected: "+"white")
+                //                console.log("fillDelegateColor received: "+fillDelegateColor.toString()+"\n")
+                console.log("pressedColor expected: "+"#FFC0C0")
+                console.log("fillDelegateColor received: "+pressedColor.toString()+"\n")
+                console.log("bottomSeparatorColor expected: "+"#ffa8a8".toString())
+                console.log("bottomSeparatorColor received: "+bottomSeparatorColor.toString()+"\n")
+
+            }
 
             bottomSeparatorColor : m_bottomSeparatorColor //: "#6d84de"
             fillDelegateColor : m_fillDelegateColor //: "white"
@@ -72,7 +85,7 @@ ColumnLayout {
             pressedColor : m_pressedColor//: "#93a6ee"
             modelDateTextRealized : m_modelDateTextRealized//: "#00135F"
             modelTitleTextRealized :m_modelTitleTextRealized
-
+            delegateRealized :  m_delegateRealized
             width: parent.width
             height: 50
 

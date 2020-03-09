@@ -171,7 +171,7 @@ Window {
     }
 
     Component.onCompleted: {
-        console.log(qSettings.colorTheme)
+        console.log("mainwindow completed, theme is " + qSettings.colorTheme)
         qSettings.colorTheme=Themes.ROSE_THEME
         changeTheme(qSettings.colorTheme)
     }
@@ -185,7 +185,7 @@ Window {
     }
 
     function changeTheme(colorTheme){
-        console.log(qSettings.colorTheme)
+        console.log("Change theme started , theme is " + qSettings.colorTheme)
         switch(colorTheme){
         case Themes.DEFAULT_THEME:
 
@@ -252,14 +252,15 @@ Window {
         case Themes.ROSE_THEME:
             //DELEGATE
             notesList.m_fillDelegateColor="white"
-            notesList.m_bottomSeparatorColor= Qt.rgba(255, 168, 168, 0.72)
-            notesList.m_innerChadowColor= Qt.rgba(123, 54, 54, 0.6)
-            notesList.m_dateTextColor=Qt.rgba(123, 54, 54, 0.73)
-            notesList.m_titleTextColor=Qt.rgba(123, 54, 54, 0.73)
+            notesList.m_bottomSeparatorColor= "#ffa8a8"
+            notesList.m_innerChadowColor= "#b08686"
+            notesList.m_dateTextColor="#a37272"
+            notesList.m_titleTextColor="#a37272"
             notesList.m_enteredColor="#FFE0E0"
             notesList.m_pressedColor="#FFC0C0"
-            notesList.m_modelTitleTextRealized=Qt.rgba(123, 54, 54, 0.73)
-            notesList.m_modelDateTextRealized=Qt.rgba(123, 54, 54, 0.73)
+            notesList.m_modelTitleTextRealized="#a37272"
+            notesList.m_modelDateTextRealized="#a37272"
+            notesList.m_delegateRealized="#FFC0C0"
 
 
             break;

@@ -171,7 +171,7 @@ Rectangle {
 
     Timer {
         id:acceptedTimer
-        interval: 2000;
+        interval: 1000;
         onTriggered:pWindow.visible=false
 
     }
