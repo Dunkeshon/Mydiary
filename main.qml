@@ -92,36 +92,6 @@ Window {
         anchors.top: topPannel.bottom
         x:200
         z:1
-
-        states: [
-            State {
-                name: "Active"
-                PropertyChanges {
-                    target: settingsSection
-                    x: 0
-                    visible:true
-                }
-            }]
-
-        transitions: [
-            Transition {
-                from: "Active"
-                to: ""
-                PropertyAnimation {
-                    easing.type: Easing.InOutQuad
-                    properties: "x, visible"
-                    duration: 450
-                }
-            },
-            Transition {
-                from: ""
-                to: "Active"
-                PropertyAnimation {
-                    easing.type: Easing.InOutQuad
-                    properties: "x"
-                    duration: 450
-                }
-            }]
     }
 
     Rectangle {
@@ -171,16 +141,14 @@ Window {
 
     Component.onCompleted: {
         console.log("mainwindow completed, theme is " + qSettings.colorTheme)
-        qSettings.colorTheme=Themes.YELLOW_THEME
+        qSettings.colorTheme=Themes.DARK_THEME
         changeTheme(qSettings.colorTheme)
     }
 
     Component.onDestruction: {
-
         F.updateModelInformation()
         //qSettings.colorTheme /*= Themes.DEFAULT_THEME*/;
         console.log(qSettings.colorTheme)
-
     }
 
     function changeTheme(colorTheme){
@@ -221,34 +189,41 @@ Window {
             //            DELEGATE.pressedColor= "#93a6ee"
             //            DELEGATE.modelDateTextRelised= "#00135F"
             //SearchField
-            SearchField.themeColor= "#617adb"
-            SearchField.textFieldColor= "white"
-            SearchField.placeholderTextColor= "#f5f5f5"
-            SearchField.textSelectionColor= "#3399FF"
+
             //SettingsWindow
             settingsSection.themeColor = "#6d84de"
             settingsSection.defaultSelect = "white"
             settingsSection.roseSelect = "#FFB6B6"
             settingsSection.yellowSelect = "#FFD749"
             settingsSection.darkSelect = "#000000"
+
             //TextINputWindow
             userinput.themeColor = "#f4f5f8"
             userinput.textSelectionColor = "#3399FF"
-            userinput.iconColor = "#A5A4A5"
+            userinput.imageColor = "#A5A4A5"
             userinput.enteredButtonColor = "#777777"
             userinput.pressedButtonColor = "black"
+            userinput.textColor="#703131"
             //ThemeElement
-            ThemeElement.iconColor = "white"
-            ThemeElement.bColor = "#6d84de"
+//            ThemeElement.iconColor = "white"
+//            ThemeElement.bColor = "#6d84de"
             //TopPannel
-            TopPannel.panelColor = "#6d84de"
-            TopPannel.pressedColor = "#4c69d7"
-            TopPannel.enteredColor = "#dddddd"
+            topPannel.panelColor = "#6d84de"
+            topPannel.image_pressedColor = "#4c69d7"
+            topPannel.image_enteredColor = "#dddddd"
+            topPannel.imageColor = "#FFFFFF"
+            topPannel.search_themeColor =  "#617adb"
+            topPannel.search_textFieldColor = "white"
+            topPannel.search_placeholderTextColor = "#f5f5f5"
+            topPannel.search_textSelectionColor = "#3399FF"
 
 
 
             break;
         case Themes.ROSE_THEME:
+            mainColorBackground = "white"
+            startRect.children.enterTextTipColor= "#aaaaaa"
+            verticalSeparator.separatorColor= "#ffa8a8"
             //DELEGATE
             notesList.m_fillDelegateColor="white"
             notesList.m_bottomSeparatorColor= "#ffa8a8"
@@ -260,7 +235,7 @@ Window {
             notesList.m_modelTitleTextRealized="#a37272"
             notesList.m_modelDateTextRealized="#a37272"
             //SettingsWindow
-            settingsSection.themeColor="#F3CB9B"
+            settingsSection.themeColor="#FFB0B0"
             settingsSection.defaultSelect="white"
             settingsSection.roseSelect= "#FFFFFF"
             settingsSection.yellowSelect= "#FFDFB9"
@@ -268,12 +243,27 @@ Window {
             //TextINputWindow
             userinput.themeColor = "#fff7f7"
             userinput.textSelectionColor = "#3399FF"
-            userinput.iconColor = "#b08686"
+            userinput.imageColor = "#b08686"
             userinput.enteredButtonColor = "#955e5e"
             userinput.pressedButtonColor = "#7b3636"
+            userinput.textColor="#703131"
+
+            //TopPannel
+            topPannel.panelColor = "#FFB6B6"
+            topPannel.image_pressedColor = "#FF9595"
+            topPannel.image_enteredColor = "#FFE3E3"
+            topPannel.imageColor = "#FFFFFF"
+            topPannel.search_themeColor =  "#FF9595"
+            topPannel.search_textFieldColor = "white"
+            topPannel.search_placeholderTextColor = "#f5f5f5"
+            topPannel.search_textSelectionColor = "#3399FF"
+
 
             break;
         case Themes.YELLOW_THEME:
+            mainColorBackground = "white"
+            startRect.children.enterTextTipColor= "#F3CB9B"
+            verticalSeparator.separatorColor= "#F3CB9B"
             notesList.m_fillDelegateColor="white"
             notesList.m_bottomSeparatorColor="#F3CB9B"
           //  notesList.m_innerChadowColor=
@@ -292,12 +282,28 @@ Window {
             //TextINputWindow
             userinput.themeColor = "#fdf5eb"
             userinput.textSelectionColor = "#3399FF"
-            userinput.iconColor = "#b8a58e"
+            userinput.imageColor = "#b8a58e"
             userinput.enteredButtonColor = "#aa9277"
             userinput.pressedButtonColor = "#8d6e49"
+            userinput.textColor="#714A1C"
+
+            //TopPannel
+            topPannel.panelColor = "#F3CB9B"
+            topPannel.image_pressedColor = "#E6BC8A"
+            topPannel.image_enteredColor = "#F9E6CE"
+            topPannel.imageColor = "#FFFFFF"
+            topPannel.search_themeColor = "#E3BA89"
+            topPannel.search_textFieldColor = "white"
+            topPannel.search_placeholderTextColor = "#f5f5f5"
+            topPannel.search_textSelectionColor = "#3399FF"
+
+
             break;
 
         case Themes.DARK_THEME:
+            mainColorBackground = "#2B2B2B"
+            startRect.children.enterTextTipColor= "#FFFFFF"
+            verticalSeparator.separatorColor= "#FFFFFF"
             notesList.m_fillDelegateColor="#505050"
             notesList.m_bottomSeparatorColor="white"
            // notesList.m_innerChadowColor=Qt.rgba(0, 0, 0, 0.72)
@@ -316,9 +322,22 @@ Window {
             //TextINputWindow
             userinput.themeColor = "#404040"
             userinput.textSelectionColor = "#3399FF"
-            userinput.iconColor = "#white"
+            userinput.imageColor = "#FFFFFF"
             userinput.enteredButtonColor = "#D6D6D6"
             userinput.pressedButtonColor = "#BABABA"
+            userinput.textColor="white"
+            //TopPannel
+            topPannel.panelColor = "#2D2D2D"
+            topPannel.image_pressedColor = "#555555"
+            topPannel.image_enteredColor = "#BABABA"
+            topPannel.imageColor = "#FFFFFF"
+            topPannel.search_themeColor = "#515151"
+            topPannel.search_textFieldColor = "white"
+            topPannel.search_placeholderTextColor = "#f5f5f5"
+            topPannel.search_textSelectionColor = "#3399FF"
+
+
+
             break;
         default: throw "Theme id out of range"
 

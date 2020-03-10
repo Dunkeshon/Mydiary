@@ -16,9 +16,10 @@ Rectangle {
     property alias usertext: userText
     property color themeColor//: "#f4f5f8"
     property color textSelectionColor//: "#3399FF"
-    property color iconColor//: "#aaaaaa"
+    property color imageColor//: "#aaaaaa"
     property color enteredButtonColor//: "#777777"
     property color pressedButtonColor//:  "black"
+    property color textColor
 
     color: themeColor
 
@@ -41,6 +42,8 @@ Rectangle {
             anchors.left: parent.left
             anchors.top: parent.top
             width: parent.width - 20 - trashButton.width
+
+            color: textColor
 
             placeholderText:"Title"
             font.family: "merriweather"
@@ -68,6 +71,7 @@ Rectangle {
             anchors.margins: 10
             TextArea {
                 id:userText
+                color: textColor
                 renderType: Text.QtRendering
                 placeholderText: qsTr("Enter Something)")
                 font.pixelSize: 18
@@ -76,6 +80,7 @@ Rectangle {
                 selectByMouse: true
                 selectionColor: textSelectionColor
                 focus: true
+
             }
         }
     }
@@ -90,7 +95,7 @@ Rectangle {
         iconSource: "resources/images/trash.svg"
         iconMargins: 2
         bColor: parent.color
-        iconColor: iconColor
+        iconColor: imageColor
         toolTipText: "Delete page"
 
         changePressedTargetOnColorOverlay: true
@@ -108,7 +113,7 @@ Rectangle {
         iconSource: "resources/images/infoIcon.svg"
         iconMargins: 2
         bColor: parent.color
-        iconColor: iconColor
+        iconColor: imageColor
         toolTipText: {
             toolDelay=0
             toolTimeout=0

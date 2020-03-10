@@ -8,7 +8,7 @@ Rectangle {
     id:pWindow
     Image {
         id: background
-        source: "qrc:/resources/images/concrete-wall-3847504.svg"
+        source: "qrc:/resources/images/background.jpg"
         z:0
         anchors.fill: parent
     }
@@ -142,6 +142,7 @@ Rectangle {
     Button{
         id:confirmButton
         text: "Confirm"
+
         onClicked:F.acceptPassword()
         width: 100
         height: 30
@@ -149,6 +150,7 @@ Rectangle {
         anchors.horizontalCenter: password.horizontalCenter
         anchors.topMargin: 10
         z:2
+
     }
 
     Image {
@@ -165,9 +167,7 @@ Rectangle {
         anchors.right: parent.right
         anchors.bottom: parent.bottom
         source: { return backEnd.generateAnimeGirl()}
-        sourceSize.width: width*window.devicePixelRatio
-        sourceSize.height: height*window.devicePixelRatio
-    }
+        }
 
     Timer {
         id:acceptedTimer

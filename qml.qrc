@@ -7,12 +7,10 @@
         <file>SearchField.qml</file>
         <file>BUTTON.qml</file>
         <file>DELEGATE.qml</file>
-
         <file>SettingsWindow.qml</file>
         <file>ThemeElement.qml</file>
         <file>funclist.js</file>
         <file>PasswordWindow.qml</file>
-        <file>images/catGirl.svg</file>
     </qresource>
     <qresource prefix="/resources">
         <file>images/plusIcon.svg</file>
@@ -28,14 +26,12 @@
         <file>images/infoIcon.svg</file>
         <file>images/lock.svg</file>
         <file>images/unlock2.svg</file>
-        <file>images/catGirl.svg</file>
-        <file>images/santaGirl.svg</file>
-        <file>images/shyCatGirl.svg</file>
-        <file>images/hmmGirl.svg</file>
-        <file>images/background_blue.svg</file>
-        <file>images/concrete-wall-3847504.svg</file>
-        <file>images/niceGirl.svg</file>
-        <file>images/cuteGirl.svg</file>
-        <file>images/nerdGirl2.svg</file>
+        <file>images/cuteGirl.png</file>
+        <file>images/catGirl.PNG</file>
+        <file>images/nerdGirl.png</file>
+        <file>images/niceGirl.png</file>
+        <file>images/santaGirl.PNG</file>
+        <file>images/shycatGirl.PNG</file>
+        <file>images/background.jpg</file>
     </qresource>
 </RCC>

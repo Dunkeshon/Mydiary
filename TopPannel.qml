@@ -10,9 +10,14 @@ import "funclist.js" as F
 
 Item {
     property alias searchfield: searchField
-    property color panelColor: "#6d84de"
-    property color pressedColor: "#4c69d7"
-    property color enteredColor: "#dddddd"
+    property color panelColor //: "#6d84de"
+    property color image_pressedColor //: "#4c69d7"
+    property color image_enteredColor //: "#dddddd"
+    property color imageColor
+    property color search_themeColor //: "#617adb"
+    property color search_textFieldColor //: "white"
+    property color search_placeholderTextColor //: "#f5f5f5"
+    property color search_textSelectionColor //: "#3399FF"
 
     // place somewhere tooltip text color and font
 
@@ -39,12 +44,13 @@ Item {
             id: arrowButton
             size: parent.height
             bColor: pannel.color
+            iconColor: imageColor
             anchors.left: parent.left
             iconSource: "resources/images/leftArrowIcon.svg"
             iconMargins: 6
 
-            enteredColor: enteredColor
-            pressedColor: pressedColor
+            enteredColor: image_enteredColor
+            pressedColor: image_pressedColor
             toolTipText: "Hide"
             mousearea.onClicked: {
 
@@ -57,25 +63,27 @@ Item {
             id: addButton
             size: parent.height
             bColor: pannel.color
+            iconColor: imageColor
             anchors.left: arrowButton.right
             iconSource: "resources/images/plusIcon.svg"
             iconMargins: 6
 
-            enteredColor: enteredColor
-            pressedColor: pressedColor
+            enteredColor: image_enteredColor
+            pressedColor: image_pressedColor
             toolTipText: "Add Page"
         }
 
         BUTTON {
             id: searchButton
             size: parent.height
+            iconColor: imageColor
             bColor: searchField.state == "" ? pannel.color : searchField.color
             anchors.left: addButton.right
             iconSource: "resources/images/searchIcon.svg"
             iconMargins: 6
 
-            enteredColor: enteredColor
-            pressedColor: pressedColor
+            enteredColor: image_enteredColor
+            pressedColor: image_pressedColor
             toolTipText: "Search"
             mousearea.onClicked: {
                 searchField.state = searchField.state == "" ? "Active" : ""
@@ -83,6 +91,10 @@ Item {
 
             SearchField {
                 id: searchField
+                themeColor : search_themeColor
+                textFieldColor: search_textFieldColor
+                placeholderTextColor: search_placeholderTextColor
+                textSelectionColor: search_textSelectionColor
                 anchors.left: parent.right
                 width: 0
                 height: parent.height
@@ -92,13 +104,14 @@ Item {
         BUTTON  {
             id: settingsButton
             size: parent.height
+            iconColor: imageColor
             bColor: pannel.color
             anchors.right: parent.right
             iconSource: "resources/images/settingsIcon.svg"
             iconMargins: 6
 
-            enteredColor: enteredColor
-            pressedColor: pressedColor
+            enteredColor: image_enteredColor
+            pressedColor: image_enteredColor
             toolTipText: "Settings"
         }
     }

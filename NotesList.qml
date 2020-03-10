@@ -22,6 +22,7 @@ ColumnLayout {
     property color m_pressedColor //: "#93a6ee"
     property color m_modelDateTextRealized //: "#00135F"
     property color m_modelTitleTextRealized
+    property color m_textColor
  //   property color m_delegateRealized
 
 

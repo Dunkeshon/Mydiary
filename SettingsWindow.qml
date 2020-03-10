@@ -2,8 +2,10 @@ import QtQuick 2.0
 import QtQuick.Controls 2.12
 import QtQuick.Layouts 1.12
 import QtGraphicalEffects 1.0
+import Diary 1.0
 
 Item {
+    id:mainArea
     property color themeColor//: "#6d84de"
     property color defaultSelect//: "white"
     property color roseSelect//: "#FFB6B6"
@@ -18,6 +20,9 @@ Item {
         anchors.top:parent.top
         anchors.bottom: parent.bottom
         width: parent.width-settingsArea.width
+        onClicked: {
+            mainArea.state=""
+        }
     }
     Rectangle{
         id:settingsArea
@@ -68,52 +73,110 @@ Item {
                 text: qsTr("Theme")
                 font.family: "poppins_black"
                 font.pixelSize:22
+                color: "white"
             }
 
         }
         Rectangle{
             id:themeSection
             anchors.top: themeTitle.bottom
-
-            ThemeElement{
+            width: parent.width
+            Button{
                 id:defaultTheme
+                width: parent.width/2 -9
                 anchors.left: parent.left
                 anchors.top: parent.top
                 anchors.margins: 5
-                themeName: "Default"
-                fontColor: defaultSelect
-                iconColor: defaultSelect
+
+                contentItem: Text {
+                    color: defaultSelect
+                    text: "Default"
+                    font.pixelSize: 20
+                    horizontalAlignment: Text.AlignHCenter
+                    verticalAlignment: Text.AlignVCenter
+                }
+                background: Rectangle{
+                    color:defaultTheme.down ? "grey": themeColor
+                }
+                onClicked: {
+                    qSettings.colorTheme=Themes.DEFAULT_THEME
+                    changeTheme(Themes.DEFAULT_THEME)
+                }
             }
-            ThemeElement{
+
+            //            ThemeElement{
+            //                id:defaultTheme
+            //                anchors.left: parent.left
+            //                anchors.top: parent.top
+            //                anchors.margins: 5
+            //                themeName: "Default"
+            //                fontColor: defaultSelect
+            //                iconColor: defaultSelect
+            //            }
+            Button{
                 id:roseTheme
+                width: parent.width/2 -9
                 anchors.left: defaultTheme.right
                 anchors.top: parent.top
                 anchors.margins: 5
-                themeName: "Rose"
-                fontColor: roseSelect
-                iconColor: roseSelect
-
+                // text: "Rose"
+                contentItem: Text {
+                    color: roseSelect
+                    text:"Rose"
+                    font.pixelSize: 20
+                    horizontalAlignment: Text.AlignHCenter
+                    verticalAlignment: Text.AlignVCenter
+                }
+                background: Rectangle{
+                    color: roseTheme.down? "grey": themeColor
+                }
+                onClicked: {
+                    qSettings.colorTheme=Themes.ROSE_THEME
+                    changeTheme(Themes.ROSE_THEME)
+                }
             }
-            ThemeElement{
+            Button{
                 id:yellowTheme
+                width: parent.width/2 -9
                 anchors.left: parent.left
                 anchors.top: defaultTheme.bottom
                 anchors.margins: 5
-                themeName: "Beige"
-                fontColor: yellowSelect
-                iconColor: yellowSelect
-
-
+                contentItem: Text {
+                    color: yellowSelect
+                    text:"Beige"
+                    font.pixelSize: 20
+                    horizontalAlignment: Text.AlignHCenter
+                    verticalAlignment: Text.AlignVCenter
+                }
+                background: Rectangle{
+                    color: yellowTheme.down? "grey": themeColor
+                }
+                onClicked: {
+                    qSettings.colorTheme=Themes.YELLOW_THEME
+                    changeTheme(Themes.YELLOW_THEME)
+                }
             }
-            ThemeElement{
+            Button{
                 id:darkTheme
+                width: parent.width/2 -9
                 anchors.left: yellowTheme.right
                 anchors.top: roseTheme.bottom
                 anchors.margins: 5
-                themeName: "Dark"
-                fontColor: darkSelect
-                iconColor: darkSelect
-
+                text: "Dark"
+                contentItem: Text {
+                    color: darkSelect
+                    text:"Dark"
+                    font.pixelSize: 20
+                    horizontalAlignment: Text.AlignHCenter
+                    verticalAlignment: Text.AlignVCenter
+                }
+                background: Rectangle{
+                    color: darkTheme.down? "grey": themeColor
+                }
+                onClicked: {
+                    qSettings.colorTheme=Themes.DARK_THEME
+                    changeTheme(Themes.DARK_THEME)
+                }
             }
         }
 
@@ -122,5 +185,35 @@ Item {
     }
 
 
+
+    states: [
+        State {
+            name: "Active"
+            PropertyChanges {
+                target: settingsSection
+                x: 0
+                visible:true
+            }
+        }]
+
+    transitions: [
+        Transition {
+            from: "Active"
+            to: ""
+            PropertyAnimation {
+                easing.type: Easing.InOutQuad
+                properties: "x, visible"
+                duration: 450
+            }
+        },
+        Transition {
+            from: ""
+            to: "Active"
+            PropertyAnimation {
+                easing.type: Easing.InOutQuad
+                properties: "x"
+                duration: 450
+            }
+        }]
 
 }
