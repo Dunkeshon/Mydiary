@@ -8,9 +8,9 @@
         <file>BUTTON.qml</file>
         <file>DELEGATE.qml</file>
         <file>SettingsWindow.qml</file>
-        <file>ThemeElement.qml</file>
         <file>funclist.js</file>
         <file>PasswordWindow.qml</file>
+        <file>themeslist.js</file>
     </qresource>
     <qresource prefix="/resources">
         <file>images/plusIcon.svg</file>

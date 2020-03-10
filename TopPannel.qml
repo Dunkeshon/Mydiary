@@ -104,14 +104,14 @@ Item {
         BUTTON  {
             id: settingsButton
             size: parent.height
-            iconColor: imageColor
-            bColor: pannel.color
+            iconColor:imageColor
+            bColor:pannel.color
             anchors.right: parent.right
             iconSource: "resources/images/settingsIcon.svg"
             iconMargins: 6
 
             enteredColor: image_enteredColor
-            pressedColor: image_enteredColor
+            pressedColor: image_pressedColor
             toolTipText: "Settings"
         }
     }

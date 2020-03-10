@@ -3,6 +3,8 @@ import QtQuick.Controls 2.12
 import QtQuick.Layouts 1.12
 import QtGraphicalEffects 1.0
 import Diary 1.0
+import "themeslist.js" as ThemesFunctions
+
 
 Item {
     id:mainArea
@@ -100,26 +102,16 @@ Item {
                 }
                 onClicked: {
                     qSettings.colorTheme=Themes.DEFAULT_THEME
-                    changeTheme(Themes.DEFAULT_THEME)
+                    ThemesFunctions.changeTheme(Themes.DEFAULT_THEME)
                 }
             }
 
-            //            ThemeElement{
-            //                id:defaultTheme
-            //                anchors.left: parent.left
-            //                anchors.top: parent.top
-            //                anchors.margins: 5
-            //                themeName: "Default"
-            //                fontColor: defaultSelect
-            //                iconColor: defaultSelect
-            //            }
             Button{
                 id:roseTheme
                 width: parent.width/2 -9
                 anchors.left: defaultTheme.right
                 anchors.top: parent.top
                 anchors.margins: 5
-                // text: "Rose"
                 contentItem: Text {
                     color: roseSelect
                     text:"Rose"
@@ -132,7 +124,7 @@ Item {
                 }
                 onClicked: {
                     qSettings.colorTheme=Themes.ROSE_THEME
-                    changeTheme(Themes.ROSE_THEME)
+                    ThemesFunctions.changeTheme(Themes.ROSE_THEME)
                 }
             }
             Button{
@@ -153,7 +145,7 @@ Item {
                 }
                 onClicked: {
                     qSettings.colorTheme=Themes.YELLOW_THEME
-                    changeTheme(Themes.YELLOW_THEME)
+                    ThemesFunctions.changeTheme(Themes.YELLOW_THEME)
                 }
             }
             Button{
@@ -175,7 +167,7 @@ Item {
                 }
                 onClicked: {
                     qSettings.colorTheme=Themes.DARK_THEME
-                    changeTheme(Themes.DARK_THEME)
+                    ThemesFunctions.changeTheme(Themes.DARK_THEME)
                 }
             }
         }
