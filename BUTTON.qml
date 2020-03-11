@@ -48,8 +48,8 @@ Rectangle {
         anchors.fill: parent
         anchors.margins: iconMargins
         visible: false // we transform overlay, not an image
-//        sourceSize.width: width*Screen.devicePixelRatio
-//        sourceSize.height: height*Screen.devicePixelRatio
+        sourceSize.width: width*Screen.devicePixelRatio
+        sourceSize.height: height*Screen.devicePixelRatio
     }
 
     ColorOverlay {
