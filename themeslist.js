@@ -35,6 +35,9 @@ function changeTheme(colorTheme){
         userinput.enteredButtonColor = "#777777"
         userinput.pressedButtonColor = "black"
         userinput.textColor="#703131"
+        userinput.infoToolBackgroundColor="#A7B9FF"
+        userinput.infoToolTipTextColor="#FFFFFF"
+        userinput.infoToolBorderColor="#90AFFD"
 
         //TopPannel
         topPannel.panelColor = "#6d84de"
@@ -76,7 +79,9 @@ function changeTheme(colorTheme){
         userinput.enteredButtonColor = "#955e5e"
         userinput.pressedButtonColor = "#7b3636"
         userinput.textColor="#703131"
-
+        userinput.infoToolBackgroundColor="#FFB6B6"
+        userinput.infoToolTipTextColor="#FFFFFF"
+        userinput.infoToolBorderColor="#e5d7d7"
         //TopPannel
         topPannel.panelColor = "#FFB6B6"
         topPannel.image_pressedColor = "#FF9595"
@@ -115,6 +120,9 @@ function changeTheme(colorTheme){
         userinput.enteredButtonColor = "#aa9277"
         userinput.pressedButtonColor = "#8d6e49"
         userinput.textColor="#714A1C"
+        userinput.infoToolBackgroundColor="#F3CB9B"
+        userinput.infoToolTipTextColor="#FFFFFF"
+        userinput.infoToolBorderColor = "#CEA779"
 
         //TopPannel
         topPannel.panelColor = "#F3CB9B"
@@ -155,6 +163,9 @@ function changeTheme(colorTheme){
         userinput.enteredButtonColor = "#D6D6D6"
         userinput.pressedButtonColor = "#BABABA"
         userinput.textColor="white"
+        userinput.infoToolBackgroundColor="#EBEBEB"
+        userinput.infoToolTipTextColor="#000000"
+        userinput.infoToolBorderColor = "#949494"
         //TopPannel
         topPannel.panelColor = "#2D2D2D"
         topPannel.image_pressedColor = "#555555"

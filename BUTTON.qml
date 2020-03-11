@@ -15,8 +15,7 @@ Rectangle {
     property color enteredColor//: "white"
     property color pressedColor//: "white"
 
-    property color toolTipStyleColor: "#ffffff"
-    property color toolTipTextColor: "#8f000000"
+
 
 
 
@@ -30,8 +29,9 @@ Rectangle {
     property var toolTipText: "nothing"
     property int toolDelay: 1000
     property int toolTimeout: 5000
-    property color toolColor: "#A7B9FF" //for themes
-    property color toolBorderColor: "#90AFFD" //for themes
+    property color toolBackgroundColor //for themes
+    property color toolBorderColor //for themes
+    property color toolTipTextColor
 
     id: button
     color: bColor
@@ -75,25 +75,19 @@ Rectangle {
         delay: toolDelay
         timeout: toolTimeout
         visible: mousearea.containsMouse ? true : false
-<<<<<<< HEAD
-        contentItem: Text {
-            text: toolTipText
-            styleColor: toolTipStyleColor
-            font.family: "poppins_black"
-            color: toolTipTextColor
-=======
+
         contentItem: Rectangle {
             anchors.fill: parent
             border.color: toolBorderColor
             border.width: 2
-            color: toolColor
+            color: toolBackgroundColor
             Text {
                 anchors.centerIn: parent
                 text: toolTipText
                 font.family: "poppins_black"
-                color: "white"
+                color: toolTipTextColor
             }
->>>>>>> tryHard
+
         }
     }
 

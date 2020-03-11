@@ -20,6 +20,9 @@ Rectangle {
     property color enteredButtonColor//: "#777777"
     property color pressedButtonColor//:  "black"
     property color textColor
+    property color infoToolBackgroundColor
+    property color infoToolTipTextColor
+    property color infoToolBorderColor
 
     color: themeColor
 
@@ -121,7 +124,9 @@ Rectangle {
                 return "Created: " + dateInfo
             return "Created: " + dateInfo + "\nEdited:   " + editInfo
         }
-
+        toolBackgroundColor: infoToolBackgroundColor
+        toolTipTextColor: infoToolTipTextColor
+        toolBorderColor: infoToolBorderColor
         changePressedTargetOnColorOverlay: true
         enteredColor: enteredButtonColor
         pressedColor: enteredButtonColor
