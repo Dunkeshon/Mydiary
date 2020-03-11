@@ -8,6 +8,8 @@ Rectangle {
     property alias state: mainRect.state
     property alias text: textField.text
     property alias textfocus: textField.focus
+
+    //Themes
     property color themeColor: "#617adb"
     property color textFieldColor: "white"
     property color placeholderTextColor: "#f5f5f5"

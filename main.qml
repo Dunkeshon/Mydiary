@@ -9,8 +9,11 @@ import "funclist.js" as F
 import "themeslist.js" as ThemesFunctions
 
 Window {
+    //Themes
+    property color mainColorBackground//:"white"
+
+
     id: window
-    property color mainColorBackground:"white" //
     visible: true
     color: mainColorBackground
     minimumWidth: 640
@@ -96,7 +99,6 @@ Window {
     }
 
     Rectangle {
-        //property color enterTextTipColor: "#aaaaaa"//
         id: startRect
         visible: userinput.visible ? false : true
         color:userinput.color // COLOR
@@ -116,7 +118,13 @@ Window {
         }
     }
 
+    AcceptDeletionDialog{
+        id:deletingDialog
 
+        //positioning for windows
+        x: window.width  / 2
+        y: window.height / 2
+    }
 
 
 
@@ -131,7 +139,8 @@ Window {
     }
 
     Rectangle {
-        property color separatorColor: "#6d84de" //
+        //Themes
+        property color separatorColor//: "#6d84de" //
         id: verticalSeparator
         color:separatorColor
         width: 1
@@ -141,14 +150,11 @@ Window {
     }
 
     Component.onCompleted: {
-        console.log("mainwindow completed, theme is " + qSettings.colorTheme)
         ThemesFunctions.changeTheme(qSettings.colorTheme)
     }
 
     Component.onDestruction: {
         F.updateModelInformation()
-        //qSettings.colorTheme /*= Themes.DEFAULT_THEME*/;
-        console.log(qSettings.colorTheme)
     }
 
 

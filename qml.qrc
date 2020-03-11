@@ -11,6 +11,7 @@
         <file>funclist.js</file>
         <file>PasswordWindow.qml</file>
         <file>themeslist.js</file>
+        <file>AcceptDeletionDialog.qml</file>
     </qresource>
     <qresource prefix="/resources">
         <file>images/plusIcon.svg</file>

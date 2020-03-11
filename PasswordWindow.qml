@@ -39,17 +39,17 @@ Rectangle {
         ]
 
         SequentialAnimation{
-             id: unlockedAnim
+            id: unlockedAnim
 
-             PropertyAnimation {
-                 target: lock
-                 property: "anchors.verticalCenterOffset"
+            PropertyAnimation {
+                target: lock
+                property: "anchors.verticalCenterOffset"
 
-                 easing.type: Easing.Linear
+                easing.type: Easing.Linear
 
-                 to: -30
-                 duration: 100
-             }
+                to: -30
+                duration: 100
+            }
 
             PropertyAnimation {
                 target: lock
@@ -168,7 +168,7 @@ Rectangle {
         anchors.right: parent.right
         anchors.bottom: parent.bottom
         source: { return backEnd.generateAnimeGirl()}
-        }
+    }
 
     Timer {
         id:acceptedTimer

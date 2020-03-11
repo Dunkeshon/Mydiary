@@ -14,6 +14,8 @@ Rectangle {
     property var editInfo
     property alias titletext: title
     property alias usertext: userText
+
+    //Themes
     property color themeColor//: "#f4f5f8"
     property color textSelectionColor//: "#3399FF"
     property color imageColor//: "#aaaaaa"
@@ -131,6 +133,7 @@ Rectangle {
         enteredColor: enteredButtonColor
         pressedColor: enteredButtonColor
     }
+
 
 
 }

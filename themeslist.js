@@ -1,9 +1,7 @@
 
 function changeTheme(colorTheme){
-    console.log("Change theme started , theme is " + qSettings.colorTheme)
     switch(colorTheme){
     case Themes.DEFAULT_THEME:
-
         // main
         mainColorBackground = "white"
         startRect.children.enterTextTipColor= "#aaaaaa"
@@ -11,7 +9,7 @@ function changeTheme(colorTheme){
         //DELEGATE
         notesList.m_fillDelegateColor="white"
         notesList.m_bottomSeparatorColor="#6d84de"
-    //    notesList.m_innerChadowColor=Qt.rgba(0, 0, 0, 0.44)
+        //    notesList.m_innerChadowColor=Qt.rgba(0, 0, 0, 0.44)
         notesList.m_dateTextColor="#666666"
         notesList.m_titleTextColor="#666666"
         notesList.m_enteredColor="#bbc7f4"
@@ -34,7 +32,7 @@ function changeTheme(colorTheme){
         userinput.imageColor = "#A5A4A5"
         userinput.enteredButtonColor = "#777777"
         userinput.pressedButtonColor = "black"
-        userinput.textColor="#703131"
+        userinput.textColor="#4d4d4d"
         userinput.infoToolBackgroundColor="#A7B9FF"
         userinput.infoToolTipTextColor="#FFFFFF"
         userinput.infoToolBorderColor="#90AFFD"
@@ -59,7 +57,7 @@ function changeTheme(colorTheme){
         //DELEGATE
         notesList.m_fillDelegateColor="white"
         notesList.m_bottomSeparatorColor= "#ffa8a8"
-     //   notesList.m_innerChadowColor= "#b08686"
+        //   notesList.m_innerChadowColor= "#b08686"
         notesList.m_dateTextColor="#a37272"
         notesList.m_titleTextColor="#a37272"
         notesList.m_enteredColor="#FFE0E0"
@@ -100,7 +98,7 @@ function changeTheme(colorTheme){
         verticalSeparator.separatorColor= "#F3CB9B"
         notesList.m_fillDelegateColor="white"
         notesList.m_bottomSeparatorColor="#F3CB9B"
-      //  notesList.m_innerChadowColor=
+        //  notesList.m_innerChadowColor=
         notesList.m_dateTextColor="#b69d80"
         notesList.m_titleTextColor="#714A1C"
         notesList.m_enteredColor="#f9e5cd"
@@ -143,7 +141,7 @@ function changeTheme(colorTheme){
         verticalSeparator.separatorColor= "#FFFFFF"
         notesList.m_fillDelegateColor="#505050"
         notesList.m_bottomSeparatorColor="white"
-       // notesList.m_innerChadowColor=Qt.rgba(0, 0, 0, 0.72)
+        // notesList.m_innerChadowColor=Qt.rgba(0, 0, 0, 0.72)
         notesList.m_dateTextColor="white"
         notesList.m_titleTextColor="#FFFFFF"
         notesList.m_enteredColor="#828282"

@@ -11,16 +11,16 @@ Item {
     property alias title: modelTitleText.text
     property bool current: false
 
+    //Themes
     property color bottomSeparatorColor //: "#6d84de"
     property color fillDelegateColor //: "white"
- //   property color innerChadowColor //: "black"
+    //   property color innerChadowColor //: "black"
     property color titleTextColor // : "#404040"
     property color dateTextColor //: "black"
     property color enteredColor //: "#bbc7f4"
     property color pressedColor //: "#93a6ee"
     property color modelDateTextRealized //: "#00135F"
     property color modelTitleTextRealized
-  //  property color delegateRealized
 
 
 
@@ -51,17 +51,17 @@ Item {
         }
 
 
-//        InnerShadow {
-//            id: innerRect
-//            source: fillRect
-//            anchors.fill: fillRect
-////            samples: 16
-////            radius: 8.0
-////            verticalOffset: 3
-////            color:innerChadowColor
-////            // opacity: 0.25
-//            visible: false
-//        }
+        //        InnerShadow {
+        //            id: innerRect
+        //            source: fillRect
+        //            anchors.fill: fillRect
+        ////            samples: 16
+        ////            radius: 8.0
+        ////            verticalOffset: 3
+        ////            color:innerChadowColor
+        ////            // opacity: 0.25
+        //            visible: false
+        //        }
 
 
         Item {
@@ -120,10 +120,10 @@ Item {
                     target: mousearea
                     cursorShape: Qt.ArrowCursor
                 }
-//                PropertyChanges {
-//                    target: innerRect
-//                    visible: true
-//                }
+                //                PropertyChanges {
+                //                    target: innerRect
+                //                    visible: true
+                //                }
                 PropertyChanges {
                     target: modelTitleText
                     color: modelDateTextRealized

@@ -10,6 +10,8 @@ import "funclist.js" as F
 
 Item {
     property alias searchfield: searchField
+
+    //Themes
     property color panelColor //: "#6d84de"
     property color image_pressedColor //: "#4c69d7"
     property color image_enteredColor //: "#dddddd"
@@ -19,14 +21,13 @@ Item {
     property color search_placeholderTextColor //: "#f5f5f5"
     property color search_textSelectionColor //: "#3399FF"
 
-    // place somewhere tooltip text color and font
+
 
     id: mainItem
 
     Component.onCompleted: {
 
         settingsButton.buttonChecked.connect(F.settingsButtonRealization)
-        //
 
         addButton.buttonChecked.connect(F.addButtonRealization)
         arrowButton.buttonChecked.connect(F.arrowButtonRealization)

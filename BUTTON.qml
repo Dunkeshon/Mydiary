@@ -11,25 +11,26 @@ Rectangle {
     property alias iconSource: buttonIcon.source
     property var size: 0
     property var iconMargins: 0
-    property color iconColor//: "white"
-    property color bColor //: "white"
-    property color enteredColor//: "white"
-    property color pressedColor//: "white"
-
 
     property alias mousearea: buttonArea
     property alias iconRotation: buttonColorOverlay.rotation
     property bool changePressedTargetOnColorOverlay: false
 
-
-
     //toolTip
     property var toolTipText: "nothing"
     property int toolDelay: 1000
     property int toolTimeout: 5000
-    property color toolBackgroundColor : "white" //for themes
-    property color toolBorderColor : "#bfbfbf" //for themes
-    property color toolTipTextColor: "#333333"
+
+    //Themes
+    property color toolBackgroundColor : "white" //for now needed by default
+    property color toolBorderColor : "#bfbfbf" //for now needed by default
+    property color toolTipTextColor: "#333333" //for now needed by default
+
+    property color iconColor//: "white"
+    property color bColor //: "white"
+    property color enteredColor//: "white"
+    property color pressedColor//: "white"
+
 
     id: button
     color: bColor

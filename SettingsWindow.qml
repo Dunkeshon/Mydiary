@@ -8,12 +8,15 @@ import "themeslist.js" as ThemesFunctions
 
 
 Item {
-    id:mainArea
+    //Themes
     property color themeColor//: "#6d84de"
     property color defaultSelect//: "white"
     property color roseSelect//: "#FFB6B6"
     property color yellowSelect//: "#FFD749"
     property color darkSelect //: "#000000"
+
+
+    id:mainArea
 
 
 

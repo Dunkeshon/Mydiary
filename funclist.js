@@ -56,6 +56,10 @@ function arrowButtonRealization() {
 }
 
 function deleteButtonRealization() {
+    // take param from signal and move it to an other func
+    deletingDialog.visible=true
+}
+function deleteElementRealization(){
     var temp = notesList.currentIndex
     diaryList.deleteItem(notesList.sortModel.mapToSource(notesList.sortModel.index(notesList.currentIndex, 0)))
     if(notesList.sortModel.rowCount() === notesList.currentIndex) {temp--}
@@ -86,7 +90,7 @@ function acceptPassword(){
         locked=false
         password.state="reanchored"
         unlockedAnim.start()
-      //  unlockedAnim.start()
+        //  unlockedAnim.start()
         acceptedTimer.running=true
         // подпрыгивание
     }
