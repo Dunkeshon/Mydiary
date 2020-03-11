@@ -4,6 +4,7 @@ import QtQuick.Controls 2.12
 import QtQuick.Layouts 1.12
 import QtGraphicalEffects 1.0
 import "funclist.js" as F
+import Diary 1.0
 
 Rectangle {
     //override
@@ -16,9 +17,6 @@ Rectangle {
     property color pressedColor//: "white"
 
 
-
-
-
     property alias mousearea: buttonArea
     property alias iconRotation: buttonColorOverlay.rotation
     property bool changePressedTargetOnColorOverlay: false
@@ -29,9 +27,9 @@ Rectangle {
     property var toolTipText: "nothing"
     property int toolDelay: 1000
     property int toolTimeout: 5000
-    property color toolBackgroundColor //for themes
-    property color toolBorderColor //for themes
-    property color toolTipTextColor
+    property color toolBackgroundColor : "white" //for themes
+    property color toolBorderColor : "#bfbfbf" //for themes
+    property color toolTipTextColor: "#333333"
 
     id: button
     color: bColor
@@ -50,6 +48,8 @@ Rectangle {
         anchors.fill: parent
         anchors.margins: iconMargins
         visible: false // we transform overlay, not an image
+//        sourceSize.width: width*Screen.devicePixelRatio
+//        sourceSize.height: height*Screen.devicePixelRatio
     }
 
     ColorOverlay {

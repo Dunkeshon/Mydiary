@@ -1,5 +1,6 @@
 import QtQuick 2.12
 import QtQuick.Controls 2.12
+import QtQuick.Window 2.12
 import Diary 1.0
 import "funclist.js" as F
 Rectangle {
@@ -23,8 +24,8 @@ Rectangle {
 
         source:locked==true? "qrc:/resources/images/lock.svg":"qrc:/resources/images/unlock2.svg"
 
-        sourceSize.width: width*window.devicePixelRatio
-        sourceSize.height: height*window.devicePixelRatio
+        sourceSize.width: width*Screen.devicePixelRatio
+        sourceSize.height: height*Screen.devicePixelRatio
         states: [
             State {
                 name: "reancored"
