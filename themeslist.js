@@ -46,7 +46,13 @@ function changeTheme(colorTheme){
         topPannel.search_textFieldColor = "white"
         topPannel.search_placeholderTextColor = "#f5f5f5"
         topPannel.search_textSelectionColor = "#3399FF"
-
+        //deletingDialog
+        deletingDialog.mainRectColor= "#A7B9FF"
+        deletingDialog.mainBorderColor= "#6D84DE"
+        deletingDialog.buttonTextColor= "#182763"
+        deletingDialog.textColor= "white"
+        deletingDialog.imageOverlayColor= "white"
+        deletingDialog.buttonBorderColor= "#6D84DE"
 
 
         break;
@@ -90,7 +96,13 @@ function changeTheme(colorTheme){
         topPannel.search_placeholderTextColor = "#f5f5f5"
         topPannel.search_textSelectionColor = "#3399FF"
 
-
+        //deletingDialog
+        deletingDialog.mainRectColor= "#FFB6B6"
+        deletingDialog.mainBorderColor= "#CC8888"
+        deletingDialog.buttonTextColor= "#703131"
+        deletingDialog.textColor= "white"
+        deletingDialog.imageOverlayColor= "white"
+        deletingDialog.buttonBorderColor= "#CC8888"
         break;
     case Themes.YELLOW_THEME:
         mainColorBackground = "white"
@@ -132,6 +144,13 @@ function changeTheme(colorTheme){
         topPannel.search_placeholderTextColor = "#f5f5f5"
         topPannel.search_textSelectionColor = "#3399FF"
 
+        //deletingDialog
+        deletingDialog.mainRectColor= "#EDC697"
+        deletingDialog.mainBorderColor= "#FFFFFF"
+        deletingDialog.buttonTextColor= "#714A1C"
+        deletingDialog.textColor= "#714A1C"
+        deletingDialog.imageOverlayColor= "#714A1C"
+        deletingDialog.buttonBorderColor= "#714A1C"
 
         break;
 
@@ -173,6 +192,14 @@ function changeTheme(colorTheme){
         topPannel.search_textFieldColor = "white"
         topPannel.search_placeholderTextColor = "#f5f5f5"
         topPannel.search_textSelectionColor = "#3399FF"
+
+        //deletingDialog
+        deletingDialog.mainRectColor= "#DEDEDE"
+        deletingDialog.mainBorderColor= "#FFFFFF"
+        deletingDialog.buttonTextColor= "#303030"
+        deletingDialog.textColor= "#303030"
+        deletingDialog.imageOverlayColor= "#303030"
+        deletingDialog.buttonBorderColor= "#808080"
 
         break;
     default: throw "Theme id out of range"

@@ -10,12 +10,13 @@ import Diary 1.0
 Dialog {
 
     //Themes
-    property color mainRectColor: "#A7B9FF"
-    property color mainBorderColor: "#6D84DE"
-    property color buttonTextColor: "#182763"
-    property color textColor: "white"
-    property color imageOverlayColor: "white"
-
+    property color mainRectColor
+    property color mainBorderColor
+    property color buttonTextColor
+    property color textColor
+    property color imageOverlayColor
+    property color buttonBorderColor
+    property color pressedButtonColor
     id:deletionDialog
 
     title: "Deleting"
@@ -65,11 +66,11 @@ Dialog {
                     verticalAlignment: Text.AlignVCenter
                     horizontalAlignment: Text.AlignHCenter
                     font.pixelSize: 14
-                    color: "#182763"
+                    color: buttonTextColor
                 }
                 background: Rectangle{
                     radius: 26
-                    border.color: "#6D84DE"
+                    border.color: buttonBorderColor //"#6D84DE"
                     border.width: 1
                     color: "white"
                 }
@@ -94,7 +95,7 @@ Dialog {
                 anchors.fill: trashImage
                 source: trashImage
                 transformOrigin: Item.Center
-                color: "white"
+                color: imageOverlayColor
             }
 
             Button{
@@ -109,11 +110,11 @@ Dialog {
                     verticalAlignment: Text.AlignVCenter
                     horizontalAlignment: Text.AlignHCenter
                     font.pixelSize: 14
-                    color: "#182763"
+                    color: buttonTextColor
                 }
                 background: Rectangle{
                     radius: 26
-                    border.color: "#6D84DE"
+                    border.color: buttonBorderColor//: "#6D84DE"
                     border.width: 1
                     color: "white"
                 }
