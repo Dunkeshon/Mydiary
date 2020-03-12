@@ -120,10 +120,10 @@ Window {
 
     AcceptDeletionDialog{
         id:deletingDialog
-
+        anchors.centerIn: parent
         //positioning for windows
-        x: window.width  / 2
-        y: window.height / 2
+//        x: window.width  / 2
+//        y: window.height / 2
     }
 
 

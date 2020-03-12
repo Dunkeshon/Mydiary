@@ -57,7 +57,7 @@ function arrowButtonRealization() {
 
 function deleteButtonRealization() {
     // take param from signal and move it to an other func
-    deletingDialog.visible=true
+    deletingDialog.open()
 }
 function deleteElementRealization(){
     var temp = notesList.currentIndex

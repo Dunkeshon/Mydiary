@@ -1,13 +1,13 @@
 import QtQuick 2.0
 import QtQuick.Controls 2.12
-import QtQuick.Dialogs 1.2
+
 import QtQuick.Window 2.12
 import QtGraphicalEffects 1.0
 import "funclist.js" as F
 import Diary 1.0
 
 
-Dialog {
+Popup {
 
     //Themes
     property color mainRectColor
@@ -17,11 +17,10 @@ Dialog {
     property color imageOverlayColor
     property color buttonBorderColor
     property color pressedButtonColor
-    id:deletionDialog
-
-    title: "Deleting"
-    width: 215
-    height: 85
+    id:mainItem
+    modal: true
+    width: 215 // для андроида может ловить баги
+    height: 85 // для андроида может ловить баги
     contentItem: Rectangle {
         id: rectangle
 
@@ -76,7 +75,7 @@ Dialog {
                 }
                 onClicked:{
                     F.deleteElementRealization()
-                    deletionDialog.visible=false
+                    mainItem.close()
                 }
             }
 
@@ -119,7 +118,8 @@ Dialog {
                     color: "white"
                 }
                 onClicked:{
-                    deletionDialog.visible=false
+                    mainItem.close()
+                   // deletionDialog.visible=false
                 }
             }
         }
