@@ -18,7 +18,6 @@
         <file>images/leftArrowIcon.svg</file>
         <file>images/settingsIcon.svg</file>
         <file>images/trash.svg</file>
-        <file>images/toolIcon.svg</file>
         <file>fonts/poppins_/OFL.txt</file>
         <file>fonts/poppins_/Poppins-Black.ttf</file>
         <file>fonts/poppins_/Merriweather-Regular.ttf</file>
@@ -27,12 +26,11 @@
         <file>images/infoIcon.svg</file>
         <file>images/lock.svg</file>
         <file>images/unlock2.svg</file>
-        <file>images/cuteGirl.png</file>
-        <file>images/catGirl.PNG</file>
-        <file>images/nerdGirl.png</file>
-        <file>images/niceGirl.png</file>
-        <file>images/santaGirl.PNG</file>
-        <file>images/shycatGirl.PNG</file>
-        <file>images/background.jpg</file>
+    </qresource>
+    <qresource prefix="/animeTheme">
+        <file>Anime/background.jpg</file>
+        <file>Anime/catGirl.PNG</file>
+        <file>Anime/cuteGirl.png</file>
+        <file>Anime/niceGirl.png</file>
     </qresource>
 </RCC>

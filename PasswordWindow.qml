@@ -9,7 +9,7 @@ Rectangle {
     id:pWindow
     Image {
         id: background
-        source: "qrc:/resources/images/background.jpg"
+        source: "qrc:/animeTheme/Anime/background.jpg"
         z:0
         anchors.fill: parent
     }

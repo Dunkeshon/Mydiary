@@ -13,11 +13,10 @@ class BackEnd: public QObject
     Q_OBJECT
 private:
     QMap <int,QString> m_imagesMap{
-                                   {0,"qrc:/resources/images/catGirl.PNG"},
-                                   {1,"qrc:/resources/images/cuteGirl.png"},
-                                   {2,"qrc:/resources/images/nerdGirl.png"},
-                                   {3,"qrc:/resources/images/niceGirl.png"},
-                                   {4,"qrc:/resources/images/santaGirl.PNG"}
+                                   {0,"qrc:/animeTheme/Anime/catGirl.PNG"},
+                                   {1,"qrc:/animeTheme/Anime/cuteGirl.png"},
+                                   {2,"qrc:/animeTheme/Anime/niceGirl.png"},
+
 
     };
 

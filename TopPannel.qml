@@ -18,7 +18,6 @@ Item {
     property color imageColor
     property color search_themeColor //: "#617adb"
     property color search_textFieldColor //: "white"
-    property color search_placeholderTextColor //: "#f5f5f5"
     property color search_textSelectionColor //: "#3399FF"
 
 
@@ -94,7 +93,6 @@ Item {
                 id: searchField
                 themeColor : search_themeColor
                 textFieldColor: search_textFieldColor
-                placeholderTextColor: search_placeholderTextColor
                 textSelectionColor: search_textSelectionColor
                 anchors.left: parent.right
                 width: 0

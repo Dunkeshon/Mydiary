@@ -9,7 +9,6 @@ function changeTheme(colorTheme){
         //DELEGATE
         notesList.m_fillDelegateColor="white"
         notesList.m_bottomSeparatorColor="#6d84de"
-        //    notesList.m_innerChadowColor=Qt.rgba(0, 0, 0, 0.44)
         notesList.m_dateTextColor="#666666"
         notesList.m_titleTextColor="#666666"
         notesList.m_enteredColor="#bbc7f4"
@@ -63,7 +62,6 @@ function changeTheme(colorTheme){
         //DELEGATE
         notesList.m_fillDelegateColor="white"
         notesList.m_bottomSeparatorColor= "#ffa8a8"
-        //   notesList.m_innerChadowColor= "#b08686"
         notesList.m_dateTextColor="#a37272"
         notesList.m_titleTextColor="#a37272"
         notesList.m_enteredColor="#FFE0E0"
@@ -93,7 +91,6 @@ function changeTheme(colorTheme){
         topPannel.imageColor = "#FFFFFF"
         topPannel.search_themeColor =  "#FF9595"
         topPannel.search_textFieldColor = "white"
-        topPannel.search_placeholderTextColor = "#f5f5f5"
         topPannel.search_textSelectionColor = "#3399FF"
 
         //deletingDialog
@@ -110,7 +107,6 @@ function changeTheme(colorTheme){
         verticalSeparator.separatorColor= "#F3CB9B"
         notesList.m_fillDelegateColor="white"
         notesList.m_bottomSeparatorColor="#F3CB9B"
-        //  notesList.m_innerChadowColor=
         notesList.m_dateTextColor="#b69d80"
         notesList.m_titleTextColor="#714A1C"
         notesList.m_enteredColor="#f9e5cd"
@@ -141,7 +137,6 @@ function changeTheme(colorTheme){
         topPannel.imageColor = "#FFFFFF"
         topPannel.search_themeColor = "#E3BA89"
         topPannel.search_textFieldColor = "white"
-        topPannel.search_placeholderTextColor = "#f5f5f5"
         topPannel.search_textSelectionColor = "#3399FF"
 
         //deletingDialog
@@ -190,7 +185,6 @@ function changeTheme(colorTheme){
         topPannel.imageColor = "#FFFFFF"
         topPannel.search_themeColor = "#515151"
         topPannel.search_textFieldColor = "white"
-        topPannel.search_placeholderTextColor = "#f5f5f5"
         topPannel.search_textSelectionColor = "#3399FF"
 
         //deletingDialog

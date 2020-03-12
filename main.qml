@@ -88,13 +88,13 @@ Window {
             }]
     }
 
-    SettingsWindow{
+    SettingsWindow {
         id:settingsSection
         visible: false
         width:parent.width
         height: parent.height - topPannel.height
         anchors.top: topPannel.bottom
-        x:200
+        x:window.width
         z:1
     }
 

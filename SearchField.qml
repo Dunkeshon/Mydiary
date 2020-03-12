@@ -12,7 +12,6 @@ Rectangle {
     //Themes
     property color themeColor: "#617adb"
     property color textFieldColor: "white"
-    property color placeholderTextColor: "#f5f5f5"
     property color textSelectionColor: "#3399FF"
 
     id: mainRect
@@ -36,7 +35,7 @@ Rectangle {
         bottomPadding: 8
         topPadding: 8
         placeholderText: "Search"
-        placeholderTextColor: placeholderTextColor
+        placeholderTextColor: "white"
 
         maximumLength: 20
         selectionColor: textSelectionColor
