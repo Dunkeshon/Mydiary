@@ -24,153 +24,157 @@ Window {
     title: qsTr("My Diary")
     FontLoader { id: poppins_black; source:"qrc:/resources/fonts/poppins_/Poppins-Black.ttf"}
     FontLoader { id: merriweather; source:"qrc:/resources/fonts/poppins_/Merriweather-Regular.ttf"}
+    Item {
+        id:mainItem
+        anchors.fill: parent
+        visible: false
 
+
+        Settings{
+            id:qSettings
+            property int colorTheme:Themes.DARK_THEME
+        }
+
+
+        TopPannel {
+            id: topPannel
+            buttonsHovered: buttonsActive
+            height: 31
+            width: parent.width
+            anchors.top: parent.top
+            anchors.left: parent.left
+            anchors.right: parent.right
+        }
+
+        ColumnLayout {
+            id: leftColumn
+            width: 200
+            height: parent.height - topPannel.height
+            anchors.top: topPannel.bottom
+            NotesList {
+                id:notesList
+                Layout.fillWidth: true
+            }
+
+            states: [
+                State {
+                    name: "Hidden"
+                    PropertyChanges {
+                        target: leftColumn
+                        x: -width - 1
+                        visible:false
+                    }
+                }]
+
+            transitions: [
+                Transition {
+                    from: ""
+                    to: "Hidden"
+                    PropertyAnimation {
+                        easing.type: Easing.InOutQuad
+                        properties: "x, visible"
+                        duration: 450
+                    }
+
+                },
+                Transition {
+                    from: "Hidden"
+                    to: ""
+                    PropertyAnimation {
+                        easing.type: Easing.InOutQuad
+                        properties: "x"
+                        duration: 450
+                    }
+                }]
+        }
+
+        SettingsWindow {
+            id:settingsSection
+            visible: false
+            width:parent.width
+            height: parent.height - topPannel.height
+            anchors.top: topPannel.bottom
+            x:200
+            z:1
+            MouseArea{
+                width: parent.width
+                height: topPannel.height
+                anchors.bottom: parent.top
+                anchors.horizontalCenter: parent.horizontalCenter
+                onClicked: {
+                    settingsSection.state=""
+                    buttonsActive=true // включение нажатий на кнопки
+                }
+            }
+        }
+
+        Rectangle {
+            id: startRect
+            visible: userinput.visible ? false : true
+            color:userinput.color // COLOR
+            width: parent.width - leftColumn.width - verticalSeparator.width
+            anchors.top: topPannel.bottom
+            anchors.bottom: parent.bottom
+            anchors.right: parent.right
+            anchors.left: verticalSeparator.right
+
+            Text {
+                property color enterTextTipColor: "#aaaaaa"
+                anchors.centerIn: parent
+                font.pixelSize: 17
+                font.family: "merriweather"
+                color:enterTextTipColor
+                text: "Choose or Create a Page"
+            }
+        }
+
+        AcceptDeletionDialog{
+            id:deletingDialog
+            anchors.centerIn: parent
+            //positioning for windows
+            //        x: window.width  / 2
+            //        y: window.height / 2
+        }
+
+
+
+        TextINputWindow {
+            id: userinput
+            buttonsHovered: buttonsActive
+            visible: false
+            width: parent.width - leftColumn.width - verticalSeparator.width
+            anchors.top: topPannel.bottom
+            anchors.bottom: parent.bottom
+            anchors.right: parent.right
+            anchors.left: verticalSeparator.right
+        }
+
+        Rectangle {
+            //Themes
+            property color separatorColor//: "#6d84de" //
+            id: verticalSeparator
+            color:separatorColor
+            width: 1
+            anchors.top: topPannel.bottom
+            anchors.bottom: parent.bottom
+            anchors.left: leftColumn.right
+        }
+
+        Component.onCompleted: {
+            ThemesFunctions.changeTheme(qSettings.colorTheme)
+        }
+
+        Component.onDestruction: {
+            F.updateModelInformation()
+        }
+
+    }
     PasswordWindow{
         id:passwordWindow
         anchors.fill:parent
         visible:true
         z:1
     }
-
-    Settings{
-        id:qSettings
-        property int colorTheme:Themes.DARK_THEME
-    }
-
-
-    TopPannel {
-        id: topPannel
-        buttonsHovered: buttonsActive
-        height: 31
-        width: parent.width
-        anchors.top: parent.top
-        anchors.left: parent.left
-        anchors.right: parent.right
-    }
-
-    ColumnLayout {
-        id: leftColumn
-        width: 200
-        height: parent.height - topPannel.height
-        anchors.top: topPannel.bottom
-        NotesList {
-            id:notesList
-            Layout.fillWidth: true
-        }
-
-        states: [
-            State {
-                name: "Hidden"
-                PropertyChanges {
-                    target: leftColumn
-                    x: -width - 1
-                    visible:false
-                }
-            }]
-
-        transitions: [
-            Transition {
-                from: ""
-                to: "Hidden"
-                PropertyAnimation {
-                    easing.type: Easing.InOutQuad
-                    properties: "x, visible"
-                    duration: 450
-                }
-
-            },
-            Transition {
-                from: "Hidden"
-                to: ""
-                PropertyAnimation {
-                    easing.type: Easing.InOutQuad
-                    properties: "x"
-                    duration: 450
-                }
-            }]
-    }
-
-    SettingsWindow {
-        id:settingsSection
-        visible: false
-        width:parent.width
-        height: parent.height - topPannel.height
-        anchors.top: topPannel.bottom
-        x:200
-        z:1
-        MouseArea{
-            width: parent.width
-            height: topPannel.height
-            anchors.bottom: parent.top
-            anchors.horizontalCenter: parent.horizontalCenter
-            onClicked: {
-                settingsSection.state=""
-                buttonsActive=true // включение нажатий на кнопки
-            }
-        }
-    }
-
-    Rectangle {
-        id: startRect
-        visible: userinput.visible ? false : true
-        color:userinput.color // COLOR
-        width: parent.width - leftColumn.width - verticalSeparator.width
-        anchors.top: topPannel.bottom
-        anchors.bottom: parent.bottom
-        anchors.right: parent.right
-        anchors.left: verticalSeparator.right
-
-        Text {
-            property color enterTextTipColor: "#aaaaaa"
-            anchors.centerIn: parent
-            font.pixelSize: 17
-            font.family: "merriweather"
-            color:enterTextTipColor
-            text: "Choose or Create a Page"
-        }
-    }
-
-    AcceptDeletionDialog{
-        id:deletingDialog
-        anchors.centerIn: parent
-        //positioning for windows
-//        x: window.width  / 2
-//        y: window.height / 2
-    }
-
-
-
-    TextINputWindow {
-        id: userinput
-        buttonsHovered: buttonsActive
-        visible: false
-        width: parent.width - leftColumn.width - verticalSeparator.width
-        anchors.top: topPannel.bottom
-        anchors.bottom: parent.bottom
-        anchors.right: parent.right
-        anchors.left: verticalSeparator.right
-    }
-
-    Rectangle {
-        //Themes
-        property color separatorColor//: "#6d84de" //
-        id: verticalSeparator
-        color:separatorColor
-        width: 1
-        anchors.top: topPannel.bottom
-        anchors.bottom: parent.bottom
-        anchors.left: leftColumn.right
-    }
-
-    Component.onCompleted: {
-        ThemesFunctions.changeTheme(qSettings.colorTheme)
-    }
-
-    Component.onDestruction: {
-        F.updateModelInformation()
-    }
-
-
 
 
 
