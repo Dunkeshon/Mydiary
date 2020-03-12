@@ -17,6 +17,8 @@ Popup {
     property color imageOverlayColor
     property color buttonBorderColor
     property color pressedButtonColor
+    property color enteredButtonColor
+
     id:mainItem
     modal: true
     width: 215 // для андроида может ловить баги
@@ -65,64 +67,72 @@ Popup {
                     verticalAlignment: Text.AlignVCenter
                     horizontalAlignment: Text.AlignHCenter
                     font.pixelSize: 14
-                    color: buttonTextColor
+                    color: yesButton.hovered?"white":buttonTextColor
                 }
                 background: Rectangle{
                     radius: 26
                     border.color: buttonBorderColor //"#6D84DE"
                     border.width: 1
-                    color: "white"
-                }
-                onClicked:{
-                    F.deleteElementRealization()
-                    mainItem.close()
+                    color: {
+                        if(yesButton.down) return pressedButtonColor
+                        else if(yesButton.hovered) return enteredButtonColor
+                        else return "white"
+                    }
+                    }
+                               onClicked:{
+                                   F.deleteElementRealization()
+                                   mainItem.close()
+                               }
+                    }
+
+                    Image {
+                        id: trashImage
+                        source: "qrc:/resources/images/trash.svg"
+                        sourceSize.width: width*Screen.devicePixelRatio
+                        sourceSize.height: height*Screen.devicePixelRatio
+                        height:25
+                        width:25
+                        anchors.verticalCenter: parent.verticalCenter
+                        anchors.horizontalCenter: parent.horizontalCenter
+                    }
+                    ColorOverlay {
+                        id: trashColorOverlay
+                        anchors.fill: trashImage
+                        source: trashImage
+                        transformOrigin: Item.Center
+                        color: imageOverlayColor
+                    }
+
+                    Button{
+                        id:noButton
+                        height:24
+                        width: 52
+                        anchors.right: parent.right
+                        anchors.bottom: parent.bottom
+                        contentItem:  Text {
+                            text: "No"
+                            font.family: "Poppins"
+                            verticalAlignment: Text.AlignVCenter
+                            horizontalAlignment: Text.AlignHCenter
+                            font.pixelSize: 14
+                            color: noButton.hovered?"white":buttonTextColor
+                        }
+                        background: Rectangle{
+                            radius: 26
+                            border.color: buttonBorderColor//: "#6D84DE"
+                            border.width: 1
+                            color: {
+                                if(noButton.down) return pressedButtonColor
+                                else if(noButton.hovered) return enteredButtonColor
+                                else return "white"
+                            }
+                        }
+                        onClicked:{
+                            mainItem.close()
+                            // deletionDialog.visible=false
+                        }
+                    }
                 }
             }
 
-            Image {
-                id: trashImage
-                source: "qrc:/resources/images/trash.svg"
-                sourceSize.width: width*Screen.devicePixelRatio
-                sourceSize.height: height*Screen.devicePixelRatio
-                height:25
-                width:25
-                anchors.verticalCenter: parent.verticalCenter
-                anchors.horizontalCenter: parent.horizontalCenter
-            }
-            ColorOverlay {
-                id: trashColorOverlay
-                anchors.fill: trashImage
-                source: trashImage
-                transformOrigin: Item.Center
-                color: imageOverlayColor
-            }
-
-            Button{
-                id:noButton
-                height:24
-                width: 52
-                anchors.right: parent.right
-                anchors.bottom: parent.bottom
-                contentItem:  Text {
-                    text: "No"
-                    font.family: "Poppins"
-                    verticalAlignment: Text.AlignVCenter
-                    horizontalAlignment: Text.AlignHCenter
-                    font.pixelSize: 14
-                    color: buttonTextColor
-                }
-                background: Rectangle{
-                    radius: 26
-                    border.color: buttonBorderColor//: "#6D84DE"
-                    border.width: 1
-                    color: "white"
-                }
-                onClicked:{
-                    mainItem.close()
-                   // deletionDialog.visible=false
-                }
-            }
         }
-    }
-
-}

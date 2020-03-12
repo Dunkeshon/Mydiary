@@ -51,6 +51,9 @@ function changeTheme(colorTheme){
         deletingDialog.textColor= "white"
         deletingDialog.imageOverlayColor= "white"
         deletingDialog.buttonBorderColor= "#6D84DE"
+        deletingDialog.pressedButtonColor= "#4d5d9c"
+        deletingDialog.enteredButtonColor="#92a8ff"
+
 
 
         break;
@@ -74,7 +77,7 @@ function changeTheme(colorTheme){
         settingsSection.yellowSelect= "#FFDFB9"
         settingsSection.darkSelect= "#000000"
         //TextINputWindow
-        userinput.themeColor = "#fff7f7"
+        userinput.themeColor ="#fff7f7"
         userinput.textSelectionColor = "#3399FF"
         userinput.imageColor = "#b08686"
         userinput.enteredButtonColor = "#955e5e"
@@ -99,6 +102,8 @@ function changeTheme(colorTheme){
         deletingDialog.textColor= "white"
         deletingDialog.imageOverlayColor= "white"
         deletingDialog.buttonBorderColor= "#CC8888"
+        deletingDialog.pressedButtonColor= "#9B5B5B"
+        deletingDialog.enteredButtonColor="#D79494"
         break;
     case Themes.YELLOW_THEME:
         mainColorBackground = "white"
@@ -145,6 +150,9 @@ function changeTheme(colorTheme){
         deletingDialog.textColor= "#714A1C"
         deletingDialog.imageOverlayColor= "#714A1C"
         deletingDialog.buttonBorderColor= "#714A1C"
+        deletingDialog.pressedButtonColor= "#714A1C"
+        deletingDialog.enteredButtonColor="#AE8555"
+
 
         break;
 
@@ -193,6 +201,8 @@ function changeTheme(colorTheme){
         deletingDialog.textColor= "#303030"
         deletingDialog.imageOverlayColor= "#303030"
         deletingDialog.buttonBorderColor= "#808080"
+        deletingDialog.pressedButtonColor= "#3D3D3D"
+        deletingDialog.enteredButtonColor="#9A9A9A"
 
         break;
     default: throw "Theme id out of range"
