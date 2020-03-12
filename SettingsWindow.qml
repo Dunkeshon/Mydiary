@@ -20,6 +20,7 @@ Item {
 
 
 
+
     MouseArea{
         id:emptyFocus
         anchors.left:parent.left
@@ -28,6 +29,7 @@ Item {
         width: parent.width-settingsArea.width
         onClicked: {
             mainArea.state=""
+            window.buttonsActive = true
         }
     }
     Rectangle{
@@ -38,6 +40,9 @@ Item {
         anchors.top: parent.top
         anchors.bottom: parent.bottom
 
+        MouseArea{
+            anchors.fill: parent
+        }
         Rectangle{
             id:themeTitle
             color: parent.color

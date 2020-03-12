@@ -11,6 +11,7 @@ import "funclist.js" as F
 Item {
     property alias searchfield: searchField
 
+    property bool buttonsHovered: true
     //Themes
     property color panelColor //: "#6d84de"
     property color image_pressedColor //: "#4c69d7"
@@ -42,6 +43,7 @@ Item {
 
         BUTTON {
             id: arrowButton
+            hovered: buttonsHovered
             size: parent.height
             bColor: pannel.color
             iconColor: imageColor
@@ -61,6 +63,7 @@ Item {
 
         BUTTON  {
             id: addButton
+            hovered: buttonsHovered
             size: parent.height
             bColor: pannel.color
             iconColor: imageColor
@@ -75,6 +78,7 @@ Item {
 
         BUTTON {
             id: searchButton
+            hovered: buttonsHovered
             size: parent.height
             iconColor: imageColor
             bColor: searchField.state == "" ? pannel.color : searchField.color
@@ -99,9 +103,9 @@ Item {
                 height: parent.height
             }
         }
-
         BUTTON  {
             id: settingsButton
+            hovered: buttonsHovered
             size: parent.height
             iconColor:imageColor
             bColor:pannel.color

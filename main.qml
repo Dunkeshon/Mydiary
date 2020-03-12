@@ -11,6 +11,7 @@ import "themeslist.js" as ThemesFunctions
 Window {
     //Themes
     property color mainColorBackground//:"white"
+    property bool buttonsActive: true
 
 
     id: window
@@ -39,6 +40,7 @@ Window {
 
     TopPannel {
         id: topPannel
+        buttonsHovered: buttonsActive
         height: 31
         width: parent.width
         anchors.top: parent.top
@@ -94,8 +96,18 @@ Window {
         width:parent.width
         height: parent.height - topPannel.height
         anchors.top: topPannel.bottom
-        x:window.width
+        x:200
         z:1
+        MouseArea{
+            width: parent.width
+            height: topPannel.height
+            anchors.bottom: parent.top
+            anchors.horizontalCenter: parent.horizontalCenter
+            onClicked: {
+                settingsSection.state=""
+                buttonsActive=true // включение нажатий на кнопки
+            }
+        }
     }
 
     Rectangle {
@@ -130,6 +142,7 @@ Window {
 
     TextINputWindow {
         id: userinput
+        buttonsHovered: buttonsActive
         visible: false
         width: parent.width - leftColumn.width - verticalSeparator.width
         anchors.top: topPannel.bottom

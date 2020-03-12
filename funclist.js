@@ -100,8 +100,6 @@ function acceptPassword(){
     }
 }
 function settingsButtonRealization(){
-    if(settingsSection.state == "Active")
-        settingsSection.state = ""
-    else
-        settingsSection.state = "Active"
+    settingsSection.state = "Active"
+    window.buttonsActive=false
 }

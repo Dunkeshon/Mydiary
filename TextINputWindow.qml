@@ -14,6 +14,7 @@ Rectangle {
     property var editInfo
     property alias titletext: title
     property alias usertext: userText
+    property bool buttonsHovered: true
 
     //Themes
     property color themeColor//: "#f4f5f8"
@@ -93,6 +94,7 @@ Rectangle {
 
     BUTTON {
         id:trashButton
+        hovered: buttonsHovered
         size: 25
         anchors.right: parent.right
         anchors.margins: 3
@@ -110,6 +112,7 @@ Rectangle {
 
     BUTTON {
         id:infoButton
+        hovered: buttonsHovered
         size: 25
         anchors.right: trashButton.left
         anchors.margins: 3

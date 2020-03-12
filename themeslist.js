@@ -43,7 +43,6 @@ function changeTheme(colorTheme){
         topPannel.imageColor = "#FFFFFF"
         topPannel.search_themeColor =  "#617adb"
         topPannel.search_textFieldColor = "white"
-        topPannel.search_placeholderTextColor = "#f5f5f5"
         topPannel.search_textSelectionColor = "#3399FF"
         //deletingDialog
         deletingDialog.mainRectColor= "#A7B9FF"

@@ -12,6 +12,7 @@ Rectangle {
     property var size: 0
     property var iconMargins: 0
 
+    property bool hovered:true
     property alias mousearea: buttonArea
     property alias iconRotation: buttonColorOverlay.rotation
     property bool changePressedTargetOnColorOverlay: false
@@ -20,6 +21,7 @@ Rectangle {
     property var toolTipText: "nothing"
     property int toolDelay: 1000
     property int toolTimeout: 5000
+
 
     //Themes
     property color toolBackgroundColor : "white" //for now needed by default
@@ -64,7 +66,7 @@ Rectangle {
     MouseArea {
         id:buttonArea
         anchors.fill: parent
-        hoverEnabled: true
+        hoverEnabled: hovered
         onClicked: {
             buttonChecked()
         }
