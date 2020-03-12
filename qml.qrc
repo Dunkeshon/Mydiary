@@ -26,6 +26,7 @@
         <file>images/infoIcon.svg</file>
         <file>images/lock.svg</file>
         <file>images/unlock2.svg</file>
+        <file>images/starIcon.svg</file>
     </qresource>
     <qresource prefix="/animeTheme">
         <file>Anime/background.jpg</file>

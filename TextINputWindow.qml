@@ -111,10 +111,49 @@ Rectangle {
     }
 
     BUTTON {
-        id:infoButton
+        id:favoriteButton
         hovered: buttonsHovered
         size: 25
         anchors.right: trashButton.left
+        anchors.margins: 3
+        anchors.top: parent.top
+        iconSource: "resources/images/starIcon.svg"
+        iconMargins: 2
+        bColor: parent.color
+        iconColor: imageColor
+        toolTipText: starInsideOverlay.visible ? "ToFavorite" : "From Favorite"
+
+        changePressedTargetOnColorOverlay: true
+        enteredColor: enteredButtonColor
+        pressedColor: pressedButtonColor
+
+        mousearea.onClicked: {
+            starInsideOverlay.visible = starInsideOverlay.visible ? false : true
+        }
+
+        Image {
+            id: starInside
+            anchors.fill: parent
+            anchors.margins: 6
+            visible: false
+            sourceSize.width: width*Screen.devicePixelRatio
+            sourceSize.height: height*Screen.devicePixelRatio
+            source: "resources/images/starIcon.svg"
+        }
+
+        ColorOverlay {
+            id: starInsideOverlay
+            source: starInside
+            anchors.fill: starInside
+            color: mainColumn.color
+        }
+    }
+
+    BUTTON {
+        id:infoButton
+        hovered: buttonsHovered
+        size: 25
+        anchors.right: favoriteButton.left
         anchors.margins: 3
         anchors.top: parent.top
 
