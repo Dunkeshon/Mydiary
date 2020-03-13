@@ -3,10 +3,20 @@ import QtQuick.Controls 2.12
 import QtQuick.Window 2.12
 import Diary 1.0
 import "funclist.js" as F
+
+
+
 Rectangle {
+    id:pWindow
     property alias myPassword:password.text
     property bool locked: true
-    id:pWindow
+
+    anchors.fill: parent
+
+
+
+
+    //Keys.onPressed:password.forceActiveFocus
     Image {
         id: background
         source: "qrc:/animeTheme/Anime/background.jpg"
@@ -123,6 +133,7 @@ Rectangle {
         color: "black"
         horizontalAlignment: Text.AlignHCenter
         placeholderText: "Password"
+        focus: true
         background:
             Rectangle {
             color: "#CC9966"
@@ -183,6 +194,7 @@ Rectangle {
 
 
 }
+
 
 /*##^##
 Designer {

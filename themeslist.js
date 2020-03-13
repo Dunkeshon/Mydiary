@@ -25,6 +25,7 @@ function changeTheme(colorTheme){
         settingsSection.yellowSelect = "#FFD749"
         settingsSection.darkSelect = "#000000"
 
+
         //TextINputWindow
         userinput.themeColor = "#f4f5f8"
         userinput.textSelectionColor = "#b8c5fd"
@@ -142,6 +143,7 @@ function changeTheme(colorTheme){
         settingsSection.roseSelect= "#FD7676"
         settingsSection.yellowSelect= "#FFFFFF"
         settingsSection.darkSelect= "#000000"
+
         //TextINputWindow
         userinput.themeColor = "#fdf5eb"
         userinput.textSelectionColor = "#d6b994"
@@ -200,6 +202,7 @@ function changeTheme(colorTheme){
         settingsSection.roseSelect= "#FFB0B0"
         settingsSection.yellowSelect= "#F3CB9B"
         settingsSection.darkSelect= "#FFFFFF"
+
         //TextINputWindow
         userinput.themeColor = "#404040"
         userinput.textSelectionColor = "#dcdcdc"
@@ -239,6 +242,38 @@ function changeTheme(colorTheme){
 
         break;
     default: throw "Theme id out of range"
+
+
+    }
+    if(settingsSection.defaultButton.enabled === false){
+        settingsSection.defaultButton.enabled = true
+    }
+    else if(settingsSection.roseButton.enabled === false){
+        settingsSection.roseButton.enabled=true
+    }
+    else if(settingsSection.yellowButton.enabled === false){
+        settingsSection.yellowButton.enabled = true
+    }
+    else{
+        settingsSection.darkButton.enabled = true
+    }
+
+
+    switch(qSettings.colorTheme){
+    case Themes.DEFAULT_THEME:
+        settingsSection.defaultButton.enabled = false
+        break
+    case Themes.ROSE_THEME:
+        settingsSection.roseButton.enabled = false
+        break
+    case Themes.YELLOW_THEME:
+        settingsSection.yellowButton.enabled = false
+        break
+    case Themes.DARK_THEME:
+        settingsSection.darkButton.enabled = false
+        break
+    default: throw "Theme id out of range"
+
 
 
     }

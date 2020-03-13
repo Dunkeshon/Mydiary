@@ -8,14 +8,22 @@ import "themeslist.js" as ThemesFunctions
 
 
 Item {
+    property alias  defaultButton: defaultTheme
+    property alias  roseButton: roseTheme
+    property alias  yellowButton: yellowTheme
+    property alias  darkButton: darkTheme
+
+
     //Themes
-    property color themeColor//: "#6d84de"
-    property color defaultSelect//: "white"
-    property color roseSelect//: "#FFB6B6"
-    property color yellowSelect//: "#FFD749"
-    property color darkSelect //: "#000000"
-
-
+    property color themeColor
+    property color defaultSelect
+    property color roseSelect
+    property color yellowSelect
+    property color darkSelect
+    property color enteredDefault : "#7187df"
+    property color enteredRose :"#DB6767"
+    property color enteredYellow : "#FFDFB9"
+    property color enteredDark :"#3D3838"
     id:mainArea
 
 
@@ -103,7 +111,7 @@ Item {
                 anchors.margins: 5
 
                 contentItem: Text {
-                    color: defaultSelect
+                    color:defaultTheme.hovered?enteredDefault: defaultSelect
                     text: "Default"
                     font.pixelSize: {
                         if(defaultTheme.down) return 14
@@ -132,7 +140,7 @@ Item {
                 anchors.top: parent.top
                 anchors.margins: 5
                 contentItem: Text {
-                    color: roseSelect
+                    color:roseTheme.hovered? enteredRose: roseSelect
                     text:"Rose"
                     font.pixelSize: {
                         if(roseTheme.down) return 14
@@ -159,7 +167,7 @@ Item {
                 anchors.top: defaultTheme.bottom
                 anchors.margins: 5
                 contentItem: Text {
-                    color: yellowSelect
+                    color:yellowTheme.hovered? enteredYellow: yellowSelect
                     text:"Beige"
                     font.pixelSize: {
                         if(yellowTheme.down) return 14
@@ -186,7 +194,7 @@ Item {
                 anchors.margins: 5
                 text: "Dark"
                 contentItem: Text {
-                    color: darkSelect
+                    color:darkTheme.hovered ? enteredDark : darkSelect
                     text:"Dark"
                     font.pixelSize: {
                         if(darkTheme.down) return 14
