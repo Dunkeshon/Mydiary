@@ -77,7 +77,7 @@ Rectangle {
         id:buttonToolTip
         delay: toolDelay
         timeout: toolTimeout
-        visible: mousearea.containsMouse ? true : false
+        visible: mousearea.containsMouse && !mousearea.pressed ? true : false
 
         contentItem: Rectangle {
             anchors.fill: parent

@@ -30,6 +30,10 @@ Window {
         visible: false
 
 
+
+
+
+
         Settings{
             id:qSettings
             property int colorTheme:Themes.DARK_THEME
@@ -128,13 +132,14 @@ Window {
             }
         }
 
-        AcceptDeletionDialog{
-            id:deletingDialog
-            anchors.centerIn: parent
-            //positioning for windows
-            //        x: window.width  / 2
-            //        y: window.height / 2
-        }
+        //        AcceptDeletionDialog{
+        //            id:deletingDialog
+        //            anchors.centerIn: parent
+        //            //positioning for windows
+        //            //        x: window.width  / 2
+        //            //        y: window.height / 2
+        //        }
+
 
 
 

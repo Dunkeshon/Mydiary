@@ -2,6 +2,7 @@
 #include <QQmlApplicationEngine>
 #include <QQmlContext>
 #include <QSettings>
+#include <QStyleHints>
 #include "diarylist.h"
 #include "diarylistmodel.h"
 #include "ColorThemes.h"
@@ -14,6 +15,7 @@ int main(int argc, char *argv[])
     QCoreApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
 
     QGuiApplication app(argc, argv);
+    QGuiApplication::styleHints()->setMousePressAndHoldInterval(1250);
     QCoreApplication::setOrganizationName("Opposite Direction");
     QCoreApplication::setApplicationName("MyDiary");
 

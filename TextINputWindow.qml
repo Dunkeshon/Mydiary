@@ -15,11 +15,13 @@ Rectangle {
     property alias titletext: title
     property alias usertext: userText
     property bool buttonsHovered: true
+    property bool signalEmited: false
 
     //Themes
     property color themeColor//: "#f4f5f8"
     property color textSelectionColor//: "#3399FF"
     property color imageColor//: "#aaaaaa"
+    property color pannelColor // color of top Pannel
     property color enteredButtonColor//: "#777777"
     property color pressedButtonColor//:  "black"
     property color textColor
@@ -30,7 +32,7 @@ Rectangle {
     color: themeColor
 
     Component.onCompleted: {
-        trashButton.buttonChecked.connect(F.deleteButtonRealization)
+
     }
 
     Item {
@@ -108,13 +110,71 @@ Rectangle {
         changePressedTargetOnColorOverlay: true
         enteredColor: enteredButtonColor
         pressedColor: pressedButtonColor
+
+        mousearea.onReleased: signalEmited = false
+        mousearea.onPressAndHold: {
+            trashButton.buttonChecked.connect(F.deleteButtonRealization)
+            trashButton.buttonChecked()
+            trashButton.buttonChecked.disconnect(F.deleteButtonRealization)
+            signalEmited = true
+        }
+    }
+
+    DeletingBar {
+        id: deletingBar
+        backgroundBarColor: imageColor
+        mainColor: "red"
+
+        anchors.right: parent.right
+        anchors.bottom: parent.bottom
+        anchors.left: parent.left
+        anchors.margins: 10
+        barWidth: trashButton.width
+
+        state: trashButton.mousearea.containsPress && !signalEmited ? "Active" : ""
+        visible: trashButton.mousearea.containsPress && !signalEmited ? true : false
+    }
+
+    BUTTON {
+        id:favoriteButton
+        hovered: buttonsHovered
+        size: 25
+        anchors.right: trashButton.left
+        anchors.margins: 3
+        anchors.top: parent.top
+        iconSource: "resources/images/starIcon.svg"
+        iconMargins: 2
+        bColor: parent.color
+        iconColor: imageColor
+        toolTipText: starInsideOverlay.visible ? "To Favorite" : "From Favorite"
+
+        changePressedTargetOnColorOverlay: true
+        enteredColor: enteredButtonColor
+        pressedColor: pressedButtonColor
+
+        Image {
+            id: starInside
+            anchors.fill: parent
+            anchors.margins: 6
+            visible: false
+            sourceSize.width: width*Screen.devicePixelRatio
+            sourceSize.height: height*Screen.devicePixelRatio
+            source: "resources/images/starIcon.svg"
+        }
+
+        ColorOverlay {
+            id: starInsideOverlay
+            source: starInside
+            anchors.fill: starInside
+            color: mainColumn.color
+        }
     }
 
     BUTTON {
         id:infoButton
         hovered: buttonsHovered
         size: 25
-        anchors.right: trashButton.left
+        anchors.right: favoriteButton.left
         anchors.margins: 3
         anchors.top: parent.top
 

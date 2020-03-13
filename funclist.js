@@ -56,10 +56,6 @@ function arrowButtonRealization() {
 }
 
 function deleteButtonRealization() {
-    // take param from signal and move it to an other func
-    deletingDialog.open()
-}
-function deleteElementRealization(){
     var temp = notesList.currentIndex
     diaryList.deleteItem(notesList.sortModel.mapToSource(notesList.sortModel.index(notesList.currentIndex, 0)))
     if(notesList.sortModel.rowCount() === notesList.currentIndex) {temp--}
@@ -71,6 +67,18 @@ function deleteElementRealization(){
         topPannel.searchfield.state = ""
     }
 }
+//function deleteElementRealization(){
+//    var temp = notesList.currentIndex
+//    diaryList.deleteItem(notesList.sortModel.mapToSource(notesList.sortModel.index(notesList.currentIndex, 0)))
+//    if(notesList.sortModel.rowCount() === notesList.currentIndex) {temp--}
+//    notesList.currentIndex = temp
+//    updateWindowInformation()
+
+//    if(notesList.currentIndex === -1) {
+//        topPannel.searchfield.text = ""
+//        topPannel.searchfield.state = ""
+//    }
+//}
 
 function changeFilter(searchText) {
     updateModelInformation()
