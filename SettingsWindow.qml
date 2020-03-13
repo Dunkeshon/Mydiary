@@ -96,6 +96,7 @@ Item {
             width: parent.width
             Button{
                 id:defaultTheme
+                height: 30
                 width: parent.width/2 -9
                 anchors.left: parent.left
                 anchors.top: parent.top
@@ -104,12 +105,17 @@ Item {
                 contentItem: Text {
                     color: defaultSelect
                     text: "Default"
-                    font.pixelSize: 20
+                    font.pixelSize: {
+                        if(defaultTheme.down) return 14
+                        else if(defaultTheme.hovered) return 26
+                        else return 20
+                    }
+
                     horizontalAlignment: Text.AlignHCenter
                     verticalAlignment: Text.AlignVCenter
                 }
                 background: Rectangle{
-                    color:defaultTheme.down ? "grey": themeColor
+                    color: themeColor
                 }
                 onClicked: {
                     qSettings.colorTheme=Themes.DEFAULT_THEME
@@ -119,6 +125,8 @@ Item {
 
             Button{
                 id:roseTheme
+                height: 30
+
                 width: parent.width/2 -9
                 anchors.left: defaultTheme.right
                 anchors.top: parent.top
@@ -126,12 +134,16 @@ Item {
                 contentItem: Text {
                     color: roseSelect
                     text:"Rose"
-                    font.pixelSize: 20
+                    font.pixelSize: {
+                        if(roseTheme.down) return 14
+                        else if(roseTheme.hovered) return 26
+                        else return 20
+                    }
                     horizontalAlignment: Text.AlignHCenter
                     verticalAlignment: Text.AlignVCenter
                 }
                 background: Rectangle{
-                    color: roseTheme.down? "grey": themeColor
+                    color: themeColor
                 }
                 onClicked: {
                     qSettings.colorTheme=Themes.ROSE_THEME
@@ -140,6 +152,8 @@ Item {
             }
             Button{
                 id:yellowTheme
+                height: 30
+
                 width: parent.width/2 -9
                 anchors.left: parent.left
                 anchors.top: defaultTheme.bottom
@@ -147,12 +161,16 @@ Item {
                 contentItem: Text {
                     color: yellowSelect
                     text:"Beige"
-                    font.pixelSize: 20
+                    font.pixelSize: {
+                        if(yellowTheme.down) return 14
+                        else if(yellowTheme.hovered) return 26
+                        else return 20
+                    }
                     horizontalAlignment: Text.AlignHCenter
                     verticalAlignment: Text.AlignVCenter
                 }
                 background: Rectangle{
-                    color: yellowTheme.down? "grey": themeColor
+                    color: themeColor
                 }
                 onClicked: {
                     qSettings.colorTheme=Themes.YELLOW_THEME
@@ -161,6 +179,7 @@ Item {
             }
             Button{
                 id:darkTheme
+                height: 30
                 width: parent.width/2 -9
                 anchors.left: yellowTheme.right
                 anchors.top: roseTheme.bottom
@@ -169,12 +188,16 @@ Item {
                 contentItem: Text {
                     color: darkSelect
                     text:"Dark"
-                    font.pixelSize: 20
+                    font.pixelSize: {
+                        if(darkTheme.down) return 14
+                        else if(darkTheme.hovered) return 26
+                        else return 20
+                    }
                     horizontalAlignment: Text.AlignHCenter
                     verticalAlignment: Text.AlignVCenter
                 }
                 background: Rectangle{
-                    color: darkTheme.down? "grey": themeColor
+                    color: themeColor
                 }
                 onClicked: {
                     qSettings.colorTheme=Themes.DARK_THEME
