@@ -15,7 +15,6 @@ Rectangle {
     property alias titletext: title
     property alias usertext: userText
     property bool buttonsHovered: true
-    property bool signalEmited: false
 
     //Themes
     property color themeColor//: "#f4f5f8"
@@ -101,6 +100,9 @@ Rectangle {
         }
     }
 
+    //uses in trashButton and deleting bar
+    property bool signalEmited: false
+    property bool pressedAndEntered: false
 
     BUTTON {
         id:trashButton
@@ -121,8 +123,17 @@ Rectangle {
         enteredColor: enteredButtonColor
         pressedColor: pressedButtonColor
 
-        mousearea.onReleased: signalEmited = false
+        mousearea.onReleased:
+            pressedAndEntered = signalEmited = false
+        mousearea.onExited:
+            pressedAndEntered = true
+        mousearea.onEntered:
+            if(!mousearea.pressed)
+                pressedAndEntered = false
+
         mousearea.onPressAndHold: {
+            if(pressedAndEntered)
+                return
             trashButton.buttonChecked.connect(F.deleteButtonRealization)
             trashButton.buttonChecked()
             trashButton.buttonChecked.disconnect(F.deleteButtonRealization)
@@ -133,7 +144,7 @@ Rectangle {
     DeletingBar {
         id: deletingBar
         backgroundBarColor: imageColor
-        mainColor: "red"
+        mainColor: pannelColor
 
         anchors.right: parent.right
         anchors.bottom: parent.bottom
@@ -141,8 +152,8 @@ Rectangle {
         anchors.margins: 10
         barWidth: trashButton.width
 
-        state: trashButton.mousearea.containsPress && !signalEmited ? "Active" : ""
-        visible: trashButton.mousearea.containsPress && !signalEmited ? true : false
+        state: trashButton.mousearea.containsPress && !signalEmited && !pressedAndEntered ? "Active" : ""
+        visible: trashButton.mousearea.containsPress && !signalEmited && !pressedAndEntered ? true : false
     }
 
     BUTTON {

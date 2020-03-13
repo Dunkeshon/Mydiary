@@ -15,7 +15,7 @@ int main(int argc, char *argv[])
     QCoreApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
 
     QGuiApplication app(argc, argv);
-    QGuiApplication::styleHints()->setMousePressAndHoldInterval(1250);
+    QGuiApplication::styleHints()->setMousePressAndHoldInterval(800);
     QCoreApplication::setOrganizationName("Opposite Direction");
     QCoreApplication::setApplicationName("MyDiary");
 

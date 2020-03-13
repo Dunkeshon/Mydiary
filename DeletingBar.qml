@@ -36,7 +36,7 @@ Rectangle {
             from: ""
             to: "Active"
             PropertyAnimation {
-                duration: 1200
+                duration: 800
                 properties: "width"
                 easing.type: Easing.Linear
             }

@@ -27,7 +27,7 @@ Window {
     Item {
         id:mainItem
         anchors.fill: parent
-        visible: false
+        visible: true // false
 
 
 
@@ -169,12 +169,12 @@ Window {
         }
 
     }
-    PasswordWindow{
-        id:passwordWindow
-        anchors.fill:parent
-        visible:true
-        z:1
-    }
+//    PasswordWindow{
+//        id:passwordWindow
+//        anchors.fill:parent
+//        visible:true
+//        z:1
+//    }
 
 
 
