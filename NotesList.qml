@@ -38,31 +38,23 @@ ColumnLayout {
         Layout.fillHeight: true
         clip: true
         focus:true
-
-
         DiaryModel
         {
             id:myModel
             list: diaryList
         }
-
         model: SortFilterProxyModel
         {
             id:sortModel
             sourceModel:myModel
             filterRole:DiaryModel.TitleRole
         }
-
         Component.onCompleted: {
             currentIndex = -1
-
             column.choosen.connect(F.updateWindowInformation)
-
             column.changeIndex.connect(F.updateModelInformation);
-
             column.changeIndex.connect(F.focusOff)
         }
-
         delegate: DELEGATE {
             bottomSeparatorColor : m_bottomSeparatorColor
             fillDelegateColor : m_fillDelegateColor
@@ -75,7 +67,6 @@ ColumnLayout {
             modelTitleTextRealized :m_modelTitleTextRealized
             width: parent.width
             height: 50
-
             mouseArea.onClicked: {
                 if(index == currentIndex) {return}
                 changeIndex() // emit signal
@@ -84,15 +75,13 @@ ColumnLayout {
                 // при клике на обьект списка мы сразу переключаем index,
                 // но currentIndex нужно переключать в ручную
             }
-
             date: model.Date
             title: {
                 if(model.Title.length>=16)
                     return model.Title.substring(0,13)+'...'
                 return model.Title
             }
-
-            current: index == currentIndex ? true : false
+            current: index == currentIndex? true : false
         }
     }
 }

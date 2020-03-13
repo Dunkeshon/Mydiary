@@ -141,8 +141,6 @@ Window {
         //        }
 
 
-
-
         TextINputWindow {
             id: userinput
             buttonsHovered: buttonsActive
@@ -153,7 +151,6 @@ Window {
             anchors.right: parent.right
             anchors.left: verticalSeparator.right
         }
-
         Rectangle {
             //Themes
             property color separatorColor//: "#6d84de" //
@@ -164,11 +161,9 @@ Window {
             anchors.bottom: parent.bottom
             anchors.left: leftColumn.right
         }
-
         Component.onCompleted: {
             ThemesFunctions.changeTheme(qSettings.colorTheme)
         }
-
         Component.onDestruction: {
             F.updateModelInformation()
         }

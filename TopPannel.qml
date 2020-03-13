@@ -20,7 +20,8 @@ Item {
     property color search_themeColor //: "#617adb"
     property color search_textFieldColor //: "white"
     property color search_textSelectionColor //: "#3399FF"
-
+    property color buttonsToolTipTextColor
+    property color buttonsToolTipBordersColor
 
 
     id: mainItem
@@ -54,6 +55,8 @@ Item {
             enteredColor: image_enteredColor
             pressedColor: image_pressedColor
             toolTipText: "Hide"
+            toolBorderColor: buttonsToolTipBordersColor
+            toolTipTextColor: buttonsToolTipTextColor
             mousearea.onClicked: {
 
                 toolTipText = toolTipText == "Hide" ? "Show" : "Hide"
@@ -74,6 +77,8 @@ Item {
             enteredColor: image_enteredColor
             pressedColor: image_pressedColor
             toolTipText: "Add Page"
+            toolBorderColor: buttonsToolTipBordersColor
+            toolTipTextColor: buttonsToolTipTextColor
         }
 
         BUTTON {
@@ -89,6 +94,8 @@ Item {
             enteredColor: image_enteredColor
             pressedColor: image_pressedColor
             toolTipText: "Search"
+            toolBorderColor: buttonsToolTipBordersColor
+            toolTipTextColor: buttonsToolTipTextColor
             mousearea.onClicked: {
                 searchField.state = searchField.state == "" ? "Active" : ""
             }
@@ -116,6 +123,8 @@ Item {
             enteredColor: image_enteredColor
             pressedColor: image_pressedColor
             toolTipText: "Settings"
+            toolBorderColor: buttonsToolTipBordersColor
+            toolTipTextColor: buttonsToolTipTextColor
         }
     }
 }

@@ -27,7 +27,7 @@ function changeTheme(colorTheme){
 
         //TextINputWindow
         userinput.themeColor = "#f4f5f8"
-        userinput.textSelectionColor = "#3399FF"
+        userinput.textSelectionColor = "#b8c5fd"
         userinput.imageColor = "#A5A4A5"
         userinput.pannelColor = "#6d84de"
         userinput.enteredButtonColor = "#777777"
@@ -36,7 +36,8 @@ function changeTheme(colorTheme){
         userinput.infoToolBackgroundColor="#A7B9FF"
         userinput.infoToolTipTextColor="#FFFFFF"
         userinput.infoToolBorderColor="#90AFFD"
-
+        userinput.buttonsToolTipBordersColor  = "#3D54B1"
+        userinput.buttonsToolTipTextColor = "#3D54B1"
         //TopPannel
         topPannel.panelColor = "#6d84de"
         topPannel.image_pressedColor = "#4c69d7"
@@ -45,6 +46,8 @@ function changeTheme(colorTheme){
         topPannel.search_themeColor =  "#617adb"
         topPannel.search_textFieldColor = "white"
         topPannel.search_textSelectionColor = "#3399FF"
+        topPannel.buttonsToolTipBordersColor  = "#3D54B1"
+        topPannel.buttonsToolTipTextColor = "#3D54B1"
         //deletingDialog
 
 //        deletingDialog.mainRectColor= "#A7B9FF"
@@ -81,7 +84,7 @@ function changeTheme(colorTheme){
         settingsSection.darkSelect= "#000000"
         //TextINputWindow
         userinput.themeColor ="#fff7f7"
-        userinput.textSelectionColor = "#3399FF"
+        userinput.textSelectionColor = "#ffb4b4"
         userinput.imageColor = "#b08686"
         userinput.pannelColor = "#FFB6B6"
         userinput.enteredButtonColor = "#955e5e"
@@ -90,6 +93,8 @@ function changeTheme(colorTheme){
         userinput.infoToolBackgroundColor="#FFB6B6"
         userinput.infoToolTipTextColor="#FFFFFF"
         userinput.infoToolBorderColor="#e5d7d7"
+        userinput.buttonsToolTipBordersColor  = "#915C5C"
+        userinput.buttonsToolTipTextColor = "#905C5C"
         //TopPannel
         topPannel.panelColor = "#FFB6B6"
         topPannel.image_pressedColor = "#FF9595"
@@ -98,6 +103,8 @@ function changeTheme(colorTheme){
         topPannel.search_themeColor =  "#FF9595"
         topPannel.search_textFieldColor = "white"
         topPannel.search_textSelectionColor = "#3399FF"
+        topPannel.buttonsToolTipBordersColor  = "#915C5C"
+        topPannel.buttonsToolTipTextColor = "#905C5C"
 
         //deletingDialog
 //        deletingDialog.mainRectColor= "#FFB6B6"
@@ -135,7 +142,7 @@ function changeTheme(colorTheme){
         settingsSection.darkSelect= "#000000"
         //TextINputWindow
         userinput.themeColor = "#fdf5eb"
-        userinput.textSelectionColor = "#3399FF"
+        userinput.textSelectionColor = "#d6b994"
         userinput.imageColor = "#b8a58e"
         userinput.pannelColor = "#F3CB9B"
         userinput.enteredButtonColor = "#aa9277"
@@ -144,6 +151,8 @@ function changeTheme(colorTheme){
         userinput.infoToolBackgroundColor="#F3CB9B"
         userinput.infoToolTipTextColor="#FFFFFF"
         userinput.infoToolBorderColor = "#CEA779"
+        userinput.buttonsToolTipBordersColor  = "#714A1C"
+        userinput.buttonsToolTipTextColor = "#714A1C"
 
         //TopPannel
         topPannel.panelColor = "#F3CB9B"
@@ -153,6 +162,8 @@ function changeTheme(colorTheme){
         topPannel.search_themeColor = "#E3BA89"
         topPannel.search_textFieldColor = "white"
         topPannel.search_textSelectionColor = "#3399FF"
+        topPannel.buttonsToolTipBordersColor  = "#714A1C"
+        topPannel.buttonsToolTipTextColor = "#714A1C"
 
         //deletingDialog
 //        deletingDialog.mainRectColor= "#EDC697"
@@ -188,7 +199,7 @@ function changeTheme(colorTheme){
         settingsSection.darkSelect= "#FFFFFF"
         //TextINputWindow
         userinput.themeColor = "#404040"
-        userinput.textSelectionColor = "#3399FF"
+        userinput.textSelectionColor = "#dcdcdc"
         userinput.imageColor = "#FFFFFF"
         userinput.pannelColor = "#2D2D2D"
         userinput.enteredButtonColor = "#D6D6D6"
@@ -197,6 +208,8 @@ function changeTheme(colorTheme){
         userinput.infoToolBackgroundColor="#EBEBEB"
         userinput.infoToolTipTextColor="#000000"
         userinput.infoToolBorderColor = "#949494"
+        userinput.buttonsToolTipBordersColor  = "#403F3F"
+        userinput.buttonsToolTipTextColor = "#403F3F"
         //TopPannel
         topPannel.panelColor = "#2D2D2D"
         topPannel.image_pressedColor = "#555555"
@@ -205,6 +218,8 @@ function changeTheme(colorTheme){
         topPannel.search_themeColor = "#515151"
         topPannel.search_textFieldColor = "white"
         topPannel.search_textSelectionColor = "#3399FF"
+        topPannel.buttonsToolTipBordersColor  = "#403F3F"
+        topPannel.buttonsToolTipTextColor = "#403F3F"
 
         //deletingDialog
 

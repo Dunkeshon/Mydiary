@@ -28,6 +28,8 @@ Rectangle {
     property color infoToolBackgroundColor
     property color infoToolTipTextColor
     property color infoToolBorderColor
+    property color buttonsToolTipTextColor
+    property color buttonsToolTipBordersColor
 
     color: themeColor
 
@@ -106,6 +108,8 @@ Rectangle {
         bColor: parent.color
         iconColor: imageColor
         toolTipText: "Delete page"
+        toolBorderColor: buttonsToolTipBordersColor
+        toolTipTextColor: buttonsToolTipTextColor
 
         changePressedTargetOnColorOverlay: true
         enteredColor: enteredButtonColor
@@ -147,7 +151,8 @@ Rectangle {
         bColor: parent.color
         iconColor: imageColor
         toolTipText: starInsideOverlay.visible ? "To Favorite" : "From Favorite"
-
+        toolBorderColor: buttonsToolTipBordersColor
+        toolTipTextColor: buttonsToolTipTextColor
         changePressedTargetOnColorOverlay: true
         enteredColor: enteredButtonColor
         pressedColor: pressedButtonColor

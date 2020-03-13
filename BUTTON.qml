@@ -25,8 +25,8 @@ Rectangle {
 
     //Themes
     property color toolBackgroundColor : "white" //for now needed by default
-    property color toolBorderColor : "#bfbfbf" //for now needed by default
-    property color toolTipTextColor: "#333333" //for now needed by default
+    property color toolBorderColor //: "#bfbfbf" //for now needed by default
+    property color toolTipTextColor //: "#333333" //for now needed by default
 
     property color iconColor//: "white"
     property color bColor //: "white"
