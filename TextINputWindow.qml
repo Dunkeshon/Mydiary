@@ -67,6 +67,9 @@ Rectangle {
             }
             KeyNavigation.up: userText
             KeyNavigation.down: userText
+            Keys.onReturnPressed: userText.forceActiveFocus()
+
+
         }
     }
 
