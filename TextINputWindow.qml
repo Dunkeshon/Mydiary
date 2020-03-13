@@ -66,6 +66,8 @@ Rectangle {
             background: Rectangle {
                 visible: false
             }
+            KeyNavigation.up: userText
+            KeyNavigation.down: userText
         }
     }
 
@@ -90,6 +92,8 @@ Rectangle {
                 selectByMouse: true
                 selectionColor: textSelectionColor
                 focus: true
+                KeyNavigation.up: title
+                KeyNavigation.down: title
 
             }
         }
