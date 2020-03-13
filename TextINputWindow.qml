@@ -15,11 +15,13 @@ Rectangle {
     property alias titletext: title
     property alias usertext: userText
     property bool buttonsHovered: true
+    property bool signalEmited: false
 
     //Themes
     property color themeColor//: "#f4f5f8"
     property color textSelectionColor//: "#3399FF"
     property color imageColor//: "#aaaaaa"
+    property color pannelColor // color of top Pannel
     property color enteredButtonColor//: "#777777"
     property color pressedButtonColor//:  "black"
     property color textColor
@@ -30,7 +32,7 @@ Rectangle {
     color: themeColor
 
     Component.onCompleted: {
-        trashButton.buttonChecked.connect(F.deleteButtonRealization)
+
     }
 
     Item {
@@ -108,6 +110,29 @@ Rectangle {
         changePressedTargetOnColorOverlay: true
         enteredColor: enteredButtonColor
         pressedColor: pressedButtonColor
+
+        mousearea.onReleased: signalEmited = false
+        mousearea.onPressAndHold: {
+            trashButton.buttonChecked.connect(F.deleteButtonRealization)
+            trashButton.buttonChecked()
+            trashButton.buttonChecked.disconnect(F.deleteButtonRealization)
+            signalEmited = true
+        }
+    }
+
+    DeletingBar {
+        id: deletingBar
+        backgroundBarColor: imageColor
+        mainColor: "red"
+
+        anchors.right: parent.right
+        anchors.bottom: parent.bottom
+        anchors.left: parent.left
+        anchors.margins: 10
+        barWidth: trashButton.width
+
+        state: trashButton.mousearea.containsPress && !signalEmited ? "Active" : ""
+        visible: trashButton.mousearea.containsPress && !signalEmited ? true : false
     }
 
     BUTTON {
@@ -121,15 +146,11 @@ Rectangle {
         iconMargins: 2
         bColor: parent.color
         iconColor: imageColor
-        toolTipText: starInsideOverlay.visible ? "ToFavorite" : "From Favorite"
+        toolTipText: starInsideOverlay.visible ? "To Favorite" : "From Favorite"
 
         changePressedTargetOnColorOverlay: true
         enteredColor: enteredButtonColor
         pressedColor: pressedButtonColor
-
-        mousearea.onClicked: {
-            starInsideOverlay.visible = starInsideOverlay.visible ? false : true
-        }
 
         Image {
             id: starInside
