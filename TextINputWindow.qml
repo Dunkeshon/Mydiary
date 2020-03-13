@@ -25,6 +25,7 @@ Rectangle {
     property color enteredButtonColor//: "#777777"
     property color pressedButtonColor//:  "black"
     property color textColor
+    property color textPlaceholderColor
     property color infoToolBackgroundColor
     property color infoToolTipTextColor
     property color infoToolBorderColor
@@ -52,12 +53,10 @@ Rectangle {
             anchors.left: parent.left
             anchors.top: parent.top
             width: parent.width - 20 - trashButton.width
-
             color: textColor
-
-            placeholderText:"Title"
+            placeholderText:"Awesome title"
+            placeholderTextColor: textPlaceholderColor
             font.family: "merriweather"
-
             font.pixelSize: 24
             maximumLength: 40
             selectionColor: textSelectionColor
@@ -75,7 +74,6 @@ Rectangle {
 
     Item {
         anchors.top: topItem.bottom
-
         width: parent.width
         height: parent.height - topItem.height
         ScrollView {
@@ -85,7 +83,8 @@ Rectangle {
                 id:userText
                 color: textColor
                 renderType: Text.QtRendering
-                placeholderText: qsTr("Enter Something)")
+                placeholderText: qsTr("What happened today?")
+                placeholderTextColor: textPlaceholderColor
                 font.pixelSize: 18
                 font.family: "merriweather"
                 wrapMode: TextArea.WordWrap
