@@ -96,7 +96,7 @@ function focusOff() {
 function acceptPassword(){
     if(myPassword==="12345"){
         locked=false
-        password.state="reanchored"
+        passwordRect.state="reanchored"
         unlockedAnim.start()
         //  unlockedAnim.start()
         acceptedTimer.running=true

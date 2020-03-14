@@ -115,7 +115,7 @@ Rectangle {
         iconMargins: 2
         bColor: parent.color
         iconColor: imageColor
-        toolTipText: "Delete page"
+        toolTipText: "Hold to delete "
         toolBorderColor: buttonsToolTipBordersColor
         toolTipTextColor: buttonsToolTipTextColor
 

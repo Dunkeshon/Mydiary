@@ -25,9 +25,11 @@
         <file>images/searchIcon.svg</file>
         <file>images/themeIcon.svg</file>
         <file>images/infoIcon.svg</file>
-        <file>images/lock.svg</file>
-        <file>images/unlock2.svg</file>
         <file>images/starIcon.svg</file>
+        <file>images/new_unlock.svg</file>
+        <file>images/lock.svg</file>
+        <file>images/beigePassTop.png</file>
+        <file>images/beigePassBottom.png</file>
     </qresource>
     <qresource prefix="/animeTheme">
         <file>Anime/background.jpg</file>

@@ -169,12 +169,12 @@ Window {
         }
 
     }
-//    PasswordWindow{
-//        id:passwordWindow
-//        anchors.fill:parent
-//        visible:true
-//        z:1
-//    }
+    PasswordWindow{
+        id:passwordWindow
+        anchors.fill:parent
+        visible:true
+        z:1
+    }
 
 
 
