@@ -3,6 +3,7 @@ import QtQuick.Controls 2.12
 import QtQuick.Window 2.12
 import Diary 1.0
 import "funclist.js" as F
+import QtGraphicalEffects 1.0
 
 
 
@@ -35,11 +36,11 @@ Rectangle {
         id: lock
         anchors.centerIn: parent
 
-        width: 85
-        height: 85
+        width: 100
+        height: 86
 
 
-        source:locked==true? "qrc:/resources/images/lock.svg":"qrc:/resources/images/new_unlock.svg"
+        source:locked==true? "qrc:/resources/images/new_lock.svg":"qrc:/resources/images/new_unlock.svg"
 
         sourceSize.width: width*Screen.devicePixelRatio
         sourceSize.height: height*Screen.devicePixelRatio
@@ -125,7 +126,13 @@ Rectangle {
 
         }
     }
-
+    ColorOverlay {
+        id: lockOverlay
+        anchors.fill: lock
+        source: lock
+        transformOrigin: Item.Center
+        color: "#D6A76F"
+    }
 
     Rectangle{
         id:passwordRect
@@ -192,7 +199,7 @@ Rectangle {
         height: 35
         anchors.top: passwordRect.bottom
         anchors.horizontalCenter: passwordRect.horizontalCenter
-        anchors.topMargin: 10
+        anchors.topMargin: 20
         z:2
         background: Rectangle{
             radius: 26
