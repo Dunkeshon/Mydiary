@@ -15,6 +15,7 @@ DiaryList::DiaryList(QObject *parent) : QObject(parent)
             item.title = settings.value("title").toString();
             item.userText = settings.value("userText").toString();
             item.editDate = settings.value("editDate").toString();
+            item.favorite = settings.value("favorite").toBool();
             m_listItems.push_back(item);
         }
         settings.endArray();
@@ -30,6 +31,7 @@ DiaryList::~DiaryList()
         settings.setValue("title", m_listItems[i].title);
         settings.setValue("userText", m_listItems[i].userText);
         settings.setValue("editDate",m_listItems[i].editDate);
+        settings.setValue("favorite", m_listItems[i].favorite);
     }
     settings.endArray();
 
@@ -41,7 +43,7 @@ bool DiaryList::setItemAt(int index, const ListItem &item)
         return false;
 
     const ListItem &oldItem = m_listItems.at(index);
-    if(oldItem.title == item.title && oldItem.userText == item.userText && oldItem.editDate==item.editDate) // не учтен заголовок
+    if(oldItem.title == item.title && oldItem.userText == item.userText && oldItem.editDate==item.editDate && oldItem.favorite==item.favorite) // не учтен заголовок
         return false;
 
     m_listItems[index] = item;
@@ -71,7 +73,8 @@ void DiaryList::addItem()
     new_item.currDate = currDate();
     new_item.title = "";
     new_item.userText = "";// УБРАТЬ ПОТОМ(не нада)
-    new_item.editDate=new_item.currDate;
+    new_item.editDate= new_item.currDate;
+    new_item.favorite = false;
     m_listItems.push_front(new_item);
 
     emit postItemAdded();

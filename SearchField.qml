@@ -54,7 +54,7 @@ Rectangle {
             PropertyChanges {
                 target: mainRect
                 visible: true
-                width: 220
+                width: 175
             }
             PropertyChanges{
                 target:textField

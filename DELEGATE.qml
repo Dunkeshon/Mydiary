@@ -1,6 +1,7 @@
 import QtQuick 2.0
 import Diary 1.0
 import QtQuick.Controls 2.12
+import QtQuick.Window 2.12
 import QtGraphicalEffects 1.0
 
 Item {
@@ -9,6 +10,7 @@ Item {
     property alias mouseArea: mousearea
     property alias date: modelDateText.text
     property alias title: modelTitleText.text
+    property alias favorite: starOverlay.visible
     property bool current: false
 
     //Themes
@@ -21,12 +23,6 @@ Item {
     property color pressedColor //: "#93a6ee"
     property color modelDateTextRealized //: "#00135F"
     property color modelTitleTextRealized
-
-
-
-    Component.onCompleted: {
-
-    }
 
     MouseArea {
         id: mousearea
@@ -70,7 +66,6 @@ Item {
             Text {
                 id: modelDateText
                 color:dateTextColor
-                //opacity: 0.56
                 font.family: "poppins_black"
                 font.pixelSize:12
                 anchors.right: parent.right
@@ -87,6 +82,27 @@ Item {
                 verticalAlignment: Text.AlignVCenter
                 font.family: "merriweather"
                 font.pixelSize: 17
+            }
+
+            Image {
+                id: star
+                anchors.right: parent.right
+                anchors.rightMargin: 4
+                anchors.top: modelDateText.bottom
+                anchors.topMargin: 1
+                width: 15
+                height: 15
+                visible: false
+                sourceSize.width: width*Screen.devicePixelRatio
+                sourceSize.height: height*Screen.devicePixelRatio
+                source: "resources/images/starIcon.svg"
+            }
+
+            ColorOverlay {
+                id: starOverlay
+                source: star
+                anchors.fill: star
+                color: dateTextColor
             }
         }
 
@@ -130,6 +146,10 @@ Item {
                 }
                 PropertyChanges {
                     target: modelDateText
+                    color: modelDateTextRealized
+                }
+                PropertyChanges {
+                    target: starOverlay
                     color: modelDateTextRealized
                 }
             }]

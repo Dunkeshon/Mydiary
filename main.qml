@@ -127,16 +127,6 @@ Window {
                 text: "Choose or Create a Page"
             }
         }
-
-        //        AcceptDeletionDialog{
-        //            id:deletingDialog
-        //            anchors.centerIn: parent
-        //            //positioning for windows
-        //            //        x: window.width  / 2
-        //            //        y: window.height / 2
-        //        }
-
-
         TextINputWindow {
             id: userinput
             buttonsHovered: buttonsActive
@@ -146,6 +136,13 @@ Window {
             anchors.bottom: parent.bottom
             anchors.right: parent.right
             anchors.left: verticalSeparator.right
+
+
+           titletext.onEditingFinished: {
+               if(topPannel.searchfield.text != "")
+                       return
+                F.updateModelInformation()
+           }
         }
         Rectangle {
             //Themes

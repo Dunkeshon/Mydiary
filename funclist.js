@@ -15,6 +15,7 @@ function updateWindowInformation() {
     userinput.titletext.text = notesList.model.data(sourceIndex, DiaryModel.TitleRole)
     userinput.usertext.text = notesList.model.data(sourceIndex, DiaryModel.TextRole)
     userinput.editInfo = notesList.model.data(sourceIndex, DiaryModel.LastEditRole)
+    userinput.favorite = !notesList.model.data(sourceIndex, DiaryModel.FavoriteRole)
 }
 
 // don't change data if we don't change anything
@@ -34,6 +35,8 @@ function updateModelInformation() {
 
     if(notesList.model.setData(sourceIndex, qsTr(userinput.titletext.text), DiaryModel.TitleRole))
         notesList.model.setData(sourceIndex, diaryList.currDate(), DiaryModel.LastEditRole)
+
+    notesList.model.setData(sourceIndex, !userinput.favorite, DiaryModel.FavoriteRole)
 }
 
 function addButtonRealization() {
@@ -67,18 +70,6 @@ function deleteButtonRealization() {
         topPannel.searchfield.state = ""
     }
 }
-//function deleteElementRealization(){
-//    var temp = notesList.currentIndex
-//    diaryList.deleteItem(notesList.sortModel.mapToSource(notesList.sortModel.index(notesList.currentIndex, 0)))
-//    if(notesList.sortModel.rowCount() === notesList.currentIndex) {temp--}
-//    notesList.currentIndex = temp
-//    updateWindowInformation()
-
-//    if(notesList.currentIndex === -1) {
-//        topPannel.searchfield.text = ""
-//        topPannel.searchfield.state = ""
-//    }
-//}
 
 function changeFilter(searchText) {
     updateModelInformation()

@@ -27,6 +27,7 @@ QVariant DiaryListModel::data(const QModelIndex &index, int role) const
     case TitleRole: return QVariant(item.title);
     case TextRole: return QVariant(item.userText);
     case LastEditRole:return QVariant(item.editDate);
+    case FavoriteRole:return QVariant(item.favorite);
     }
     return QVariant();
 }
@@ -46,18 +47,13 @@ bool DiaryListModel::setData(const QModelIndex &index, const QVariant &value, in
         switch(role) {
         case DateRole: item.currDate = value.toString();
             break;
-        case TextRole:
-            item.userText = value.toString();
-//            if(item.currDate!=QDate::currentDate().toString("dd.MM.yyyy")){
-//                setData(index,QDate::currentDate().toString("dd.MM.yyyy"),LastEditRole);
-//            }
+        case TextRole: item.userText = value.toString();
             break;
         case TitleRole: item.title = value.toString();
-//            if(item.currDate!=QDate::currentDate().toString("dd.MM.yyyy")){
-//                setData(index,QDate::currentDate().toString("dd.MM.yyyy"),LastEditRole);
-//            }
             break;
-        case LastEditRole:item.editDate = value.toString();
+        case LastEditRole: item.editDate = value.toString();
+            break;
+        case FavoriteRole: item.favorite = value.toBool();
             break;
         }
 
@@ -85,6 +81,7 @@ QHash<int, QByteArray> DiaryListModel::roleNames() const
     Roles[TextRole] = "Text";
     Roles[TitleRole] = "Title";
     Roles[LastEditRole]="LastEdit";
+    Roles[FavoriteRole]="Favorite";
     return Roles;
 }
 

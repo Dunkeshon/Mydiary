@@ -59,20 +59,6 @@ function changeTheme(colorTheme){
         passwordWindow.backgroundColor = "#f4f5f8"
         passwordWindow.backgroundTopImage="qrc:/resources/images/defaultBackgroundTop.svg"
         passwordWindow.backgroundBottomImage="qrc:/resources/images/defaultBackgroundBottom.svg"
-        //deletingDialog
-
-//        deletingDialog.mainRectColor= "#A7B9FF"
-//        deletingDialog.mainBorderColor= "#6D84DE"
-//        deletingDialog.buttonTextColor= "#182763"
-//        deletingDialog.textColor= "white"
-//        deletingDialog.imageOverlayColor= "white"
-//        deletingDialog.buttonBorderColor= "#6D84DE"
-//        deletingDialog.pressedButtonColor= "#4d5d9c"
-//        deletingDialog.enteredButtonColor="#92a8ff"
-
-
-
-
         break;
     case Themes.ROSE_THEME:
         mainColorBackground = "white"
@@ -126,23 +112,6 @@ function changeTheme(colorTheme){
         passwordWindow.backgroundColor = "#FFF7F7"
         passwordWindow.backgroundTopImage="qrc:/resources/images/roseBackgroundTop.svg"
         passwordWindow.backgroundBottomImage="qrc:/resources/images/roseBackgroundBottom.svg"
-
-
-        //deletingDialog
-//        deletingDialog.mainRectColor= "#FFB6B6"
-//        deletingDialog.mainBorderColor= "#CC8888"
-//        deletingDialog.buttonTextColor= "#703131"
-//        deletingDialog.textColor= "white"
-//        deletingDialog.imageOverlayColor= "white"
-//        deletingDialog.buttonBorderColor= "#CC8888"
-//        deletingDialog.pressedButtonColor= "#9B5B5B"
-//        deletingDialog.enteredButtonColor="#D79494"
-//        deletingDialog.mainRectColor= "#FFB6B6"
-//        deletingDialog.mainBorderColor= "#CC8888"
-//        deletingDialog.buttonTextColor= "#703131"
-//        deletingDialog.textColor= "white"
-//        deletingDialog.imageOverlayColor= "white"
-//        deletingDialog.buttonBorderColor= "#CC8888"
         break;
     case Themes.YELLOW_THEME:
         mainColorBackground = "white"
@@ -199,17 +168,6 @@ function changeTheme(colorTheme){
         passwordWindow.backgroundColor = "#FDF5EB"
         passwordWindow.backgroundTopImage="qrc:/resources/images/beigeBackgroundTop.svg"
         passwordWindow.backgroundBottomImage="qrc:/resources/images/beigeBackgroundBottom.svg"
-        //deletingDialog
-//        deletingDialog.mainRectColor= "#EDC697"
-//        deletingDialog.mainBorderColor= "#FFFFFF"
-//        deletingDialog.buttonTextColor= "#714A1C"
-//        deletingDialog.textColor= "#714A1C"
-//        deletingDialog.imageOverlayColor= "#714A1C"
-//        deletingDialog.buttonBorderColor= "#714A1C"
-//        deletingDialog.pressedButtonColor= "#714A1C"
-//        deletingDialog.enteredButtonColor="#AE8555"
-
-
         break;
 
     case Themes.DARK_THEME:
@@ -265,18 +223,6 @@ function changeTheme(colorTheme){
         passwordWindow.backgroundColor = "#373737"
         passwordWindow.backgroundTopImage="qrc:/resources/images/darkBackgroundTop.svg"
         passwordWindow.backgroundBottomImage="qrc:/resources/images/darkBackgroundBottom.svg"
-        //deletingDialog
-
-//        deletingDialog.mainRectColor= "#DEDEDE"
-//        deletingDialog.mainBorderColor= "#FFFFFF"
-//        deletingDialog.buttonTextColor= "#303030"
-//        deletingDialog.textColor= "#303030"
-//        deletingDialog.imageOverlayColor= "#303030"
-//        deletingDialog.buttonBorderColor= "#808080"
-//        deletingDialog.pressedButtonColor= "#3D3D3D"
-//        deletingDialog.enteredButtonColor="#9A9A9A"
-
-
         break;
     default: throw "Theme id out of range"
 

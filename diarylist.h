@@ -9,6 +9,7 @@ struct ListItem {
     QString title;
     QString userText;
     QString editDate;
+    bool favorite;
 };
 
 class DiaryList: public QObject

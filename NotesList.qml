@@ -81,6 +81,7 @@ ColumnLayout {
                     return model.Title.substring(0,13)+'...'
                 return model.Title
             }
+            favorite: model.Favorite
             current: index == currentIndex? true : false
         }
     }

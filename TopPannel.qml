@@ -29,7 +29,6 @@ Item {
     Component.onCompleted: {
 
         settingsButton.buttonChecked.connect(F.settingsButtonRealization)
-
         addButton.buttonChecked.connect(F.addButtonRealization)
         arrowButton.buttonChecked.connect(F.arrowButtonRealization)
         searchField.changeFilterText.connect(F.changeFilter)
@@ -102,6 +101,7 @@ Item {
                 }
                 searchField.state = searchField.state == "" ? "Active" : ""
             }
+
             SearchField {
                 id: searchField
                 themeColor : search_themeColor
@@ -111,6 +111,7 @@ Item {
                 width: 0
                 height: parent.height
             }
+
         }
         BUTTON  {
             id: settingsButton

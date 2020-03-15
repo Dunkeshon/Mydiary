@@ -17,7 +17,8 @@ public:
         DateRole = Qt::UserRole + 1,
         TitleRole,
         TextRole,
-        LastEditRole
+        LastEditRole,
+        FavoriteRole
 
     };
     Q_ENUM(RoleEnums)

@@ -14,6 +14,7 @@ Rectangle {
     property var editInfo
     property alias titletext: title
     property alias usertext: userText
+    property alias favorite: starInsideOverlay.visible
     property bool buttonsHovered: true
 
     //Themes
@@ -33,9 +34,7 @@ Rectangle {
 
     color: themeColor
 
-    Component.onCompleted: {
 
-    }
 
     Item {
         id:topItem
@@ -134,6 +133,7 @@ Rectangle {
         mousearea.onPressAndHold: {
             if(pressedAndEntered)
                 return
+
             trashButton.buttonChecked.connect(F.deleteButtonRealization)
             trashButton.buttonChecked()
             trashButton.buttonChecked.disconnect(F.deleteButtonRealization)
@@ -173,11 +173,12 @@ Rectangle {
         changePressedTargetOnColorOverlay: true
         enteredColor: enteredButtonColor
         pressedColor: pressedButtonColor
+        mousearea.onClicked: starInsideOverlay.visible = !starInsideOverlay.visible
 
         Image {
             id: starInside
             anchors.fill: parent
-            anchors.margins: 6
+            anchors.margins: 5
             visible: false
             sourceSize.width: width*Screen.devicePixelRatio
             sourceSize.height: height*Screen.devicePixelRatio
