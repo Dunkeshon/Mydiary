@@ -100,12 +100,8 @@ Item {
                 if(searchField.state == "Active" ){
                     searchField.text=""
                 }
-
-
                 searchField.state = searchField.state == "" ? "Active" : ""
-
             }
-
             SearchField {
                 id: searchField
                 themeColor : search_themeColor

@@ -57,7 +57,8 @@ function changeTheme(colorTheme){
         passwordWindow.passwordRectBorderColor = "#7B90E3"
         passwordWindow.lockOverlayColor = "#364996"
         passwordWindow.backgroundColor = "#f4f5f8"
-        passwordWindow.backgroundImage="qrc:/resources/images/defaultBackgroundImage.svg"
+        passwordWindow.backgroundTopImage="qrc:/resources/images/defaultBackgroundTop.svg"
+        passwordWindow.backgroundBottomImage="qrc:/resources/images/defaultBackgroundBottom.svg"
         //deletingDialog
 
 //        deletingDialog.mainRectColor= "#A7B9FF"
@@ -123,7 +124,8 @@ function changeTheme(colorTheme){
         passwordWindow.passwordRectBorderColor = "#F9AAAB"
         passwordWindow.lockOverlayColor = "#FE8D8D"
         passwordWindow.backgroundColor = "#FFF7F7"
-        passwordWindow.backgroundImage="qrc:/resources/images/roseBackgroundImage.svg"
+        passwordWindow.backgroundTopImage="qrc:/resources/images/roseBackgroundTop.svg"
+        passwordWindow.backgroundBottomImage="qrc:/resources/images/roseBackgroundBottom.svg"
 
 
         //deletingDialog
@@ -195,7 +197,8 @@ function changeTheme(colorTheme){
         passwordWindow.passwordRectBorderColor = "#D6A76F"
         passwordWindow.lockOverlayColor = "#D6A76F"
         passwordWindow.backgroundColor = "#FDF5EB"
-        passwordWindow.backgroundImage="qrc:/resources/images/beigeBackgroundImage.svg"
+        passwordWindow.backgroundTopImage="qrc:/resources/images/beigeBackgroundTop.svg"
+        passwordWindow.backgroundBottomImage="qrc:/resources/images/beigeBackgroundBottom.svg"
         //deletingDialog
 //        deletingDialog.mainRectColor= "#EDC697"
 //        deletingDialog.mainBorderColor= "#FFFFFF"
@@ -260,7 +263,8 @@ function changeTheme(colorTheme){
         passwordWindow.passwordRectBorderColor = "#B1B1B1"
         passwordWindow.lockOverlayColor = "white"
         passwordWindow.backgroundColor = "#373737"
-        passwordWindow.backgroundImage="qrc:/resources/images/darkBackgroundImage.svg"
+        passwordWindow.backgroundTopImage="qrc:/resources/images/darkBackgroundTop.svg"
+        passwordWindow.backgroundBottomImage="qrc:/resources/images/darkBackgroundBottom.svg"
         //deletingDialog
 
 //        deletingDialog.mainRectColor= "#DEDEDE"

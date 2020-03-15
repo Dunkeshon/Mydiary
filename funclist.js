@@ -99,6 +99,7 @@ function acceptPassword(){
         passwordRect.state="reanchored"
         unlockedAnim.start()
         //  unlockedAnim.start()
+        endingPasswordAnim.start()
         acceptedTimer.running=true
         // подпрыгивание
     }

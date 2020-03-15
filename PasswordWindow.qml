@@ -15,7 +15,9 @@ Rectangle {
     property color passwordRectBorderColor
     property color lockOverlayColor
     property color backgroundColor
-    property var   backgroundImage
+    property var   backgroundTopImage
+    property var   backgroundBottomImage
+
 
     id:pWindow
     property alias myPassword:password.text
@@ -25,18 +27,50 @@ Rectangle {
 
     color: backgroundColor
 
-    //Keys.onPressed:password.forceActiveFocus
     Image {
-        id: backgroundImg
-        source: backgroundImage
+        id: backgroundTop
+        source: backgroundTopImage
         z:0
-        anchors.fill: parent
+        width: parent.width
+        height: parent.height
+        sourceSize.width: width*Screen.devicePixelRatio
+        sourceSize.height: height*Screen.devicePixelRatio
+        cache: false
+        clip: true
+
+    }
+    Image {
+        id: backgroundBottom
+        source: backgroundBottomImage
+        z:0
+        width: parent.width
+        height: parent.height
         sourceSize.width: width*Screen.devicePixelRatio
         sourceSize.height: height*Screen.devicePixelRatio
         cache: false
         clip: true
     }
+    ParallelAnimation{
+        id:endingPasswordAnim
+        PropertyAnimation {
+            target: backgroundTop
+            property: "y"
 
+            easing.type: Easing.InOutExpo
+
+            to: - (window.height * 0.5)
+            duration: 1000
+        }
+        PropertyAnimation {
+            target: backgroundBottom
+            property: "y"
+
+            easing.type: Easing.InOutExpo// Easing.InOutSine
+
+            to: (window.height * 0.3)
+            duration: 1000
+        }
+    }
 
     Image {
         id: lock
@@ -159,7 +193,6 @@ Rectangle {
                     target: passwordRect
                     anchors.top: undefined
                 }
-
             }
         ]
         MouseArea{
