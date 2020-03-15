@@ -27,11 +27,7 @@ Window {
     Item {
         id:mainItem
         anchors.fill: parent
-        visible: true // false
-
-
-
-
+        visible: false // true if passwordWindow unactive
 
 
         Settings{

@@ -8,27 +8,34 @@ import QtGraphicalEffects 1.0
 
 
 Rectangle {
+    //Themes
+    property color buttonBackgroundColor
+    property color buttonBorderColor
+    property color buttonTextColor
+    property color passwordRectBorderColor
+    property color lockOverlayColor
+    property color backgroundColor
+    property var   backgroundImage
+
     id:pWindow
     property alias myPassword:password.text
     property bool locked: true
 
     anchors.fill: parent
 
-
+    color: backgroundColor
 
 
     //Keys.onPressed:password.forceActiveFocus
     Image {
-        id: backgroundTop
-        source: "qrc:/resources/images/beigePassTop.png"
+        id: backgroundImg
+        source: backgroundImage
         z:0
         anchors.fill: parent
-    }
-    Image {
-        id: backgroundBOttom
-        source: "qrc:/resources/images/beigePassBottom.png"
-        z:0
-        anchors.fill: parent
+        sourceSize.width: width*Screen.devicePixelRatio
+        sourceSize.height: height*Screen.devicePixelRatio
+        cache: false
+        clip: true
     }
 
 
@@ -65,7 +72,7 @@ Rectangle {
 
                 easing.type: Easing.Linear
 
-                to: -30
+                to: -25
                 duration: 100
             }
 
@@ -131,14 +138,14 @@ Rectangle {
         anchors.fill: lock
         source: lock
         transformOrigin: Item.Center
-        color: "#D6A76F"
+        color: lockOverlayColor
     }
 
     Rectangle{
         id:passwordRect
         width: 230
         height: 52
-        border.color: "#D6A76F"
+        border.color: passwordRectBorderColor
         border.width: 2
         radius: 26
         z:2
@@ -190,7 +197,7 @@ Rectangle {
             verticalAlignment: Text.AlignVCenter
             horizontalAlignment: Text.AlignHCenter
             font.pixelSize: 16
-            color:"white"
+            color:buttonTextColor
         }
 
 
@@ -203,9 +210,9 @@ Rectangle {
         z:2
         background: Rectangle{
             radius: 26
-            border.color: "#976D3B"
+            border.color: buttonBorderColor
             border.width: 1
-            color: "#D6A76F"
+            color: buttonBackgroundColor
         }
 
 
@@ -225,6 +232,11 @@ Rectangle {
         anchors.right: parent.right
         anchors.bottom: parent.bottom
         source: { return backEnd.generateAnimeGirl()}
+        clip: true
+        cache: false
+        sourceSize.width: width*Screen.devicePixelRatio
+        sourceSize.height: height*Screen.devicePixelRatio
+
     }
 
     Timer {

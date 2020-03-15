@@ -13,11 +13,10 @@ class BackEnd: public QObject
     Q_OBJECT
 private:
     QMap <int,QString> m_imagesMap{
-                                   {0,"qrc:/animeTheme/Anime/catGirl.PNG"},
-                                   {1,"qrc:/animeTheme/Anime/cuteGirl.png"},
-                                   {2,"qrc:/animeTheme/Anime/niceGirl.png"},
-
-
+        {0,"qrc:/animeTheme/Anime/catGirl.PNG"},
+        {1,"qrc:/animeTheme/Anime/cuteGirl.png"},
+        {2,"qrc:/animeTheme/Anime/niceGirl.png"},
+        {3,"qrc:/animeTheme/Anime/nekoGirl.png"}
     };
 
 // shuffle given array

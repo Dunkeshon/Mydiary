@@ -50,6 +50,14 @@ function changeTheme(colorTheme){
         topPannel.search_textSelectionColor = "#3399FF"
         topPannel.buttonsToolTipBordersColor  = "#3D54B1"
         topPannel.buttonsToolTipTextColor = "#3D54B1"
+        //passwordWindow
+        passwordWindow.buttonBackgroundColor = "#7B90E3"
+        passwordWindow.buttonBorderColor = "#7077FF"
+        passwordWindow.buttonTextColor = "#FFFFFF"
+        passwordWindow.passwordRectBorderColor = "#7B90E3"
+        passwordWindow.lockOverlayColor = "#364996"
+        passwordWindow.backgroundColor = "#f4f5f8"
+        passwordWindow.backgroundImage="qrc:/resources/images/defaultBackgroundImage.svg"
         //deletingDialog
 
 //        deletingDialog.mainRectColor= "#A7B9FF"
@@ -108,6 +116,15 @@ function changeTheme(colorTheme){
         topPannel.search_textSelectionColor = "#3399FF"
         topPannel.buttonsToolTipBordersColor  = "#915C5C"
         topPannel.buttonsToolTipTextColor = "#905C5C"
+        //passwordWindow
+        passwordWindow.buttonBackgroundColor = "#FFC2C4"
+        passwordWindow.buttonBorderColor = "#C16D70"
+        passwordWindow.buttonTextColor = "#C57275"
+        passwordWindow.passwordRectBorderColor = "#F9AAAB"
+        passwordWindow.lockOverlayColor = "#FE8D8D"
+        passwordWindow.backgroundColor = "#FFF7F7"
+        passwordWindow.backgroundImage="qrc:/resources/images/roseBackgroundImage.svg"
+
 
         //deletingDialog
 //        deletingDialog.mainRectColor= "#FFB6B6"
@@ -170,6 +187,15 @@ function changeTheme(colorTheme){
         topPannel.buttonsToolTipBordersColor  = "#714A1C"
         topPannel.buttonsToolTipTextColor = "#714A1C"
 
+        //passwordWindow
+
+        passwordWindow.buttonBackgroundColor = "#D6A76F"
+        passwordWindow.buttonBorderColor = "#976D3B"
+        passwordWindow.buttonTextColor = "white"
+        passwordWindow.passwordRectBorderColor = "#D6A76F"
+        passwordWindow.lockOverlayColor = "#D6A76F"
+        passwordWindow.backgroundColor = "#FDF5EB"
+        passwordWindow.backgroundImage="qrc:/resources/images/beigeBackgroundImage.svg"
         //deletingDialog
 //        deletingDialog.mainRectColor= "#EDC697"
 //        deletingDialog.mainBorderColor= "#FFFFFF"
@@ -227,7 +253,14 @@ function changeTheme(colorTheme){
         topPannel.search_textSelectionColor = "#3399FF"
         topPannel.buttonsToolTipBordersColor  = "#403F3F"
         topPannel.buttonsToolTipTextColor = "#403F3F"
-
+        //passwordWindow
+        passwordWindow.buttonBackgroundColor = "#1C1C1C"
+        passwordWindow.buttonBorderColor = "white"
+        passwordWindow.buttonTextColor = "white"
+        passwordWindow.passwordRectBorderColor = "#B1B1B1"
+        passwordWindow.lockOverlayColor = "white"
+        passwordWindow.backgroundColor = "#373737"
+        passwordWindow.backgroundImage="qrc:/resources/images/darkBackgroundImage.svg"
         //deletingDialog
 
 //        deletingDialog.mainRectColor= "#DEDEDE"

@@ -27,14 +27,18 @@
         <file>images/infoIcon.svg</file>
         <file>images/starIcon.svg</file>
         <file>images/new_unlock.svg</file>
-        <file>images/beigePassTop.png</file>
-        <file>images/beigePassBottom.png</file>
         <file>images/new_lock.svg</file>
+        <file>images/defaultBackgroundImage.svg</file>
+        <file>images/darkBackgroundImage.svg</file>
+        <file>images/beigeBackgroundImage.svg</file>
+        <file>images/roseBackgroundImage.svg</file>
     </qresource>
     <qresource prefix="/animeTheme">
         <file>Anime/background.jpg</file>
         <file>Anime/catGirl.PNG</file>
         <file>Anime/cuteGirl.png</file>
         <file>Anime/niceGirl.png</file>
+        <file>Anime/shyCatGirl.png</file>
+        <file>Anime/nekoGirl.png</file>
     </qresource>
 </RCC>
