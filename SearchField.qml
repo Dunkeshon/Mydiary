@@ -40,7 +40,6 @@ Rectangle {
         maximumLength: 20
         selectionColor: textSelectionColor
         selectByMouse: true
-        focus: true
         color: textFieldColor
 
 
@@ -56,6 +55,10 @@ Rectangle {
                 target: mainRect
                 visible: true
                 width: 220
+            }
+            PropertyChanges{
+                target:textField
+                focus:true
             }
         }]
 

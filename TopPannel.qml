@@ -97,7 +97,13 @@ Item {
             toolBorderColor: buttonsToolTipBordersColor
             toolTipTextColor: buttonsToolTipTextColor
             mousearea.onClicked: {
+                if(searchField.state == "Active" ){
+                    searchField.text=""
+                }
+
+
                 searchField.state = searchField.state == "" ? "Active" : ""
+
             }
 
             SearchField {

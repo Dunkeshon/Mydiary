@@ -25,7 +25,6 @@ Rectangle {
 
     color: backgroundColor
 
-
     //Keys.onPressed:password.forceActiveFocus
     Image {
         id: backgroundImg
@@ -219,25 +218,25 @@ Rectangle {
 
     }
 
-    Image {
-        id: animeImage
-        x: 383
-        y: 89
-        z:1
+//    Image {
+//        id: animeImage
+//        x: 383
+//        y: 89
+//        z:1
 
-        width:282
-        height: 401
-        anchors.bottomMargin: -10
-        anchors.rightMargin: -25
-        anchors.right: parent.right
-        anchors.bottom: parent.bottom
-        source: { return backEnd.generateAnimeGirl()}
-        clip: true
-        cache: false
-        sourceSize.width: width*Screen.devicePixelRatio
-        sourceSize.height: height*Screen.devicePixelRatio
+//        width:282
+//        height: 401
+//        anchors.bottomMargin: -10
+//        anchors.rightMargin: -25
+//        anchors.right: parent.right
+//        anchors.bottom: parent.bottom
+//        source: { return backEnd.generateAnimeGirl()}
+//        clip: true
+//        cache: false
+//        sourceSize.width: width*Screen.devicePixelRatio
+//        sourceSize.height: height*Screen.devicePixelRatio
 
-    }
+//    }
 
     Timer {
         id:acceptedTimer
