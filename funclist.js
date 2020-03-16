@@ -105,5 +105,8 @@ function settingsButtonRealization(){
 }
 function lockButtonRealization(){
     console.log("lockButtonClicked")
-    //потом нужно будет
+    passwordWindow.openingPasswordAnim.start()
+    passwordWindow.myPassword=""
+
+
 }

@@ -6,8 +6,8 @@ import "funclist.js" as F
 import QtGraphicalEffects 1.0
 
 
-
-Rectangle {
+Item{
+    id:pWindow
     //Themes
     property color buttonBackgroundColor
     property color buttonBorderColor
@@ -19,270 +19,367 @@ Rectangle {
     property var   backgroundBottomImage
 
 
-    id:pWindow
     property alias myPassword:password.text
     property bool locked: true
-
+    property alias  openingPasswordAnim: openingPasswordAnim
     anchors.fill: parent
 
-    color: backgroundColor
+    //    Component.onCompleted: {
 
-    Image {
-        id: backgroundTop
-        source: backgroundTopImage
-        z:0
-        width: parent.width
-        height: parent.height
-        sourceSize.width: width*Screen.devicePixelRatio
-        sourceSize.height: height*Screen.devicePixelRatio
-        cache: false
-        clip: true
+    //    }
 
-    }
-    Image {
-        id: backgroundBottom
-        source: backgroundBottomImage
-        z:0
-        width: parent.width
-        height: parent.height
-        sourceSize.width: width*Screen.devicePixelRatio
-        sourceSize.height: height*Screen.devicePixelRatio
-        cache: false
-        clip: true
-    }
-    ParallelAnimation{
-        id:endingPasswordAnim
-        PropertyAnimation {
-            target: backgroundTop
-            property: "y"
-
-            easing.type: Easing.InOutExpo
-
-            to: - (window.height * 0.5)
-            duration: 1000
-        }
-        PropertyAnimation {
-            target: backgroundBottom
-            property: "y"
-
-            easing.type: Easing.InOutExpo// Easing.InOutSine
-
-            to: (window.height * 0.3)
-            duration: 1000
-        }
-    }
-
-    Image {
-        id: lock
-        anchors.centerIn: parent
-
-        width: 100
-        height: 86
-
-
-        source:locked==true? "qrc:/resources/images/new_lock.svg":"qrc:/resources/images/new_unlock.svg"
-
-        sourceSize.width: width*Screen.devicePixelRatio
-        sourceSize.height: height*Screen.devicePixelRatio
-        states: [
-            State {
-                name: "reancored"
-                AnchorChanges {
-                    target: lock
-                    anchors.horizontalCenter: undefined
-                    anchors.verticalCenter: undefined
-                }
-            }
-
-        ]
-
-        SequentialAnimation{
-            id: unlockedAnim
-
-            PropertyAnimation {
-                target: lock
-                property: "anchors.verticalCenterOffset"
-
-                easing.type: Easing.Linear
-
-                to: -25
-                duration: 100
-            }
-
-            PropertyAnimation {
-                target: lock
-                property: "anchors.verticalCenterOffset"
-
-                easing.type: Easing.OutBounce
-
-                to: 0
-                duration: 800
-            }
-        }
-
-        SequentialAnimation{
-            id: lockedAnim
-
-            PropertyAnimation {
-                target: lock
-                property: "anchors.horizontalCenterOffset"
-
-                easing.type: Easing.Linear
-                to: -20
-                duration: 200
-            }
-            PropertyAnimation {
-                target: lock
-                property: "anchors.horizontalCenterOffset"
-
-                easing.type: Easing.Linear
-                to: 20
-                duration: 200
-            }
-            PropertyAnimation {
-                target: lock
-                property: "anchors.horizontalCenterOffset"
-
-                easing.type: Easing.Linear
-                to: -10
-                duration: 100
-            }
-            PropertyAnimation {
-                target: lock
-                property: "anchors.horizontalCenterOffset"
-
-                easing.type: Easing.Linear
-                to: 10
-                duration: 100
-            }
-            PropertyAnimation {
-                target: lock
-                property: "anchors.horizontalCenterOffset"
-
-                easing.type: Easing.Linear
-                to: 0
-                duration:100
-            }
-
-        }
-    }
-    ColorOverlay {
-        id: lockOverlay
-        anchors.fill: lock
-        source: lock
-        transformOrigin: Item.Center
-        color: lockOverlayColor
-    }
-
-    Rectangle{
-        id:passwordRect
-        width: 230
-        height: 52
-        border.color: passwordRectBorderColor
-        border.width: 2
-        radius: 26
-        z:2
-        anchors.top: lock.bottom
-        anchors.horizontalCenter: lock.horizontalCenter
-        anchors.topMargin: 20
-
-        states: [
-            State {
-                name: "reanchored"
-                AnchorChanges {
-                    target: passwordRect
-                    anchors.top: undefined
-                }
-            }
-        ]
-        MouseArea{
-            anchors.fill: parent
-            onClicked: password.forceActiveFocus()
-            cursorShape: Qt.IBeamCursor
-        }
-
-        TextField{
-            id:password
-
-//            width: 200
-//            height: 30
-            anchors.centerIn: parent
-            echoMode: "Password"
-            font.pixelSize: 18
-            color: "black"
-            horizontalAlignment: Text.AlignHCenter
-            placeholderText: "Password"
-            focus: true
-            background:
-                Rectangle {
-                color: "white"
-            }
-
-            onEditingFinished: F.acceptPassword()
-        }
-    }
-    Button{
-        id:confirmButton
-        contentItem: Text {
-            text: "Go"
-            font.family: "Poppins"
-            verticalAlignment: Text.AlignVCenter
-            horizontalAlignment: Text.AlignHCenter
-            font.pixelSize: 16
-            color:buttonTextColor
-        }
-
-
-        onClicked:F.acceptPassword()
-        width: 70
-        height: 35
-        anchors.top: passwordRect.bottom
-        anchors.horizontalCenter: passwordRect.horizontalCenter
-        anchors.topMargin: 20
-        z:2
-        background: Rectangle{
-            radius: 26
-            border.color: buttonBorderColor
-            border.width: 1
-            color: buttonBackgroundColor
-        }
-
-
-
-    }
-
-    Image {
-        id: animeImage
-        x: 383
-        y: 89
+    Item{
         z:1
+        anchors.fill: parent
+        Image {
+            id: backgroundTop
+            source: backgroundTopImage
+            z:1
+            width: parent.width
+            height: parent.height
+            sourceSize.width: width*Screen.devicePixelRatio
+            sourceSize.height: height*Screen.devicePixelRatio
+            cache: false
+            clip: true
 
-        width:282
-        height: 401
-        anchors.bottomMargin: -10
-        anchors.rightMargin: -25
-        anchors.right: parent.right
-        anchors.bottom: parent.bottom
-        source: { return backEnd.generateAnimeGirl()}
-        clip: true
-        cache: false
-        sourceSize.width: width*Screen.devicePixelRatio
-        sourceSize.height: height*Screen.devicePixelRatio
+        }
+        Image {
+            id: backgroundBottom
+            source: backgroundBottomImage
+            z:1
+            width: parent.width
+            height: parent.height
+            sourceSize.width: width*Screen.devicePixelRatio
+            sourceSize.height: height*Screen.devicePixelRatio
+            cache: false
+            clip: true
+        }
+//        Image {
+//            id: animeImage
+//            x: 383
+//            y: 89
+//            z:2
+//            width:282
+//            height: 401
+//            anchors.bottomMargin: -10
+//            anchors.rightMargin: -25
+//            anchors.right: parent.right
+//            anchors.bottom: parent.bottom
+//            source: { return backEnd.generateAnimeGirl()}
+//            clip: true
+//            cache: false
+//            sourceSize.width: width*Screen.devicePixelRatio
+//            sourceSize.height: height*Screen.devicePixelRatio
+//        }
+        ParallelAnimation{
+            id:endingPasswordAnim
+            PropertyAnimation {
+                target: backgroundTop
+                property: "y"
 
-    }
+                easing.type: Easing.InOutExpo
 
-    Timer {
-        id:acceptedTimer
-        interval: 1000;
-        onTriggered:{
-            pWindow.visible=false
-            mainItem.visible=true
+                to: - (window.height * 0.5)
+                duration: 1000
+            }
+            PropertyAnimation {
+                target: backgroundBottom
+                property: "y"
+
+                easing.type: Easing.InOutExpo// Easing.InOutSine
+
+                to: (window.height * 0.3)
+                duration: 1000
+            }
+        }
+        ParallelAnimation{
+                  id:openingPasswordAnim
+
+
+
+                PropertyAnimation {
+                    target: backgroundTop
+                    property: "y"
+
+                    easing.type: Easing.InOutExpo
+
+                    to: 0
+                    duration: 1000
+                }
+                PropertyAnimation {
+                    target: backgroundBottom
+                    property: "y"
+
+                    easing.type: Easing.InOutExpo// Easing.InOutSine
+
+                    to: 0
+                    duration: 1000
+                }
+                onStarted: {
+                    pWindow.visible=true
+                    backgroundRect.opacity=0
+                    contentRect.opacity=0
+                }
+
+//                onFinished: {
+
+//                //    finishOpening.start()
+//                }
+                onFinished: {
+                    mainWindowItem.visible=false
+                }
+
+                OpacityAnimator{
+                    target:contentRect
+                    from:0
+                    to:1
+                    duration:800
+                }
+                OpacityAnimator{
+                    target:backgroundRect
+                    from:0
+                    to:1
+                    duration:800
+                }
+            }
+
+
+
+//        ParallelAnimation{
+//            id:finishOpening
+//            onFinished: {
+//                mainWindowItem.visible=false
+//            }
+
+//            OpacityAnimator{
+//                target:contentRect
+//                from:0
+//                to:1
+//                duration:800
+//            }
+//            OpacityAnimator{
+//                target:backgroundRect
+//                from:0
+//                to:1
+//                duration:800
+//            }
+//        }
+        Item{
+            z:3
+            id:contentRect
+            anchors.fill: parent
+            Image {
+                id: lock
+                anchors.centerIn: parent
+
+                width: 100
+                height: 86
+
+
+                source:locked==true? "qrc:/resources/images/new_lock.svg":"qrc:/resources/images/new_unlock.svg"
+
+                sourceSize.width: width*Screen.devicePixelRatio
+                sourceSize.height: height*Screen.devicePixelRatio
+                states: [
+                    State {
+                        name: "reancored"
+                        AnchorChanges {
+                            target: lock
+                            anchors.horizontalCenter: undefined
+                            anchors.verticalCenter: undefined
+                        }
+                    }
+
+                ]
+
+                SequentialAnimation{
+                    id: unlockedAnim
+
+                    PropertyAnimation {
+                        target: lock
+                        property: "anchors.verticalCenterOffset"
+
+                        easing.type: Easing.Linear
+
+                        to: -25
+                        duration: 100
+                    }
+
+                    PropertyAnimation {
+                        target: lock
+                        property: "anchors.verticalCenterOffset"
+
+                        easing.type: Easing.OutBounce
+
+                        to: 0
+                        duration: 800
+                    }
+                }
+
+                SequentialAnimation{
+                    id: lockedAnim
+
+                    PropertyAnimation {
+                        target: lock
+                        property: "anchors.horizontalCenterOffset"
+
+                        easing.type: Easing.Linear
+                        to: -20
+                        duration: 200
+                    }
+                    PropertyAnimation {
+                        target: lock
+                        property: "anchors.horizontalCenterOffset"
+
+                        easing.type: Easing.Linear
+                        to: 20
+                        duration: 200
+                    }
+                    PropertyAnimation {
+                        target: lock
+                        property: "anchors.horizontalCenterOffset"
+
+                        easing.type: Easing.Linear
+                        to: -10
+                        duration: 100
+                    }
+                    PropertyAnimation {
+                        target: lock
+                        property: "anchors.horizontalCenterOffset"
+
+                        easing.type: Easing.Linear
+                        to: 10
+                        duration: 100
+                    }
+                    PropertyAnimation {
+                        target: lock
+                        property: "anchors.horizontalCenterOffset"
+
+                        easing.type: Easing.Linear
+                        to: 0
+                        duration:100
+                    }
+
+                }
+            }
+            ColorOverlay {
+                id: lockOverlay
+                anchors.fill: lock
+                source: lock
+                transformOrigin: Item.Center
+                color: lockOverlayColor
+            }
+
+            Item{
+                id:passwordRect
+                width: 230
+                height: 52
+
+                  z:3
+                anchors.top: lock.bottom
+                anchors.horizontalCenter: lock.horizontalCenter
+                anchors.topMargin: 20
+
+                states: [
+                    State {
+                        name: "reanchored"
+                        AnchorChanges {
+                            target: passwordRect
+                            anchors.top: undefined
+                        }
+                    }
+                ]
+                MouseArea{
+                    anchors.fill: parent
+                    onClicked: password.forceActiveFocus()
+                    cursorShape: Qt.IBeamCursor
+                }
+
+                TextField{
+                    id:password
+
+                    width: 230
+                    height: 52
+
+
+                    anchors.centerIn: parent
+                    echoMode: "Password"
+                    font.pixelSize: 18
+                    color: "black"
+                    horizontalAlignment: Text.AlignHCenter
+                    placeholderText: "Password"
+                    focus: true
+                    background:
+                        Rectangle {
+                        color: "white"
+                        border.color: passwordRectBorderColor
+                        border.width: 2
+                        radius: 26
+                    }
+
+                    onEditingFinished: F.acceptPassword()
+                }
+            }
+            Button{
+                z:3
+                id:confirmButton
+                contentItem: Text {
+                    text: "Go"
+                    font.family: "Poppins"
+                    verticalAlignment: Text.AlignVCenter
+                    horizontalAlignment: Text.AlignHCenter
+                    font.pixelSize: 16
+                    color:buttonTextColor
+                }
+
+
+                onClicked:F.acceptPassword()
+                width: 70
+                height: 35
+                anchors.top: passwordRect.bottom
+                anchors.horizontalCenter: passwordRect.horizontalCenter
+                anchors.topMargin: 20
+
+                background: Rectangle{
+                    radius: 26
+                    border.color: buttonBorderColor
+                    border.width: 1
+                    color: buttonBackgroundColor
+                }
+
+
+
+            }
+
+
         }
 
+
     }
+    Rectangle {
+        id:backgroundRect
+        z:0
+
+        anchors.fill: parent
+
+        color: backgroundColor
 
 
 
+
+        Timer {
+            id:acceptedTimer
+            interval: 1000;
+            onTriggered:{
+                pWindow.visible=false
+                mainWindowItem.visible=true
+            }
+
+        }
+
+
+
+    }
 }
 /*import QtQuick 2.12
 import QtQuick.Controls 2.12

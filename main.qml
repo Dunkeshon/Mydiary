@@ -25,7 +25,8 @@ Window {
     FontLoader { id: poppins_black; source:"qrc:/resources/fonts/poppins_/Poppins-Black.ttf"}
     FontLoader { id: merriweather; source:"qrc:/resources/fonts/poppins_/Merriweather-Regular.ttf"}
     Item {
-        id:mainItem
+        z:0
+        id:mainWindowItem
         anchors.fill: parent
         visible: false // true if passwordWindow unactive
 
