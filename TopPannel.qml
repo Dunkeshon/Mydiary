@@ -78,6 +78,7 @@ Item {
             toolTipText: "Add Page"
             toolBorderColor: buttonsToolTipBordersColor
             toolTipTextColor: buttonsToolTipTextColor
+            mousearea.onClicked: userinput.titletext.forceActiveFocus()
         }
 
         BUTTON {
