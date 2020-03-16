@@ -91,7 +91,6 @@ function acceptPassword(){
         unlockedAnim.start()
         //  unlockedAnim.start()
         endingPasswordAnim.start()
-        acceptedTimer.running=true
         // подпрыгивание
     }
     else{

@@ -91,6 +91,26 @@ Item{
                 to: (window.height * 0.3)
                 duration: 1000
             }
+            OpacityAnimator{
+                target:contentRect
+                from:1
+                to:0
+                duration:800
+            }
+            OpacityAnimator{
+                target:backgroundRect
+                from:1
+                to:0
+                duration:800
+            }
+            onStarted: {
+                mainWindowItem.visible=true
+            }
+
+            onFinished: {
+                pWindow.visible=false
+            }
+
         }
         ParallelAnimation{
                   id:openingPasswordAnim
@@ -121,10 +141,6 @@ Item{
                     contentRect.opacity=0
                 }
 
-//                onFinished: {
-
-//                //    finishOpening.start()
-//                }
                 onFinished: {
                     mainWindowItem.visible=false
                 }
@@ -145,25 +161,6 @@ Item{
 
 
 
-//        ParallelAnimation{
-//            id:finishOpening
-//            onFinished: {
-//                mainWindowItem.visible=false
-//            }
-
-//            OpacityAnimator{
-//                target:contentRect
-//                from:0
-//                to:1
-//                duration:800
-//            }
-//            OpacityAnimator{
-//                target:backgroundRect
-//                from:0
-//                to:1
-//                duration:800
-//            }
-//        }
         Item{
             z:3
             id:contentRect
@@ -366,16 +363,6 @@ Item{
 
 
 
-
-        Timer {
-            id:acceptedTimer
-            interval: 1000;
-            onTriggered:{
-                pWindow.visible=false
-                mainWindowItem.visible=true
-            }
-
-        }
 
 
 
