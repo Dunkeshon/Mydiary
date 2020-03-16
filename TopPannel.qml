@@ -32,7 +32,7 @@ Item {
         addButton.buttonChecked.connect(F.addButtonRealization)
         arrowButton.buttonChecked.connect(F.arrowButtonRealization)
         searchField.changeFilterText.connect(F.changeFilter)
-
+        lockButton.buttonChecked.connect(F.lockButtonRealization)
     }
 
 
@@ -114,6 +114,27 @@ Item {
             }
 
         }
+
+        BUTTON{
+            id:lockButton
+            hovered: buttonsHovered
+            size: parent.height
+            iconColor:imageColor
+            bColor:pannel.color
+            anchors.right: settingsButton.left
+            iconSource:passwordWindow.locked?"qrc:/resources/images/new_lock.svg" : "qrc:/resources/images/new_unlock.svg"
+            iconMargins: 6
+
+            enteredColor: image_enteredColor
+            pressedColor: image_pressedColor
+            toolTipText: "Unlocked"
+            toolBorderColor: buttonsToolTipBordersColor
+            toolTipTextColor: buttonsToolTipTextColor
+            mousearea.onClicked: {
+                passwordWindow.locked = true
+            }
+        }
+
         BUTTON  {
             id: settingsButton
             hovered: buttonsHovered

@@ -103,3 +103,7 @@ function settingsButtonRealization(){
     settingsSection.state = "Active"
     window.buttonsActive=false
 }
+function lockButtonRealization(){
+    console.log("lockButtonClicked")
+    //потом нужно будет
+}
