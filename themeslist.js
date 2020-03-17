@@ -57,9 +57,11 @@ function changeTheme(colorTheme){
         passwordWindow.passwordRectBorderColor = "#7B90E3"
         passwordWindow.lockOverlayColor = "#364996"
         passwordWindow.backgroundColor = "#f4f5f8"
-        passwordWindow.backgroundTopImage="qrc:/resources/images/defaultBackgroundTop.svg"
-        passwordWindow.backgroundBottomImage="qrc:/resources/images/defaultBackgroundBottom.svg"
-        break;
+        passwordWindow.backgroundTopRightImage="qrc:/resources/images/defaultBackgroundTopRight.svg"
+        passwordWindow.backgroundTopLeftImage="qrc:/resources/images/defaultBackgroundTopLeft.svg"
+        passwordWindow.backgroundBottomLeftImage="qrc:/resources/images/defaultBackgroundBottomLeft.svg"
+        passwordWindow.backgroundBottomRightImage="qrc:/resources/images/defaultBackgroundBottomRight.svg"
+         break;
     case Themes.ROSE_THEME:
         mainColorBackground = "white"
         startRect.children.enterTextTipColor= "#aaaaaa"
@@ -110,9 +112,11 @@ function changeTheme(colorTheme){
         passwordWindow.passwordRectBorderColor = "#F9AAAB"
         passwordWindow.lockOverlayColor = "#FE8D8D"
         passwordWindow.backgroundColor = "#FFF7F7"
-        passwordWindow.backgroundTopImage="qrc:/resources/images/roseBackgroundTop.svg"
-        passwordWindow.backgroundBottomImage="qrc:/resources/images/roseBackgroundBottom.svg"
-        break;
+        passwordWindow.backgroundTopRightImage="qrc:/resources/images/roseBackgroundTopRight.svg"
+        passwordWindow.backgroundTopLeftImage="qrc:/resources/images/roseBackgroundTopLeft.svg"
+        passwordWindow.backgroundBottomLeftImage="qrc:/resources/images/roseBackgroundBottomLeft.svg"
+        passwordWindow.backgroundBottomRightImage="qrc:/resources/images/roseBackgroundBottomRight.svg"
+       break;
     case Themes.YELLOW_THEME:
         mainColorBackground = "white"
         startRect.children.enterTextTipColor= "#F3CB9B"
@@ -166,8 +170,11 @@ function changeTheme(colorTheme){
         passwordWindow.passwordRectBorderColor = "#D6A76F"
         passwordWindow.lockOverlayColor = "#D6A76F"
         passwordWindow.backgroundColor = "#FDF5EB"
-        passwordWindow.backgroundTopImage="qrc:/resources/images/beigeBackgroundTop.svg"
-        passwordWindow.backgroundBottomImage="qrc:/resources/images/beigeBackgroundBottom.svg"
+        passwordWindow.backgroundTopRightImage="qrc:/resources/images/beigeBackgroundTopRight.svg"
+        passwordWindow.backgroundTopLeftImage="qrc:/resources/images/beigeBackgroundTopLeft.svg"
+        passwordWindow.backgroundBottomLeftImage="qrc:/resources/images/beigeBackgroundBottomLeft.svg"
+        passwordWindow.backgroundBottomRightImage="qrc:/resources/images/beigeBackgroundBottomRight.svg"
+
         break;
 
     case Themes.DARK_THEME:
@@ -221,8 +228,10 @@ function changeTheme(colorTheme){
         passwordWindow.passwordRectBorderColor = "#B1B1B1"
         passwordWindow.lockOverlayColor = "white"
         passwordWindow.backgroundColor = "#373737"
-        passwordWindow.backgroundTopImage="qrc:/resources/images/darkBackgroundTop.svg"
-        passwordWindow.backgroundBottomImage="qrc:/resources/images/darkBackgroundBottom.svg"
+        passwordWindow.backgroundTopRightImage="qrc:/resources/images/darkBackgroundTopRight.svg"
+        passwordWindow.backgroundTopLeftImage="qrc:/resources/images/darkBackgroundTopLeft.svg"
+        passwordWindow.backgroundBottomLeftImage="qrc:/resources/images/darkBackgroundBottomLeft.svg"
+        passwordWindow.backgroundBottomRightImage="qrc:/resources/images/darkBackgroundBottomRight.svg"
         break;
     default: throw "Theme id out of range"
 

@@ -15,8 +15,11 @@ Item{
     property color passwordRectBorderColor
     property color lockOverlayColor
     property color backgroundColor
-    property var   backgroundTopImage
-    property var   backgroundBottomImage
+    property var   backgroundTopRightImage
+    property var   backgroundTopLeftImage
+    property var   backgroundBottomRightImage
+    property var   backgroundBottomLeftImage
+
 
 
     property alias myPassword:password.text
@@ -31,20 +34,9 @@ Item{
     Item{
         z:1
         anchors.fill: parent
-//        Image {
-//            id: backgroundTop
-//            source: backgroundTopImage
-//            z:1
-//            width: parent.width
-//            height: parent.height
-//            sourceSize.width: width*Screen.devicePixelRatio
-//            sourceSize.height: height*Screen.devicePixelRatio
-//            cache: false
-//            clip: true
-//        }
         Image {
             id: backgroundTopLeft
-            source: "qrc:/resources/images/darkBackgroundTopLeft.svg"//backgroundTopImage
+            source:backgroundTopLeftImage
             z:1
             width: parent.width
             height: parent.height
@@ -55,7 +47,7 @@ Item{
         }
         Image {
             id: backgroundTopRight
-            source: "qrc:/resources/images/darkBackgroundTopRight.svg"//backgroundTopImage
+            source:backgroundTopRightImage
             z:1
             width: parent.width
             height: parent.height
@@ -64,6 +56,45 @@ Item{
             cache: false
             clip: true
         }
+        Image {
+            id: backgroundBottomLeft
+            source:backgroundBottomLeftImage
+            z:1
+            width: parent.width
+            height: parent.height
+            sourceSize.width: width*Screen.devicePixelRatio
+            sourceSize.height: height*Screen.devicePixelRatio
+            cache: false
+            clip: true
+        }
+        Image {
+            id: backgroundBottomRight
+            source:backgroundBottomRightImage
+            z:1
+            width: parent.width
+            height: parent.height
+            sourceSize.width: width*Screen.devicePixelRatio
+            sourceSize.height: height*Screen.devicePixelRatio
+            cache: false
+            clip: true
+        }
+        //        Image {
+        //            id: animeImage
+        //            x: 383
+        //            y: 89
+        //            z:2
+        //            width:282
+        //            height: 401
+        //            anchors.bottomMargin: -10
+        //            anchors.rightMargin: -25
+        //            anchors.right: parent.right
+        //            anchors.bottom: parent.bottom
+        //            source: { return backEnd.generateAnimeGirl()}
+        //            clip: true
+        //            cache: false
+        //            sourceSize.width: width*Screen.devicePixelRatio
+        //            sourceSize.height: height*Screen.devicePixelRatio
+        //        }
         Timer{
             id:intervalOffTimer
             interval: 200;
@@ -92,45 +123,6 @@ Item{
                 opacityContentRectOn.start()
             }
         }
-        Image {
-            id: backgroundBottomLeft
-            source:"qrc:/resources/images/darkBackgroundBottomLeft.svg" //backgroundBottomImage
-            z:1
-            width: parent.width
-            height: parent.height
-            sourceSize.width: width*Screen.devicePixelRatio
-            sourceSize.height: height*Screen.devicePixelRatio
-            cache: false
-            clip: true
-        }
-        Image {
-            id: backgroundBottomRight
-            source:"qrc:/resources/images/darkBackgroundBottomRight.svg" //backgroundBottomImage
-            z:1
-            width: parent.width
-            height: parent.height
-            sourceSize.width: width*Screen.devicePixelRatio
-            sourceSize.height: height*Screen.devicePixelRatio
-            cache: false
-            clip: true
-        }
-//        Image {
-//            id: animeImage
-//            x: 383
-//            y: 89
-//            z:2
-//            width:282
-//            height: 401
-//            anchors.bottomMargin: -10
-//            anchors.rightMargin: -25
-//            anchors.right: parent.right
-//            anchors.bottom: parent.bottom
-//            source: { return backEnd.generateAnimeGirl()}
-//            clip: true
-//            cache: false
-//            sourceSize.width: width*Screen.devicePixelRatio
-//            sourceSize.height: height*Screen.devicePixelRatio
-//        }
         PropertyAnimation {
             id:lockingLockOnAnim
             target: lock
@@ -142,14 +134,13 @@ Item{
             duration: 400
             onStarted: {
                 //contentRect.passwordRect.state="reanchored"*/ //return anchors to normal
-              //  contentRect.lock.state="reanchored" //return anchors to normal
+                //  contentRect.lock.state="reanchored" //return anchors to normal
             }
             onFinished: {
                 contentRect.passwordRect.state="" //return anchors to normal
-             //   contentRect.lock.state="" //return anchors to normal
+                //   contentRect.lock.state="" //return anchors to normal
             }
         }
-
         PropertyAnimation {
             id:topRightOffScreenAnim
             target: backgroundTopRight
@@ -190,7 +181,6 @@ Item{
             to: 0
             duration: 800
         }
-
         ParallelAnimation{
             id:endingPasswordAnim
             PropertyAnimation {
@@ -234,53 +224,53 @@ Item{
 
         }
         ParallelAnimation{
-                  id:openingPasswordAnim
-                PropertyAnimation {
-                    target: backgroundTopLeft
-                    property: "y"
+            id:openingPasswordAnim
+            PropertyAnimation {
+                target: backgroundTopLeft
+                property: "y"
 
-                    easing.type:Easing.InOutQuint // Easing.InOutExpo
+                easing.type:Easing.InOutQuint // Easing.InOutExpo
 
-                    to: 0
-                    duration: 1000
-                }
-                PropertyAnimation {
-                    target: backgroundBottomRight
-                    property: "y"
-
-                    easing.type: Easing.InOutExpo
-
-                    to: 0
-                    duration: 1000
-                }
-                onStarted: {
-                    intervalOnTimer.start()
-                    closingLockOnTimer.start()
-                    contentRect.passwordRect.state="" //return anchors to normal
-                    contentRect.lock.state="" //return anchors to normal
-                    pWindow.visible=true
-                    backgroundRect.opacity=0
-                    contentRect.opacity=0
-                }
-
-                onFinished: {
-                    mainWindowItem.visible=false
-                    /*passwordWindow.*/locked = true
-                }
-
-//                OpacityAnimator{
-//                    target:contentRect
-//                    from:0
-//                    to:1
-//                    duration:800
-//                }
-                OpacityAnimator{
-                    target:backgroundRect
-                    from:0
-                    to:1
-                    duration:800
-                }
+                to: 0
+                duration: 1000
             }
+            PropertyAnimation {
+                target: backgroundBottomRight
+                property: "y"
+
+                easing.type: Easing.InOutExpo
+
+                to: 0
+                duration: 1000
+            }
+            onStarted: {
+                intervalOnTimer.start()
+                closingLockOnTimer.start()
+                contentRect.passwordRect.state="" //return anchors to normal
+                contentRect.lock.state="" //return anchors to normal
+                pWindow.visible=true
+                backgroundRect.opacity=0
+                contentRect.opacity=0
+            }
+
+            onFinished: {
+                mainWindowItem.visible=false
+                /*passwordWindow.*/locked = true
+            }
+
+            //                OpacityAnimator{
+            //                    target:contentRect
+            //                    from:0
+            //                    to:1
+            //                    duration:800
+            //                }
+            OpacityAnimator{
+                target:backgroundRect
+                from:0
+                to:1
+                duration:800
+            }
+        }
         OpacityAnimator{
             id:opacityContentRectOn
             target:contentRect
