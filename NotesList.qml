@@ -74,7 +74,7 @@ Item {
             }
             date: model.Date
             title: {
-                if(model.Title.length>=16)
+                if(model.Title.length>=15)
                     return model.Title.substring(0,13)+'...'
                 return model.Title
             }

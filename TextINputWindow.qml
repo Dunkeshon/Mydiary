@@ -14,7 +14,7 @@ Rectangle {
     property var editInfo
     property alias titletext: title
     property alias usertext: userText
-    property alias favorite: starInsideOverlay.visible
+    property alias favorite: starImage.iconVisible
     property bool buttonsHovered: true
 
     //Themes
@@ -56,7 +56,7 @@ Rectangle {
             placeholderTextColor: textPlaceholderColor
             font.family: "merriweather"
             font.pixelSize: 24
-            maximumLength: 40
+            maximumLength: 30
             selectionColor: textSelectionColor
             selectByMouse: true
             focus: true
@@ -150,16 +150,12 @@ BUTTON {
 DeletingBar {
     id: deletingBar
     backgroundBarColor: imageColor
+    backgroundColor: themeColor
     mainColor: pannelColor
 
-    anchors.right: parent.right
-    anchors.bottom: parent.bottom
-    anchors.left: parent.left
-    anchors.margins: 10
-    barWidth: trashButton.width
+    anchors.fill: parent
 
     state: trashButton.mousearea.containsPress && !signalEmited && !pressedAndEntered ? "Active" : ""
-    visible: trashButton.mousearea.containsPress && !signalEmited && !pressedAndEntered ? true : false
 }
 
 BUTTON {
@@ -173,29 +169,21 @@ BUTTON {
     iconMargins: 2
     bColor: parent.color
     iconColor: imageColor
-    toolTipText: starInsideOverlay.visible ? "To Favorite" : "From Favorite"
+    toolTipText: starImage.iconVisible ? "To Favorite" : "From Favorite"
     toolBorderColor: buttonsToolTipBordersColor
     toolTipTextColor: buttonsToolTipTextColor
     changePressedTargetOnColorOverlay: true
     enteredColor: enteredButtonColor
     pressedColor: pressedButtonColor
-    mousearea.onClicked: starInsideOverlay.visible = !starInsideOverlay.visible
+    mousearea.onClicked: starImage.iconVisible = !starImage.iconVisible
 
-    Image {
-        id: starInside
+    SVGImage {
+        id: starImage
         anchors.fill: parent
-        anchors.margins: 5
-        visible: false
-        sourceSize.width: width*Screen.devicePixelRatio
-        sourceSize.height: height*Screen.devicePixelRatio
-        source: "resources/images/starIcon.svg"
-    }
-
-    ColorOverlay {
-        id: starInsideOverlay
-        source: starInside
-        anchors.fill: starInside
-        color: mainColumn.color
+        iconMargins: 5
+        iconSource: "resources/images/starIcon.svg"
+        iconColor: mainColumn.color
+        iconVisible: true
     }
 }
 

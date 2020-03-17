@@ -88,7 +88,8 @@ Item {
                 id: star
                 anchors.right: parent.right
                 anchors.rightMargin: 4
-                anchors.top: modelDateText.bottom
+                anchors.bottom: modelTitleText.bottom
+                anchors.bottomMargin: 5
                 anchors.topMargin: 1
                 width: 15
                 height: 15
