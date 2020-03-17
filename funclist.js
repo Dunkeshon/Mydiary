@@ -103,7 +103,7 @@ function settingsButtonRealization(){
     window.buttonsActive=false
 }
 function lockButtonRealization(){
-    console.log("lockButtonClicked")
+    mainWindowItem.enabled=false
     passwordWindow.openingPasswordAnim.start()
     passwordWindow.myPassword=""
 

@@ -26,10 +26,15 @@ Item{
     property bool locked: true
     property alias  openingPasswordAnim: openingPasswordAnim
     anchors.fill: parent
+    onLockedChanged: {
+        if(locked==true){
+            mainWindowItem.enabled=false
+        }
+        else {
+            mainWindowItem.enabled=true
+        }
+    }
 
-    //    Component.onCompleted: {
-
-    //    }
 
     Item{
         z:1
