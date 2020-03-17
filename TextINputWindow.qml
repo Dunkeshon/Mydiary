@@ -94,131 +94,137 @@ Rectangle {
                 focus: true
                 KeyNavigation.up: title
                 KeyNavigation.down: title
-
+                Keys.onPressed: {
+                    if (event.key === Qt.Key_Backspace) {
+                        if(userText.text=="")
+                            title.forceActiveFocus()
+                    }
+                }
             }
         }
     }
 
-    //uses in trashButton and deleting bar
-    property bool signalEmited: false
-    property bool pressedAndEntered: false
 
-    BUTTON {
-        id:trashButton
-        hovered: buttonsHovered
-        size: 25
-        anchors.right: parent.right
-        anchors.margins: 3
-        anchors.top: parent.top
-        iconSource: "resources/images/trash.svg"
-        iconMargins: 2
-        bColor: parent.color
-        iconColor: imageColor
-        toolTipText: "Hold to delete "
-        toolBorderColor: buttonsToolTipBordersColor
-        toolTipTextColor: buttonsToolTipTextColor
+//uses in trashButton and deleting bar
+property bool signalEmited: false
+property bool pressedAndEntered: false
 
-        changePressedTargetOnColorOverlay: true
-        enteredColor: enteredButtonColor
-        pressedColor: pressedButtonColor
+BUTTON {
+    id:trashButton
+    hovered: buttonsHovered
+    size: 25
+    anchors.right: parent.right
+    anchors.margins: 3
+    anchors.top: parent.top
+    iconSource: "resources/images/trash.svg"
+    iconMargins: 2
+    bColor: parent.color
+    iconColor: imageColor
+    toolTipText: "Hold to delete "
+    toolBorderColor: buttonsToolTipBordersColor
+    toolTipTextColor: buttonsToolTipTextColor
 
-        mousearea.onReleased:
-            pressedAndEntered = signalEmited = false
-        mousearea.onExited:
-            pressedAndEntered = true
-        mousearea.onEntered:
-            if(!mousearea.pressed)
-                pressedAndEntered = false
+    changePressedTargetOnColorOverlay: true
+    enteredColor: enteredButtonColor
+    pressedColor: pressedButtonColor
 
-        mousearea.onPressAndHold: {
-            if(pressedAndEntered)
-                return
+    mousearea.onReleased:
+    pressedAndEntered = signalEmited = false
+    mousearea.onExited:
+    pressedAndEntered = true
+    mousearea.onEntered:
+    if(!mousearea.pressed)
+    pressedAndEntered = false
 
-            trashButton.buttonChecked.connect(F.deleteButtonRealization)
-            trashButton.buttonChecked()
-            trashButton.buttonChecked.disconnect(F.deleteButtonRealization)
-            signalEmited = true
-        }
+    mousearea.onPressAndHold: {
+        if(pressedAndEntered)
+        return
+
+        trashButton.buttonChecked.connect(F.deleteButtonRealization)
+        trashButton.buttonChecked()
+        trashButton.buttonChecked.disconnect(F.deleteButtonRealization)
+        signalEmited = true
+    }
+}
+
+DeletingBar {
+    id: deletingBar
+    backgroundBarColor: imageColor
+    mainColor: pannelColor
+
+    anchors.right: parent.right
+    anchors.bottom: parent.bottom
+    anchors.left: parent.left
+    anchors.margins: 10
+    barWidth: trashButton.width
+
+    state: trashButton.mousearea.containsPress && !signalEmited && !pressedAndEntered ? "Active" : ""
+    visible: trashButton.mousearea.containsPress && !signalEmited && !pressedAndEntered ? true : false
+}
+
+BUTTON {
+    id:favoriteButton
+    hovered: buttonsHovered
+    size: 25
+    anchors.right: trashButton.left
+    anchors.margins: 3
+    anchors.top: parent.top
+    iconSource: "resources/images/starIcon.svg"
+    iconMargins: 2
+    bColor: parent.color
+    iconColor: imageColor
+    toolTipText: starInsideOverlay.visible ? "To Favorite" : "From Favorite"
+    toolBorderColor: buttonsToolTipBordersColor
+    toolTipTextColor: buttonsToolTipTextColor
+    changePressedTargetOnColorOverlay: true
+    enteredColor: enteredButtonColor
+    pressedColor: pressedButtonColor
+    mousearea.onClicked: starInsideOverlay.visible = !starInsideOverlay.visible
+
+    Image {
+        id: starInside
+        anchors.fill: parent
+        anchors.margins: 5
+        visible: false
+        sourceSize.width: width*Screen.devicePixelRatio
+        sourceSize.height: height*Screen.devicePixelRatio
+        source: "resources/images/starIcon.svg"
     }
 
-    DeletingBar {
-        id: deletingBar
-        backgroundBarColor: imageColor
-        mainColor: pannelColor
-
-        anchors.right: parent.right
-        anchors.bottom: parent.bottom
-        anchors.left: parent.left
-        anchors.margins: 10
-        barWidth: trashButton.width
-
-        state: trashButton.mousearea.containsPress && !signalEmited && !pressedAndEntered ? "Active" : ""
-        visible: trashButton.mousearea.containsPress && !signalEmited && !pressedAndEntered ? true : false
+    ColorOverlay {
+        id: starInsideOverlay
+        source: starInside
+        anchors.fill: starInside
+        color: mainColumn.color
     }
+}
 
-    BUTTON {
-        id:favoriteButton
-        hovered: buttonsHovered
-        size: 25
-        anchors.right: trashButton.left
-        anchors.margins: 3
-        anchors.top: parent.top
-        iconSource: "resources/images/starIcon.svg"
-        iconMargins: 2
-        bColor: parent.color
-        iconColor: imageColor
-        toolTipText: starInsideOverlay.visible ? "To Favorite" : "From Favorite"
-        toolBorderColor: buttonsToolTipBordersColor
-        toolTipTextColor: buttonsToolTipTextColor
-        changePressedTargetOnColorOverlay: true
-        enteredColor: enteredButtonColor
-        pressedColor: pressedButtonColor
-        mousearea.onClicked: starInsideOverlay.visible = !starInsideOverlay.visible
+BUTTON {
+    id:infoButton
+    hovered: buttonsHovered
+    size: 25
+    anchors.right: favoriteButton.left
+    anchors.margins: 3
+    anchors.top: parent.top
 
-        Image {
-            id: starInside
-            anchors.fill: parent
-            anchors.margins: 5
-            visible: false
-            sourceSize.width: width*Screen.devicePixelRatio
-            sourceSize.height: height*Screen.devicePixelRatio
-            source: "resources/images/starIcon.svg"
-        }
-
-        ColorOverlay {
-            id: starInsideOverlay
-            source: starInside
-            anchors.fill: starInside
-            color: mainColumn.color
-        }
+    iconSource: "resources/images/infoIcon.svg"
+    iconMargins: 2
+    bColor: parent.color
+    iconColor: imageColor
+    toolTipText: {
+        toolDelay=0
+        toolTimeout=0
+        if(editInfo === "" || editInfo === dateInfo)
+        return "Created: " + dateInfo
+        return "Created: " + dateInfo + "\nEdited:   " + editInfo
     }
-
-    BUTTON {
-        id:infoButton
-        hovered: buttonsHovered
-        size: 25
-        anchors.right: favoriteButton.left
-        anchors.margins: 3
-        anchors.top: parent.top
-
-        iconSource: "resources/images/infoIcon.svg"
-        iconMargins: 2
-        bColor: parent.color
-        iconColor: imageColor
-        toolTipText: {
-            toolDelay=0
-            toolTimeout=0
-            if(editInfo === "" || editInfo === dateInfo)
-                return "Created: " + dateInfo
-            return "Created: " + dateInfo + "\nEdited:   " + editInfo
-        }
-        toolBackgroundColor: infoToolBackgroundColor
-        toolTipTextColor: infoToolTipTextColor
-        toolBorderColor: infoToolBorderColor
-        changePressedTargetOnColorOverlay: true
-        enteredColor: enteredButtonColor
-        pressedColor: enteredButtonColor
-    }
+    toolBackgroundColor: infoToolBackgroundColor
+    toolTipTextColor: infoToolTipTextColor
+    toolBorderColor: infoToolBorderColor
+    changePressedTargetOnColorOverlay: true
+    enteredColor: enteredButtonColor
+    pressedColor: enteredButtonColor
+}
 
 
 
