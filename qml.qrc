@@ -35,6 +35,10 @@
         <file>images/darkBackgroundBottom.svg</file>
         <file>images/darkBackgroundTop.svg</file>
         <file>images/defaultBackgroundBottom.svg</file>
+        <file>images/darkBackgroundTopLeft.svg</file>
+        <file>images/darkBackgroundTopRight.svg</file>
+        <file>images/darkBackgroundBottomLeft.svg</file>
+        <file>images/darkBackgroundBottomRight.svg</file>
     </qresource>
     <qresource prefix="/animeTheme">
         <file>Anime/background.jpg</file>

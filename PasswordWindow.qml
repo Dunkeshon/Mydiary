@@ -31,9 +31,20 @@ Item{
     Item{
         z:1
         anchors.fill: parent
+//        Image {
+//            id: backgroundTop
+//            source: backgroundTopImage
+//            z:1
+//            width: parent.width
+//            height: parent.height
+//            sourceSize.width: width*Screen.devicePixelRatio
+//            sourceSize.height: height*Screen.devicePixelRatio
+//            cache: false
+//            clip: true
+//        }
         Image {
-            id: backgroundTop
-            source: backgroundTopImage
+            id: backgroundTopLeft
+            source: "qrc:/resources/images/darkBackgroundTopLeft.svg"//backgroundTopImage
             z:1
             width: parent.width
             height: parent.height
@@ -41,11 +52,60 @@ Item{
             sourceSize.height: height*Screen.devicePixelRatio
             cache: false
             clip: true
-
         }
         Image {
-            id: backgroundBottom
-            source: backgroundBottomImage
+            id: backgroundTopRight
+            source: "qrc:/resources/images/darkBackgroundTopRight.svg"//backgroundTopImage
+            z:1
+            width: parent.width
+            height: parent.height
+            sourceSize.width: width*Screen.devicePixelRatio
+            sourceSize.height: height*Screen.devicePixelRatio
+            cache: false
+            clip: true
+        }
+        Timer{
+            id:intervalOffTimer
+            interval: 200;
+            onTriggered:{
+                // go second top
+                topRightOffScreenAnim.start()
+                bottomLeftOffScreenAnim.start()
+            }
+        }
+        Timer{
+            id:intervalOnTimer
+            interval: 200;
+            onTriggered:{
+                // go second top
+                topRightOnScreenAnim.start()
+                bottomLeftOnScreenAnim.start()
+            }
+        }
+        Timer{
+            id:closingLockOnTimer
+            interval: 600;
+            onTriggered:{
+                // go second top
+                contentRect.passwordRect.state="reanchored"
+                lockingLockOnAnim.start()
+                opacityContentRectOn.start()
+            }
+        }
+        Image {
+            id: backgroundBottomLeft
+            source:"qrc:/resources/images/darkBackgroundBottomLeft.svg" //backgroundBottomImage
+            z:1
+            width: parent.width
+            height: parent.height
+            sourceSize.width: width*Screen.devicePixelRatio
+            sourceSize.height: height*Screen.devicePixelRatio
+            cache: false
+            clip: true
+        }
+        Image {
+            id: backgroundBottomRight
+            source:"qrc:/resources/images/darkBackgroundBottomRight.svg" //backgroundBottomImage
             z:1
             width: parent.width
             height: parent.height
@@ -71,10 +131,70 @@ Item{
 //            sourceSize.width: width*Screen.devicePixelRatio
 //            sourceSize.height: height*Screen.devicePixelRatio
 //        }
+        PropertyAnimation {
+            id:lockingLockOnAnim
+            target: lock
+            property: "anchors.verticalCenterOffset"
+
+            easing.type: Easing.InCirc
+            from:-30
+            to: 0
+            duration: 400
+            onStarted: {
+                //contentRect.passwordRect.state="reanchored"*/ //return anchors to normal
+              //  contentRect.lock.state="reanchored" //return anchors to normal
+            }
+            onFinished: {
+                contentRect.passwordRect.state="" //return anchors to normal
+             //   contentRect.lock.state="" //return anchors to normal
+            }
+        }
+
+        PropertyAnimation {
+            id:topRightOffScreenAnim
+            target: backgroundTopRight
+            property: "y"
+
+            easing.type: Easing.InOutExpo
+
+            to: - (window.height * 0.5)
+            duration: 800
+        }
+        PropertyAnimation {
+            id:topRightOnScreenAnim
+            target: backgroundTopRight
+            property: "y"
+
+            easing.type: Easing.InOutExpo
+
+            to: 0
+            duration: 800
+        }
+        PropertyAnimation {
+            id:bottomLeftOffScreenAnim
+            target: backgroundBottomLeft
+            property: "y"
+
+            easing.type: Easing.InOutExpo
+
+            to: (window.height * 0.3)
+            duration: 800
+        }
+        PropertyAnimation {
+            id:bottomLeftOnScreenAnim
+            target: backgroundBottomLeft
+            property: "y"
+
+            easing.type: Easing.InOutExpo
+
+            to: 0
+            duration: 800
+        }
+
         ParallelAnimation{
             id:endingPasswordAnim
             PropertyAnimation {
-                target: backgroundTop
+                target: backgroundTopLeft
                 property: "y"
 
                 easing.type: Easing.InOutExpo
@@ -83,7 +203,7 @@ Item{
                 duration: 1000
             }
             PropertyAnimation {
-                target: backgroundBottom
+                target: backgroundBottomRight
                 property: "y"
 
                 easing.type: Easing.InOutExpo// Easing.InOutSine
@@ -105,6 +225,7 @@ Item{
             }
             onStarted: {
                 mainWindowItem.visible=true
+                intervalOffTimer.start()
             }
 
             onFinished: {
@@ -114,11 +235,17 @@ Item{
         }
         ParallelAnimation{
                   id:openingPasswordAnim
-
-
-
                 PropertyAnimation {
-                    target: backgroundTop
+                    target: backgroundTopLeft
+                    property: "y"
+
+                    easing.type:Easing.InOutQuint // Easing.InOutExpo
+
+                    to: 0
+                    duration: 1000
+                }
+                PropertyAnimation {
+                    target: backgroundBottomRight
                     property: "y"
 
                     easing.type: Easing.InOutExpo
@@ -126,16 +253,11 @@ Item{
                     to: 0
                     duration: 1000
                 }
-                PropertyAnimation {
-                    target: backgroundBottom
-                    property: "y"
-
-                    easing.type: Easing.InOutExpo// Easing.InOutSine
-
-                    to: 0
-                    duration: 1000
-                }
                 onStarted: {
+                    intervalOnTimer.start()
+                    closingLockOnTimer.start()
+                    contentRect.passwordRect.state="" //return anchors to normal
+                    contentRect.lock.state="" //return anchors to normal
                     pWindow.visible=true
                     backgroundRect.opacity=0
                     contentRect.opacity=0
@@ -143,14 +265,15 @@ Item{
 
                 onFinished: {
                     mainWindowItem.visible=false
+                    /*passwordWindow.*/locked = true
                 }
 
-                OpacityAnimator{
-                    target:contentRect
-                    from:0
-                    to:1
-                    duration:800
-                }
+//                OpacityAnimator{
+//                    target:contentRect
+//                    from:0
+//                    to:1
+//                    duration:800
+//                }
                 OpacityAnimator{
                     target:backgroundRect
                     from:0
@@ -158,23 +281,25 @@ Item{
                     duration:800
                 }
             }
-
-
-
+        OpacityAnimator{
+            id:opacityContentRectOn
+            target:contentRect
+            from:0
+            to:1
+            duration:400
+        }
         Item{
+            property alias  lock : lock
+            property alias  passwordRect : passwordRect
             z:3
             id:contentRect
             anchors.fill: parent
             Image {
                 id: lock
                 anchors.centerIn: parent
-
                 width: 100
                 height: 86
-
-
                 source:locked==true? "qrc:/resources/images/new_lock.svg":"qrc:/resources/images/new_unlock.svg"
-
                 sourceSize.width: width*Screen.devicePixelRatio
                 sourceSize.height: height*Screen.devicePixelRatio
                 states: [
@@ -186,40 +311,29 @@ Item{
                             anchors.verticalCenter: undefined
                         }
                     }
-
                 ]
-
                 SequentialAnimation{
                     id: unlockedAnim
-
                     PropertyAnimation {
                         target: lock
                         property: "anchors.verticalCenterOffset"
-
                         easing.type: Easing.Linear
-
                         to: -25
                         duration: 100
                     }
-
                     PropertyAnimation {
                         target: lock
                         property: "anchors.verticalCenterOffset"
-
                         easing.type: Easing.OutBounce
-
                         to: 0
                         duration: 800
                     }
                 }
-
                 SequentialAnimation{
                     id: lockedAnim
-
                     PropertyAnimation {
                         target: lock
                         property: "anchors.horizontalCenterOffset"
-
                         easing.type: Easing.Linear
                         to: -20
                         duration: 200
@@ -227,7 +341,6 @@ Item{
                     PropertyAnimation {
                         target: lock
                         property: "anchors.horizontalCenterOffset"
-
                         easing.type: Easing.Linear
                         to: 20
                         duration: 200
@@ -256,7 +369,6 @@ Item{
                         to: 0
                         duration:100
                     }
-
                 }
             }
             ColorOverlay {
@@ -266,17 +378,14 @@ Item{
                 transformOrigin: Item.Center
                 color: lockOverlayColor
             }
-
             Item{
                 id:passwordRect
                 width: 230
                 height: 52
-
-                  z:3
+                z:3
                 anchors.top: lock.bottom
                 anchors.horizontalCenter: lock.horizontalCenter
                 anchors.topMargin: 20
-
                 states: [
                     State {
                         name: "reanchored"
@@ -291,14 +400,10 @@ Item{
                     onClicked: password.forceActiveFocus()
                     cursorShape: Qt.IBeamCursor
                 }
-
                 TextField{
                     id:password
-
                     width: 230
                     height: 52
-
-
                     anchors.centerIn: parent
                     echoMode: "Password"
                     font.pixelSize: 18
@@ -313,7 +418,6 @@ Item{
                         border.width: 2
                         radius: 26
                     }
-
                     onEditingFinished: F.acceptPassword()
                 }
             }
@@ -328,8 +432,6 @@ Item{
                     font.pixelSize: 16
                     color:buttonTextColor
                 }
-
-
                 onClicked:F.acceptPassword()
                 width: 70
                 height: 35
@@ -343,15 +445,8 @@ Item{
                     border.width: 1
                     color: buttonBackgroundColor
                 }
-
-
-
             }
-
-
         }
-
-
     }
     Rectangle {
         id:backgroundRect

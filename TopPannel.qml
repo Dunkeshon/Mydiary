@@ -130,9 +130,9 @@ Item {
             toolTipText: "Unlocked"
             toolBorderColor: buttonsToolTipBordersColor
             toolTipTextColor: buttonsToolTipTextColor
-            mousearea.onClicked: {
-                passwordWindow.locked = true
-            }
+//            mousearea.onClicked: {
+//                passwordWindow.locked = true
+//            }
         }
 
         BUTTON  {
