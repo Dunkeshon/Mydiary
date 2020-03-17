@@ -47,14 +47,14 @@ Window {
             anchors.right: parent.right
         }
 
-        ColumnLayout {
+        Item {
             id: leftColumn
             width: 200
             height: parent.height - topPannel.height
             anchors.top: topPannel.bottom
             NotesList {
                 id:notesList
-                Layout.fillWidth: true
+                anchors.fill: parent
             }
 
             states: [

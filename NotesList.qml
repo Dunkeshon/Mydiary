@@ -5,7 +5,7 @@ import Diary 1.0
 import "funclist.js" as F
 
 
-ColumnLayout {
+Item {
     id:column
     property alias currentIndex: listw.currentIndex
     property alias model: myModel
@@ -24,25 +24,22 @@ ColumnLayout {
     property color m_modelTitleTextRealized
     property color m_textColor
 
-
-    Layout.fillWidth: true
-    Layout.fillHeight: true
-
     signal choosen()
     signal changeIndex();
 
 
     ListView {
         id: listw
-        Layout.fillWidth: true
-        Layout.fillHeight: true
+        anchors.fill: parent
         clip: true
         focus:true
+
         DiaryModel
         {
             id:myModel
             list: diaryList
         }
+
         model: SortFilterProxyModel
         {
             id:sortModel
