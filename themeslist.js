@@ -52,7 +52,13 @@ function changeTheme(colorTheme){
         topPannel.buttonsToolTipTextColor = "#3D54B1"
         //passwordWindow
         passwordWindow.buttonBackgroundColor = "#7B90E3"
+        passwordWindow.buttonHoveredColor="#C4D0FF"
+        passwordWindow.buttonPressedColor="#556ABA"
+        passwordWindow.buttonTextHoveredColor="#364996"
+        passwordWindow.buttonTextPressedColor="#FFFFFF"
         passwordWindow.buttonBorderColor = "#7077FF"
+        passwordWindow.buttonBorderPresedColor="#FFFFFF"
+        passwordWindow.buttonBorderHoveredColor="#364996"
         passwordWindow.buttonTextColor = "#FFFFFF"
         passwordWindow.passwordRectBorderColor = "#7B90E3"
         passwordWindow.lockOverlayColor = "#364996"
@@ -107,8 +113,16 @@ function changeTheme(colorTheme){
         topPannel.buttonsToolTipTextColor = "#905C5C"
         //passwordWindow
         passwordWindow.buttonBackgroundColor = "#FFC2C4"
-        passwordWindow.buttonBorderColor = "#C16D70"
+        passwordWindow.buttonHoveredColor="#FFE4E5"
+        passwordWindow.buttonPressedColor="#C86567"
+
         passwordWindow.buttonTextColor = "#C57275"
+        passwordWindow.buttonTextHoveredColor="#9F3438"
+        passwordWindow.buttonTextPressedColor="#FFFFFF"
+
+        passwordWindow.buttonBorderColor = "#C16D70"
+        passwordWindow.buttonBorderPresedColor="#FFFFFF"
+        passwordWindow.buttonBorderHoveredColor="#9F3438"
         passwordWindow.passwordRectBorderColor = "#F9AAAB"
         passwordWindow.lockOverlayColor = "#FE8D8D"
         passwordWindow.backgroundColor = "#FFF7F7"
@@ -166,6 +180,14 @@ function changeTheme(colorTheme){
         //passwordWindow
 
         passwordWindow.buttonBackgroundColor = "#D6A76F"
+
+        passwordWindow.buttonHoveredColor="#F0CEA6"
+        passwordWindow.buttonPressedColor="#885517"
+        passwordWindow.buttonTextHoveredColor="#765835"
+        passwordWindow.buttonTextPressedColor="#FFFFFF"
+
+        passwordWindow.buttonBorderPresedColor="#FFFFFF"
+        passwordWindow.buttonBorderHoveredColor="#765835"
         passwordWindow.buttonBorderColor = "#976D3B"
         passwordWindow.buttonTextColor = "white"
         passwordWindow.passwordRectBorderColor = "#D6A76F"
@@ -224,8 +246,16 @@ function changeTheme(colorTheme){
         topPannel.buttonsToolTipTextColor = "#403F3F"
         //passwordWindow
         passwordWindow.buttonBackgroundColor = "#1C1C1C"
+        passwordWindow.buttonHoveredColor="#BDBDBD"
+        passwordWindow.buttonPressedColor="#FFFFFF"
+
         passwordWindow.buttonBorderColor = "white"
+        passwordWindow.buttonBorderPresedColor="#000000"
+        passwordWindow.buttonBorderHoveredColor="#727272"
+
         passwordWindow.buttonTextColor = "white"
+        passwordWindow.buttonTextHoveredColor="#727272"
+        passwordWindow.buttonTextPressedColor="#000000"
         passwordWindow.passwordRectBorderColor = "#B1B1B1"
         passwordWindow.lockOverlayColor = "white"
         passwordWindow.backgroundColor = "#373737"

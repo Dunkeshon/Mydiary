@@ -10,8 +10,17 @@ Item{
     id:pWindow
     //Themes
     property color buttonBackgroundColor
+    property color buttonHoveredColor
+    property color buttonPressedColor
+
+
     property color buttonBorderColor
+    property color buttonBorderHoveredColor
+    property color buttonBorderPresedColor
+
     property color buttonTextColor
+    property color buttonTextHoveredColor
+    property color buttonTextPressedColor
     property color passwordRectBorderColor
     property color lockOverlayColor
     property color backgroundColor
@@ -88,23 +97,23 @@ Item{
             iconColor: backgroundBottomRightColor
             imageOpacity: 0.72
         }
-//                Image {
-//                    id: animeImage
-//                    x: 383
-//                    y: 89
-//                    z:2
-//                    width:282
-//                    height: 401
-//                    anchors.bottomMargin: -10
-//                    anchors.rightMargin: -25
-//                    anchors.right: parent.right
-//                    anchors.bottom: parent.bottom
-//                    source: { return backEnd.generateAnimeGirl()}
-//                    clip: true
-//                    cache: false
-//                    sourceSize.width: width*Screen.devicePixelRatio
-//                    sourceSize.height: height*Screen.devicePixelRatio
-//                }
+        //                Image {
+        //                    id: animeImage
+        //                    x: 383
+        //                    y: 89
+        //                    z:2
+        //                    width:282
+        //                    height: 401
+        //                    anchors.bottomMargin: -10
+        //                    anchors.rightMargin: -25
+        //                    anchors.right: parent.right
+        //                    anchors.bottom: parent.bottom
+        //                    source: { return backEnd.generateAnimeGirl()}
+        //                    clip: true
+        //                    cache: false
+        //                    sourceSize.width: width*Screen.devicePixelRatio
+        //                    sourceSize.height: height*Screen.devicePixelRatio
+        //                }
         Timer{
             id:intervalOffTimer
             interval: 200;
@@ -425,12 +434,25 @@ Item{
                 z:3
                 id:confirmButton
                 contentItem: Text {
-                    text: "Go"
+                    text: "GO"
                     font.family: "poppins_black"
                     verticalAlignment: Text.AlignVCenter
                     horizontalAlignment: Text.AlignHCenter
-                    font.pixelSize: 18
-                    color:buttonTextColor
+                    font.pixelSize: 17
+                    color:{
+
+                        if(confirmButton.down){
+                            return buttonTextPressedColor
+                        }
+                        else if(confirmButton.hovered){
+                            return buttonTextHoveredColor
+                        }
+                        else {
+                            return  buttonTextColor
+                        }
+                    }
+
+
                 }
                 onClicked:F.acceptPassword()
                 width: 70
@@ -441,9 +463,29 @@ Item{
 
                 background: Rectangle{
                     radius: 26
-                    border.color: buttonBorderColor
+                    border.color:{
+                        if(confirmButton.down){
+                            return buttonBorderPresedColor
+                        }
+                        else if(confirmButton.hovered){
+                            return buttonBorderHoveredColor
+                        }
+                        else {
+                            return buttonBorderColor
+                        }
+                    }
                     border.width: 1
-                    color: buttonBackgroundColor
+                    color: {
+                        if(confirmButton.down){
+                            return buttonPressedColor
+                        }
+                        else if(confirmButton.hovered){
+                            return buttonHoveredColor
+                        }
+                        else {
+                            return  buttonBackgroundColor
+                        }
+                    }
                 }
             }
         }
