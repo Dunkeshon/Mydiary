@@ -8,7 +8,8 @@ Item {
     property var iconMargins: 0
     property color iconColor: "white"
     property alias iconVisible: imageOverlay.visible
-
+    property alias image : image
+    property alias imageOpacity : imageOverlay.opacity
     Image {
         id: image
         anchors.fill: parent
@@ -23,5 +24,6 @@ Item {
         anchors.fill: image
         source: image
         color: iconColor
+
     }
 }

@@ -15,10 +15,10 @@ Item{
     property color passwordRectBorderColor
     property color lockOverlayColor
     property color backgroundColor
-    property var   backgroundTopRightImage
-    property var   backgroundTopLeftImage
-    property var   backgroundBottomRightImage
-    property var   backgroundBottomLeftImage
+    property color backgroundTopRightColor
+    property color backgroundTopLeftColor
+    property color backgroundBottomRightColor
+    property color backgroundBottomLeftColor
 
 
 
@@ -39,49 +39,54 @@ Item{
     Item{
         z:1
         anchors.fill: parent
-        Image {
+
+        SVGImage {
             id: backgroundTopLeft
-            source:backgroundTopLeftImage
+            iconSource:"qrc:/resources/images/defaultBackgroundTopLeft.svg"
             z:1
             width: parent.width
             height: parent.height
-            sourceSize.width: width*Screen.devicePixelRatio
-            sourceSize.height: height*Screen.devicePixelRatio
-            cache: false
-            clip: true
+            iconVisible: true
+            image.cache: false
+            image.clip: true
+            iconColor: backgroundTopLeftColor
+            imageOpacity: 0.72
         }
-        Image {
+        SVGImage {
             id: backgroundTopRight
-            source:backgroundTopRightImage
+            iconSource:"qrc:/resources/images/defaultBackgroundTopRight.svg"
             z:1
             width: parent.width
             height: parent.height
-            sourceSize.width: width*Screen.devicePixelRatio
-            sourceSize.height: height*Screen.devicePixelRatio
-            cache: false
-            clip: true
+            iconVisible: true
+            image.cache: false
+            image.clip: true
+            iconColor: backgroundTopRightColor
+            imageOpacity: 0.72
         }
-        Image {
+        SVGImage {
             id: backgroundBottomLeft
-            source:backgroundBottomLeftImage
+            iconSource:"qrc:/resources/images/defaultBackgroundBottomLeft.svg"
             z:1
             width: parent.width
             height: parent.height
-            sourceSize.width: width*Screen.devicePixelRatio
-            sourceSize.height: height*Screen.devicePixelRatio
-            cache: false
-            clip: true
+            iconVisible: true
+            image.cache: false
+            image.clip: true
+            iconColor: backgroundBottomLeftColor
+            imageOpacity: 0.46
         }
-        Image {
+        SVGImage {
             id: backgroundBottomRight
-            source:backgroundBottomRightImage
+            iconSource:"qrc:/resources/images/defaultBackgroundBottomRight.svg"
             z:1
             width: parent.width
             height: parent.height
-            sourceSize.width: width*Screen.devicePixelRatio
-            sourceSize.height: height*Screen.devicePixelRatio
-            cache: false
-            clip: true
+            iconVisible: true
+            image.cache: false
+            image.clip: true
+            iconColor: backgroundBottomRightColor
+            imageOpacity: 0.72
         }
 //                Image {
 //                    id: animeImage
@@ -421,10 +426,10 @@ Item{
                 id:confirmButton
                 contentItem: Text {
                     text: "Go"
-                    font.family: "Poppins"
+                    font.family: "poppins_black"
                     verticalAlignment: Text.AlignVCenter
                     horizontalAlignment: Text.AlignHCenter
-                    font.pixelSize: 16
+                    font.pixelSize: 18
                     color:buttonTextColor
                 }
                 onClicked:F.acceptPassword()
