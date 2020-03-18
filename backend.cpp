@@ -17,10 +17,10 @@ BackEnd::BackEnd(QObject *parent) : QObject(parent)
 QUrl BackEnd::generateAnimeGirl()
 {
 
-   int randomInt = generate_random_int(0,m_imagesMap.size()-1);
+   int randomInt = generate_random_int(0,m_images.size()-1);
    qDebug()<<QString::number(randomInt);
-    qDebug()<<m_imagesMap[randomInt];
-   return QUrl( m_imagesMap[randomInt]);
+    qDebug()<<m_images[randomInt];
+   return QUrl( m_images[randomInt]);
 }
 
 template<typename T>
