@@ -44,6 +44,9 @@ Item{
         }
     }
 
+    Component.onCompleted: {
+        password.forceActiveFocus()
+    }
 
     Item{
         z:1
@@ -413,6 +416,7 @@ Item{
                     id:password
                     width: 230
                     height: 52
+                    selectByMouse: true
                     anchors.centerIn: parent
                     echoMode: "Password"
                     font.pixelSize: 18
@@ -440,19 +444,16 @@ Item{
                     horizontalAlignment: Text.AlignHCenter
                     font.pixelSize: 17
                     color:{
-
                         if(confirmButton.down){
                             return buttonTextPressedColor
                         }
-                        else if(confirmButton.hovered){
-                            return buttonTextHoveredColor
-                        }
+//                        else if(confirmButton.hovered){
+//                            return buttonTextHoveredColor
+//                        }
                         else {
                             return  buttonTextColor
                         }
                     }
-
-
                 }
                 onClicked:F.acceptPassword()
                 width: 70
@@ -467,9 +468,9 @@ Item{
                         if(confirmButton.down){
                             return buttonBorderPresedColor
                         }
-                        else if(confirmButton.hovered){
-                            return buttonBorderHoveredColor
-                        }
+//                        else if(confirmButton.hovered){
+//                            return buttonBorderHoveredColor
+//                        }
                         else {
                             return buttonBorderColor
                         }
@@ -479,9 +480,9 @@ Item{
                         if(confirmButton.down){
                             return buttonPressedColor
                         }
-                        else if(confirmButton.hovered){
-                            return buttonHoveredColor
-                        }
+//                        else if(confirmButton.hovered){
+//                            return buttonHoveredColor
+//                        }
                         else {
                             return  buttonBackgroundColor
                         }

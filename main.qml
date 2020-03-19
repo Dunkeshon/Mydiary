@@ -169,6 +169,12 @@ Window {
         visible:true
         z:1
     }
+//    FirstEnterWindow{
+//        z:1
+//        anchors.fill: parent
+//        visible: true
+//    }
+
 
 
 

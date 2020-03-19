@@ -94,6 +94,7 @@ function acceptPassword(){
         // подпрыгивание
     }
     else{
+        myPassword=""
         lockedAnim.start()
         //дерганье
     }
