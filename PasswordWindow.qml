@@ -455,6 +455,7 @@ Item{
                         }
                     }
                 }
+
                 onClicked:F.acceptPassword()
                 width: 70
                 height: 35

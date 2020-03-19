@@ -52,10 +52,28 @@ function addButtonRealization() {
 }
 
 function arrowButtonRealization() {
-    if(leftColumn.state === "")
-        leftColumn.state = "Hidden"
+    if(topPannel.searchfield.state == "Active" && notesList.currentIndex == -1)
+        return
+    if(notesList.state === "" || notesList.state === "Large")
+        hideAllDelegates = true
     else
-        leftColumn.state = ""
+        hideAllDelegates = false
+}
+
+function searchButtonRealization() {
+    if(searchField.state == "Active" )
+        searchField.text=""
+
+    if(searchField.state == "") {
+        if(notesList.currentIndex != -1)
+            updateModelInformation()
+        notesList.currentIndex = -1
+    }
+
+    hideAllDelegates = false
+    updateWindowInformation()
+
+    searchField.state = searchField.state == "" ? "Active" : ""
 }
 
 function deleteButtonRealization() {

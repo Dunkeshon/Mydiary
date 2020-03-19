@@ -12,6 +12,7 @@ Window {
     //Themes
     property color mainColorBackground//:"white"
     property bool buttonsActive: true
+    property bool hideAllDelegates: false
 
 
     id: window
@@ -56,37 +57,7 @@ Window {
                 id:notesList
                 anchors.fill: parent
             }
-
-            states: [
-                State {
-                    name: "Hidden"
-                    PropertyChanges {
-                        target: leftColumn
-                        x: -width - 1
-                        visible:false
-                    }
-                }]
-
-            transitions: [
-                Transition {
-                    from: ""
-                    to: "Hidden"
-                    PropertyAnimation {
-                        easing.type: Easing.InOutQuad
-                        properties: "x, visible"
-                        duration: 450
-                    }
-
-                },
-                Transition {
-                    from: "Hidden"
-                    to: ""
-                    PropertyAnimation {
-                        easing.type: Easing.InOutQuad
-                        properties: "x"
-                        duration: 450
-                    }
-                }]
+            //states in NotesList
         }
 
         SettingsWindow {
@@ -139,12 +110,13 @@ Window {
             anchors.left: verticalSeparator.right
 
 
-           titletext.onEditingFinished: {
-               if(topPannel.searchfield.text != "")
-                       return
+            titletext.onEditingFinished: {
+                if(topPannel.searchfield.text != "")
+                    return
                 F.updateModelInformation()
-           }
+            }
         }
+
         Rectangle {
             //Themes
             property color separatorColor//: "#6d84de" //
@@ -155,6 +127,8 @@ Window {
             anchors.bottom: parent.bottom
             anchors.left: leftColumn.right
         }
+
+
         Component.onCompleted: {
             ThemesFunctions.changeTheme(qSettings.colorTheme)
         }
@@ -169,11 +143,11 @@ Window {
         visible:true
         z:1
     }
-//    FirstEnterWindow{
-//        z:1
-//        anchors.fill: parent
-//        visible: true
-//    }
+    //    FirstEnterWindow{
+    //        z:1
+    //        anchors.fill: parent
+    //        visible: true
+    //    }
 
 
 

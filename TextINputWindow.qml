@@ -56,7 +56,7 @@ Rectangle {
             placeholderTextColor: textPlaceholderColor
             font.family: "merriweather"
             font.pixelSize: 24
-            maximumLength: 30
+            maximumLength: 32
             selectionColor: textSelectionColor
             selectByMouse: true
             focus: true
@@ -120,7 +120,7 @@ BUTTON {
     iconMargins: 2
     bColor: parent.color
     iconColor: imageColor
-    toolTipText: "Hold to delete "
+    toolTipText: "Hold to delete"
     toolBorderColor: buttonsToolTipBordersColor
     toolTipTextColor: buttonsToolTipTextColor
 

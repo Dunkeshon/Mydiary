@@ -31,6 +31,7 @@ Item {
         settingsButton.buttonChecked.connect(F.settingsButtonRealization)
         addButton.buttonChecked.connect(F.addButtonRealization)
         arrowButton.buttonChecked.connect(F.arrowButtonRealization)
+        searchButton.buttonChecked.connect(F.searchButtonRealization)
         searchField.changeFilterText.connect(F.changeFilter)
         lockButton.buttonChecked.connect(F.lockButtonRealization)
     }
@@ -47,22 +48,17 @@ Item {
             size: parent.height
             bColor: pannel.color
             iconColor: imageColor
-            anchors.left: parent.left
+            x:0
             iconSource: "resources/images/leftArrowIcon.svg"
             iconMargins: 6
 
             enteredColor: image_enteredColor
             pressedColor: image_pressedColor
-            toolTipText: "Hide"
+            toolTipText: hideAllDelegates ? "Show" : "Hide"
+            iconRotation: hideAllDelegates ? 180 : 0
             toolBorderColor: buttonsToolTipBordersColor
             toolTipTextColor: buttonsToolTipTextColor
-            mousearea.onClicked: {
-
-                toolTipText = toolTipText == "Hide" ? "Show" : "Hide"
-                iconRotation = iconRotation == 0 ? 180 : 0
-            }
         }
-
         BUTTON  {
             id: addButton
             hovered: buttonsHovered
@@ -96,12 +92,6 @@ Item {
             toolTipText: "Search"
             toolBorderColor: buttonsToolTipBordersColor
             toolTipTextColor: buttonsToolTipTextColor
-            mousearea.onClicked: {
-                if(searchField.state == "Active" ){
-                    searchField.text=""
-                }
-                searchField.state = searchField.state == "" ? "Active" : ""
-            }
 
             SearchField {
                 id: searchField
@@ -130,9 +120,9 @@ Item {
             toolTipText: "Unlocked"
             toolBorderColor: buttonsToolTipBordersColor
             toolTipTextColor: buttonsToolTipTextColor
-//            mousearea.onClicked: {
-//                passwordWindow.locked = true
-//            }
+            //            mousearea.onClicked: {
+            //                passwordWindow.locked = true
+            //            }
         }
 
         BUTTON  {

@@ -74,7 +74,7 @@ Item {
             }
             date: model.Date
             title: {
-                if(model.Title.length>=15)
+                if(model.Title.length>=16 && notesList.state != "Large")
                     return model.Title.substring(0,13)+'...'
                 return model.Title
             }
@@ -82,6 +82,82 @@ Item {
             current: index == currentIndex? true : false
         }
     }
+
+    states: [
+        State {
+            name: "Hidden"
+            when: hideAllDelegates
+            PropertyChanges {
+                target: leftColumn
+                x: -width - 1
+                visible:false
+            }
+        },
+        State {
+            name: "Large"
+            when: (notesList.currentIndex == -1 && topPannel.searchfield.state == "Active")
+            PropertyChanges {
+                target: leftColumn
+                width: 400
+            }
+        }]
+
+    transitions: [
+        Transition {
+            from: ""
+            to: "Hidden"
+            PropertyAnimation {
+                easing.type: Easing.InOutQuad
+                properties: "x, visible"
+                duration: 450
+            }
+
+        },
+        Transition {
+            from: "Hidden"
+            to: ""
+            PropertyAnimation {
+                easing.type: Easing.InOutQuad
+                properties: "x"
+                duration: 450
+            }
+        },
+        Transition {
+            from: ""
+            to: "Large"
+            PropertyAnimation {
+                easing.type: Easing.InOutQuad
+                properties: "x, width"
+                duration: 450
+            }
+        },
+        Transition {
+            from: "Large"
+            to: ""
+            PropertyAnimation {
+                easing.type: Easing.InOutQuad
+                properties: "x, width"
+                duration: 450
+            }
+        },
+        Transition {
+            from: "Large"
+            to: "Hidden"
+            PropertyAnimation {
+                easing.type: Easing.InOutQuad
+                properties: "x, width, visible"
+                duration: 450
+            }
+        },
+        Transition {
+            from: "Hidden"
+            to: "Large"
+            PropertyAnimation {
+                easing.type: Easing.InOutQuad
+                properties: "x, width"
+                duration: 450
+            }
+        }]
 }
 
 

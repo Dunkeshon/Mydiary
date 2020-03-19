@@ -13,6 +13,7 @@ Item {
     property alias favorite: starOverlay.visible
     property bool current: false
 
+
     //Themes
     property color bottomSeparatorColor //: "#6d84de"
     property color fillDelegateColor //: "white"
@@ -23,6 +24,7 @@ Item {
     property color pressedColor //: "#93a6ee"
     property color modelDateTextRealized //: "#00135F"
     property color modelTitleTextRealized
+
 
     MouseArea {
         id: mousearea
@@ -122,7 +124,6 @@ Item {
                 PropertyChanges {
                     target: fillRect
                     color: pressedColor
-
                 }
             },
             State {
