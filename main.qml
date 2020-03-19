@@ -23,6 +23,7 @@ Window {
     height: 480
     title: qsTr("My Diary")
     FontLoader { id: poppins_black; source:"qrc:/resources/fonts/poppins_/Poppins-Black.ttf"}
+    FontLoader { id: poppinsThin; source:"qrc:/resources/fonts/poppins_/Poppins-Thin.ttf"}
     FontLoader { id: merriweather; source:"qrc:/resources/fonts/poppins_/Merriweather-Regular.ttf"}
     Item {
         z:0
@@ -163,17 +164,17 @@ Window {
         }
 
     }
-    PasswordWindow{
-        id:passwordWindow
-        anchors.fill:parent
-        visible:true
-        z:1
-    }
-//    FirstEnterWindow{
+//    PasswordWindow{
+//        id:passwordWindow
+//        anchors.fill:parent
+//        visible:true
 //        z:1
-//        anchors.fill: parent
-//        visible: true
 //    }
+    FirstEnterWindow{
+        z:1
+        anchors.fill: parent
+        visible: true
+    }
 
 
 
