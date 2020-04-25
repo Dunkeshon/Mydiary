@@ -25,17 +25,16 @@ Window {
     FontLoader { id: poppins_black; source:"qrc:/resources/fonts/poppins_/Poppins-Black.ttf"}
     FontLoader { id: poppinsThin; source:"qrc:/resources/fonts/poppins_/Poppins-Thin.ttf"}
     FontLoader { id: merriweather; source:"qrc:/resources/fonts/poppins_/Merriweather-Regular.ttf"}
+    Settings{
+        id:qSettings
+        property int colorTheme:Themes.DARK_THEME
+        property bool isFirstEnter: true
+    }
     Item {
         z:0
         id:mainWindowItem
         anchors.fill: parent
         visible: false // true if passwordWindow unactive
-
-
-        Settings{
-            id:qSettings
-            property int colorTheme:Themes.DARK_THEME
-        }
 
 
         TopPannel {
@@ -57,7 +56,6 @@ Window {
                 id:notesList
                 anchors.fill: parent
             }
-
             states: [
                 State {
                     name: "Hidden"
@@ -140,11 +138,11 @@ Window {
             anchors.left: verticalSeparator.right
 
 
-           titletext.onEditingFinished: {
-               if(topPannel.searchfield.text != "")
-                       return
+            titletext.onEditingFinished: {
+                if(topPannel.searchfield.text != "")
+                    return
                 F.updateModelInformation()
-           }
+            }
         }
         Rectangle {
             //Themes
@@ -164,20 +162,45 @@ Window {
         }
 
     }
-//    PasswordWindow{
-//        id:passwordWindow
-//        anchors.fill:parent
-//        visible:true
-//        z:1
-//    }
-    FirstEnterWindow{
+    PasswordWindow{
+        id:passwordWindow
+        anchors.fill:parent
+
+
+        visible: qSettings.isFirstEnter?false:true;
         z:1
+    }
+    FirstEnterWindow{
+        id:firstEnterWindow
+        z:2
         anchors.fill: parent
-        visible: true
+        visible: qSettings.isFirstEnter?true:false
+
+
+        states: State {
+            name: "hidden"
+            PropertyChanges {
+                target: firstEnterWindow
+                opacity:0
+            }
+        }
+        transitions: [
+            Transition {
+                from: ""
+                to: "hidden"
+                OpacityAnimator{
+                    target:firstEnterWindow
+                    from:1
+                    to:0
+                    duration:1000
+                }
+            }
+        ]
     }
 
-
-
+Component.onCompleted: {
+    qSettings.isFirstEnter=true;
+}
 
 
 

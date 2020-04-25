@@ -4,8 +4,7 @@ Item {
     id:background
     SVGImage {
         id: backgroundTopLeft
-        anchors.verticalCenterOffset: -20
-        anchors.verticalCenter: parent.verticalCenter
+        y:-20
         z:1
         iconSource:"qrc:/resources/images/defaultBackgroundTopLeft.svg"
         width: parent.width
@@ -21,8 +20,7 @@ Item {
         id: backgroundTopRight
         z:1
         iconSource:"qrc:/resources/images/defaultBackgroundTopRight.svg"
-        anchors.verticalCenter: parent.verticalCenter
-        anchors.verticalCenterOffset: -20
+        y:-20
         width: parent.width
         height: parent.height
         iconVisible: false // overlay
@@ -382,6 +380,15 @@ Item {
                     border.color: parent.down?"#FFFFFF":"#7077FF"
                     border.width: parent.down?3:1
                 }
+                onClicked: {
+                    firstEnterWindow.state="hidden";
+                    passwordWindow.locked=false;
+                    mainWindowItem.visible=true;
+                    passwordWindow.visible=false;
+                    visibilityOffTimer.start();
+                    topLeftOffScreenAnim.start();
+                    offScreenDelay.start();
+                }
             }
             SVGImage{
                 iconSource: "qrc:/resources/images/letsStartImage.svg"
@@ -394,9 +401,7 @@ Item {
                 height: parent.height*0.38
                 width: height*1.16
             }
-
         }
-
     }
 
 
@@ -408,6 +413,40 @@ Item {
 
         anchors.bottom: view.bottom
         anchors.horizontalCenter: parent.horizontalCenter
+    }
+    Timer{
+        id:visibilityOffTimer
+        interval: 1000;
+        onTriggered:{
+           qSettings.isFirstEnter=false;
+        }
+    }
+    PropertyAnimation {
+        id:topLeftOffScreenAnim
+        target: backgroundTopLeft
+        property: "y"
+
+        easing.type: Easing.InOutExpo
+
+        to: - (window.height * 0.5)
+        duration: 1000
+    }
+    PropertyAnimation {
+        id:topRightOffScreenAnim
+        target: backgroundTopRight
+        property: "y"
+
+        easing.type: Easing.InOutExpo
+
+        to: - (window.height * 0.5)
+        duration: 800
+    }
+    Timer{
+        id:offScreenDelay
+        interval: 200;
+        onTriggered:{
+           topRightOffScreenAnim.start();
+        }
     }
 
 }
