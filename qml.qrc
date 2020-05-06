@@ -14,6 +14,8 @@
         <file>DeletingBar.qml</file>
         <file>SVGImage.qml</file>
         <file>FirstEnterWindow.qml</file>
+        <file>SettingChoice.qml</file>
+        <file>SettingPart.qml</file>
     </qresource>
     <qresource prefix="/resources">
         <file>images/plusIcon.svg</file>
@@ -33,6 +35,8 @@
         <file>images/defaultBackgroundBottomLeft.svg</file>
         <file>images/defaultBackgroundTopRight.svg</file>
         <file>images/defaultBackgroundTopLeft.svg</file>
+        <file>images/passwordIcon.svg</file>
+        <file>images/languageIcon.svg</file>
     </qresource>
     <qresource prefix="/animeTheme">
         <file>Anime/background.jpg</file>
