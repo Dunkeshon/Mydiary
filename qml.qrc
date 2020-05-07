@@ -37,6 +37,13 @@
         <file>images/defaultBackgroundTopLeft.svg</file>
         <file>images/passwordIcon.svg</file>
         <file>images/languageIcon.svg</file>
+        <file>fonts/poppins_/Poppins-Thin.ttf</file>
+        <file>images/Thank you.svg</file>
+        <file>images/Mobile.svg</file>
+        <file>images/Web_SVG 1.svg</file>
+        <file>images/protection.svg</file>
+        <file>images/computerImage.svg</file>
+        <file>images/letsStartImage.svg</file>
     </qresource>
     <qresource prefix="/animeTheme">
         <file>Anime/background.jpg</file>

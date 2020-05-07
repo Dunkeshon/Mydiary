@@ -368,7 +368,6 @@ Item{
                     PropertyAnimation {
                         target: lock
                         property: "anchors.horizontalCenterOffset"
-
                         easing.type: Easing.Linear
                         to: 10
                         duration: 100
@@ -376,7 +375,6 @@ Item{
                     PropertyAnimation {
                         target: lock
                         property: "anchors.horizontalCenterOffset"
-
                         easing.type: Easing.Linear
                         to: 0
                         duration:100
