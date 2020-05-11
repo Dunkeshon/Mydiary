@@ -54,7 +54,7 @@ Item {
 
             enteredColor: image_enteredColor
             pressedColor: image_pressedColor
-            toolTipText: hideAllDelegates ? "Show" : "Hide"
+            toolTipText: hideAllDelegates ? (qSettings.isEnglish ? "Show":"Показать") : (qSettings.isEnglish ? "Hide":"Спрятать")
             iconRotation: hideAllDelegates ? 180 : 0
             toolBorderColor: buttonsToolTipBordersColor
             toolTipTextColor: buttonsToolTipTextColor
@@ -71,7 +71,7 @@ Item {
 
             enteredColor: image_enteredColor
             pressedColor: image_pressedColor
-            toolTipText: "Add Page"
+            toolTipText: qSettings.isEnglish ? "Add Page" : "Добавить страницу"
             toolBorderColor: buttonsToolTipBordersColor
             toolTipTextColor: buttonsToolTipTextColor
             mousearea.onClicked: userinput.titletext.forceActiveFocus()
@@ -89,7 +89,7 @@ Item {
 
             enteredColor: image_enteredColor
             pressedColor: image_pressedColor
-            toolTipText: "Search"
+            toolTipText: qSettings.isEnglish ? "Search" :"Поиск"
             toolBorderColor: buttonsToolTipBordersColor
             toolTipTextColor: buttonsToolTipTextColor
 
@@ -117,9 +117,10 @@ Item {
 
             enteredColor: image_enteredColor
             pressedColor: image_pressedColor
-            toolTipText: "Unlocked"
+            toolTipText: qSettings.isEnglish ? "Unlocked":"Разблокировано"
             toolBorderColor: buttonsToolTipBordersColor
             toolTipTextColor: buttonsToolTipTextColor
+            visible: qSettings.passwordOn ? true : false
             //            mousearea.onClicked: {
             //                passwordWindow.locked = true
             //            }
@@ -137,7 +138,7 @@ Item {
 
             enteredColor: image_enteredColor
             pressedColor: image_pressedColor
-            toolTipText: "Settings"
+            toolTipText: qSettings.isEnglish ? "Settings":"Настройки"
             toolBorderColor: buttonsToolTipBordersColor
             toolTipTextColor: buttonsToolTipTextColor
         }

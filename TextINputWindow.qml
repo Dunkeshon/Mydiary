@@ -52,7 +52,7 @@ Rectangle {
             anchors.top: parent.top
             width: parent.width - 20 - trashButton.width
             color: textColor
-            placeholderText:"Awesome title"
+            placeholderText:qSettings.isEnglish ? "Awesome title" : "Невероятное название"
             placeholderTextColor: textPlaceholderColor
             font.family: "merriweather"
             font.pixelSize: 24
@@ -84,7 +84,7 @@ Rectangle {
                 id:userText
                 color: textColor
                 renderType: Text.QtRendering
-                placeholderText: qsTr("What happened today?")
+                placeholderText: qSettings.isEnglish ? "What happened today?" : "Что произошло Сегодня"
                 placeholderTextColor: textPlaceholderColor
                 font.pixelSize: 18
                 font.family: "merriweather"
@@ -120,7 +120,7 @@ BUTTON {
     iconMargins: 2
     bColor: parent.color
     iconColor: imageColor
-    toolTipText: "Hold to delete"
+    toolTipText: qSettings.isEnglish ? "Hold to delete" : "Задержите для удаления"
     toolBorderColor: buttonsToolTipBordersColor
     toolTipTextColor: buttonsToolTipTextColor
 
@@ -169,7 +169,7 @@ BUTTON {
     iconMargins: 2
     bColor: parent.color
     iconColor: imageColor
-    toolTipText: starImage.iconVisible ? "To Favorite" : "From Favorite"
+    toolTipText: starImage.iconVisible ?(qSettings.isEnglish ? "To Favorite":"В избранное")  : (qSettings.isEnglish ? "From Favorite":"Из избранного")
     toolBorderColor: buttonsToolTipBordersColor
     toolTipTextColor: buttonsToolTipTextColor
     changePressedTargetOnColorOverlay: true
@@ -203,8 +203,8 @@ BUTTON {
         toolDelay=0
         toolTimeout=0
         if(editInfo === "" || editInfo === dateInfo)
-        return "Created: " + dateInfo
-        return "Created: " + dateInfo + "\nEdited:   " + editInfo
+        return (qSettings.isEnglish ? "Created: ":"Создано: ") + dateInfo
+        return (qSettings.isEnglish ? "Created: ":"Создано: ") + dateInfo + (qSettings.isEnglish ? "\nEdited:   ":"\nИзменено:  ") + editInfo
     }
     toolBackgroundColor: infoToolBackgroundColor
     toolTipTextColor: infoToolTipTextColor

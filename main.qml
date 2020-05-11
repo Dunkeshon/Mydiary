@@ -28,8 +28,13 @@ Window {
     FontLoader { id: merriweather; source:"qrc:/resources/fonts/poppins_/Merriweather-Regular.ttf"}
     Settings{
         id:qSettings
-        property int colorTheme:Themes.DARK_THEME
-        property bool isFirstEnter: true
+        property int colorTheme:Themes.DEFAULT_THEME
+        property bool isFirstEnter : true
+        property bool isEnglish : true
+        property string myPassword
+
+        // implement later
+        property bool passwordOn : true
     }
     Item {
         z:0
@@ -128,7 +133,7 @@ Window {
                 font.pixelSize: 17
                 font.family: "merriweather"
                 color:enterTextTipColor
-                text: "Choose or Create a Page"
+                text: qSettings.isEnglish?"Choose or Create a Page":"Выберите или создайте страницу"
             }
         }
         TextINputWindow {

@@ -34,7 +34,7 @@ Rectangle {
         leftPadding: 0
         bottomPadding: 8
         topPadding: 8
-        placeholderText: "Search"
+        placeholderText: qSettings.isEnglish ? "Search" : "Поиск"
         placeholderTextColor: "white"
 
         maximumLength: 20

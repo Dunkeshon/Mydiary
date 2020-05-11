@@ -8,7 +8,7 @@ Item {
     property var content
     property color textColor
     property alias mArea: choiceArea
-
+    property alias fontSize: choicename.font.pixelSize
     property bool choiced: false
 
 

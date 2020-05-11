@@ -103,7 +103,7 @@ function focusOff() {
 }
 
 function acceptPassword(){
-    if(myPassword==="12345"){
+    if(myPassword===qSettings.myPassword){
         locked=false
         passwordRect.state="reanchored"
         unlockedAnim.start()
@@ -125,6 +125,14 @@ function lockButtonRealization(){
     mainWindowItem.enabled=false
     passwordWindow.openingPasswordAnim.start()
     passwordWindow.myPassword=""
+}
 
-
+function createNewPassWord(){
+    if(passwordField.text!==""){
+        qSettings.myPassword = passwordField.text
+        view.currentIndex++
+    }
+    else {
+        wrongInputAnim.start()
+    }
 }

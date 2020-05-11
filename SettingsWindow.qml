@@ -1,4 +1,4 @@
-import QtQuick 2.0
+﻿import QtQuick 2.0
 import QtQuick.Controls 2.12
 import QtQuick.Layouts 1.12
 import QtGraphicalEffects 1.0
@@ -63,7 +63,7 @@ Item {
 
             backgroundcolor: parent.color
             source: "resources/images/themeIcon.svg"
-            content: "Theme"
+            content: qSettings.isEnglish?"Theme":"Тема"
         }
 
         Rectangle{
@@ -80,7 +80,7 @@ Item {
                 anchors.left: parent.left
                 anchors.top: parent.top
                 anchors.margins: 5
-                content: "Default"
+                content: qSettings.isEnglish?"Default": "Стандарт"
                 backgroundColor: themeColor
                 textColor: defaultSelect
                 mArea.onClicked: {
@@ -98,7 +98,7 @@ Item {
                 anchors.left: defaultTheme.right
                 anchors.top: parent.top
                 anchors.margins: 5
-                content: "Rose"
+                content: qSettings.isEnglish?"Rose":"Розовый"
                 backgroundColor: themeColor
                 textColor: roseSelect
                 mArea.onClicked: {
@@ -116,7 +116,7 @@ Item {
                 anchors.left: parent.left
                 anchors.top: defaultTheme.bottom
                 anchors.margins: 5
-                content: "Yellow"
+                content: qSettings.isEnglish?"Yellow":"Желтый"
                 backgroundColor: themeColor
                 textColor: yellowSelect
                 mArea.onClicked: {
@@ -134,7 +134,7 @@ Item {
                 anchors.left: yellowTheme.right
                 anchors.top: roseTheme.bottom
                 anchors.margins: 5
-                content: "Dark"
+                content: qSettings.isEnglish?"Dark": "Черный"
                 backgroundColor: themeColor
                 textColor: darkSelect
                 mArea.onClicked: {
@@ -156,7 +156,7 @@ Item {
 
             backgroundcolor: parent.color
             source: "resources/images/languageIcon.svg"
-            content: "Language"
+            content:qSettings.isEnglish? "Language": "Язык"
         }
 
         Rectangle{
@@ -179,6 +179,9 @@ Item {
                 mArea.onClicked: {
                     choiced = true
                     russianLanguage.choiced = false
+                    qSettings.isEnglish=true
+//                    window.visible = false
+//                    window.visible = true
                 }
             }
 
@@ -189,12 +192,15 @@ Item {
                 anchors.left: englishLanguage.right
                 anchors.top: parent.top
                 anchors.margins: 5
-                content: "Russian"
+                content: "Русский"
                 backgroundColor: themeColor
                 textColor: "white"
                 mArea.onClicked: {
                     choiced = true
+                    qSettings.isEnglish = false
                     englishLanguage.choiced = false
+//                    window.visible = false
+//                    window.visible = true
                 }
             }
         }
@@ -208,7 +214,8 @@ Item {
 
             backgroundcolor: parent.color
             source: "resources/images/passwordIcon.svg"
-            content: "Password"
+            content: qSettings.isEnglish?"Password":"Пароль"
+
         }
 
         Rectangle{
@@ -225,13 +232,15 @@ Item {
                 anchors.left: parent.left
                 anchors.top: parent.top
                 anchors.margins: 5
-                content: "Change"
+                fontSize:18
+                content: qSettings.isEnglish?"Change":"Изменить"
                 backgroundColor: themeColor
                 textColor: "white"
                 mArea.onClicked: {
-                    choiced = true
-                    removePass.choiced = false
+//                    choiced = true
+//                    removePass.choiced = false
                 }
+                enabled: qSettings.passwordOn? true : false
             }
 
             SettingChoice {
@@ -241,18 +250,21 @@ Item {
                 anchors.left: changePass.right
                 anchors.top: parent.top
                 anchors.margins: 5
-                content: "Remove"
+                content:
+                    qSettings.passwordOn?(qSettings.isEnglish?"Remove":"Выключить"):
+                     (qSettings.isEnglish?"Create":"Создать")
+
+                fontSize: 18
                 backgroundColor: themeColor
                 textColor: "white"
                 mArea.onClicked: {
-                    choiced = true
-                    changePass.choiced = false
+//                    choiced = true
+//                    changePass.choiced = false
+                    qSettings.passwordOn?qSettings.passwordOn = false : qSettings.passwordOn = true
+
                 }
             }
         }
-
-
-
     }
 
 

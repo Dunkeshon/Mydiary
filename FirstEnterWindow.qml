@@ -1,5 +1,6 @@
 import QtQuick 2.0
 import QtQuick.Controls 2.12
+import "funclist.js" as F
 Item {
     id:background
     SVGImage {
@@ -31,12 +32,13 @@ Item {
     }
     SwipeView {
         id: view
-
+        interactive: false
         currentIndex: 0
         anchors.fill: parent
 
         Item {
             id: firstPage
+            focus: true
             Text{
                 id:firstText
                 text: "Welcome to My Diary!"
@@ -70,6 +72,33 @@ Item {
                 height: parent.height*0.35
                 width: height*1.54
             }
+            SVGImage{
+                    id:navArrow
+                    iconSource: "qrc:/resources/images/navArrov.svg"
+                    image.visible: true
+                    iconVisible: false
+
+                    anchors.bottom:parent.bottom
+                    anchors.bottomMargin: parent.height * 0.43
+                    anchors.right: parent.right
+                    anchors.rightMargin: parent.width * 0.03
+                    width:parent.width*0.02>17 ? parent.width*0.02 : 17
+
+                    height: width*1.64
+                    MouseArea{
+                    id:arrowArea
+                        width:parent.width
+                        height: parent.height
+                        onClicked: {
+                            view.currentIndex++
+                            arrowArea.enabled = false
+                        }
+
+                    }
+
+            }
+
+
 
             //            Text {
             //                id: secondText
@@ -97,8 +126,6 @@ Item {
                 anchors.top: parent.top
                 anchors.topMargin: parent.height*0.36
                 font.pixelSize: parent.height * 0.07
-
-
             }
             Button{
                 id:englishButton
@@ -122,6 +149,10 @@ Item {
                     color: parent.down?"#556ABA":"#7B90E3"
                     border.color: parent.down?"#FFFFFF":"#7077FF"
                     border.width: parent.down?3:1
+                }
+                onClicked: {
+                    qSettings.isEnglish = true
+                    view.currentIndex++
                 }
             }
             Button{
@@ -147,6 +178,10 @@ Item {
                     border.color: parent.down?"#FFFFFF":"#7077FF"
                     border.width: parent.down?3:1
                 }
+                onClicked: {
+                    qSettings.isEnglish = false
+                    view.currentIndex++
+                }
             }
             SVGImage{
                 iconSource: "qrc:/resources/images/Web_SVG 1.svg"
@@ -164,8 +199,7 @@ Item {
             id: thirdPage
             Text {
                 id:protectText
-                text: "Do you want to \nprotect your data?"
-
+                text:qSettings.isEnglish? "Do you want to \nprotect your data?" : "Поставить защиту \nпаролем?"
                 verticalAlignment: Text.AlignVCenter
                 horizontalAlignment: Text.AlignHCenter
                 font.family: "poppins_black"
@@ -186,13 +220,15 @@ Item {
                 anchors.horizontalCenter: protectText.horizontalCenter
                 Button{
                     id:yesButton
+
                     implicitWidth: 87
                     implicitHeight: 51
                     anchors.left: parent.left
                     width:thirdPage.width* 0.135
                     height:thirdPage.height*0.10
                     contentItem: Text{
-                        text: "YES"
+
+                        text:qSettings.isEnglish? "YES" : "ДА"
                         font.pixelSize:yesButton.down?thirdPage.height*0.035: thirdPage.height*0.04
                         horizontalAlignment: Text.AlignHCenter
                         verticalAlignment: Text.AlignVCenter
@@ -205,6 +241,7 @@ Item {
                         border.width: parent.down?3:1
                     }
                     onClicked: {
+                        qSettings.passwordOn = true
                         view.currentIndex++
                     }
                 }
@@ -219,7 +256,7 @@ Item {
                     anchors.leftMargin: middleMargin
                     anchors.verticalCenter: yesButton.verticalCenter
                     contentItem: Text{
-                        text: "NO"
+                        text: qSettings.isEnglish?"NO":"НЕТ"
                         font.pixelSize:noButton.down?thirdPage.height*0.035: thirdPage.height*0.04
                         horizontalAlignment:Text.AlignHCenter
                         verticalAlignment:Text.AlignVCenter
@@ -232,6 +269,7 @@ Item {
                         border.width: parent.down?3:1
                     }
                     onClicked: {
+                        qSettings.passwordOn = false
                         view.currentIndex+=2
                     }
                 }
@@ -252,7 +290,7 @@ Item {
             id: fourthPage
             Text {
                 id:prePasswordText
-                text: "Let's set a password!"
+                text: qSettings.isEnglish? "Let's set a password!" : "Придумайте пароль!"
                 verticalAlignment: Text.AlignVCenter
                 horizontalAlignment: Text.AlignHCenter
                 font.family: "poppins_black"
@@ -265,19 +303,20 @@ Item {
             }
             Item{
                 id:passwordRect
-                width: password.width
-                height: password.height
+                width: passwordField.width
+                height: passwordField.height
 
                 anchors.horizontalCenter: prePasswordText.horizontalCenter
                 anchors.top: prePasswordText.bottom
                 anchors.topMargin: parent.height*0.075
                 MouseArea{
                     anchors.fill: parent
-                    onClicked: password.forceActiveFocus()
+                    onClicked: passwordField.forceActiveFocus()
                     cursorShape: Qt.IBeamCursor
                 }
                 TextField{
-                    id:password
+                    id:passwordField
+
                     width: fourthPage.width*0.36
                     height: fourthPage.height*0.10
                     selectByMouse: true
@@ -286,167 +325,207 @@ Item {
                     font.pixelSize: fourthPage.height*0.035
                     color: "black"
                     horizontalAlignment: Text.AlignHCenter
-                    placeholderText: "Password"
+                    placeholderText:qSettings.isEnglish? "Password": "Пароль"
                     focus: true
                     background:
                         Rectangle {
                         color: "white"
                         border.color: "#7B90E3"
                         border.width: 2
-                        radius: password.width*0.11
+                        radius: passwordField.width*0.11
                     }
-                    //                    onEnterPressed{
-                    //                       // accept password ; next page
-                    //                    }
-                }
-            }
-            Button{
-                id:confirmButton
-                contentItem: Text {
-                    text: "GO"
-                    font.family: "poppins_black"
-                    verticalAlignment: Text.AlignVCenter
-                    horizontalAlignment: Text.AlignHCenter
-                    font.pixelSize: fourthPage.height*0.027
-                    color:"#FFFFFF"
-                }
+                    ////////animations
+                    SequentialAnimation{
+                        id: wrongInputAnim
+                        PropertyAnimation {
+                            target: passwordField
+                            property: "anchors.horizontalCenterOffset"
+                            easing.type: Easing.Linear
+                            to: -20
+                            duration: 200
+                        }
+                        PropertyAnimation {
+                            target: passwordField
+                            property: "anchors.horizontalCenterOffset"
+                            easing.type: Easing.Linear
+                            to: 20
+                            duration: 200
+                        }
+                        PropertyAnimation {
+                            target: passwordField
+                            property: "anchors.horizontalCenterOffset"
 
-                width: fourthPage.width*0.09
-                height: fourthPage.height*0.05
-                anchors.top: passwordRect.bottom
-                anchors.horizontalCenter: passwordRect.horizontalCenter
-                anchors.topMargin: fourthPage.height*0.039
+                            easing.type: Easing.Linear
+                            to: -10
+                            duration: 100
+                        }
+                        PropertyAnimation {
+                            target: passwordField
+                            property: "anchors.horizontalCenterOffset"
+                            easing.type: Easing.Linear
+                            to: 10
+                            duration: 100
+                        }
+                        PropertyAnimation {
+                            target: passwordField
+                            property: "anchors.horizontalCenterOffset"
+                            easing.type: Easing.Linear
+                            to: 0
+                            duration:100
+                        }
+                    }
+                    ////////
+                    onEditingFinished: {
+                        F.createNewPassWord()
+                    }
 
-                background: Rectangle{
-                    radius: 26
-                    border.color:confirmButton.down?"#FFFFFF":"#7077FF"
-
-                    border.width: 1
-                    color:confirmButton.down?"#556ABA":"#7B90E3"
-                }
-                onClicked: {
-                    //if textField is not empty
-                    view.currentIndex++
-                    //save this password
-                }
-            }
-            SVGImage{
-                iconSource: "qrc:/resources/images/computerImage.svg"
-                image.visible: true
-                iconVisible: false
-                anchors.bottom:parent.bottom
-                anchors.bottomMargin: parent.height * 0.13
-                anchors.right: parent.right
-                anchors.rightMargin: parent.width * 0.11
-                height: parent.height*0.38
-                width: height*1.05
+                //                    onEnterPressed{
+                //                       // accept password ; next page
+                //                    }
             }
         }
-        Item{
-            id:fifthPage
-            Text {
-                id: letsStartText
-                text: "Let’s start!"
-
+        Button{
+            id:confirmButton
+            contentItem: Text {
+                text: qSettings.isEnglish ? "GO" :"ДАЛЕЕ"
+                font.family: "poppins_black"
                 verticalAlignment: Text.AlignVCenter
                 horizontalAlignment: Text.AlignHCenter
-                font.family: "poppins_black"
-                color: "black"
-                anchors.left: parent.left
-                anchors.leftMargin: parent.width * 0.11
-                anchors.top: parent.top
-                anchors.topMargin: parent.height*0.38
-                font.pixelSize: parent.height * 0.1
+                font.pixelSize: fourthPage.height*0.027
+                color:"#FFFFFF"
             }
-            Button{
-                id:beginButton
 
-                width:parent.width*0.18
-                height:parent.height*0.10
-                anchors.top: letsStartText.bottom
-                anchors.topMargin: parent.height*0.06
-                anchors.horizontalCenter: letsStartText.horizontalCenter
+            width: fourthPage.width*0.09
+            height: fourthPage.height*0.05
+            anchors.top: passwordRect.bottom
+            anchors.horizontalCenter: passwordRect.horizontalCenter
+            anchors.topMargin: fourthPage.height*0.039
 
-                contentItem: Text{
-                    text: "BEGIN"
-                    font.pixelSize:beginButton.down?fifthPage.height*0.035: fifthPage.height*0.04
-                    horizontalAlignment:Text.AlignHCenter
-                    verticalAlignment:Text.AlignVCenter
-                    color: "white"
-                }
-                background: Rectangle{
-                    radius: parent.width*0.29
-                    color: parent.down?"#556ABA":"#7B90E3"
-                    border.color: parent.down?"#FFFFFF":"#7077FF"
-                    border.width: parent.down?3:1
-                }
-                onClicked: {
-                    firstEnterWindow.state="hidden";
-                    passwordWindow.locked=false;
-                    mainWindowItem.visible=true;
-                    passwordWindow.visible=false;
-                    visibilityOffTimer.start();
-                    topLeftOffScreenAnim.start();
-                    offScreenDelay.start();
-                }
-            }
-            SVGImage{
-                iconSource: "qrc:/resources/images/letsStartImage.svg"
-                image.visible: true
-                iconVisible: false
-                anchors.bottom:parent.bottom
-                anchors.bottomMargin: parent.height * 0.11
-                anchors.right: parent.right
-                anchors.rightMargin: parent.width * 0.12
-                height: parent.height*0.38
-                width: height*1.16
+            background: Rectangle{
+                radius: 26
+                border.color:confirmButton.down?"#FFFFFF":"#7077FF"
+
+                border.width: 1
+                color:confirmButton.down?"#556ABA":"#7B90E3"
             }
         }
-    }
-
-
-    PageIndicator {
-        id: indicator
-
-        count: view.count
-        currentIndex: view.currentIndex
-
-        anchors.bottom: view.bottom
-        anchors.horizontalCenter: parent.horizontalCenter
-    }
-    Timer{
-        id:visibilityOffTimer
-        interval: 1000;
-        onTriggered:{
-           qSettings.isFirstEnter=false;
+        SVGImage{
+            iconSource: "qrc:/resources/images/computerImage.svg"
+            image.visible: true
+            iconVisible: false
+            anchors.bottom:parent.bottom
+            anchors.bottomMargin: parent.height * 0.13
+            anchors.right: parent.right
+            anchors.rightMargin: parent.width * 0.11
+            height: parent.height*0.38
+            width: height*1.05
         }
     }
-    PropertyAnimation {
-        id:topLeftOffScreenAnim
-        target: backgroundTopLeft
-        property: "y"
+    Item{
+        id:fifthPage
+        Text {
+            id: letsStartText
+            text: qSettings.isEnglish?"Let’s start!": "Давайте начнем!"
 
-        easing.type: Easing.InOutExpo
+            verticalAlignment: Text.AlignVCenter
+            horizontalAlignment: Text.AlignHCenter
+            font.family: "poppins_black"
+            color: "black"
+            anchors.left: parent.left
+            anchors.leftMargin: parent.width * 0.11
+            anchors.top: parent.top
+            anchors.topMargin: parent.height*0.38
+            font.pixelSize: parent.height * 0.1
+        }
+        Button{
+            id:beginButton
 
-        to: - (window.height * 0.5)
-        duration: 1000
-    }
-    PropertyAnimation {
-        id:topRightOffScreenAnim
-        target: backgroundTopRight
-        property: "y"
+            width:parent.width*0.18
+            height:parent.height*0.10
+            anchors.top: letsStartText.bottom
+            anchors.topMargin: parent.height*0.06
+            anchors.horizontalCenter: letsStartText.horizontalCenter
 
-        easing.type: Easing.InOutExpo
-
-        to: - (window.height * 0.5)
-        duration: 800
-    }
-    Timer{
-        id:offScreenDelay
-        interval: 200;
-        onTriggered:{
-           topRightOffScreenAnim.start();
+            contentItem: Text{
+                text: qSettings.isEnglish?"BEGIN": "ВПЕРЕД"
+                font.pixelSize:beginButton.down?fifthPage.height*0.035: fifthPage.height*0.04
+                horizontalAlignment:Text.AlignHCenter
+                verticalAlignment:Text.AlignVCenter
+                color: "white"
+            }
+            background: Rectangle{
+                radius: parent.width*0.29
+                color: parent.down?"#556ABA":"#7B90E3"
+                border.color: parent.down?"#FFFFFF":"#7077FF"
+                border.width: parent.down?3:1
+            }
+            onClicked: {
+                firstEnterWindow.state="hidden";
+                passwordWindow.locked=false;
+                mainWindowItem.visible=true;
+                passwordWindow.visible=false;
+                visibilityOffTimer.start();
+                topLeftOffScreenAnim.start();
+                offScreenDelay.start();
+            }
+        }
+        SVGImage{
+            iconSource: "qrc:/resources/images/letsStartImage.svg"
+            image.visible: true
+            iconVisible: false
+            anchors.bottom:parent.bottom
+            anchors.bottomMargin: parent.height * 0.11
+            anchors.right: parent.right
+            anchors.rightMargin: parent.width * 0.12
+            height: parent.height*0.38
+            width: height*1.16
         }
     }
+}
+
+
+PageIndicator {
+    id: indicator
+
+    count: view.count
+    currentIndex: view.currentIndex
+
+    anchors.bottom: view.bottom
+    anchors.horizontalCenter: parent.horizontalCenter
+}
+Timer{
+    id:visibilityOffTimer
+    interval: 1000;
+    onTriggered:{
+        qSettings.isFirstEnter=false;
+    }
+}
+PropertyAnimation {
+    id:topLeftOffScreenAnim
+    target: backgroundTopLeft
+    property: "y"
+
+    easing.type: Easing.InOutExpo
+
+    to: - (window.height * 0.5)
+    duration: 1000
+}
+PropertyAnimation {
+    id:topRightOffScreenAnim
+    target: backgroundTopRight
+    property: "y"
+
+    easing.type: Easing.InOutExpo
+
+    to: - (window.height * 0.5)
+    duration: 800
+}
+Timer{
+    id:offScreenDelay
+    interval: 200;
+    onTriggered:{
+        topRightOffScreenAnim.start();
+    }
+}
 
 }

@@ -44,6 +44,7 @@
         <file>images/protection.svg</file>
         <file>images/computerImage.svg</file>
         <file>images/letsStartImage.svg</file>
+        <file>images/navArrov.svg</file>
     </qresource>
     <qresource prefix="/animeTheme">
         <file>Anime/background.jpg</file>

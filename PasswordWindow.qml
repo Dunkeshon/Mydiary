@@ -420,7 +420,7 @@ Item{
                     font.pixelSize: 18
                     color: "black"
                     horizontalAlignment: Text.AlignHCenter
-                    placeholderText: "Password"
+                    placeholderText: qSettings.isEnglish?"Password": "Введите пароль"
                     focus: true
                     background:
                         Rectangle {
@@ -436,7 +436,7 @@ Item{
                 z:3
                 id:confirmButton
                 contentItem: Text {
-                    text: "GO"
+                    text:qSettings.isEnglish?"GO":"Вперед"
                     font.family: "poppins_black"
                     verticalAlignment: Text.AlignVCenter
                     horizontalAlignment: Text.AlignHCenter
@@ -493,216 +493,11 @@ Item{
     Rectangle {
         id:backgroundRect
         z:0
-
         anchors.fill: parent
-
         color: backgroundColor
-
-
-
-
-
-
     }
 }
-/*import QtQuick 2.12
-import QtQuick.Controls 2.12
-import QtQuick.Window 2.12
-import Diary 1.0
-import "funclist.js" as F
 
-
-
-Rectangle {
-    id:pWindow
-    property alias myPassword:password.text
-    property bool locked: true
-
-    anchors.fill: parent
-
-
-
-
-    //Keys.onPressed:password.forceActiveFocus
-    Image {
-        id: background
-        source: "qrc:/animeTheme/Anime/background.jpg"
-        z:0
-        anchors.fill: parent
-    }
-
-    Image {
-        id: lock
-        anchors.centerIn: parent
-
-        width: 150
-        height: 150
-
-
-        source:locked==true? "qrc:/resources/images/lock.svg":"qrc:/resources/images/unlock2.svg"
-
-        sourceSize.width: width*Screen.devicePixelRatio
-        sourceSize.height: height*Screen.devicePixelRatio
-        states: [
-            State {
-                name: "reancored"
-                AnchorChanges {
-                    target: lock
-                    anchors.horizontalCenter: undefined
-                    anchors.verticalCenter: undefined
-                }
-            }
-
-        ]
-
-        SequentialAnimation{
-            id: unlockedAnim
-
-            PropertyAnimation {
-                target: lock
-                property: "anchors.verticalCenterOffset"
-
-                easing.type: Easing.Linear
-
-                to: -30
-                duration: 100
-            }
-
-            PropertyAnimation {
-                target: lock
-                property: "anchors.verticalCenterOffset"
-
-                easing.type: Easing.OutBounce
-
-                to: 0
-                duration: 800
-            }
-        }
-
-        SequentialAnimation{
-            id: lockedAnim
-
-            PropertyAnimation {
-                target: lock
-                property: "anchors.horizontalCenterOffset"
-
-                easing.type: Easing.Linear
-                to: -20
-                duration: 200
-            }
-            PropertyAnimation {
-                target: lock
-                property: "anchors.horizontalCenterOffset"
-
-                easing.type: Easing.Linear
-                to: 20
-                duration: 200
-            }
-            PropertyAnimation {
-                target: lock
-                property: "anchors.horizontalCenterOffset"
-
-                easing.type: Easing.Linear
-                to: -10
-                duration: 100
-            }
-            PropertyAnimation {
-                target: lock
-                property: "anchors.horizontalCenterOffset"
-
-                easing.type: Easing.Linear
-                to: 10
-                duration: 100
-            }
-            PropertyAnimation {
-                target: lock
-                property: "anchors.horizontalCenterOffset"
-
-                easing.type: Easing.Linear
-                to: 0
-                duration:100
-            }
-
-        }
-    }
-
-
-    TextField{
-        id:password
-        z:2
-        width: 200
-        height: 30
-        anchors.top: lock.bottom
-        anchors.horizontalCenter: lock.horizontalCenter
-        anchors.topMargin: 20
-        echoMode: "Password"
-        font.pixelSize: 18
-        color: "black"
-        horizontalAlignment: Text.AlignHCenter
-        placeholderText: "Password"
-        focus: true
-        background:
-            Rectangle {
-            color: "#CC9966"
-        }
-        states: [
-            State {
-                name: "reanchored"
-
-                AnchorChanges {
-                    target: password
-                    anchors.top: undefined
-                }
-
-            }
-        ]
-        onEditingFinished: F.acceptPassword()
-    }
-    Button{
-        id:confirmButton
-        text: "Confirm"
-
-        onClicked:F.acceptPassword()
-        width: 100
-        height: 30
-        anchors.top: password.bottom
-        anchors.horizontalCenter: password.horizontalCenter
-        anchors.topMargin: 10
-        z:2
-
-    }
-
-    Image {
-        id: animeImage
-        x: 383
-        y: 89
-        z:1
-
-        width:282
-        height: 401
-        anchors.bottomMargin: -10
-        anchors.rightMargin: -25
-        anchors.right: parent.right
-        anchors.bottom: parent.bottom
-        source: { return backEnd.generateAnimeGirl()}
-    }
-
-    Timer {
-        id:acceptedTimer
-        interval: 1000;
-        onTriggered:{
-            pWindow.visible=false
-            mainItem.visible=true
-        }
-
-    }
-
-
-
-}
-
-
-*/
 
 
 /*##^##
