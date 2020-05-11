@@ -133,7 +133,8 @@ Window {
                 font.pixelSize: 17
                 font.family: "merriweather"
                 color:enterTextTipColor
-                text: qSettings.isEnglish?"Choose or Create a Page":"Выберите или создайте страницу"
+                text: qSettings.isEnglish?"Choose or Create a Page":"Выберите или создайте \nстраницу"
+                horizontalAlignment: Text.AlignHCenter
             }
         }
         TextINputWindow {

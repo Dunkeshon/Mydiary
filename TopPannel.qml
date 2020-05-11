@@ -54,7 +54,7 @@ Item {
 
             enteredColor: image_enteredColor
             pressedColor: image_pressedColor
-            toolTipText: hideAllDelegates ? (qSettings.isEnglish ? "Show":"Показать") : (qSettings.isEnglish ? "Hide":"Спрятать")
+            toolTipText: hideAllDelegates ? (qSettings.isEnglish ? "Show":"Показать") : (qSettings.isEnglish ? "Hide":"Скрыть")
             iconRotation: hideAllDelegates ? 180 : 0
             toolBorderColor: buttonsToolTipBordersColor
             toolTipTextColor: buttonsToolTipTextColor
@@ -112,7 +112,7 @@ Item {
             iconColor:imageColor
             bColor:pannel.color
             anchors.right: settingsButton.left
-            iconSource:passwordWindow.locked?"qrc:/resources/images/new_lock.svg" : "qrc:/resources/images/new_unlock.svg"
+            iconSource:passwordWindow.locked? "qrc:/resources/images/new_lock.svg" : "qrc:/resources/images/new_unlock.svg"
             iconMargins: 6
 
             enteredColor: image_enteredColor

@@ -213,7 +213,7 @@ Item {
 
 
             backgroundcolor: parent.color
-            source: "resources/images/passwordIcon.svg"
+            source: "qrc:/resources/images/new_lock.svg"
             content: qSettings.isEnglish?"Password":"Пароль"
 
         }
@@ -251,7 +251,7 @@ Item {
                 anchors.top: parent.top
                 anchors.margins: 5
                 content:
-                    qSettings.passwordOn?(qSettings.isEnglish?"Remove":"Выключить"):
+                    qSettings.passwordOn?(qSettings.isEnglish?"Remove":"Убрать"):
                      (qSettings.isEnglish?"Create":"Создать")
 
                 fontSize: 18
@@ -261,7 +261,6 @@ Item {
 //                    choiced = true
 //                    changePass.choiced = false
                     qSettings.passwordOn?qSettings.passwordOn = false : qSettings.passwordOn = true
-
                 }
             }
         }
