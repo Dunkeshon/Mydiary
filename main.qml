@@ -32,8 +32,6 @@ Window {
         property bool isFirstEnter : true
         property bool isEnglish : true
         property string myPassword
-
-        // implement later
         property bool passwordOn : true
     }
     Item {
@@ -218,7 +216,7 @@ Window {
     }
 
 Component.onCompleted: {
-    qSettings.isFirstEnter=true;
+    //qSettings.isFirstEnter=true;
 }
 
 

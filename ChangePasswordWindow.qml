@@ -14,12 +14,16 @@ Popup {
     property var buttonBorderColor
     property var buttonPressedColor
     property var buttonBackgroundColor
+    property var backgroundColor
     id: popup
 
     width: 400
     height: 250
     modal: true
     focus: true
+    background: Rectangle{
+        color: backgroundColor
+    }
 
     closePolicy: Popup.CloseOnEscape | Popup.CloseOnPressOutside
 
