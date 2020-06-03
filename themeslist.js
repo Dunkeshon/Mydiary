@@ -67,6 +67,15 @@ function changeTheme(colorTheme){
         passwordWindow.backgroundTopLeftColor="#4764d8"
         passwordWindow.backgroundBottomLeftColor="#3454d1"
         passwordWindow.backgroundBottomRightColor="#4764d8"
+
+        // changePasswordWindow
+        changePasswordWindow.passwordRectBorderColor = "#7B90E3"
+        changePasswordWindow.buttonTextPressedColor = "#FFFFFF"
+        changePasswordWindow.buttonTextColor= "#FFFFFF"
+        changePasswordWindow.buttonBorderPresedColor= "#FFFFFF"
+        changePasswordWindow.buttonBorderColor = "#7077FF"
+        changePasswordWindow.buttonPressedColor = "#556ABA"
+        changePasswordWindow.buttonBackgroundColor = "#7B90E3"
                 break;
     case Themes.ROSE_THEME:
         mainColorBackground = "white"
@@ -131,6 +140,14 @@ function changeTheme(colorTheme){
         passwordWindow.backgroundBottomLeftColor="#fbcbcc"
         passwordWindow.backgroundBottomRightColor="#fcc4c5"
 
+        // changePasswordWindow TO DO
+        changePasswordWindow.passwordRectBorderColor = "#7B90E3"
+        changePasswordWindow.buttonTextPressedColor = "#FFFFFF"
+        changePasswordWindow.buttonTextColor= "#FFFFFF"
+        changePasswordWindow.buttonBorderPresedColor= "#FFFFFF"
+        changePasswordWindow.buttonBorderColor = "#7077FF"
+        changePasswordWindow.buttonPressedColor = "#556ABA"
+        changePasswordWindow.buttonBackgroundColor = "#7B90E3"
         break;
     case Themes.YELLOW_THEME:
         mainColorBackground = "white"
@@ -198,6 +215,15 @@ function changeTheme(colorTheme){
         passwordWindow.backgroundBottomLeftColor="#f6d7b1"
         passwordWindow.backgroundBottomRightColor="#f6d7b1"
 
+        // changePasswordWindow TO DO
+        changePasswordWindow.passwordRectBorderColor = "#7B90E3"
+        changePasswordWindow.buttonTextPressedColor = "#FFFFFF"
+        changePasswordWindow.buttonTextColor= "#FFFFFF"
+        changePasswordWindow.buttonBorderPresedColor= "#FFFFFF"
+        changePasswordWindow.buttonBorderColor = "#7077FF"
+        changePasswordWindow.buttonPressedColor = "#556ABA"
+        changePasswordWindow.buttonBackgroundColor = "#7B90E3"
+
         break;
 
     case Themes.DARK_THEME:
@@ -263,6 +289,15 @@ function changeTheme(colorTheme){
         passwordWindow.backgroundTopLeftColor="white"
         passwordWindow.backgroundBottomLeftColor="white"
         passwordWindow.backgroundBottomRightColor="white"
+
+        // changePasswordWindow TO DO
+        changePasswordWindow.passwordRectBorderColor = "#7B90E3"
+        changePasswordWindow.buttonTextPressedColor = "#FFFFFF"
+        changePasswordWindow.buttonTextColor= "#FFFFFF"
+        changePasswordWindow.buttonBorderPresedColor= "#FFFFFF"
+        changePasswordWindow.buttonBorderColor = "#7077FF"
+        changePasswordWindow.buttonPressedColor = "#556ABA"
+        changePasswordWindow.buttonBackgroundColor = "#7B90E3"
         break;
     default: throw "Theme id out of range"
 

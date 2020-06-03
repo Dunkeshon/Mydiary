@@ -145,18 +145,15 @@ Item {
                 }
             }
         }
-
-
         SettingPart {
             id: languageTitle
             height: 80
             width:parent.width
             anchors.top: themeSection.bottom
-
-
             backgroundcolor: parent.color
             source: "resources/images/languageIcon.svg"
             content:qSettings.isEnglish? "Language": "Язык"
+
         }
 
         Rectangle{
@@ -183,6 +180,9 @@ Item {
 //                    window.visible = false
 //                    window.visible = true
                 }
+                Component.onCompleted: {
+                    choiced = qSettings.isEnglish?true:false
+                }
             }
 
             SettingChoice {
@@ -195,12 +195,14 @@ Item {
                 content: "Русский"
                 backgroundColor: themeColor
                 textColor: "white"
+
                 mArea.onClicked: {
                     choiced = true
                     qSettings.isEnglish = false
                     englishLanguage.choiced = false
-//                    window.visible = false
-//                    window.visible = true
+                }
+                Component.onCompleted: {
+                    choiced = qSettings.isEnglish?false:true
                 }
             }
         }
@@ -213,7 +215,7 @@ Item {
 
 
             backgroundcolor: parent.color
-            source: "qrc:/resources/images/new_lock.svg"
+            source: "resources/images/passwordIcon.svg"
             content: qSettings.isEnglish?"Password":"Пароль"
 
         }
@@ -237,8 +239,11 @@ Item {
                 backgroundColor: themeColor
                 textColor: "white"
                 mArea.onClicked: {
-//                    choiced = true
-//                    removePass.choiced = false
+                    if(qSettings.passwordOn){
+                        changePasswordWindow.isChangingPassword = true ;
+                        changePasswordWindow.swipeView.currentIndex = 0
+                        changePasswordWindow.open();
+                    }
                 }
                 enabled: qSettings.passwordOn? true : false
             }
@@ -258,9 +263,15 @@ Item {
                 backgroundColor: themeColor
                 textColor: "white"
                 mArea.onClicked: {
-//                    choiced = true
-//                    changePass.choiced = false
-                    qSettings.passwordOn?qSettings.passwordOn = false : qSettings.passwordOn = true
+                    if(qSettings.passwordOn){
+                        changePasswordWindow.isRemoving = true;
+                        changePasswordWindow.swipeView.currentIndex = 0
+                    }
+                    else{
+                        changePasswordWindow.isRemoving = false;
+                        changePasswordWindow.swipeView.currentIndex = 1;
+                    }
+                    changePasswordWindow.open();
                 }
             }
         }

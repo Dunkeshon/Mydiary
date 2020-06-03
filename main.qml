@@ -212,6 +212,10 @@ Window {
             }
         ]
     }
+    ChangePasswordWindow{
+        id:changePasswordWindow
+        anchors.centerIn: parent        
+    }
 
 Component.onCompleted: {
     qSettings.isFirstEnter=true;

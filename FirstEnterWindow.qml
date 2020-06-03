@@ -83,7 +83,6 @@ Item {
                     anchors.right: parent.right
                     anchors.rightMargin: parent.width * 0.03
                     width:parent.width*0.02>17 ? parent.width*0.02 : 17
-
                     height: width*1.64
                     MouseArea{
                     id:arrowArea

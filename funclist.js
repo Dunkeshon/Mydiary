@@ -136,3 +136,47 @@ function createNewPassWord(){
         wrongInputAnim.start()
     }
 }
+function validateOldPassword(){
+    if (passwordOld.text === qSettings.myPassword)
+    {
+        if(changePasswordWindow.isChangingPassword){
+           //set new password
+           changePasswordWindow.swipeView.currentIndex=1
+        }
+        else if(changePasswordWindow.isRemoving){
+            togglePasswordOn();
+            changePasswordWindow.close();
+        }
+        else{
+            console.log("wrong validateOldPassword to do next instruction")
+            changePasswordWindow.close();
+        }
+    }
+    else{
+        passwordOld.text=""
+    }
+}
+function whatToDoWithNewPassword(){
+    //save new password
+    if(changePasswordWindow.isChangingPassword){
+        changePasswordWindow.isChangingPassword = false;
+    }
+    else if (!isRemoving){
+        changePasswordWindow.isRemoving = false;
+        togglePasswordOn();
+    }
+    else{
+        console.log("wrong whatToDoWithNewPassword to do next instruction")
+    }
+    changePasswordWindow.close();
+}
+
+function togglePasswordOn(){
+    if (qSettings.passwordOn){
+        qSettings.passwordOn = false
+    }
+    else{
+        qSettings.passwordOn = true
+    }
+}
+

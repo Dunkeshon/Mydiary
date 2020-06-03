@@ -16,6 +16,7 @@
         <file>FirstEnterWindow.qml</file>
         <file>SettingChoice.qml</file>
         <file>SettingPart.qml</file>
+        <file>ChangePasswordWindow.qml</file>
     </qresource>
     <qresource prefix="/resources">
         <file>images/plusIcon.svg</file>
