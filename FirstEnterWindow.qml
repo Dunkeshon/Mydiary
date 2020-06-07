@@ -73,27 +73,27 @@ Item {
                 width: height*1.54
             }
             SVGImage{
-                    id:navArrow
-                    iconSource: "qrc:/resources/images/navArrov.svg"
-                    image.visible: true
-                    iconVisible: false
+                id:navArrow
+                iconSource: "qrc:/resources/images/navArrov.svg"
+                image.visible: true
+                iconVisible: false
 
-                    anchors.bottom:parent.bottom
-                    anchors.bottomMargin: parent.height * 0.43
-                    anchors.right: parent.right
-                    anchors.rightMargin: parent.width * 0.03
-                    width:parent.width*0.02>17 ? parent.width*0.02 : 17
-                    height: width*1.64
-                    MouseArea{
+                anchors.bottom:parent.bottom
+                anchors.bottomMargin: parent.height * 0.43
+                anchors.right: parent.right
+                anchors.rightMargin: parent.width * 0.03
+                width:parent.width*0.02>17 ? parent.width*0.02 : 17
+                height: width*1.64
+                MouseArea{
                     id:arrowArea
-                        width:parent.width
-                        height: parent.height
-                        onClicked: {
-                            view.currentIndex++
-                            arrowArea.enabled = false
-                        }
-
+                    width:parent.width
+                    height: parent.height
+                    onClicked: {
+                        view.currentIndex++
+                        arrowArea.enabled = false
                     }
+
+                }
 
             }
 
@@ -377,154 +377,150 @@ Item {
                     onEditingFinished: {
                         F.createNewPassWord()
                     }
+                }
+            }
+            Button{
+                id:confirmButton
+                contentItem: Text {
+                    text: qSettings.isEnglish ? "GO" :"ДАЛЕЕ"
+                    font.family: "poppins_black"
+                    verticalAlignment: Text.AlignVCenter
+                    horizontalAlignment: Text.AlignHCenter
+                    font.pixelSize: fourthPage.height*0.027
+                    color:"#FFFFFF"
+                }
 
-                //                    onEnterPressed{
-                //                       // accept password ; next page
-                //                    }
+                width: fourthPage.width*0.09
+                height: fourthPage.height*0.05
+                anchors.top: passwordRect.bottom
+                anchors.horizontalCenter: passwordRect.horizontalCenter
+                anchors.topMargin: fourthPage.height*0.039
+
+                background: Rectangle{
+                    radius: 26
+                    border.color:confirmButton.down?"#FFFFFF":"#7077FF"
+
+                    border.width: 1
+                    color:confirmButton.down?"#556ABA":"#7B90E3"
+                }
+            }
+            SVGImage{
+                iconSource: "qrc:/resources/images/computerImage.svg"
+                image.visible: true
+                iconVisible: false
+                anchors.bottom:parent.bottom
+                anchors.bottomMargin: parent.height * 0.13
+                anchors.right: parent.right
+                anchors.rightMargin: parent.width * 0.11
+                height: parent.height*0.38
+                width: height*1.05
             }
         }
-        Button{
-            id:confirmButton
-            contentItem: Text {
-                text: qSettings.isEnglish ? "GO" :"ДАЛЕЕ"
-                font.family: "poppins_black"
+        Item{
+            id:fifthPage
+            Text {
+                id: letsStartText
+                text: qSettings.isEnglish?"Let’s start!": "Давайте начнем!"
+
                 verticalAlignment: Text.AlignVCenter
                 horizontalAlignment: Text.AlignHCenter
-                font.pixelSize: fourthPage.height*0.027
-                color:"#FFFFFF"
+                font.family: "poppins_black"
+                color: "black"
+                anchors.left: parent.left
+                anchors.leftMargin: parent.width * 0.11
+                anchors.top: parent.top
+                anchors.topMargin: parent.height*0.38
+                font.pixelSize: parent.height * 0.1
             }
+            Button{
+                id:beginButton
 
-            width: fourthPage.width*0.09
-            height: fourthPage.height*0.05
-            anchors.top: passwordRect.bottom
-            anchors.horizontalCenter: passwordRect.horizontalCenter
-            anchors.topMargin: fourthPage.height*0.039
+                width:parent.width*0.18
+                height:parent.height*0.10
+                anchors.top: letsStartText.bottom
+                anchors.topMargin: parent.height*0.06
+                anchors.horizontalCenter: letsStartText.horizontalCenter
 
-            background: Rectangle{
-                radius: 26
-                border.color:confirmButton.down?"#FFFFFF":"#7077FF"
-
-                border.width: 1
-                color:confirmButton.down?"#556ABA":"#7B90E3"
+                contentItem: Text{
+                    text: qSettings.isEnglish?"BEGIN": "ВПЕРЕД"
+                    font.pixelSize:beginButton.down?fifthPage.height*0.035: fifthPage.height*0.04
+                    horizontalAlignment:Text.AlignHCenter
+                    verticalAlignment:Text.AlignVCenter
+                    color: "white"
+                }
+                background: Rectangle{
+                    radius: parent.width*0.29
+                    color: parent.down?"#556ABA":"#7B90E3"
+                    border.color: parent.down?"#FFFFFF":"#7077FF"
+                    border.width: parent.down?3:1
+                }
+                onClicked: {
+                    firstEnterWindow.state="hidden";
+                    passwordWindow.locked=false;
+                    mainWindowItem.visible=true;
+                    passwordWindow.visible=false;
+                    visibilityOffTimer.start();
+                    topLeftOffScreenAnim.start();
+                    offScreenDelay.start();
+                }
             }
-        }
-        SVGImage{
-            iconSource: "qrc:/resources/images/computerImage.svg"
-            image.visible: true
-            iconVisible: false
-            anchors.bottom:parent.bottom
-            anchors.bottomMargin: parent.height * 0.13
-            anchors.right: parent.right
-            anchors.rightMargin: parent.width * 0.11
-            height: parent.height*0.38
-            width: height*1.05
+            SVGImage{
+                iconSource: "qrc:/resources/images/letsStartImage.svg"
+                image.visible: true
+                iconVisible: false
+                anchors.bottom:parent.bottom
+                anchors.bottomMargin: parent.height * 0.11
+                anchors.right: parent.right
+                anchors.rightMargin: parent.width * 0.12
+                height: parent.height*0.38
+                width: height*1.16
+            }
         }
     }
-    Item{
-        id:fifthPage
-        Text {
-            id: letsStartText
-            text: qSettings.isEnglish?"Let’s start!": "Давайте начнем!"
 
-            verticalAlignment: Text.AlignVCenter
-            horizontalAlignment: Text.AlignHCenter
-            font.family: "poppins_black"
-            color: "black"
-            anchors.left: parent.left
-            anchors.leftMargin: parent.width * 0.11
-            anchors.top: parent.top
-            anchors.topMargin: parent.height*0.38
-            font.pixelSize: parent.height * 0.1
-        }
-        Button{
-            id:beginButton
 
-            width:parent.width*0.18
-            height:parent.height*0.10
-            anchors.top: letsStartText.bottom
-            anchors.topMargin: parent.height*0.06
-            anchors.horizontalCenter: letsStartText.horizontalCenter
+    PageIndicator {
+        id: indicator
 
-            contentItem: Text{
-                text: qSettings.isEnglish?"BEGIN": "ВПЕРЕД"
-                font.pixelSize:beginButton.down?fifthPage.height*0.035: fifthPage.height*0.04
-                horizontalAlignment:Text.AlignHCenter
-                verticalAlignment:Text.AlignVCenter
-                color: "white"
-            }
-            background: Rectangle{
-                radius: parent.width*0.29
-                color: parent.down?"#556ABA":"#7B90E3"
-                border.color: parent.down?"#FFFFFF":"#7077FF"
-                border.width: parent.down?3:1
-            }
-            onClicked: {
-                firstEnterWindow.state="hidden";
-                passwordWindow.locked=false;
-                mainWindowItem.visible=true;
-                passwordWindow.visible=false;
-                visibilityOffTimer.start();
-                topLeftOffScreenAnim.start();
-                offScreenDelay.start();
-            }
-        }
-        SVGImage{
-            iconSource: "qrc:/resources/images/letsStartImage.svg"
-            image.visible: true
-            iconVisible: false
-            anchors.bottom:parent.bottom
-            anchors.bottomMargin: parent.height * 0.11
-            anchors.right: parent.right
-            anchors.rightMargin: parent.width * 0.12
-            height: parent.height*0.38
-            width: height*1.16
+        count: view.count
+        currentIndex: view.currentIndex
+
+        anchors.bottom: view.bottom
+        anchors.horizontalCenter: parent.horizontalCenter
+    }
+    Timer{
+        id:visibilityOffTimer
+        interval: 1000;
+        onTriggered:{
+            qSettings.isFirstEnter=false;
         }
     }
-}
+    PropertyAnimation {
+        id:topLeftOffScreenAnim
+        target: backgroundTopLeft
+        property: "y"
 
+        easing.type: Easing.InOutExpo
 
-PageIndicator {
-    id: indicator
-
-    count: view.count
-    currentIndex: view.currentIndex
-
-    anchors.bottom: view.bottom
-    anchors.horizontalCenter: parent.horizontalCenter
-}
-Timer{
-    id:visibilityOffTimer
-    interval: 1000;
-    onTriggered:{
-        qSettings.isFirstEnter=false;
+        to: - (window.height * 0.5)
+        duration: 1000
     }
-}
-PropertyAnimation {
-    id:topLeftOffScreenAnim
-    target: backgroundTopLeft
-    property: "y"
+    PropertyAnimation {
+        id:topRightOffScreenAnim
+        target: backgroundTopRight
+        property: "y"
 
-    easing.type: Easing.InOutExpo
+        easing.type: Easing.InOutExpo
 
-    to: - (window.height * 0.5)
-    duration: 1000
-}
-PropertyAnimation {
-    id:topRightOffScreenAnim
-    target: backgroundTopRight
-    property: "y"
-
-    easing.type: Easing.InOutExpo
-
-    to: - (window.height * 0.5)
-    duration: 800
-}
-Timer{
-    id:offScreenDelay
-    interval: 200;
-    onTriggered:{
-        topRightOffScreenAnim.start();
+        to: - (window.height * 0.5)
+        duration: 800
     }
-}
+    Timer{
+        id:offScreenDelay
+        interval: 200;
+        onTriggered:{
+            topRightOffScreenAnim.start();
+        }
+    }
 
 }

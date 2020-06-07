@@ -176,9 +176,19 @@ Window {
     PasswordWindow{
         id:passwordWindow
         anchors.fill:parent
-
-
-        visible: qSettings.isFirstEnter?false:true;
+        visible:{
+            if(qSettings.isFirstEnter) return false
+            else {
+                if(!qSettings.passwordOn){
+                    return false
+                }
+               return  true;
+            }
+        }
+        Component.onCompleted: {
+            if(!qSettings.isFirstEnter && visible==false)
+                mainWindowItem.visible=true
+        }
         z:1
     }
 
@@ -216,7 +226,8 @@ Window {
     }
 
 Component.onCompleted: {
-    //qSettings.isFirstEnter=true;
+    // for debugging issues
+    // qSettings.isFirstEnter=true;
 }
 
 
